@@ -1,8 +1,11 @@
-import React, { Suspense } from 'react';
+import React from 'react';
 import { Route, Switch } from 'react-router-dom';
+
 import HomePage from './views/HomePage';
 import StoreContext from './contexts/StoreContext';
 import Panels from './components/Panels';
+import User from './components/User';
+import { isLoaded } from './helper/helper';
 
 const Routes = () => {
 
@@ -14,12 +17,8 @@ const Routes = () => {
       <StoreContext.Consumer>
         { (data) => (
           <>
-            <Suspense fallback={<p>Userdaten werden geladen</p>}>
-              <p>{data.user.first_name}</p>
-            </Suspense>
-            <Suspense fallback={<p>Paneldaten werden geladen</p>}>
-              <Panels panels={data.panels} />
-            </Suspense>
+            {isLoaded(data.user, <User user={data.user} />)}
+            {isLoaded(data.panels, <Panels panels={data.panels} />)}
           </>
         )}
       </StoreContext.Consumer>

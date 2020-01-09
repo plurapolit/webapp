@@ -1,9 +1,8 @@
 import React from 'react';
-import { emptyPromise } from '../helper/emptyPromise';
 
 const StoreContext = React.createContext({
-  user: emptyPromise,
-  panels: [],
+  user: undefined,
+  panels: undefined,
 });
 
 export default StoreContext;

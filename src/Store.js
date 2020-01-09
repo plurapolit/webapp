@@ -4,15 +4,14 @@ import PropTypes from 'prop-types';
 import StoreContext from './contexts/StoreContext';
 import { fetchUserById } from './api/UserApi';
 import { fetchAllPanels } from './api/PanelApi';
-import { emptyPromise } from './helper/emptyPromise';
 
 const Store = ({ children }) => {
-  const [user, setUser] = useState(emptyPromise);
-  const [panels, setPanels] = useState([]);
+  const [user, setUser] = useState(undefined);
+  const [panels, setPanels] = useState(undefined);
 
   useEffect(() => {
     fetchUserById(1, (newUser) => setUser(newUser));
-    fetchAllPanels(() => setPanels([]));
+    fetchAllPanels((newPanels) => setPanels(newPanels));
   }, []);
 
   return (
