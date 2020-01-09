@@ -3,6 +3,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
+import AudioRecorder from '../components/AudioRecorder';
 
 const HomePage = () => (
   <div>
@@ -14,10 +15,11 @@ const HomePage = () => (
       <link rel="canonical" href="https://plurapolit.de" />
       <meta
         name="description"
-        content="Find out more about Search Guard features for Elasticsearch like LDAP, Active Directory, Kerberos/SPNEGO, JSON web token, audit logging, Kibana SSO, Kibana multitenancy, field-level security, document-level security, read histroy, write history, audit log event routing and many more."
+        content="..."
       />
     </Helmet>
     <NavBar />
+    <AudioRecorder />
     <Footer />
   </div>
 );
