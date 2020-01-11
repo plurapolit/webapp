@@ -2,8 +2,8 @@ import { fetchData } from './APIUtils';
 
 const URL = 'http://localhost:3004/users/';
 
-export const fetchUserById = async (id, callback) => {
+export const fetchUserById = (id) => {
   const url = URL + id;
-  const user = await fetchData(url);
-  callback(user);
+  const user = fetchData(url);
+  return user;
 };

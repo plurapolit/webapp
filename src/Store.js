@@ -5,13 +5,22 @@ import StoreContext from './contexts/StoreContext';
 import { fetchUserById } from './api/UserApi';
 import { fetchAllPanels } from './api/PanelApi';
 
+const loadContent = async (loaded) => {
+  const userPromise = fetchUserById(1);
+  const panelsPromise = fetchAllPanels();
+  const list = await Promise.all([userPromise, panelsPromise]);
+  loaded(...list);
+};
+
 const Store = ({ children }) => {
   const [user, setUser] = useState(undefined);
   const [panels, setPanels] = useState(undefined);
 
   useEffect(() => {
-    fetchUserById(1, (newUser) => setUser(newUser));
-    fetchAllPanels((newPanels) => setPanels(newPanels));
+    loadContent((newUser, newPanels) => {
+      setUser(newUser);
+      setPanels(newPanels);
+    });
   }, []);
 
   return (
