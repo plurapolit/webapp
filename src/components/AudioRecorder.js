@@ -1,5 +1,7 @@
 import React from 'react';
 import MicRecorder from 'mic-recorder-to-mp3';
+import S3 from 'react-aws-s3';
+import moment from 'moment';
 
 const Mp3Recorder = new MicRecorder({ bitRate: 128 });
 
@@ -12,7 +14,7 @@ class AudioRecorder extends React.Component {
       blobURL: '',
       isBlocked: false,
     };
-  }
+  };
 
   getMicrophone = () => {
     if (this.state.isBlocked) {
@@ -31,9 +33,15 @@ class AudioRecorder extends React.Component {
       .stop()
       .getMp3()
       .then(([buffer, blob]) => {
-        console.log('stopmicrophone', buffer, blob)
+        // TODO: change to dynamic mp3 title including user 
+        const timestamp = moment().format('HH-mm-ss');
+        const audioTitle = `${timestamp}-userinfo`;
+        const audio = new File(buffer, audioTitle, {
+          type: blob.type,
+          lastModified: Date.now()
+        });
         const blobURL = URL.createObjectURL(blob)
-        this.setState({ blobURL, isRecording: false });
+        this.setState({ blobURL, isRecording: false, audio });
       }).catch((e) => console.log(e));
   };
 
@@ -41,16 +49,34 @@ class AudioRecorder extends React.Component {
     this.state.isRecording ? this.stopMicrophone() : this.getMicrophone();
   };
 
-  // TODO: Save mp3 to S3 Bucket
+  // TODO: Save mp3 to backend, pass user details
   submitAudio = () => {
-    console.log('SUBMIT')
-    alert('Deine Aufnahme wurde gesendet.')
+    const config = {
+      bucketName: process.env.REACT_APP_BUCKETNAME,
+      dirName: `${process.env.REACT_APP_DIRNAME}/${moment().format('YYYY-MM-DD')}`,
+      region: process.env.REACT_APP_REGION,
+      accessKeyId: process.env.REACT_APP_ACCESS_KEY_ID,
+      secretAccessKey: process.env.REACT_APP_SECRET_ACCESS_KEY,
+    }
+
+    const ReactS3Client = new S3(config);
+    const newFileName = this.state.audio.name;
+    const file = this.state.audio
+    console.log('submitAudio', file)
+    ReactS3Client
+      .uploadFile(file, newFileName)
+      .then(data => {
+        // TODO: save S3 string in backend
+        console.log(data);
+      })
+      .catch(err => console.error(err))
+
+   //  alert('Deine Aufnahme wurde gesendet.')
     this.setState({ blobURL: '', audio: null });
   }
 
   deleteAudio = () => {
     this.setState({blobURL: '', audio: null});
-    console.log('deleteAudio', this.state.blobURL)
   }
 
   // TODO: Exchange hardcoded buttons for Button component!
@@ -80,7 +106,6 @@ class AudioRecorder extends React.Component {
   }
 
   render() {
-
     return (
       <div>
         <header>
@@ -92,6 +117,7 @@ class AudioRecorder extends React.Component {
   }
 
   componentDidMount() {
+    // TODO: have permission alert popup on button click 
     navigator.mediaDevices.getUserMedia({ audio: true },
       () => {
         console.log('Permission Granted');

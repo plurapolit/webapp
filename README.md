@@ -37,37 +37,6 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 ### Packages used
 
-#### mic-recorder-to-mp3
+#### Fork of: mic-recorder-to-mp3
 
-[Used to record statements](https://www.npmjs.com/package/mic-recorder-to-mp3) - in order for the package to work on Safari replace the 'start' function in the file node_modules/mic-recorder-to-mp3/dist/index.js starting from line 15912 with the following code snippet:
-
-```
-value: function start() {
-        var _this2 = this;
-
-        const AudioContext = window.AudioContext // Default
-            || window.webkitAudioContext // Safari and old versions of Chrome
-            || false;
-
-        if (AudioContext) {
-            this.context = new AudioContext();
-            this.config.sampleRate = this.context.sampleRate;
-            this.lameEncoder = new Encoder(this.config);
-      
-            var audio = this.config.deviceId ? { deviceId: { exact: this.config.deviceId } } : true;
-      
-            return new Promise(function (resolve, reject) {
-              navigator.mediaDevices.getUserMedia({ audio: audio }).then(function (stream) {
-                _this2.addMicrophoneListener(stream);
-                resolve(stream);
-              }).catch(function (err) {
-                reject(err);
-              });
-            });
-        } else {
-            // Web Audio API is not supported
-            // Alert the user
-            alert("Sorry, but the Web Audio API is not supported by your browser. Please, consider upgrading to the latest version or downloading Google Chrome or Mozilla Firefox");
-        }
-    }
-```
+Used for recording audio statements. As the current version available via npm does not work on Safari we are using our own fork. [Here is the link to the original repo:](https://www.npmjs.com/package/mic-recorder-to-mp3) - 
