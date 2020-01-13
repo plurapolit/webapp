@@ -34,3 +34,13 @@ The build is minified and the filenames include the hashes.<br />
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+### Packages used
+
+#### Fork of: mic-recorder-to-mp3
+
+Used for recording audio statements. As the current version available via npm does not work on Safari we are using our own fork. [Here is the link to the original repo:](https://www.npmjs.com/package/mic-recorder-to-mp3)
+
+#### react-aws-s3
+
+Used to upload voice statements to S3. [Here is the link to the repo:](https://github.com/Developer-Amit/react-aws-s3)
