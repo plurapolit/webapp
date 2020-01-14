@@ -7,4 +7,5 @@ import './styles/index.scss';
 ReactDOM.render(
   <Router>
     <Routes />
-  </Router>, document.getElementById('root'));
+  </Router>, document.getElementById('root'),
+);

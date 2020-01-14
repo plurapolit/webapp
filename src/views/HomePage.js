@@ -3,6 +3,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
+import Player from '../components/Player';
 
 const HomePage = () => (
   <div>
@@ -18,6 +19,7 @@ const HomePage = () => (
       />
     </Helmet>
     <NavBar />
+    <Player />
     <Footer />
   </div>
 );
