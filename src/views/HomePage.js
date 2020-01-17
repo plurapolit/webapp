@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-filename-extension */
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import NavBar from '../components/NavBar';
+import NavBar from '../components/Navbar/Navbar';
 import Footer from '../components/Footer';
 import AudioRecorder from '../components/AudioRecorder';
 

@@ -4,11 +4,11 @@ import HomePage from './views/HomePage';
 
 const Routes = () => {
   return (
-    <div>
+    <>
       <Switch>
         <Route exact path="/" component={HomePage} />
       </Switch>
-    </div>
+    </>
   );
 };
 
