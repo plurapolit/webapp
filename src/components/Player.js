@@ -1,8 +1,9 @@
-import React, { useState, useRef } from 'react';
-import ReactHowler from 'react-howler';
+import React, { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 import { css } from 'glamor';
 // import { cssMaxBreakpoint, cssMinBreakpoint } from '../styles/Breakpoints';
 import colors from '../styles/Colors';
+import './pl'
 
 const keyframes = {
   moveInFromButton: css.keyframes({
@@ -18,7 +19,7 @@ const keyframes = {
 
 const styles = {
   playerWrapper: css({
-    backgroundColor: colors.playerWhite,
+    backgroundColor: 'colors.playerWhite',
     position: "absolute",
     // padding: "20px",
     display: "flex",
@@ -34,22 +35,25 @@ const styles = {
   }),
 };
 
-const Player = () => {
-  const [playerActive, setPlayerActive] = useState(false);
-
-  // const playerRef = useRef();
-
-  const showPlayer = () => {
-    setPlayerActive(true);
-  };
+const Player = ({ playerActive }) => {
+  const tracks = [
+    { track: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" },
+    { track: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" },
+    { track: "https://plurapolit.de/wp-content/uploads/2019/11/plura-sample.mp3" },
+  ];
 
   return (
     <div>
-      <button onClick={showPlayer}>Play me</button>
+      {/* <a href="/">back</a>
+      <button onClick={showPlayer}>Play me</button> */}
       {playerActive && (
         <div {...styles.playerWrapper}>
           <audio controls {...styles.audioPlayerStyle}>
-            <source src="https://plurapolit.de/wp-content/uploads/2019/11/plura-sample.mp3" />
+            {tracks.map(track => {
+              return (
+                <source src={track.track} />
+              );
+            })}
           </audio>
         </div>
       )}
