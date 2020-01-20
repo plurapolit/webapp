@@ -2,28 +2,19 @@ import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 
 import StoreContext from './contexts/StoreContext';
-import { signIn } from './api/UserApi';
-
-const signInUser = async (loaded) => {
-  const userData = {
-    email: 'robinzuschke@hotmail.de',
-    password: 'secret',
-    remember_me: '1',
-  };
-  const user = await signIn(userData);
-  loaded(user);
-};
+import { signInUser, loadPanels } from './helper/StoreHelper';
 
 const Store = ({ children }) => {
   const [user, setUser] = useState(undefined);
+  const [panels, setPanels] = useState(undefined);
   const jwt = useRef(null);
 
   useEffect(() => {
     signInUser((userData) => {
       jwt.current = userData.token;
-      console.log('jwt.current ', jwt.current);
       setUser(userData.user);
     });
+    loadPanels((newPanels) => setPanels(newPanels));
   }, []);
 
   return (
@@ -31,6 +22,7 @@ const Store = ({ children }) => {
       value={
         {
           user,
+          panels,
         }
       }
     >
