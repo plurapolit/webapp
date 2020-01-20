@@ -1,12 +1,5 @@
 export const fetchData = async (url, params = null) => {
   const res = await fetch(url, params);
-  // const text = await res.text();
-  // const json = await res.json();
-  console.log('res ', res);
-  const blob = res.headers.get('x-runtime');
-  // console.log('text', text);
-  // console.log('blob', json);
-  console.log('blob', blob);
   const data = await res.json();
   return data;
 };
@@ -33,8 +26,17 @@ const getParameter = () => {
     body: JSON.stringify(data),
   });
 
+  const get = (bearer = null) => ({
+    method: HttpMethods.GET,
+    headers: {
+      Accept: ContentTypes.JSON,
+      Authorization: bearer,
+    },
+  });
+
   return {
     post,
+    get,
   };
 };
 

@@ -1,4 +1,4 @@
-import { fetchData, bearerToken, Parameter } from './APIUtils';
+import { fetchData, Parameter } from './APIUtils';
 
 const URL = 'http://localhost:3000/api/users';
 

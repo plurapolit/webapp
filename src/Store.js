@@ -3,13 +3,6 @@ import PropTypes from 'prop-types';
 
 import StoreContext from './contexts/StoreContext';
 import { signIn } from './api/UserApi';
-import { fetchAllPanels } from './api/PanelApi';
-
-const loadContent = async (loaded) => {
-  const panelsPromise = fetchAllPanels();
-  const list = await Promise.all([panelsPromise]);
-  loaded(...list);
-};
 
 const signInUser = async (loaded) => {
   const userData = {
@@ -23,16 +16,13 @@ const signInUser = async (loaded) => {
 
 const Store = ({ children }) => {
   const [user, setUser] = useState(undefined);
-  const [panels, setPanels] = useState(undefined);
   const jwt = useRef(null);
 
   useEffect(() => {
-    // loadContent((newUser, newPanels) => {
-    //   setPanels(newPanels);
-    // });
-    signInUser((newUser) => {
-      console.log('newUser ', newUser);
-      setUser(newUser);
+    signInUser((userData) => {
+      jwt.current = userData.token;
+      console.log('jwt.current ', jwt.current);
+      setUser(userData.user);
     });
   }, []);
 
@@ -41,7 +31,6 @@ const Store = ({ children }) => {
       value={
         {
           user,
-          panels,
         }
       }
     >
