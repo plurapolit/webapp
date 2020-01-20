@@ -3,7 +3,7 @@ import React from 'react';
 import Panel from './Panel';
 
 const Panels = ({ panels }) => {
-  const list = panels.map((panel) => <Panel title={panel.title} />);
+  const list = panels.map((panel, index) => <Panel key={index} title={panel.title} />);
   return (
     <>
       {list}

@@ -1,7 +1,11 @@
 import React from 'react';
 
-const Panel = ({ title }) => {
-  return <p>{title}</p>;
+const Panel = ({ title, index }) => {
+  return (
+    <div key={index}>
+      <p>{title}</p>
+    </div>
+  );
 };
 
 export default Panel;
