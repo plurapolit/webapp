@@ -1,26 +1,26 @@
 import React from 'react';
-import './Navbar.scss';
+import styles from './Navbar.module.scss';
 
 const Navbar = () => {
   return (
-    <nav className="navbar">
-      <ul className="navbar-container">
+    <nav className={styles.navbar}>
+      <ul className="styles.navbar-container">
         <div>icon</div>
-        <li className="navbar-container_item">Thema</li>
-        <li className="navbar-container_item">Home</li>
-        <li className="navbar-container_item">Nutzungsbedingungen</li>
+        <li className="styles.navbar-container_item">Thema</li>
+        <li className="styles.navbar-container_item">Home</li>
+        <li className="styles.navbar-container_item">Nutzungsbedingungen</li>
       </ul>
 
 
-      <div className="menuToggle">
-        <input type="checkbox"></input>
+      <div className="styles.menuToggle">
+        <input type="styles.checkbox"></input>
 
           <span></span>
           <span></span>
           <span></span>
 
-        <ul className="menu">
-          <a href="#"><li className="navbar-hamburger_item">lol</li></a>
+        <ul className="styles.menu">
+          <a href="#"><li className="styles.navbar-hamburger_item">lol</li></a>
         </ul>
       </div>
     </nav>
