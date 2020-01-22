@@ -3,8 +3,24 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import NavBar from '../components/Navbar/Navbar';
 import Footer from '../components/Footer/Footer';
-import ContentWrapper from '../components/ContentWrapper/ContentWrapper'
+import ContentWrapper from '../components/ContentWrapper/ContentWrapper';
+import Panel from '../components/Panel/Panel';
+import QuestionBanner from '../components/QuestionBanner/QuestionBanner';
 import AudioRecorder from '../components/AudioRecorder';
+
+const panelData = {
+  img: 'some image',
+  headline: 'some text',
+  partei: 'violet',
+  desc: 'Hackamain',
+  webpage: 'www.google.de',
+};
+
+const bannerData = {
+  category: 'Klima',
+  text: 'Sollten die existierenden Subventionen für fossile Energieträger aufgehoben werden?',
+  imageUrl: "https://plurapolit.de/wp-content/uploads/2019/11/Aussenpolitik.jpg",
+}
 
 const HomePage = () => (
   <div>
@@ -22,11 +38,11 @@ const HomePage = () => (
     <NavBar />
     <ContentWrapper>
       <AudioRecorder />
-      <div>hello there</div>
-      <div>hello there</div>
-      <div>hello there</div>
-      <div>hello there</div>
-      <div>hello there</div>
+      <QuestionBanner {...bannerData} />
+      <Panel {...panelData} />
+      <Panel {...panelData} />
+      <Panel {...panelData} />
+
     </ContentWrapper>
     <Footer />
   </div>
