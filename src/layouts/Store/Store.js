@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 
-import StoreContext from './contexts/StoreContext';
-import { signInUser, loadPanels } from './helper/StoreHelper';
+import StoreContext from './StoreContext';
+import { signInUser, loadPanels } from './StoreHelper';
 
 const Store = ({ children }) => {
   const [user, setUser] = useState(undefined);
