@@ -19,8 +19,8 @@ const panelData = {
 const bannerData = {
   category: 'Klima',
   text: 'Sollten die existierenden Subventionen für fossile Energieträger aufgehoben werden?',
-  imageUrl: "https://plurapolit.de/wp-content/uploads/2019/11/Aussenpolitik.jpg",
-}
+  imageUrl: 'https://plurapolit.de/wp-content/uploads/2019/11/Aussenpolitik.jpg',
+};
 
 const HomePage = () => (
   <div>
