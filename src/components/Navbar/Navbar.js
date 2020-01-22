@@ -9,7 +9,7 @@ const Welcome = ({ name }) => (
   <p>{`Hello, ${name.first_name}`}</p>
 );
 
-const Navbar = ({ user }) => {
+const Navbar = ({ user, signIn }) => {
   return (
     <nav className={styles["navbar"]}>
       <ul className={styles["navbar-container"]}>
@@ -23,6 +23,7 @@ const Navbar = ({ user }) => {
         </li>
         <li>{isLoaded(user, <Welcome name={user} />)}</li>
       </ul>
+      {user ? null : <button onClick={() => signIn()}>sign in</button> }
 
       <BurgerMenu />
 
