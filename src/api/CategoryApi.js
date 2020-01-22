@@ -1,6 +1,6 @@
 import { fetchData, bearerToken, Parameter } from './APIUtils';
 
-const URL = 'http://localhost:3000/api/categories';
+const URL = process.env.REACT_APP_CATEGORY_URL;
 
 export const fetchAllCategories = async (jwt) => {
   const token = bearerToken(jwt);

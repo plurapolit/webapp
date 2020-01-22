@@ -1,6 +1,6 @@
 import { fetchData } from './APIUtils';
 
-const URL = 'http://localhost:3004/panels';
+const URL = process.env.REACT_APP_PANEL_URL;
 
 export const fetchAllPanels = async () => {
   const panals = fetchData(URL);
