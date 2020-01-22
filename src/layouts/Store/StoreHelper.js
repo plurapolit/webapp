@@ -1,5 +1,5 @@
-import { signIn } from '../api/UserApi';
-import { fetchAllPanels } from '../api/PanelApi';
+import { signIn } from '../../api/UserApi';
+import { fetchAllPanels } from '../../api/PanelApi';
 
 export const signInUser = async (loaded) => {
   const userData = {
