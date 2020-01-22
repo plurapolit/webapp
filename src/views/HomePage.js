@@ -3,6 +3,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import NavBar from '../components/Navbar/Navbar';
 import Footer from '../components/Footer/Footer';
+import ContentWrapper from '../components/ContentWrapper/ContentWrapper'
 import AudioRecorder from '../components/AudioRecorder';
 
 const HomePage = () => (
@@ -19,7 +20,14 @@ const HomePage = () => (
       />
     </Helmet>
     <NavBar />
-    <AudioRecorder />
+    <ContentWrapper>
+      <AudioRecorder />
+      <div>hello there</div>
+      <div>hello there</div>
+      <div>hello there</div>
+      <div>hello there</div>
+      <div>hello there</div>
+    </ContentWrapper>
     <Footer />
   </div>
 );
