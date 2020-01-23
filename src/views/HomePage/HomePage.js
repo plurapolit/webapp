@@ -4,6 +4,7 @@ import React from 'react';
 import HomePageMetaTags from './HomePageMetaTag';
 import ContentWrapper from '../../components/ContentWrapper/ContentWrapper';
 import QuestionBanner from '../../components/QuestionBanner/QuestionBanner';
+import CategoryBanner from '../../components/CategoryBanner/CategoryBanner';
 
 const bannerData = [
   {
@@ -29,9 +30,18 @@ const bannerData = [
   },
 ];
 
-const HomePage = () => {
+const HomePage = ({ categories }) => {
+  console.log('categories ', categories);
+
+  const categoryBanners = categories.map((category) => {
+    console.log('category ', category);
+    return (
+      <CategoryBanner category={category} />
+    );
+  });
+
   const Banners = bannerData.map((banner) => (
-    <QuestionBanner {...banner} />
+    <QuestionBanner title={banner.text} imageUrl={banner.imageUrl} avatars={undefined} color={undefined} />
   ));
 
   return (

@@ -14,7 +14,7 @@ const Routes = () => (
         <NavBar user={data.user} signIn={data.signIn} />
         <Switch>
           <Route exact path="/">
-            <HomePage />
+            <HomePage categories={data.categories} />
           </Route>
           <Route exact path="/terms">
             <Terms />
