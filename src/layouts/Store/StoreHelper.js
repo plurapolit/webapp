@@ -2,8 +2,8 @@ import CategoryApi from '../../api/CategoryApi';
 
 const StoreHelper = () => {
   const loadCategories = async (done) => {
-    const categories = await CategoryApi.fetchAllCategories();
-    done(categories);
+    const data = await CategoryApi.fetchAllCategories();
+    done(data.categories);
   };
 
   return {
