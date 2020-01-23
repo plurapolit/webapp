@@ -1,10 +1,16 @@
-import { fetchData, bearerToken, Parameter } from './APIUtils';
+import { fetchData } from './APIUtils';
 
-const URL = process.env.REACT_APP_CATEGORY_URL;
+const CategoryApi = () => {
+  const URL = process.env.REACT_APP_PANEL_URL;
 
-export const fetchAllCategories = async (jwt) => {
-  const token = bearerToken(jwt);
-  const parameters = Parameter.get(token);
-  const categories = fetchData(URL, parameters);
-  return categories;
+  const fetchAllCategories = async () => {
+    const categories = fetchData(URL);
+    return categories;
+  };
+
+  return {
+    fetchAllCategories,
+  };
 };
+
+export default CategoryApi();

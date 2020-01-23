@@ -1,14 +1,13 @@
-import PanelApi from '../../api/PanelApi';
+import CategoryApi from '../../api/CategoryApi';
 
 const StoreHelper = () => {
-  const loadPanels = async (done) => {
-    const panels = await PanelApi.fetchAllPanels();
-    console.log('panels ', panels);
-    done(panels);
+  const loadCategories = async (done) => {
+    const categories = await CategoryApi.fetchAllCategories();
+    done(categories);
   };
 
   return {
-    loadPanels,
+    loadCategories,
   };
 };
 

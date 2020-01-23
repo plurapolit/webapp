@@ -7,11 +7,11 @@ import StoreHelper from './StoreHelper';
 
 const Store = ({ children }) => {
   const [user, setUser] = useState(undefined);
-  const [panels, setPanels] = useState(undefined);
+  const [categories, setCategories] = useState(undefined);
   const jwt = useRef(null);
 
   useEffect(() => {
-    StoreHelper.loadPanels((newPanels) => setPanels(newPanels));
+    StoreHelper.loadCategories((newCategories) => setCategories(newCategories));
   }, []);
 
   const signIn = async (email = 'robinzuschke@hotmail.de', password = 'secret', rememberMe = '1') => {
@@ -30,7 +30,7 @@ const Store = ({ children }) => {
       value={
         {
           user,
-          panels,
+          categories,
           signIn,
           signUp,
         }
