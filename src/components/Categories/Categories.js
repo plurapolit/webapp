@@ -2,8 +2,9 @@ import React from 'react';
 import CategoryBanner from '../CategoryBanner/CategoryBanner';
 
 const Categories = ({ categories }) => {
+  console.log('categories ', categories);
+
   const categoryBanners = categories.map(({ category, category_avatar, panels }) => {
-    category_avatar = 'https://picsum.photos/id/237/1000/200';
     return (
       <CategoryBanner
         name={category.name}

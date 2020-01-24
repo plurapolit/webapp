@@ -7,18 +7,14 @@ import ContentWrapper from '../ContentWrapper/ContentWrapper';
 const CategoryBanner = ({ name,  imageUrl, color, panels }) => {
   const refBanner = useRef(undefined);
 
+  const ROOTIMAGEURL = process.env.REACT_APP_ROOT_IMAGE_URL;
+
   useEffect(() => {
     refBanner.current.style.setProperty('--color', `${color}`);
-    refBanner.current.style.setProperty('--url', `url(${imageUrl})`);
+    refBanner.current.style.setProperty('--url', `url(${ROOTIMAGEURL}/${imageUrl})`);
   }, []);
 
-  const morePanels = [
-    { panel: panels[0].panel },
-    { panel: panels[0].panel },
-    { panel: panels[0].panel },
-  ];
-
-  const panelLists = morePanels.map(({ panel }) => {
+  const panelLists = panels.map(({ panel }) => {
     const url = 'https://i.picsum.photos/id/730/700/500.jpg';
     const c = '#000';
     return (
