@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 import StoreContext from './layouts/Store/StoreContext';
-import NavBar from './components/NavBar/NavBar';
+import NavBar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
 import HomePage from './views/HomePage/HomePage';
 import Terms from './views/Terms/Terms';
