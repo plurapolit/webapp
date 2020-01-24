@@ -5,7 +5,7 @@ import styles from './HomeHeader.module.scss';
 
 const HomeHeader = () => {
   return (
-    <div className={styles["home-header"]}>
+    <header className={styles["home-header"]}>
       <ContentWrapper>
           <h1 className={styles["heading"]}>
             <u>Hör dir an,</u> 
@@ -13,7 +13,7 @@ const HomeHeader = () => {
             <br/>denken.
           </h1>
         </ContentWrapper>
-      </div>
+      </header>
   );
 }
 
