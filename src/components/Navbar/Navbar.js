@@ -43,7 +43,7 @@ const Navbar = ({ user, signIn }) => {
         </li>
         <li>{isLoaded(user, <Welcome name={user} />)}</li>
       </ul>
-      {user ? null : <button onClick={() => signIn()}>sign in</button> }
+      {user ? null : <button onClick={() => signIn()}>sign in</button>}
 
       <BurgerMenu />
 
