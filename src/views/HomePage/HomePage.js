@@ -5,14 +5,14 @@ import HomePageMetaTags from './HomePageMetaTag';
 import HomeHeader from '../../components/HomeHeader/HomeHeader';
 import About from '../../components/About/About';
 import { isLoaded } from '../../helper/helper';
-import Categories from '../../components/Categories/Categories';
+import CategoryList from '../../components/CategoryList/CategoryList';
 
-const HomePage = ({ categories }) => (
+const HomePage = ({ categoryList }) => (
   <div>
     <HomePageMetaTags />
     <HomeHeader />
     <About />
-    {isLoaded(categories, <Categories categories={categories} />)}
+    {isLoaded(categoryList, <CategoryList categoryList={categoryList} />)}
   </div>
 );
 

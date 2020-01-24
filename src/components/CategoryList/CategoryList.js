@@ -1,10 +1,10 @@
 import React from 'react';
 import CategoryBanner from '../CategoryBanner/CategoryBanner';
 
-const Categories = ({ categories }) => {
-  console.log('categories ', categories);
+const CategoryList = ({ categoryList }) => {
+  console.log('categoryList ', categoryList);
 
-  const categoryBanners = categories.map(({ category, category_avatar, panels }) => {
+  const list = categoryList.map(({ category, category_avatar, panels }) => {
     return (
       <CategoryBanner
         name={category.name}
@@ -17,9 +17,9 @@ const Categories = ({ categories }) => {
 
   return (
     <>
-      {categoryBanners}
+      {list}
     </>
   );
 };
 
-export default Categories;
+export default CategoryList;

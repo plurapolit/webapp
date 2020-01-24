@@ -7,11 +7,13 @@ import StoreHelper from './StoreHelper';
 
 const Store = ({ children }) => {
   const [user, setUser] = useState(undefined);
-  const [categories, setCategories] = useState(undefined);
+  const [categoryList, setCategoryList] = useState(undefined);
+  const [slugList, setSlugList] = useState(undefined);
   const jwt = useRef(null);
 
   useEffect(() => {
-    StoreHelper.loadCategories((newCategories) => setCategories(newCategories));
+    StoreHelper.loadCategoryList((newCategoryList) => setCategoryList(newCategoryList));
+    StoreHelper.loadSlugList((newSlugList) => setSlugList(newSlugList));
   }, []);
 
   const signIn = async (email = 'robinzuschke@hotmail.de', password = 'secret') => {
@@ -30,7 +32,8 @@ const Store = ({ children }) => {
       value={
         {
           user,
-          categories,
+          categoryList,
+          slugList,
           signIn,
           signUp,
         }

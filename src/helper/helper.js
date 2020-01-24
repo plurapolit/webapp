@@ -1,6 +1,6 @@
-export const isLoaded = (condition, component) => {
+export const isLoaded = (condition, resolve, reject = null) => {
   if (condition) {
-    return component;
+    return resolve;
   }
-  return null;
+  return reject;
 };

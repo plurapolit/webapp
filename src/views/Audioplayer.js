@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import NavBar from '../components/Navbar/Navbar';
 import Player from '../components/Player/Player';
 
-const Panel = () => {
+const Audioplayer = () => {
   const [active, setActive] = useState(false);
   const [songFile, setSongFile] = useState('');
 
@@ -44,7 +43,7 @@ const Panel = () => {
     }, 1000);
   }, []);
 
-  const setPlayer = async(song) => {
+  const setPlayer = async (song) => {
     await setActive(false);
     setSongFile(song);
     setActive(true);
@@ -52,10 +51,9 @@ const Panel = () => {
 
   return (
     <div>
-      <NavBar />
       {audios.map((song, index) => {
         return (
-        <button onClick={() => setPlayer(song.statement)}>play song {index}</button>
+          <button onClick={() => setPlayer(song.statement)}>play song {index}</button>
         );
       })}
       {active && <Player playerActive={active} file={songFile} />}
@@ -63,4 +61,4 @@ const Panel = () => {
   );
 };
 
-export default Panel;
+export default Audioplayer;
