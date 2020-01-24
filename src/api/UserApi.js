@@ -1,7 +1,37 @@
 import { fetchData, Parameter } from './APIUtils';
 
-export const signIn = (user) => {
-  const url = process.env.REACT_APP_SIGN_IN_URL;
-  const parameters = Parameter.post({ user });
-  return fetchData(url, parameters);
+const UserApi = () => {
+  const URL = process.env.REACT_APP_ROOT_URL;
+
+  const signIn = (email, password) => {
+    const body = {
+      user: {
+        email,
+        password,
+      },
+    };
+
+    const parameters = Parameter.post(body);
+    return fetchData(`${URL}/users/sign_in`, parameters);
+  };
+
+  const signUp = (email, password, firstName, lastName) => {
+    const body = {
+      user: {
+        email,
+        password,
+        first_name: firstName,
+        last_name: lastName,
+      },
+    };
+    const parameters = Parameter.post(body);
+    return fetchData(`${URL}/users`, parameters);
+  };
+
+  return {
+    signIn,
+    signUp,
+  };
 };
+
+export default UserApi();

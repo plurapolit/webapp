@@ -1,17 +1,14 @@
-import { signIn } from '../../api/UserApi';
-import { fetchAllPanels } from '../../api/PanelApi';
+import CategoryApi from '../../api/CategoryApi';
 
-export const signInUser = async (loaded) => {
-  const userData = {
-    email: 'robinzuschke@hotmail.de',
-    password: 'secret',
-    remember_me: '1',
+const StoreHelper = () => {
+  const loadCategories = async (done) => {
+    const data = await CategoryApi.fetchAllCategories();
+    done(data.categories);
   };
-  const user = await signIn(userData);
-  loaded(user);
+
+  return {
+    loadCategories,
+  };
 };
 
-export const loadPanels = async (loaded) => {
-  const panels = await fetchAllPanels();
-  loaded(panels);
-};
+export default StoreHelper();

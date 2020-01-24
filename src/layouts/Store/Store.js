@@ -1,28 +1,38 @@
 import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 
+import UserApi from '../../api/UserApi';
 import StoreContext from './StoreContext';
-import { signInUser, loadPanels } from './StoreHelper';
+import StoreHelper from './StoreHelper';
 
 const Store = ({ children }) => {
   const [user, setUser] = useState(undefined);
-  const [panels, setPanels] = useState(undefined);
+  const [categories, setCategories] = useState(undefined);
   const jwt = useRef(null);
 
   useEffect(() => {
-    signInUser((userData) => {
-      jwt.current = userData.token;
-      setUser(userData.user);
-    });
-    loadPanels((newPanels) => setPanels(newPanels));
+    StoreHelper.loadCategories((newCategories) => setCategories(newCategories));
   }, []);
+
+  const signIn = async (email = 'robinzuschke@hotmail.de', password = 'secret') => {
+    const data = await UserApi.signIn(email, password);
+    jwt.current = data.token;
+    setUser(data.user);
+  };
+
+  const signUp = async (email = 'foo@bar.de', password = 'secret', firstName = 'Foo', lastName = 'Bar') => {
+    const newUser = await UserApi.signUp(email, password, firstName, lastName);
+    setUser(newUser);
+  };
 
   return (
     <StoreContext.Provider
       value={
         {
           user,
-          panels,
+          categories,
+          signIn,
+          signUp,
         }
       }
     >

@@ -2,47 +2,14 @@
 import React from 'react';
 
 import HomePageMetaTags from './HomePageMetaTag';
-import ContentWrapper from '../../components/ContentWrapper/ContentWrapper';
-import QuestionBanner from '../../components/QuestionBanner/QuestionBanner';
+import { isLoaded } from '../../helper/helper';
+import Categories from '../../components/Categories/Categories';
 
-const bannerData = [
-  {
-    category: "Klima",
-    text:
-      "Sollten die existierenden Subventionen für fossile Energieträger aufgehoben werden?",
-    imageUrl:
-      "https://plurapolit.de/wp-content/uploads/2019/11/Aussenpolitik.jpg"
-  },
-  {
-    category: "Klima",
-    text:
-      "Sollten die existierenden Subventionen für fossile Energieträger aufgehoben werden?",
-    imageUrl:
-      "https://plurapolit.de/wp-content/uploads/2019/11/Aussenpolitik.jpg"
-  },
-  {
-    category: "Klima",
-    text:
-      "Sollten die existierenden Subventionen für fossile Energieträger aufgehoben werden?",
-    imageUrl:
-      "https://plurapolit.de/wp-content/uploads/2019/11/Aussenpolitik.jpg"
-  },
-];
-
-const HomePage = () => {
-  const Banners = bannerData.map((banner) => (
-    <QuestionBanner {...banner} />
-  ));
-
-  return (
-    <div>
-      <HomePageMetaTags />
-      <ContentWrapper>
-        {Banners}
-      </ContentWrapper>
-    </div>
-  );
-};
-
+const HomePage = ({ categories }) => (
+  <div>
+    <HomePageMetaTags />
+    {isLoaded(categories, <Categories categories={categories} />)}
+  </div>
+);
 
 export default HomePage;
