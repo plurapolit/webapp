@@ -14,8 +14,8 @@ const Store = ({ children }) => {
     StoreHelper.loadCategories((newCategories) => setCategories(newCategories));
   }, []);
 
-  const signIn = async (email = 'robinzuschke@hotmail.de', password = 'secret', rememberMe = '1') => {
-    const data = await UserApi.signIn(email, password, rememberMe);
+  const signIn = async (email = 'robinzuschke@hotmail.de', password = 'secret') => {
+    const data = await UserApi.signIn(email, password);
     jwt.current = data.token;
     setUser(data.user);
   };

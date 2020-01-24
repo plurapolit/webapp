@@ -3,12 +3,11 @@ import { fetchData, Parameter } from './APIUtils';
 const UserApi = () => {
   const URL = process.env.REACT_APP_ROOT_URL;
 
-  const signIn = (email, password, rememberMe) => {
+  const signIn = (email, password) => {
     const body = {
       user: {
         email,
         password,
-        remember_me: rememberMe,
       },
     };
 
