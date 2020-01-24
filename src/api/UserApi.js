@@ -1,7 +1,7 @@
 import { fetchData, Parameter } from './APIUtils';
 
 const UserApi = () => {
-  const URL = process.env.REACT_APP_USER_URL;
+  const URL = process.env.REACT_APP_ROOT_URL;
 
   const signIn = (email, password, rememberMe) => {
     const body = {
@@ -13,7 +13,7 @@ const UserApi = () => {
     };
 
     const parameters = Parameter.post(body);
-    return fetchData(`${URL}/sign_in`, parameters);
+    return fetchData(`${URL}/users/sign_in`, parameters);
   };
 
   const signUp = (email, password, firstName, lastName) => {
@@ -26,7 +26,7 @@ const UserApi = () => {
       },
     };
     const parameters = Parameter.post(body);
-    return fetchData(URL, parameters);
+    return fetchData(`${URL}/users`, parameters);
   };
 
   return {
