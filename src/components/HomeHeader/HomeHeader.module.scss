@@ -1,0 +1,17 @@
+.home-header {
+  display: flex;
+  align-items: flex-end;
+  height: 30vh;
+  padding: 5rem 0;
+  background-image: url("./images/HomeHeader_bg.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+h1 {
+  color: white;
+  font-size: 4rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
