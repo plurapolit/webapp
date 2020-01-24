@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import MicRecorder from 'mic-recorder-to-mp3';
 import S3 from 'react-aws-s3';
 import moment from 'moment';
@@ -10,6 +10,34 @@ const AudioRecorder = () => {
   const [isRecording, setIsRecording] = useState(false);
   const [blobURL, setBlobURL] = useState('');
   const [isBlocked, setIsBlocked] = useState(false);
+  const [timerOn, setTimerOn] = useState(false);
+  const [timerTime, setTimerTime] = useState(0);
+  const [secondCount, setSecondCount] = useState(0);
+
+  useEffect(() => {
+
+    if (timerOn) {
+      let initialTime = new Date().getTime();
+      let counter = secondCount;
+
+      const id = setInterval(() => {
+        counter += 1;
+        setSecondCount(counter);
+
+        // const currentTime = new Date().getTime();
+        // console.log('currentTime', currentTime);
+        // const delay = currentTime - initialTime;
+        // console.log('delay', delay);
+        // console.log('initialtime', initialTime)
+        // setTimerTime(delay / 1000);
+        // console.log('Länge der Aufnahme', timerTime);
+      }, 1000);
+
+      return () => {
+        clearInterval(id);
+      };
+    }
+  }, [timerOn]);
 
   const getRecordingPermission = () => {
     navigator.mediaDevices.getUserMedia({ audio: true },
@@ -29,15 +57,22 @@ const AudioRecorder = () => {
     if (isBlocked) {
       console.log('Permission Denied');
     } else {
+      setTimerOn(true);
+
       Mp3Recorder
         .start()
         .then(() => {
           setIsRecording(true);
-        }).catch((e) => console.error(e));
+          // const streamDetails = stream.getTracks()[0].getSettings();
+        })
+        .catch((e) => console.error(e));
     }
   };
 
   const stopMicrophone = () => {
+    setTimerOn(false);
+    setSecondCount(0);
+
     Mp3Recorder
       .stop()
       .getMp3()
@@ -90,20 +125,15 @@ const AudioRecorder = () => {
     setAudio(null);
   };
 
-  // const getPermissionButton = (
-  //   <div>
-  //     <button onClick={() => getRecordingPermission()} type="button">
-  //       Erteile deine Erlaubnis
-  //     </button>
-  //   </div>
-  // );
-
   // TODO: Exchange hardcoded buttons for Button component!
   const recordVoiceMessageButton = (
     <div>
       <button onClick={() => toggleMicrophone()} type="button">
         {isRecording ? 'Aufnahme stoppen' : 'Aufnahme starten'}
       </button>
+      <div>
+        {secondCount}
+      </div>
     </div>
   );
 
