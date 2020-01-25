@@ -5,7 +5,7 @@ import PanelList from '../PanelList/PanelList';
 
 import styles from './CategoryBanner.module.scss';
 
-const CategoryBanner = ({ name,  imageUrl, color, panels }) => {
+const CategoryBanner = ({ name, imageUrl, color, panels }) => {
   const refBanner = useRef(undefined);
 
   const ROOTIMAGEURL = process.env.REACT_APP_ROOT_IMAGE_URL;

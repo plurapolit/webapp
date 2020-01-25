@@ -5,6 +5,7 @@ const CategoryList = ({ categoryList }) => {
   const list = categoryList.map(({ category, category_avatar, panels }) => {
     return (
       <CategoryBanner
+        key={category.id}
         name={category.name}
         imageUrl={category_avatar}
         panels={panels}

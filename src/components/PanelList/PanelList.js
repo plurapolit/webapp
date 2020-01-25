@@ -10,6 +10,7 @@ const PanelList = ({ data }) => {
     const c = '#000';
     return (
       <PanelCard
+        key={panel.id}
         title={panel.title}
         shortTitle={panel.short_title}
         imageUrl={url}
