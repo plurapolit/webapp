@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 
-import SpeakerList from '../SpeakerList/SpeakerList';
+import Avatar from '../Avatar/Avatar';
 
 import styles from './PanelCard.module.scss';
 
@@ -20,7 +20,7 @@ const PanelCard = ({ title, imageUrl, color, avatars, shortTitle }) => {
       <div className={styles["detail-wrapper"]}>
         <div className={styles["title"]}>{title}</div>
         <div className={styles["avatar-wrapper"]}>
-          <SpeakerList />
+          <Avatar />
         </div>
       </div>
     </div>

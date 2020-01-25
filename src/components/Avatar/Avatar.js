@@ -1,8 +1,8 @@
 import React from 'react';
 
-import styles from './SpeakerList.module.scss';
+import styles from './Avatar.module.scss';
 
-const SpeakerList = () => {
+const Avatar = () => {
   return (
     <div className={styles["speaker-list"]}>
       <div className={styles["speaker"]}>
@@ -18,4 +18,4 @@ const SpeakerList = () => {
   );
 }
 
-export default SpeakerList;
+export default Avatar;
