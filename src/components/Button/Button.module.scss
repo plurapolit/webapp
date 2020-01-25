@@ -13,4 +13,12 @@
   &:hover {
     transform: translateY(-3px);
   }
+
+  &:focus {
+    outline: none;
+  }
+
+  &:active {
+    transform: translateY(-1px);
+  }
 }
