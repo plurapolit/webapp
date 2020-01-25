@@ -2,10 +2,10 @@ import React from 'react';
 
 import styles from './Button.module.scss';
 
-const Button = ({ label, customClass }) => {
+const Button = ({ children, customClass = null }) => {
   return (
     <button className={styles["button"] + ` ${customClass}`}>
-      {label}
+      {children}
     </button>
   );
 }
