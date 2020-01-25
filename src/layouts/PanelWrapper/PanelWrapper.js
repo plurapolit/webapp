@@ -3,6 +3,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import Helper from './PanelWrapperHelper';
 import Panel from '../../views/Panel/Panel';
 import PageNotFound from '../../views/PageNotFound/PageNotFound';
+import Loader from '../../components/Loader/Loader';
 
 const PanelWrapper = ({ slugList }) => {
   const [slug, setSlug] = useState(undefined);
@@ -36,7 +37,7 @@ const PanelWrapper = ({ slugList }) => {
     return <PageNotFound />;
   }
 
-  return <p>Loading...</p>;
+  return <Loader />;
 };
 
 export default PanelWrapper;
