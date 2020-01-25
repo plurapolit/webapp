@@ -6,7 +6,7 @@ import NavBar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
 import HomePage from './views/HomePage/HomePage';
 import Terms from './views/Terms/Terms';
-import Panel from './views/Panel/Panel';
+import PanelWrapper from './layouts/PanelWrapper/PanelWrapper';
 import Topics from './views/Topics';
 import Thanks from './views/Thanks';
 
@@ -25,7 +25,7 @@ const Routes = () => (
           <Route exact path="/topics/" component={Topics} />
           <Route exact path="/thanks/" component={Thanks} />
           <Route path="/:slug">
-            <Panel slugList={data.slugList} />
+            <PanelWrapper slugList={data.slugList} />
           </Route>
         </Switch>
         <Footer />

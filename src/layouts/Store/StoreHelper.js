@@ -7,11 +7,11 @@ const StoreHelper = () => {
   };
 
   const loadSlugList = async (done) => {
-    const slugs = [
+    const slugList = [
       { slug: 'hello-there', id: 0 },
-      { slug: '2020-co2-steuer', id: 1 },
+      { slug: '2020-autos', id: 2 },
     ];
-    done(slugs);
+    done(slugList);
   };
 
   return {

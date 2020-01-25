@@ -2,8 +2,6 @@ import React from 'react';
 import CategoryBanner from '../CategoryBanner/CategoryBanner';
 
 const CategoryList = ({ categoryList }) => {
-  console.log('categoryList ', categoryList);
-
   const list = categoryList.map(({ category, category_avatar, panels }) => {
     return (
       <CategoryBanner

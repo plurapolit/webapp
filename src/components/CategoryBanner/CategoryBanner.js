@@ -14,8 +14,6 @@ const CategoryBanner = ({ name,  imageUrl, color, panels }) => {
     refBanner.current.style.setProperty('--url', `url(${ROOTIMAGEURL}/${imageUrl})`);
   }, []);
 
-  console.log('panels ', panels);
-
   return (
     <section ref={refBanner} className={styles["category-banner"]}>
       <div className={styles["image"]} />

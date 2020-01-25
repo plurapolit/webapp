@@ -6,7 +6,6 @@ import PanelCard from '../PanelCard/PanelCard';
 const PanelList = ({ data }) => {
 
   const list = data.map(({ panel }) => {
-    console.log('panel ', panel);
     const url = 'https://i.picsum.photos/id/730/700/500.jpg';
     const c = '#000';
     return (
