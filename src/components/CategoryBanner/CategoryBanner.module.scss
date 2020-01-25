@@ -1,9 +1,11 @@
+@import '../../styles/global.scss';
+
 .category-banner {
   --color: orangered;
   --url: "";
   position: relative;
   width: 100%;
-  padding: 3rem 0;
+  padding: $spacing-section 0;
   background-color: var(--color);
 }
 

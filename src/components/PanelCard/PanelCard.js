@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
+import Avatar from '../Avatar/Avatar';
 import styles from './PanelCard.module.scss';
 
 const PanelCard = ({ title, imageUrl, color, avatars, shortTitle, slug }) => {
@@ -20,9 +21,7 @@ const PanelCard = ({ title, imageUrl, color, avatars, shortTitle, slug }) => {
         <div className={styles["detail-wrapper"]}>
           <div className={styles["title"]}>{title}</div>
           <div className={styles["avatar-wrapper"]}>
-            <p>Hello</p>
-            <p>there</p>
-            <p>there</p>
+            <Avatar />
           </div>
         </div>
       </div>
