@@ -1,4 +1,7 @@
 import React, { useRef, useEffect } from 'react';
+
+import SpeakerList from '../SpeakerList/SpeakerList';
+
 import styles from './PanelCard.module.scss';
 
 const PanelCard = ({ title, imageUrl, color, avatars, shortTitle }) => {
@@ -17,9 +20,7 @@ const PanelCard = ({ title, imageUrl, color, avatars, shortTitle }) => {
       <div className={styles["detail-wrapper"]}>
         <div className={styles["title"]}>{title}</div>
         <div className={styles["avatar-wrapper"]}>
-          <p>Hello</p>
-          <p>there</p>
-          <p>there</p>
+          <SpeakerList />
         </div>
       </div>
     </div>

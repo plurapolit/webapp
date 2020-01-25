@@ -1,0 +1,25 @@
+@import '../../styles/global.scss';
+
+.speaker-list {
+  display: flex;
+}
+
+.speaker {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  background-color: lightgrey;
+  box-shadow: 0 10px 20px #00000033;
+  margin-left: -1.3rem;
+  transition: transform .2s;
+
+  &:nth-child(1) {
+    margin-left: 0;
+  }
+
+  &:hover {
+    z-index: 10;
+    border: solid 2px $color-primary;
+    transform: scale(1.2);
+  }
+}

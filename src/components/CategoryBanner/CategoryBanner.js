@@ -1,8 +1,9 @@
 import React, { useRef, useEffect } from 'react';
 
-import styles from './CategoryBanner.module.scss';
 import PanelCard from '../PanelCard/PanelCard';
 import ContentWrapper from '../ContentWrapper/ContentWrapper';
+
+import styles from './CategoryBanner.module.scss';
 
 const CategoryBanner = ({ name,  imageUrl, color, panels }) => {
   const refBanner = useRef(undefined);
