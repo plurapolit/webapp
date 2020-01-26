@@ -1,4 +1,4 @@
-import { fetchData, Parameter } from './APIUtils';
+import { fetchData } from './APIUtils';
 
 const SlugApi = () => {
   const URL = process.env.REACT_APP_ROOT_URL;

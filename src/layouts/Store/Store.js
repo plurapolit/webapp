@@ -29,11 +29,6 @@ const Store = ({ children }) => {
     setUser(newUser);
   };
 
-  useEffect(() => {
-    console.log('categoryList ', categoryList);
-    console.log('slugList ', slugList);
-  }, [categoryList, slugList]);
-
   return (
     <StoreContext.Provider
       value={
