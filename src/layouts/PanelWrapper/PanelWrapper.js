@@ -16,7 +16,7 @@ const PanelWrapper = ({ slugList }) => {
   }, []);
 
   useEffect(() => {
-    if (slug) {
+    if (slug && slugList) {
       const slugObj = slugList.find(({ panel }) => panel.slug === slug);
       if (slugObj) {
         Helper.loadPanelById(slugObj.panel.id, (newPanel) => {
@@ -27,7 +27,7 @@ const PanelWrapper = ({ slugList }) => {
         setIsLoaded(true);
       }
     }
-  }, [slug]);
+  }, [slug, slugList]);
 
   if (panel.current) {
     return <Panel panel={panel.current} />;
