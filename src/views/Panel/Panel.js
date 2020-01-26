@@ -11,7 +11,7 @@ const Panel = ({ panel }) => {
   const refPanel = useRef(undefined);
 
   useEffect(() => {
-    const color = '#0000CC';
+    const color = panel.panel.font_color;
     refPanel.current.style.setProperty('--color', color);
   }, []);
 
