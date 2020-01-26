@@ -17,9 +17,9 @@ const PanelWrapper = ({ slugList }) => {
 
   useEffect(() => {
     if (slug) {
-      const slugObj = slugList.find((slugItem) => slugItem.slug === slug);
+      const slugObj = slugList.find(({ panel }) => panel.slug === slug);
       if (slugObj) {
-        Helper.loadPanelById(slugObj.id, (newPanel) => {
+        Helper.loadPanelById(slugObj.panel.id, (newPanel) => {
           panel.current = newPanel;
           setIsLoaded(true);
         });

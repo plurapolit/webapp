@@ -12,8 +12,10 @@ const Store = ({ children }) => {
   const jwt = useRef(null);
 
   useEffect(() => {
-    StoreHelper.loadCategoryList((newCategoryList) => setCategoryList(newCategoryList));
-    StoreHelper.loadSlugList((newSlugList) => setSlugList(newSlugList));
+    StoreHelper.loadContent((newCategoryList, newSlugList) => {
+      setCategoryList(newCategoryList);
+      setSlugList(newSlugList);
+    });
   }, []);
 
   const signIn = async (email = 'robinzuschke@hotmail.de', password = 'secret') => {
@@ -26,6 +28,11 @@ const Store = ({ children }) => {
     const newUser = await UserApi.signUp(email, password, firstName, lastName);
     setUser(newUser);
   };
+
+  useEffect(() => {
+    console.log('categoryList ', categoryList);
+    console.log('slugList ', slugList);
+  }, [categoryList, slugList]);
 
   return (
     <StoreContext.Provider

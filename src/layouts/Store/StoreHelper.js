@@ -1,4 +1,5 @@
 import CategoryApi from '../../api/CategoryApi';
+import SlugApi from '../../api/SlugApi';
 
 const StoreHelper = () => {
   const loadCategoryList = async (done) => {
@@ -7,16 +8,20 @@ const StoreHelper = () => {
   };
 
   const loadSlugList = async (done) => {
-    const slugList = [
-      { slug: 'hello-there', id: 0 },
-      { slug: '2020-autos', id: 2 },
-    ];
+    const slugList = await SlugApi.fetchSlugList();
     done(slugList);
+  };
+
+  const loadContent = async (done) => {
+    const promises = [CategoryApi.fetchAllCategories(), SlugApi.fetchSlugList()];
+    const [dataCategories, slugs] = await Promise.all(promises);
+    done(dataCategories.categories, slugs.panels);
   };
 
   return {
     loadCategoryList,
     loadSlugList,
+    loadContent,
   };
 };
 
