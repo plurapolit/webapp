@@ -9,7 +9,7 @@ const CategoryList = ({ categoryList }) => {
         name={category.name}
         imageUrl={category_avatar}
         panels={panels}
-        color={'#00ccff'}
+        color={category.background_color}
       />
     );
   });
