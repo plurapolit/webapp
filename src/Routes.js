@@ -15,7 +15,7 @@ const Routes = () => (
   <StoreContext.Consumer>
     {(data) => (
       <>
-        <NavBar user={data.user} signIn={data.signIn} />
+        <NavBar user={data.user} />
         <Switch>
           <Route exact path="/">
             <HomePage categoryList={data.categoryList} />
