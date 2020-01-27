@@ -14,6 +14,9 @@ const BurgerMenu = () => {
 
       <ul className={styles["menu"]}>
         <a href="#"><li className={styles["navbar-hamburger_item"]}>lol</li></a>
+        <a href="#"><li className={styles["navbar-hamburger_item"]}>lol</li></a>
+        <a href="#"><li className={styles["navbar-hamburger_item"]}>lol</li></a>
+        <a href="#"><li className={styles["navbar-hamburger_item"]}>lol</li></a>
       </ul>
     </div>
   );
