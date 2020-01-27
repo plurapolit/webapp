@@ -1,10 +1,25 @@
 @import '../../styles/global.scss';
 
-.speaker {
-  width: 6.5rem;
-  height: 6.5rem;
+.ExpertsCard {
+  position: relative;
+}
+
+.speaker-image {
+  width: 7rem;
+  height: 7rem;
   border-radius: 50%;
   margin: .3rem;
   object-fit: fill;
   transition: transform .2s;
+}
+
+.image-placeholder {
+  position: absolute;
+  bottom: .3rem;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 30%;
+  width: 65%;
+  border: solid 1px white;
+  object-fit: cover;
 }

@@ -3,12 +3,15 @@ import React from 'react';
 import styles from './ExpertsCard.module.scss';
 
 const ExpertsCard = ({ experts }) => {
-  console.log('expert', experts);
   const url = process.env.REACT_APP_BUCKETNAME;
-  const imageURL = `${url}/${experts.avatar}`;
+  const speakerImage = `${url}/${experts.avatar}`;
+  const speakerOrganisation = `${url}/${experts.organisation_avatar}`;
 
   return (
-      <img className={styles["speaker"]} src={imageURL} alt={experts.full_name}/>
+    <div className={styles["ExpertsCard"]}>
+      <img src={speakerImage} className={styles["speaker-image"]}  alt={experts.full_name}/>
+      <img src={speakerOrganisation} className={styles["image-placeholder"]} />
+    </div>
   );
 }
 
