@@ -4,7 +4,7 @@ import styles from './Panel.module.scss';
 import Text from '../../components/Text/Text';
 import ContentWrapper from '../../components/ContentWrapper/ContentWrapper';
 
-const IMAGEROOTURL = process.env.REACT_APP_ROOT_IMAGE_URL;
+const IMAGEROOTURL = process.env.REACT_APP_BUCKETNAME;
 
 const Panel = ({ panel }) => {
   console.log('panel ', panel);

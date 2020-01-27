@@ -4,7 +4,7 @@ import styles from './PanelList.module.scss';
 import PanelCard from '../PanelCard/PanelCard';
 
 const PanelList = ({ data }) => {
-  const URL = process.env.REACT_APP_ROOT_IMAGE_URL;
+  const URL = process.env.REACT_APP_BUCKETNAME;
   const list = data.map(({ panel }) => {
     const url = `${URL}/lwm4qgq7dij2uy2zppuaypwwijqt`;
     return (

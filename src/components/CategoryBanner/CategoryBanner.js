@@ -8,7 +8,7 @@ import styles from './CategoryBanner.module.scss';
 const CategoryBanner = ({ name, imageUrl, color, panels }) => {
   const refBanner = useRef(undefined);
 
-  const ROOTIMAGEURL = process.env.REACT_APP_ROOT_IMAGE_URL;
+  const ROOTIMAGEURL = process.env.REACT_APP_BUCKETNAME;
 
   useEffect(() => {
     refBanner.current.style.setProperty('--color', `${color}`);
