@@ -1,7 +1,10 @@
 import React, { useRef, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+
+import Avatar from '../Avatar/Avatar';
 import styles from './PanelCard.module.scss';
 
-const PanelCard = ({ title, imageUrl, color, avatars, shortTitle }) => {
+const PanelCard = ({ title, imageUrl, color, avatars, shortTitle, slug }) => {
   const refCard = useRef(null);
 
   useEffect(() => {
@@ -10,19 +13,19 @@ const PanelCard = ({ title, imageUrl, color, avatars, shortTitle }) => {
   }, []);
 
   return (
-    <div ref={refCard} className={styles["question-banner"]}>
-      <div className={styles["image-wrapper"]}>
-        <div className={styles["shortTitle"]}>{shortTitle}</div>
-      </div>
-      <div className={styles["detail-wrapper"]}>
-        <div className={styles["title"]}>{title}</div>
-        <div className={styles["avatar-wrapper"]}>
-          <p>Hello</p>
-          <p>there</p>
-          <p>there</p>
+    <Link to={`${slug}`}>
+      <div ref={refCard} className={styles["question-banner"]}>
+        <div className={styles["image-wrapper"]}>
+          <div className={styles["shortTitle"]}>{shortTitle}</div>
+        </div>
+        <div className={styles["detail-wrapper"]}>
+          <div className={styles["title"]}>{title}</div>
+          <div className={styles["avatar-wrapper"]}>
+            <Avatar />
+          </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

@@ -1,8 +1,10 @@
+@import '../../styles/global.scss';
+
 .home-header {
   display: flex;
   align-items: flex-end;
-  height: 30vh;
-  padding: 5rem 0;
+  height: 50vh;
+  padding: $spacing-section 0;
   background-image: url("./images/HomeHeader_bg.png");
   background-size: cover;
   background-repeat: no-repeat;

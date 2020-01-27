@@ -1,0 +1,32 @@
+@import '../../styles/global.scss';
+
+.panel {
+  --color: red;
+}
+.image {
+  height: 40vh;
+  width: 100%;
+  object-fit: cover;
+}
+
+.container {
+  margin-top: -6rem;
+  height: 200vh;
+  background-color: transparent;
+}
+
+.headline {
+  padding-bottom: 2rem;
+  color: var(--color);
+  font-size: 2.2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.bg {
+  position: relative;
+  padding: 1rem 0;
+  border-top-left-radius: 1.5rem;
+  border-top-right-radius: 1.5rem;
+  background-color: $color-white;
+}

@@ -8,13 +8,17 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   border: none;
+  box-sizing: inherit;
+}
+
+a {
+ text-decoration: none; 
 }
 
 html {
   font-size: 62.5%;
   font-family: "Ubuntu", sans-serif;
   box-sizing: border-box;
-
   /**equals 16px in px 1rem equals 10px**/
   // @include respond(tab-port) {
   //   font-size: 56.25%;
