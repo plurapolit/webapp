@@ -3,6 +3,7 @@
 .panel {
   --color: red;
 }
+
 .image {
   height: 40vh;
   width: 100%;
@@ -21,6 +22,10 @@
   font-size: 2.2rem;
   font-weight: bold;
   text-transform: uppercase;
+}
+
+.card-headline {
+  color: var(--color);
 }
 
 .bg {
