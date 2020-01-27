@@ -1,0 +1,10 @@
+@import '../../styles/global.scss';
+
+.speaker {
+  width: 6.5rem;
+  height: 6.5rem;
+  border-radius: 50%;
+  margin: .3rem;
+  object-fit: fill;
+  transition: transform .2s;
+}

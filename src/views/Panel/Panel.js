@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React from 'react';
 
 import styles from './Panel.module.scss';
 import Text from '../../components/Text/Text';
@@ -7,16 +7,13 @@ import ContentWrapper from '../../components/ContentWrapper/ContentWrapper';
 const IMAGEROOTURL = process.env.REACT_APP_BUCKETNAME;
 
 const Panel = ({ panel }) => {
-  console.log('panel ', panel);
-  const refPanel = useRef(undefined);
 
-  useEffect(() => {
-    const color = panel.panel.font_color;
-    refPanel.current.style.setProperty('--color', color);
-  }, []);
+  const customStyle = {
+    '--color': `${panel.panel.font_color}`,
+  }
 
   return (
-    <div ref={refPanel} className={styles["panel"]}>
+    <div className={styles["panel"]} style={customStyle}>
       <img
         src={`${IMAGEROOTURL}/${panel.category_avatar_key}`}
         alt={panel.category.name}
