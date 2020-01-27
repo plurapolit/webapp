@@ -18,12 +18,12 @@ const getParameter = () => {
     JSON: 'application/json',
   };
 
-  const post = (data) => ({
+  const post = (body) => ({
     method: HttpMethods.POST,
     headers: {
       'Content-Type': ContentTypes.JSON,
     },
-    body: JSON.stringify(data),
+    body: JSON.stringify(body),
   });
 
   const get = (bearer = null) => ({

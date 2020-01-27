@@ -1,43 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import MicRecorder from 'mic-recorder-to-mp3';
+import { useHistory } from 'react-router-dom';
 import S3 from 'react-aws-s3';
 import moment from 'moment';
 
 const Mp3Recorder = new MicRecorder({ bitRate: 128 });
 
 const AudioRecorder = () => {
+  const history = useHistory();
   const [audio, setAudio] = useState(null);
   const [isRecording, setIsRecording] = useState(false);
   const [blobURL, setBlobURL] = useState('');
   const [isBlocked, setIsBlocked] = useState(false);
-  const [timerOn, setTimerOn] = useState(false);
-  const [timerTime, setTimerTime] = useState(0);
-  const [secondCount, setSecondCount] = useState(0);
 
-  useEffect(() => {
-
-    if (timerOn) {
-      let initialTime = new Date().getTime();
-      let counter = secondCount;
-
-      const id = setInterval(() => {
-        counter += 1;
-        setSecondCount(counter);
-
-        // const currentTime = new Date().getTime();
-        // console.log('currentTime', currentTime);
-        // const delay = currentTime - initialTime;
-        // console.log('delay', delay);
-        // console.log('initialtime', initialTime)
-        // setTimerTime(delay / 1000);
-        // console.log('Länge der Aufnahme', timerTime);
-      }, 1000);
-
-      return () => {
-        clearInterval(id);
-      };
-    }
-  }, [timerOn]);
 
   const getRecordingPermission = () => {
     navigator.mediaDevices.getUserMedia({ audio: true },
@@ -57,22 +32,15 @@ const AudioRecorder = () => {
     if (isBlocked) {
       console.log('Permission Denied');
     } else {
-      setTimerOn(true);
-
       Mp3Recorder
         .start()
         .then(() => {
           setIsRecording(true);
-          // const streamDetails = stream.getTracks()[0].getSettings();
-        })
-        .catch((e) => console.error(e));
+        }).catch((e) => console.error(e));
     }
   };
 
   const stopMicrophone = () => {
-    setTimerOn(false);
-    setSecondCount(0);
-
     Mp3Recorder
       .stop()
       .getMp3()
@@ -95,11 +63,11 @@ const AudioRecorder = () => {
     isRecording ? stopMicrophone() : getMicrophone();
   };
 
-  // TODO: Save mp3 to backend, pass user details
   const submitAudio = () => {
     const config = {
       bucketName: process.env.REACT_APP_BUCKETNAME,
-      dirName: `${process.env.REACT_APP_DIRNAME}/${moment().format('YYYY-MM-DD')}`,
+      // dirName: `statements/${moment().format('YYYY-MM-DD')}`,
+      dirName: 'statements',
       region: process.env.REACT_APP_REGION,
       accessKeyId: process.env.REACT_APP_ACCESS_KEY_ID,
       secretAccessKey: process.env.REACT_APP_SECRET_ACCESS_KEY,
@@ -118,12 +86,53 @@ const AudioRecorder = () => {
 
     setBlobURL('');
     setAudio(null);
+    // API gateway to trigger lambda which creates audio intro with polly
   };
+
+  const submitIntro = async () => {
+    const requestedData = await {
+      firstName: 'Marcus',
+      lastName: 'Zierke',
+      party: 'HDGDL',
+      date: '20. Januar 2020',
+      fileName: audio.name,
+      dirName: '/intros',
+      bucketName: process.env.REACT_APP_BUCKETNAME,
+    };
+
+    fetch(
+      'https://pxva371qo6.execute-api.eu-central-1.amazonaws.com/prod/polly/createintro',
+      {
+        method: 'POST',
+        headers: {
+          accept: 'application/json; charset=utf-8',
+          'Content-Type': 'application/json; charset=UTF-8',
+          'Access-Control-Allow-Origin': '*',
+        },
+        body: JSON.stringify(requestedData),
+      },
+    );
+  };
+
+  const submitFiles = async () => {
+    await submitAudio();
+    await submitIntro();
+    // history.push('/thanks/');
+  };
+
 
   const deleteAudio = () => {
     setBlobURL('');
     setAudio(null);
   };
+
+  // const getPermissionButton = (
+  //   <div>
+  //     <button onClick={() => getRecordingPermission()} type='button">
+  //       Erteile deine Erlaubnis
+  //     </button>
+  //   </div>
+  // );
 
   // TODO: Exchange hardcoded buttons for Button component!
   const recordVoiceMessageButton = (
@@ -131,9 +140,6 @@ const AudioRecorder = () => {
       <button onClick={() => toggleMicrophone()} type="button">
         {isRecording ? 'Aufnahme stoppen' : 'Aufnahme starten'}
       </button>
-      <div>
-        {secondCount}
-      </div>
     </div>
   );
 
@@ -141,7 +147,7 @@ const AudioRecorder = () => {
   const displayAudioOptions = (
     <div>
       <audio src={blobURL} controls />
-      <button onClick={() => submitAudio()} type="button">
+      <button onClick={() => submitFiles()} type="button">
         Abschicken
       </button>
       <button onClick={() => deleteAudio()} type="button">

@@ -1,17 +1,17 @@
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 
-import Store from './Store';
+import Store from './layouts/Store/Store';
 import Routes from './Routes';
+import Player from './components/Player/Player';
 
-const App = () => {
-  return (
-    <Store>
-      <Router>
-        <Routes />
-      </Router>
-    </Store>
-  );
-};
+const App = () => (
+  <Store>
+    <Router>
+      <Player />
+      <Routes />
+    </Router>
+  </Store>
+);
 
 export default App;
