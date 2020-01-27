@@ -1,15 +1,11 @@
 import React, { useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-import { isLoaded } from '../../helper/helper';
 import BurgerMenu from '../BurgerMenu/BurgerMenu';
 import styles from './Navbar.module.scss';
+import SignInButton from '../SignInButton/SignInButton';
 
-const Welcome = ({ name }) => (
-  <p>{`Hello, ${name.first_name}`}</p>
-);
-
-const Navbar = ({ user, signIn }) => {
+const Navbar = ({ user }) => {
   const refNavbar = useRef(undefined);
 
   const setBackgroundColor = (color) => {
@@ -41,9 +37,8 @@ const Navbar = ({ user, signIn }) => {
         <li className={styles["navbar-container_item"]}>
           <Link to="terms">Nutzungsbedingungen</Link>
         </li>
-        <li>{isLoaded(user, <Welcome name={user} />)}</li>
+        <li><SignInButton user={user} /></li>
       </ul>
-      {user ? null : <button onClick={() => signIn()}>sign in</button>}
 
       <BurgerMenu />
 

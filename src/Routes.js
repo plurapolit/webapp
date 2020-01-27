@@ -9,12 +9,13 @@ import Terms from './views/Terms/Terms';
 import PanelWrapper from './layouts/PanelWrapper/PanelWrapper';
 import Topics from './views/Topics';
 import Thanks from './views/Thanks';
+import SignIn from './views/SignIn/SignIn';
 
 const Routes = () => (
   <StoreContext.Consumer>
     {(data) => (
       <>
-        <NavBar user={data.user} signIn={data.signIn} />
+        <NavBar user={data.user} />
         <Switch>
           <Route exact path="/">
             <HomePage categoryList={data.categoryList} />
@@ -24,6 +25,9 @@ const Routes = () => (
           </Route>
           <Route exact path="/topics/" component={Topics} />
           <Route exact path="/thanks/" component={Thanks} />
+          <Route exact path="/sign_in">
+            <SignIn setUser={data.setUser} setJwt={data.setJwt} />
+          </Route>
           <Route path="/:slug">
             <PanelWrapper slugList={data.slugList} />
           </Route>

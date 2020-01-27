@@ -9,7 +9,7 @@ const Store = ({ children }) => {
   const [user, setUser] = useState(undefined);
   const [categoryList, setCategoryList] = useState(undefined);
   const [slugList, setSlugList] = useState(undefined);
-  const jwt = useRef(null);
+  const [jwt, setJwt] = useState(null);
 
   useEffect(() => {
     StoreHelper.loadContent((newCategoryList, newSlugList) => {
@@ -18,16 +18,14 @@ const Store = ({ children }) => {
     });
   }, []);
 
-  const signIn = async (email = 'robinzuschke@hotmail.de', password = 'secret') => {
-    const data = await UserApi.signIn(email, password);
-    jwt.current = data.token;
-    setUser(data.user);
-  };
-
   const signUp = async (email = 'foo@bar.de', password = 'secret', firstName = 'Foo', lastName = 'Bar') => {
     const newUser = await UserApi.signUp(email, password, firstName, lastName);
     setUser(newUser);
   };
+
+  useEffect(() => {
+    console.log('jwt ', jwt);
+  }, [jwt]);
 
   return (
     <StoreContext.Provider
@@ -36,8 +34,9 @@ const Store = ({ children }) => {
           user,
           categoryList,
           slugList,
-          signIn,
+          setUser,
           signUp,
+          setJwt,
         }
       }
     >
