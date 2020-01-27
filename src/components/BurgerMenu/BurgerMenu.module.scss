@@ -1,17 +1,15 @@
+@import '../../styles/global.scss';
+
 .menuToggle {
-  display: none; // block
+  display: block; // block
   position: relative;
-  top: 50px;
-  left: 50px;
-  
   z-index: 1;
   
-  -webkit-user-select: none;
   user-select: none;
 
   & a {
     text-decoration: none;
-    color: #232323;
+    color: $color-white;
     
     transition: color 0.3s ease;
     &:hover {
@@ -21,11 +19,11 @@
 
   & input {
     display: block;
-    width: 40px;
-    height: 32px;
+    width: 100%;
+    height: 100%;
     position: absolute;
-    top: -7px;
-    left: -5px;
+    top: 0;
+    left: 0;
     
     cursor: pointer;
     
@@ -42,7 +40,7 @@
     margin-bottom: 5px;
     position: relative;
     
-    background: #cdcdcd;
+    background: $color-white;
     border-radius: 3px;
     
     z-index: 1;
@@ -62,6 +60,7 @@
     }
   }
 
+
   & input:checked ~ span:nth-last-child(3) {
     opacity: 0;
     transform: rotate(0deg) scale(0.2, 0.2);
@@ -70,7 +69,7 @@
   & input:checked ~ span {
     opacity: 1;
     transform: rotate(45deg) translate(-2px, -1px);
-    background: #232323;
+    background: $color-white;
   }
 
   & input:checked ~ span:nth-last-child(2) {
@@ -79,30 +78,50 @@
 
   & input:checked ~ ul {
     transform: none;
+    opacity: 1;
   }
 
 }
-
 
 .menu {
-  display: none; // del
-  position: absolute; 
-  width: 300px;
-  margin: -100px 0 0 -50px;
-  padding: 50px;
-  padding-top: 125px;
-  
-  background: #ededed;
+  position: absolute;
+  top: -1rem;
+  right: -1rem;
+  padding-top: 6rem;
+  min-width: 20rem;
+  background-color: $color-primary;
   list-style-type: none;
-  -webkit-font-smoothing: antialiased;
-  /* to stop flickering of text in safari */
-  
-  transform-origin: 0% 0%;
-  transform: translate(-100%, 0);
-  
-  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+  border-radius: .3rem;
+  transform: translateX(10%);
+  opacity: 0;
+  transition: all .3s;
+
   & li {
-    padding: 10px 0;
-    font-size: 22px;
+    width: 100%;
+    text-align: right;
+    padding: 1.5rem 5rem;
+    font-size: 2.6rem;
   }
 }
+
+// .menu {
+//   position: absolute; 
+//   top: -10rem;
+//   left: -10rem;
+//   width: 20rem;
+//   padding: 5rem;
+//   padding-top: 125px;
+  
+//   background: #ededed;
+//   list-style-type: none;
+  
+//   transform-origin: 0% 0%;
+//   transform: translate(100%, 0);
+  
+//   transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+  
+//   & li {
+//     padding: 10px 0;
+//     font-size: 22px;
+//   }
+// }
