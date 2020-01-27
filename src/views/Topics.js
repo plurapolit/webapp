@@ -2,7 +2,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 import { css } from 'glamor';
-import NavBar from '../components/NavBar/NavBar';
+import NavBar from '../components/Navbar/Navbar';
 
 const styles = {
   container: css({
