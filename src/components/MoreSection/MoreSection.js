@@ -18,7 +18,7 @@ const MoreSection = () => {
           Deserunt, ipsam, nihil minus laudantium voluptates, ab soluta voluptas sequi 
           ad vero repellat dolor temporibus cum quos labore error assumenda. Suscipit, aperiam!
         </Text>
-        <Button customClass="u-margin-top--medium">
+        <Button customClass="u-margin-top--medium" to="/sign_up/">
           Tell me more
         </Button>
       </ContentWrapper>
