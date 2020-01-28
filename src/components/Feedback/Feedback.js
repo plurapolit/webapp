@@ -1,20 +1,40 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { store as notificationStore } from 'react-notifications-component';
 
 import Button from '../Button/Button';
 import { getDataFromEvent } from '../../helper/helper';
 import ContentWrapper from '../ContentWrapper/ContentWrapper';
-import FeedbackApi from '../../api/FeedbackApi.js';
+import FeedbackApi from '../../api/FeedbackApi';
 
 import styles from './Feedback.module.scss';
 
-
 const Feedback = () => {
+  const notifi = () => {
+    notificationStore.addNotification({
+      message: "Vielen Dank für Ihr Feedback.",
+      type: "success",
+      insert: "top",
+      container: "top-left",
+      animationIn: ["animated", "fadeIn"],
+      animationOut: ["animated", "zoomOut"],
+      dismiss: {
+        duration: 3000,
+        onScreen: false,
+        pauseOnHover: true,
+        showIcon: true,
+      },
+    });
+  };
 
-  const handleSubmit = (event) => {
+
+  const handleSubmit = async (event) => {
     const data = getDataFromEvent(event);
     console.log('data', data);
-    FeedbackApi.send(data.email, data.text);
-  }
+    const sended = await FeedbackApi.send(data.email, data.text);
+    if (sended) {
+      notifi();
+    }
+  };
 
   return (
     <section className={styles["feedback"]}>
