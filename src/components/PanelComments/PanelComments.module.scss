@@ -1,0 +1,96 @@
+@import '../../styles/global.scss';
+
+.comments {
+  &-card {
+    display: flex;
+    justify-content: space-between;
+    padding: 3.4rem 1rem;
+    &-wrapper {
+      border-left: 3px solid $color-primary;
+      padding-bottom: 2rem;
+    }
+  }
+  &-panels {
+    display: flex;
+    flex-direction: column;
+    &-play {
+      background-color: $color-primary;
+      padding: 1rem 1.5rem;
+      border-radius: 1rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      transition: all .2s;
+      &:hover {
+        opacity: .8;
+      }
+      &-img {
+        height: 2.5rem;
+      }
+    }
+    &-audio {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 8px;
+      font-size: 1.3rem;
+      line-height: 1.9rem;
+      color: $color-grey-2;
+      &-img {
+        height: 1.5rem;
+      }
+    }
+    &-likes {
+      color: $color-primary;
+      font-size: 1.3rem;
+      line-height: 1.9rem;
+      text-align: center;
+      font-weight: 300;
+    }
+  }
+  &-content {
+    display: flex;
+    flex-direction: column;
+    margin-right: auto;
+    margin-left: 1rem;
+    &-user {
+      font-size: 1.5rem;
+      line-height: 2.2rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: $headline-dark-2;
+    }
+    &-statement {
+      font-size: 1.5rem;
+      line-height: 1.6rem;
+      color: $text-dark-2;
+    }
+
+  }
+  &-like {
+    margin-top: auto;
+    &-img {
+      height: 2.5rem;
+    }
+  }
+  &-comment {
+    font-size: 1.5rem;
+    line-height: 1.9rem;
+    text-transform: uppercase;
+    color: $color-primary;
+    margin-left: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all .2s;
+    &:hover {
+      opacity: .8;
+    }
+  }
+  &-close {
+    height: 1.8rem;
+    margin-top: 1rem;
+    margin-left: -.85rem;
+    cursor: pointer;
+  }
+}
