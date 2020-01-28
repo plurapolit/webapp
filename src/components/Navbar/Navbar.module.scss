@@ -1,23 +1,57 @@
+@import '../../styles/global.scss';
+
 .navbar {
-  --bgcolor: "";
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 5rem;
+  height: $navbar-height;
   padding:  0 4rem;
   display: flex;
   align-items: center;
-  background-color: var(--bgcolor);
+  box-shadow: 0 0 10px $color-grey;
+  background-color: $color-white;
   z-index: 300;
+  transition: all .3s;
+  
+  &_top {
+    composes: navbar;
+    background-color: transparent;
+    box-shadow: none;
+  }
+}
 
-  &-container {
+.logo {
+  height: 2.5rem;
+  object-fit: cover;
+  margin-right: 4rem;
+}
+
+.container {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  list-style-type: none;
+  
+  &_items {
     display: flex;
-    list-style-type: none;
+    align-items: center;
+  }
+}
 
-    &_item {
-      font-size: 1.6rem;
-      margin: 0 1.1rem;
-    }
+.item {
+  color: $color-grey;
+  text-decoration: none;
+  font-size: 2rem;
+  margin: 0 1.1rem;
+
+  @media screen and (max-width: 750px) {
+    display: none;
+  }
+
+  &_top {
+    composes: item;
+    color: $color-white;
   }
 }

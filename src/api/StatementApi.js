@@ -1,5 +1,3 @@
-import { fetchData, Parameter } from "./APIUtils";
-
 const StatementApi = () => {
 
 

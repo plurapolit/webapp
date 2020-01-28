@@ -1,15 +1,15 @@
-import { fetchData } from './APIUtils';
+import { fetchBody } from './APIUtils';
 
 const PanelApi = () => {
   const URL = process.env.REACT_APP_ROOT_URL;
 
   const fetchAllPanels = () => {
-    const panals = fetchData(`${URL}/panels`);
+    const panals = fetchBody(`${URL}/panels`);
     return panals;
   };
 
   const fetchPanelById = (id) => {
-    const panel = fetchData(`${URL}/panels/${id}`);
+    const panel = fetchBody(`${URL}/panels/${id}`);
     return panel;
   };
 

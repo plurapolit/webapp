@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import moment from 'moment';
 import ReactAudioPlayer from 'react-audio-player';
+
 import styles from './PanelContent.module.scss';
 import audioWave from '../../media/images/sound-wave.svg';
 import playButton from '../../media/images/play.svg';
@@ -41,7 +42,9 @@ const PanelContent = ({ content }) => {
 
   const showUserComments = () => {
     setShowComments(!showComments);
-  }
+  };
+
+  // TODO: Add like function with api
 
   return (
     <div>

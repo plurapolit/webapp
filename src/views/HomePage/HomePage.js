@@ -7,6 +7,7 @@ import About from '../../components/About/About';
 import MoreSection from '../../components/MoreSection/MoreSection';
 import { isLoaded } from '../../helper/helper';
 import CategoryList from '../../components/CategoryList/CategoryList';
+import Feedback from '../../components/Feedback/Feedback';
 
 const HomePage = ({ categoryList }) => (
   <div>
@@ -15,6 +16,7 @@ const HomePage = ({ categoryList }) => (
     <About />
     {isLoaded(categoryList, <CategoryList categoryList={categoryList} />)}
     <MoreSection />
+    <Feedback />
   </div>
 );
 

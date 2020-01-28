@@ -1,32 +1,31 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 import UserApi from '../../api/UserApi';
 import StoreContext from './StoreContext';
 import StoreHelper from './StoreHelper';
+import JwtApi from '../../api/JwtApi';
 
 const Store = ({ children }) => {
   const [user, setUser] = useState(undefined);
   const [categoryList, setCategoryList] = useState(undefined);
   const [slugList, setSlugList] = useState(undefined);
-  const jwt = useRef(null);
 
   useEffect(() => {
     StoreHelper.loadContent((newCategoryList, newSlugList) => {
       setCategoryList(newCategoryList);
       setSlugList(newSlugList);
     });
+    console.log('JwtApi.get() ', JwtApi.get());
   }, []);
-
-  const signIn = async (email = 'robinzuschke@hotmail.de', password = 'secret') => {
-    const data = await UserApi.signIn(email, password);
-    jwt.current = data.token;
-    setUser(data.user);
-  };
 
   const signUp = async (email = 'foo@bar.de', password = 'secret', firstName = 'Foo', lastName = 'Bar') => {
     const newUser = await UserApi.signUp(email, password, firstName, lastName);
     setUser(newUser);
+  };
+
+  const removeUser = () => {
+    setUser(undefined);
   };
 
   return (
@@ -36,8 +35,9 @@ const Store = ({ children }) => {
           user,
           categoryList,
           slugList,
-          signIn,
+          setUser,
           signUp,
+          removeUser,
         }
       }
     >

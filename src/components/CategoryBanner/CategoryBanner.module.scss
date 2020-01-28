@@ -1,12 +1,12 @@
 @import '../../styles/global.scss';
 
 .category-banner {
-  --color: orangered;
+  --bg: "";
   --url: "";
   position: relative;
   width: 100%;
   padding: $spacing-section 0;
-  background-color: var(--color);
+  background-color: var(--bg);
 }
 
 .name {

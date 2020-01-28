@@ -9,8 +9,25 @@ $text-dark-1: #404040;
 $text-dark-2: #000;
 
 $spacing-section: 5rem;
+$navbar-height: 6rem;
 
+
+// @mixin respond-to($media) {
+//   @if $media == phone {
+//     @media only screen and (max-width: $break-small) { @content; }
+//   }
+//   @else if $media == medium-screens {
+//     @media only screen and (min-width: $break-small + 1) and (max-width: $break-large - 1) { @content; }
+//   }
+//   @else if $media == wide-screens {
+//     @media only screen and (min-width: $break-large) { @content; }
+//   }
+// }
 
 .u-margin-top--medium {
   margin-top: 2rem;
+}
+
+.u-margin-bottom--medium {
+  margin-bottom: 2rem;
 }

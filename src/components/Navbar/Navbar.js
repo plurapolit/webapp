@@ -1,28 +1,25 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-import { isLoaded } from '../../helper/helper';
+import LogoWhite from './images/PluraPolitLogowhite.png';
+import LogoBlack from './images/PluraPolitLogoblack.png';
 import BurgerMenu from '../BurgerMenu/BurgerMenu';
 import styles from './Navbar.module.scss';
+import SignUpButton from '../SignUpButton/SignUpButton';
+import SignOutButton from '../SignOutButton/SignOutButton';
+import StoreContext from '../../layouts/Store/StoreContext';
 
-const Welcome = ({ name }) => (
-  <p>{`Hello, ${name.first_name}`}</p>
-);
-
-const Navbar = ({ user, signIn }) => {
-  const refNavbar = useRef(undefined);
-
-  const setBackgroundColor = (color) => {
-    refNavbar.current.style.setProperty('--bgcolor', color);
-  };
+const Navbar = ({ user }) => {
+  const [isAtTop, setIsAtTop] = useState(true);
+  let customStyle;
 
   const handleScroll = (event) => {
     const scrollTop = event.currentTarget.scrollY;
-    if (scrollTop > 50) {
-      setBackgroundColor('#cccccc');
+    if (scrollTop > 100) {
+      setIsAtTop(false);
     }
-    if (scrollTop <= 50) {
-      setBackgroundColor('transparent');
+    if (scrollTop <= 100) {
+      setIsAtTop(true);
     }
   };
 
@@ -30,23 +27,46 @@ const Navbar = ({ user, signIn }) => {
     window.addEventListener('scroll', handleScroll);
   }, []);
 
+  if (isAtTop) {
+    customStyle = {
+      nav: styles["navbar_top"],
+      item: styles["item_top"],
+      logo: LogoWhite,
+    };
+  } else {
+    customStyle = {
+      nav: styles["navbar"],
+      item: styles["item"],
+      logo: LogoBlack,
+    };
+  }
+
   return (
-    <nav ref={refNavbar} className={styles["navbar"]}>
-      <ul className={styles["navbar-container"]}>
-        <div>icon</div>
-        <li className={styles["navbar-container_item"]}>Thema</li>
-        <li className={styles["navbar-container_item"]}>
-          <Link to="/">Home</Link>
-        </li>
-        <li className={styles["navbar-container_item"]}>
-          <Link to="terms">Nutzungsbedingungen</Link>
-        </li>
-        <li>{isLoaded(user, <Welcome name={user} />)}</li>
+    <nav className={customStyle.nav}>
+      <ul className={styles["container"]}>
+        <Link to="/">
+          <img src={customStyle.logo} className={styles["logo"]} alt="Logo"></img>
+        </Link>
+        <div className={styles["container_items"]}>
+          <li className={customStyle.item}>
+            <Link to="terms">Nutzungsbedingungen</Link>
+          </li>
+          <li className={customStyle.item}>
+            <SignUpButton user={user} />
+          </li>
+          <StoreContext.Consumer>
+            {(data) => (
+              <li className={customStyle.item}>
+                <SignOutButton
+                  user={user}
+                  removeUser={data.removeUser}
+                />
+              </li>
+            )}
+          </StoreContext.Consumer>
+        </div>
       </ul>
-      {user ? null : <button onClick={() => signIn()}>sign in</button>}
-
-      <BurgerMenu />
-
+      <BurgerMenu isTop={isAtTop} />
     </nav>
   );
 };
