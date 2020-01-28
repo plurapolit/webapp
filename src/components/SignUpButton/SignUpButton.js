@@ -1,12 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const SignUpButton = ({ user }) => {
-  console.log('user ', user);
+const SignUpButton = ({ user, children = 'Registrieren' }) => {
   if (!user) {
     return (
       <Link to={'/sign_up/'}>
-        Registrieren
+        {children}
       </Link>
     );
   }

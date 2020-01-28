@@ -6,6 +6,7 @@ import ContentWrapper from '../../components/ContentWrapper/ContentWrapper';
 import Button from '../../components/Button/Button';
 import { getDataFromEvent } from '../../helper/helper';
 import UserApi from '../../api/UserApi';
+import SignInButton from '../../components/SignInButton/SignInButton';
 
 const SignUp = ({ setUser, setJwt, history }) => {
   const [error, setError] = useState(undefined);
@@ -14,7 +15,6 @@ const SignUp = ({ setUser, setJwt, history }) => {
     const input = getDataFromEvent(event);
     try {
       const data = await UserApi.signUp(input.email, input.password, input.firstName, input.lastName, input.ageRange);
-      console.log('data ', data);
       setUser(data);
       // TODO: set jwt
       history.push('/');
@@ -29,9 +29,6 @@ const SignUp = ({ setUser, setJwt, history }) => {
     });
   };
 
-  // TODO: schon registiert Button
-  // TODO: fetching ageRange
-
   return (
     <ContentWrapper>
       <div className={styles["sign_up"]}>
@@ -42,7 +39,7 @@ const SignUp = ({ setUser, setJwt, history }) => {
           <input type="email" name="email" placeholder="E-Mail" required />
           <input type="password" name="password" placeholder="Passwort" required />
           <select name="ageRange" defaultValue="0">
-            <option value="0" />
+            <option value="null" />
             <option value="1">0-15</option>
             <option value="2">16-28</option>
             <option value="3">29-44</option>
@@ -51,6 +48,9 @@ const SignUp = ({ setUser, setJwt, history }) => {
           </select>
           <Button type="submit">Registieren</Button>
         </form>
+        <span>Sind sie vielleicht schon </span>
+        <SignInButton>angemeldet</SignInButton>
+        <span>?</span>
       </div>
     </ContentWrapper>
   );

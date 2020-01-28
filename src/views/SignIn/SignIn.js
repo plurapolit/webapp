@@ -6,6 +6,7 @@ import ContentWrapper from '../../components/ContentWrapper/ContentWrapper';
 import Button from '../../components/Button/Button';
 import UserApi from '../../api/UserApi';
 import { getDataFromEvent } from '../../helper/helper';
+import SignUpButton from '../../components/SignUpButton/SignUpButton';
 
 const SignIn = ({ setUser, setJwt, history }) => {
   const [error, setError] = useState(undefined);
@@ -32,6 +33,8 @@ const SignIn = ({ setUser, setJwt, history }) => {
             <input type="password" name="password" placeholder="Passwort" required />
             <Button type="submit">Anmelden</Button>
           </form>
+          <SignUpButton>Registieren</SignUpButton>
+          <span> sie sich jetzt.</span>
         </div>
       </ContentWrapper>
     </div>

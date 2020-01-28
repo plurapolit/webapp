@@ -15,13 +15,14 @@ const UserApi = () => {
     return fetchData(`${URL}/users/sign_in`, parameters);
   };
 
-  const signUp = (email, password, firstName, lastName) => {
+  const signUp = (email, password, firstName, lastName, ageRange) => {
     const body = {
       user: {
         email,
         password,
         first_name: firstName,
         last_name: lastName,
+        age_range_id: ageRange,
       },
     };
     const parameters = Parameter.post(body);
