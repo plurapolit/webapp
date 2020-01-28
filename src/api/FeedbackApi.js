@@ -8,14 +8,14 @@ const FeedbackApi = () => {
       feedback: {
         description,
         email,
-      }
-    }
+      },
+    };
     const parameters = Parameter.post(body);
     return fetchData(`${URL}/feedbacks/`, parameters);
-  }
+  };
 
   return {
-    send
+    send,
   };
 };
 
