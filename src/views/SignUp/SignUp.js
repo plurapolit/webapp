@@ -1,13 +1,11 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 
 import styles from './SignUp.module.scss';
-import ContentWrapper from '../../components/ContentWrapper/ContentWrapper';
 import Button from '../../components/Button/Button';
 import { getDataFromEvent, setNotification } from '../../helper/helper';
 import UserApi from '../../api/UserApi';
 import JwtApi from '../../api/JwtApi';
-import SignInButton from '../../components/SignInButton/SignInButton';
 
 const SignUp = ({ setUser, history }) => {
   const setErrorMessages = (error) => {
