@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import Cookie from 'js-cookie';
 
 import UserApi from '../../api/UserApi';
 import StoreContext from './StoreContext';
@@ -16,6 +17,7 @@ const Store = ({ children }) => {
       setCategoryList(newCategoryList);
       setSlugList(newSlugList);
     });
+    setJwt(Cookie.get('jwt'));
   }, []);
 
   useEffect(() => {

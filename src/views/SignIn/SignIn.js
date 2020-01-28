@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { withRouter } from 'react-router-dom';
+import Cookie from 'js-cookie';
 
 import styles from './SignIn.module.scss';
 import ContentWrapper from '../../components/ContentWrapper/ContentWrapper';
@@ -17,6 +18,7 @@ const SignIn = ({ setUser, setJwt, history }) => {
       const data = await UserApi.signIn(inputData.email, inputData.password);
       setUser(data.user);
       setJwt(data.token);
+      Cookie.set('jwt', data.token);
       history.push('/');
     } catch (obj) {
       setError(obj.error);
