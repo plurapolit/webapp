@@ -14,7 +14,6 @@ const PanelContent = ({ content }) => {
     refContent.current.style.setProperty('--color', color);
   }, []);
 
-  console.log('content', content);
   return (
     <div>
       <div ref={refContent} className={styles.headline}>

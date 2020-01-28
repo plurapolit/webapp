@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import BurgerMenu from '../BurgerMenu/BurgerMenu';
 import styles from './Navbar.module.scss';
 import SignInButton from '../SignInButton/SignInButton';
+import SignUpButton from '../SignUpButton/SignUpButton';
 
 const Navbar = ({ user }) => {
   const refNavbar = useRef(undefined);
@@ -38,6 +39,7 @@ const Navbar = ({ user }) => {
           <Link to="terms">Nutzungsbedingungen</Link>
         </li>
         <li><SignInButton user={user} /></li>
+        <li><SignUpButton user={user} /></li>
       </ul>
 
       <BurgerMenu />

@@ -16,16 +16,13 @@ const Store = ({ children }) => {
       setCategoryList(newCategoryList);
       setSlugList(newSlugList);
     });
+    console.log('jwt ', jwt);
   }, []);
 
   const signUp = async (email = 'foo@bar.de', password = 'secret', firstName = 'Foo', lastName = 'Bar') => {
     const newUser = await UserApi.signUp(email, password, firstName, lastName);
     setUser(newUser);
   };
-
-  useEffect(() => {
-    console.log('jwt ', jwt);
-  }, [jwt]);
 
   return (
     <StoreContext.Provider
