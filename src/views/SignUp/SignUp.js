@@ -29,6 +29,9 @@ const SignUp = ({ setUser, setJwt, history }) => {
     });
   };
 
+  // TODO: schon registiert Button
+  // TODO: fetching ageRange
+
   return (
     <ContentWrapper>
       <div className={styles["sign_up"]}>

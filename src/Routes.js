@@ -32,6 +32,9 @@ const Routes = () => (
           <Route exact path="/sign_up/">
             <SignUp setUser={data.setUser} setJwt={data.setJwt} />
           </Route>
+          {
+            // TODO: add component and rout for sign out
+          }
           <Route path="/:slug">
             <PanelWrapper slugList={data.slugList} />
           </Route>
