@@ -5,6 +5,7 @@ export const isLoaded = (condition, resolve, reject = null) => {
   return reject;
 };
 
+// TODO: überprüfe ob label mit daten schickt
 export const getDataFromEvent = (event) => {
   event.preventDefault();
   const data = {};

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 
 import styles from './SignIn.module.scss';
 import ContentWrapper from '../../components/ContentWrapper/ContentWrapper';
@@ -25,19 +25,21 @@ const SignIn = ({ setUser, history }) => {
   };
 
   return (
-    <div>
-      <ContentWrapper>
-        <div className={styles["sign_in"]}>
-          {error ? <p>{error}</p> : null}
-          <form onSubmit={(event) => handleSubmit(event)}>
-            <input type="email" name="email" placeholder="E-Mail" required />
-            <input type="password" name="password" placeholder="Passwort" required />
-            <Button type="submit">Anmelden</Button>
-          </form>
-          <SignUpButton>Registieren</SignUpButton>
-          <span> sie sich jetzt.</span>
+    <div className={styles["sign_in"]}>
+      {error ? <p>{error}</p> : null}
+      <div className={styles["container"]}>
+        <form className={styles["form"]} onSubmit={(event) => handleSubmit(event)}>
+          <input type="email" name="email" placeholder="E-Mail" required />
+          <input type="password" name="password" placeholder="Passwort" required />
+          <Button type="submit">Anmelden</Button>
+        </form>
+        <div className={styles["text"]}>
+          <span>Du besitzt keinen Account? </span>
+          <Link to={'/sign_up/'}>
+            Registieren
+          </Link>
         </div>
-      </ContentWrapper>
+      </div>
     </div>
   );
 };
