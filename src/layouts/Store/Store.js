@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 import UserApi from '../../api/UserApi';
@@ -16,13 +16,26 @@ const Store = ({ children }) => {
       setCategoryList(newCategoryList);
       setSlugList(newSlugList);
     });
-    console.log('jwt ', jwt);
   }, []);
+
+  useEffect(() => {
+    console.log('jwt ', jwt);
+  }, [jwt]);
 
   const signUp = async (email = 'foo@bar.de', password = 'secret', firstName = 'Foo', lastName = 'Bar') => {
     const newUser = await UserApi.signUp(email, password, firstName, lastName);
     setUser(newUser);
   };
+
+  const removeUser = () => {
+    setUser(undefined);
+  };
+
+  const removeJwt = () => {
+    setJwt(null);
+  };
+
+  // TODO: Build jwt as singelton with get, set, valid, update
 
   return (
     <StoreContext.Provider
@@ -34,6 +47,8 @@ const Store = ({ children }) => {
           setUser,
           signUp,
           setJwt,
+          removeUser,
+          removeJwt,
         }
       }
     >

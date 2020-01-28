@@ -5,6 +5,8 @@ import BurgerMenu from '../BurgerMenu/BurgerMenu';
 import styles from './Navbar.module.scss';
 import SignInButton from '../SignInButton/SignInButton';
 import SignUpButton from '../SignUpButton/SignUpButton';
+import SignOutButton from '../SignOutButton/SignOutButton';
+import StoreContext from '../../layouts/Store/StoreContext';
 
 const Navbar = ({ user }) => {
   const refNavbar = useRef(undefined);
@@ -36,10 +38,22 @@ const Navbar = ({ user }) => {
           <Link to="/">Home</Link>
         </li>
         <li className={styles["navbar-container_item"]}>
-          <Link to="terms">Nutzungsbedingungen</Link>
+          <Link to="/terms/">Nutzungsbedingungen</Link>
         </li>
         <li><SignInButton user={user} /></li>
         <li><SignUpButton user={user} /></li>
+        <StoreContext.Consumer>
+          {(data) => (
+            <li>
+              <SignOutButton
+                user={user}
+                removeUser={data.removeUser}
+                removeJwt={data.removeJwt}
+                jwt={data.jwt}
+              />
+            </li>
+          )}
+        </StoreContext.Consumer>
       </ul>
 
       <BurgerMenu />

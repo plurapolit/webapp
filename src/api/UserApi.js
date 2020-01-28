@@ -29,9 +29,15 @@ const UserApi = () => {
     return fetchData(`${URL}/users`, parameters);
   };
 
+  const signOut = (jwt) => {
+    const parameters = Parameter.delete(jwt);
+    return fetchData(`${URL}/users/sign_out`, parameters);
+  };
+
   return {
     signIn,
     signUp,
+    signOut,
   };
 };
 
