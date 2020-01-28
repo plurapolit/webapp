@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 import styles from './PageNotFound.module.scss';
 import ContentWrapper from '../../components/ContentWrapper/ContentWrapper';
@@ -14,9 +13,7 @@ const PageNotFound = () => (
           Auf dieser Webseite diskutiert heute leider keiner,
           aber besuch doch eine unserer anderen Seiten.
         </Text>
-        <Link to="/">
-          <Button>Startseite</Button>
-        </Link>
+        <Button to="/">Startseite</Button>
       </ContentWrapper>
     </div>
   </>

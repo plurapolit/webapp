@@ -7,6 +7,9 @@ import LogoBlack from './images/PluraPolitLogoblack.png';
 import BurgerMenu from '../BurgerMenu/BurgerMenu';
 import styles from './Navbar.module.scss';
 import SignInButton from '../SignInButton/SignInButton';
+import SignUpButton from '../SignUpButton/SignUpButton';
+import SignOutButton from '../SignOutButton/SignOutButton';
+import StoreContext from '../../layouts/Store/StoreContext';
 
 const Navbar = ({ user }) => {
   const [isAtTop, setIsAtTop] = useState(true);
@@ -41,6 +44,22 @@ const Navbar = ({ user }) => {
         <li className={isAtTop ? styles["item_top"] : styles["item"]}>
           <SignInButton user={user} />
         </li>
+        <li className={styles["navbar-container_item"]}>
+          <Link to="/terms/">Nutzungsbedingungen</Link>
+        </li>
+        <li className={isAtTop ? styles["item_top"] : styles["item"]}>
+          <SignUpButton user={user} />
+        </li>
+        <StoreContext.Consumer>
+          {(data) => (
+            <li className={isAtTop ? styles["item_top"] : styles["item"]}>
+              <SignOutButton
+                user={user}
+                removeUser={data.removeUser}
+              />
+            </li>
+          )}
+        </StoreContext.Consumer>
       </ul>
       <BurgerMenu isTop={isAtTop} />
     </nav>

@@ -1,21 +1,22 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 import UserApi from '../../api/UserApi';
 import StoreContext from './StoreContext';
 import StoreHelper from './StoreHelper';
+import JwtApi from '../../api/JwtApi';
 
 const Store = ({ children }) => {
   const [user, setUser] = useState(undefined);
   const [categoryList, setCategoryList] = useState(undefined);
   const [slugList, setSlugList] = useState(undefined);
-  const [jwt, setJwt] = useState(null);
 
   useEffect(() => {
     StoreHelper.loadContent((newCategoryList, newSlugList) => {
       setCategoryList(newCategoryList);
       setSlugList(newSlugList);
     });
+    console.log('JwtApi.get() ', JwtApi.get());
   }, []);
 
   const signUp = async (email = 'foo@bar.de', password = 'secret', firstName = 'Foo', lastName = 'Bar') => {
@@ -23,9 +24,9 @@ const Store = ({ children }) => {
     setUser(newUser);
   };
 
-  useEffect(() => {
-    console.log('jwt ', jwt);
-  }, [jwt]);
+  const removeUser = () => {
+    setUser(undefined);
+  };
 
   return (
     <StoreContext.Provider
@@ -36,7 +37,7 @@ const Store = ({ children }) => {
           slugList,
           setUser,
           signUp,
-          setJwt,
+          removeUser,
         }
       }
     >
