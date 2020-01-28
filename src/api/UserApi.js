@@ -3,6 +3,8 @@ import { fetchData, Parameter } from './APIUtils';
 const UserApi = () => {
   const URL = process.env.REACT_APP_ROOT_URL;
 
+  // TODO: Load user just with valid jwt
+
   const signIn = (email, password) => {
     const body = {
       user: {
@@ -29,9 +31,14 @@ const UserApi = () => {
     return fetchData(`${URL}/users`, parameters);
   };
 
-  const signOut = (jwt) => {
+  const signOut = async (jwt) => {
     const parameters = Parameter.delete(jwt);
-    return fetchData(`${URL}/users/sign_out`, parameters);
+    const res = await fetch(`${URL}/users/sign_out`, parameters);
+    if (!res.ok) {
+      const errorOkj = await res.json();
+      throw errorOkj;
+    }
+    return true;
   };
 
   return {

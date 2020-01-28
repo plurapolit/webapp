@@ -6,17 +6,18 @@ import ContentWrapper from '../../components/ContentWrapper/ContentWrapper';
 import Button from '../../components/Button/Button';
 import { getDataFromEvent } from '../../helper/helper';
 import UserApi from '../../api/UserApi';
+import JwtApi from '../../api/JwtApi';
 import SignInButton from '../../components/SignInButton/SignInButton';
 
-const SignUp = ({ setUser, setJwt, history }) => {
+const SignUp = ({ setUser, history }) => {
   const [error, setError] = useState(undefined);
 
   const handleSubmit = async (event) => {
     const input = getDataFromEvent(event);
     try {
       const data = await UserApi.signUp(input.email, input.password, input.firstName, input.lastName, input.ageRange);
-      setUser(data);
-      // TODO: set jwt
+      setUser(data.user);
+      JwtApi.set(data.token);
       history.push('/');
     } catch (obj) {
       setError(obj.errors);

@@ -1,12 +1,15 @@
 import React from 'react';
-import UserApi from '../../api/UserApi';
 
-const SignOutButton = ({ user, children = 'Abmelden', removeUser, removeJwt, jwt }) => {
-  const signOutHandler = async () => {
+import UserApi from '../../api/UserApi';
+import JwtApi from '../../api/JwtApi';
+
+const SignOutButton = ({ user, children = 'Abmelden', removeUser }) => {
+  const signOutHandler = () => {
+    const jwt = JwtApi.get();
     UserApi.signOut(jwt)
       .then(() => {
         removeUser();
-        removeJwt();
+        JwtApi.delete();
       })
       .catch((error) => {
         console.log('error ', error);

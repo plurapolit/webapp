@@ -48,8 +48,6 @@ const Navbar = ({ user }) => {
               <SignOutButton
                 user={user}
                 removeUser={data.removeUser}
-                removeJwt={data.removeJwt}
-                jwt={data.jwt}
               />
             </li>
           )}

@@ -27,10 +27,10 @@ const Routes = () => (
           <Route exact path="/topics/" component={Topics} />
           <Route exact path="/thanks/" component={Thanks} />
           <Route exact path="/sign_in/">
-            <SignIn setUser={data.setUser} setJwt={data.setJwt} />
+            <SignIn setUser={data.setUser} />
           </Route>
           <Route exact path="/sign_up/">
-            <SignUp setUser={data.setUser} setJwt={data.setJwt} />
+            <SignUp setUser={data.setUser} />
           </Route>
           <Route path="/:slug">
             <PanelWrapper slugList={data.slugList} />

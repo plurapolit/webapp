@@ -1,28 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import Cookie from 'js-cookie';
 
 import UserApi from '../../api/UserApi';
 import StoreContext from './StoreContext';
 import StoreHelper from './StoreHelper';
+import JwtApi from '../../api/JwtApi';
 
 const Store = ({ children }) => {
   const [user, setUser] = useState(undefined);
   const [categoryList, setCategoryList] = useState(undefined);
   const [slugList, setSlugList] = useState(undefined);
-  const [jwt, setJwt] = useState(null);
 
   useEffect(() => {
     StoreHelper.loadContent((newCategoryList, newSlugList) => {
       setCategoryList(newCategoryList);
       setSlugList(newSlugList);
     });
-    setJwt(Cookie.get('jwt'));
+    console.log('JwtApi.get() ', JwtApi.get());
   }, []);
-
-  useEffect(() => {
-    console.log('jwt ', jwt);
-  }, [jwt]);
 
   const signUp = async (email = 'foo@bar.de', password = 'secret', firstName = 'Foo', lastName = 'Bar') => {
     const newUser = await UserApi.signUp(email, password, firstName, lastName);
@@ -33,12 +28,6 @@ const Store = ({ children }) => {
     setUser(undefined);
   };
 
-  const removeJwt = () => {
-    setJwt(null);
-  };
-
-  // TODO: Build jwt as singelton with get, set, valid, update
-
   return (
     <StoreContext.Provider
       value={
@@ -48,9 +37,7 @@ const Store = ({ children }) => {
           slugList,
           setUser,
           signUp,
-          setJwt,
           removeUser,
-          removeJwt,
         }
       }
     >

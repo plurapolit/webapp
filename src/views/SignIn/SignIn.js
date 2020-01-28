@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { withRouter } from 'react-router-dom';
-import Cookie from 'js-cookie';
 
 import styles from './SignIn.module.scss';
 import ContentWrapper from '../../components/ContentWrapper/ContentWrapper';
@@ -8,8 +7,9 @@ import Button from '../../components/Button/Button';
 import UserApi from '../../api/UserApi';
 import { getDataFromEvent } from '../../helper/helper';
 import SignUpButton from '../../components/SignUpButton/SignUpButton';
+import JwtApi from '../../api/JwtApi';
 
-const SignIn = ({ setUser, setJwt, history }) => {
+const SignIn = ({ setUser, history }) => {
   const [error, setError] = useState(undefined);
 
   const handleSubmit = async (event) => {
@@ -17,8 +17,7 @@ const SignIn = ({ setUser, setJwt, history }) => {
     try {
       const data = await UserApi.signIn(inputData.email, inputData.password);
       setUser(data.user);
-      setJwt(data.token);
-      Cookie.set('jwt', data.token);
+      JwtApi.set(data.token);
       history.push('/');
     } catch (obj) {
       setError(obj.error);
