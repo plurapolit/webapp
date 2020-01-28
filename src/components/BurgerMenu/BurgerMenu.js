@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styles from './BurgerMenu.module.scss';
 
 
@@ -21,10 +22,12 @@ const BurgerMenu = ({ isTop }) => {
         <span></span>
 
       <ul className={styles["menu"]}>
-        <a href="#"><li className={styles["navbar-hamburger_item"]}>lol</li></a>
-        <a href="#"><li className={styles["navbar-hamburger_item"]}>lol</li></a>
-        <a href="#"><li className={styles["navbar-hamburger_item"]}>lol</li></a>
-        <a href="#"><li className={styles["navbar-hamburger_item"]}>lol</li></a>
+        <li className={styles["navbar-hamburger_item"]}>
+        <Link to="/">Home</Link>
+        </li>
+        <li className={styles["navbar-hamburger_item"]}>lol</li>
+        <li className={styles["navbar-hamburger_item"]}>lol</li>
+        <li className={styles["navbar-hamburger_item"]}>lol</li>
       </ul>
     </div>
   );

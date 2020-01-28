@@ -25,7 +25,7 @@
 .logo {
   height: 2.5rem;
   object-fit: cover;
-  margin-right: 3rem;
+  margin-right: 4rem;
 }
 
 .container {
@@ -36,8 +36,12 @@
 .item {
   color: $color-grey;
   text-decoration: none;
-  font-size: 1.8rem;
+  font-size: 2rem;
   margin: 0 1.1rem;
+
+  @media screen and (max-width: 750px) {
+    display: none;
+  }
 
   &_top {
     composes: item;

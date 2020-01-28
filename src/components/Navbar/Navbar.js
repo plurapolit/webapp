@@ -13,10 +13,10 @@ const Navbar = ({ user }) => {
 
   const handleScroll = (event) => {
     const scrollTop = event.currentTarget.scrollY;
-    if (scrollTop > 50) {
+    if (scrollTop > 100) {
       setIsAtTop(false);
     }
-    if (scrollTop <= 50) {
+    if (scrollTop <= 100) {
       setIsAtTop(true);
     }
   };
