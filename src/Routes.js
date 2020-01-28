@@ -1,5 +1,7 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
+import Notification from 'react-notifications-component';
+import 'react-notifications-component/dist/theme.css';
 
 import StoreContext from './layouts/Store/StoreContext';
 import NavBar from './components/Navbar/Navbar';
@@ -17,6 +19,7 @@ const Routes = () => (
     {(data) => (
       <>
         <NavBar user={data.user} />
+        <Notification />
         <Switch>
           <Route exact path="/">
             <HomePage categoryList={data.categoryList} />

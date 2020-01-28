@@ -1,20 +1,20 @@
 import React from 'react';
 
 import Button from '../Button/Button';
-import { getDataFromEvent } from '../../helper/helper';
+import { getDataFromEvent, setNotification } from '../../helper/helper';
 import ContentWrapper from '../ContentWrapper/ContentWrapper';
-import FeedbackApi from '../../api/FeedbackApi.js';
+import FeedbackApi from '../../api/FeedbackApi';
 
 import styles from './Feedback.module.scss';
 
-
 const Feedback = () => {
-
   const handleSubmit = (event) => {
     const data = getDataFromEvent(event);
-    console.log('data', data);
-    FeedbackApi.send(data.email, data.text);
-  }
+    FeedbackApi.send(data.email, data.text)
+      .then(() => {
+        setNotification({ message: 'Vielen Dank für Ihre E-Mail.', type: 'success' });
+      });
+  };
 
   return (
     <section className={styles["feedback"]}>
