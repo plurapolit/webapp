@@ -14,7 +14,8 @@ const PanelContent = ({ content }) => {
     refContent.current.style.setProperty('--color', color);
   }, []);
 
-  console.log('content', content);
+  // TODO: Add like function with api
+
   return (
     <div>
       <div ref={refContent} className={styles.headline}>

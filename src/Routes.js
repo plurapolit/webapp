@@ -10,6 +10,7 @@ import PanelWrapper from './layouts/PanelWrapper/PanelWrapper';
 import Topics from './views/Topics';
 import Thanks from './views/Thanks';
 import SignIn from './views/SignIn/SignIn';
+import SignUp from './views/SignUp/SignUp';
 
 const Routes = () => (
   <StoreContext.Consumer>
@@ -25,8 +26,11 @@ const Routes = () => (
           </Route>
           <Route exact path="/topics/" component={Topics} />
           <Route exact path="/thanks/" component={Thanks} />
-          <Route exact path="/sign_in">
-            <SignIn setUser={data.setUser} setJwt={data.setJwt} />
+          <Route exact path="/sign_in/">
+            <SignIn setUser={data.setUser} />
+          </Route>
+          <Route exact path="/sign_up/">
+            <SignUp setUser={data.setUser} />
           </Route>
           <Route path="/:slug">
             <PanelWrapper slugList={data.slugList} />

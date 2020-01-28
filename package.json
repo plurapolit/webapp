@@ -11,6 +11,7 @@
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
     "glamor": "^2.20.40",
+    "js-cookie": "^2.2.1",
     "mic-recorder-to-mp3": "git://github.com/plurapolit/mic-recorder-to-mp3.git",
     "moment": "^2.24.0",
     "node-sass": "^4.13.1",
