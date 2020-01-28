@@ -5,14 +5,13 @@ import PanelCard from '../PanelCard/PanelCard';
 
 const PanelList = ({ data }) => {
   const URL = process.env.REACT_APP_BUCKETNAME;
-  const list = data.map(({ panel, experts }) => {
-    const url = `${URL}/lwm4qgq7dij2uy2zppuaypwwijqt`;
+  const list = data.map(({ panel, experts, panel_avatar }) => {
     return (
       <PanelCard
         key={panel.id}
         title={panel.title}
         shortTitle={panel.short_title}
-        imageUrl={url}
+        imageUrl={`${URL}/${panel_avatar}`}
         color={panel.font_color}
         slug={panel.slug}
         experts={experts}
