@@ -24,18 +24,20 @@ const SignIn = ({ setUser, history }) => {
   };
 
   return (
-    <div>
-      <ContentWrapper>
-        <div className={styles["sign_in"]}>
-          <form onSubmit={(event) => handleSubmit(event)}>
-            <input type="email" name="email" placeholder="E-Mail" required />
-            <input type="password" name="password" placeholder="Passwort" required />
-            <Button type="submit">Anmelden</Button>
-          </form>
-          <SignUpButton>Registieren</SignUpButton>
-          <span> sie sich jetzt.</span>
+    <div className={styles["sign_in"]}>
+      <div className={styles["container"]}>
+        <form className={styles["form"]} onSubmit={(event) => handleSubmit(event)}>
+          <input type="email" name="email" placeholder="E-Mail" required />
+          <input type="password" name="password" placeholder="Passwort" required />
+          <Button type="submit">Anmelden</Button>
+        </form>
+        <div className={styles["text"]}>
+          <span>Du besitzt keinen Account? </span>
+          <Link to={'/sign_up/'}>
+            Registieren
+          </Link>
         </div>
-      </ContentWrapper>
+      </div>
     </div>
   );
 };

@@ -1,7 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 
-
 import styles from './SignUp.module.scss';
 import ContentWrapper from '../../components/ContentWrapper/ContentWrapper';
 import Button from '../../components/Button/Button';
@@ -33,13 +32,14 @@ const SignUp = ({ setUser, history }) => {
 
 
   return (
-    <ContentWrapper>
-      <div className={styles["sign_up"]}>
-        <form onSubmit={(event) => handleSubmit(event)}>
+    <div className={styles["sign_up"]}>
+      <div className={styles["container"]}>
+        <form className={styles["form"]} onSubmit={(event) => handleSubmit(event)}>
           <input type="text" name="firstName" placeholder="Vorname" required />
           <input type="text" name="lastName" placeholder="Nachname" required />
           <input type="email" name="email" placeholder="E-Mail" required />
           <input type="password" name="password" placeholder="Passwort" required />
+          <label for="ageRange">Alter (optional)</label>
           <select name="ageRange" defaultValue="0">
             <option value="null" />
             <option value="1">0-15</option>
@@ -50,11 +50,14 @@ const SignUp = ({ setUser, history }) => {
           </select>
           <Button type="submit">Registieren</Button>
         </form>
-        <span>Sind sie vielleicht schon </span>
-        <SignInButton>angemeldet</SignInButton>
-        <span>?</span>
+        <div className={styles["text"]}>
+          <span>Du hast bereits ein Konto? </span>
+          <Link to="/sign_in/">
+            Anmelden
+          </Link>
+        </div>
       </div>
-    </ContentWrapper>
+    </div>
   );
 };
 
