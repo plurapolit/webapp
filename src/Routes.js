@@ -21,7 +21,7 @@ const Routes = () => (
           <Route exact path="/">
             <HomePage categoryList={data.categoryList} />
           </Route>
-          <Route exact path="/terms">
+          <Route exact path="/terms/">
             <Terms />
           </Route>
           <Route exact path="/topics/" component={Topics} />

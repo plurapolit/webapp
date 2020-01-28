@@ -23,11 +23,20 @@ const BurgerMenu = ({ isTop }) => {
 
       <ul className={styles["menu"]}>
         <li className={styles["navbar-hamburger_item"]}>
-        <Link to="/">Home</Link>
+          <Link to="/sign_up/">
+            Registieren
+          </Link>
         </li>
-        <li className={styles["navbar-hamburger_item"]}>lol</li>
-        <li className={styles["navbar-hamburger_item"]}>lol</li>
-        <li className={styles["navbar-hamburger_item"]}>lol</li>
+        <li className={styles["navbar-hamburger_item"]}>
+          <Link to="/sign_in/">
+            Anmelden
+          </Link>
+        </li>
+        <li className={styles["navbar-hamburger_item"]}>
+          <Link to="/terms/">
+            Nutzungsbedingungen
+          </Link>
+        </li>
       </ul>
     </div>
   );

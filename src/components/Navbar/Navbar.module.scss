@@ -9,7 +9,6 @@
   padding:  0 4rem;
   display: flex;
   align-items: center;
-  justify-content: space-between;
   box-shadow: 0 0 10px $color-grey;
   background-color: $color-white;
   z-index: 300;
@@ -30,7 +29,15 @@
 
 .container {
   display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
   list-style-type: none;
+  
+  &_items {
+    display: flex;
+    align-items: center;
+  }
 }
 
 .item {
