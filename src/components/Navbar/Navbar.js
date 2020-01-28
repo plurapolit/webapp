@@ -5,11 +5,9 @@ import LogoWhite from './images/PluraPolitLogowhite.png';
 import LogoBlack from './images/PluraPolitLogoblack.png';
 import BurgerMenu from '../BurgerMenu/BurgerMenu';
 import styles from './Navbar.module.scss';
-import SignInButton from '../SignInButton/SignInButton';
 import SignUpButton from '../SignUpButton/SignUpButton';
 import SignOutButton from '../SignOutButton/SignOutButton';
 import StoreContext from '../../layouts/Store/StoreContext';
-import Button from '../Button/Button';
 
 const Navbar = ({ user }) => {
   const [isAtTop, setIsAtTop] = useState(true);

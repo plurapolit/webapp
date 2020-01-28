@@ -1,4 +1,4 @@
-import { fetchData, Parameter } from './APIUtils';
+import { fetchBody, Parameter } from './APIUtils';
 
 const UserApi = () => {
   const URL = process.env.REACT_APP_ROOT_URL;
@@ -14,7 +14,7 @@ const UserApi = () => {
     };
 
     const parameters = Parameter.post(body);
-    return fetchData(`${URL}/users/sign_in`, parameters);
+    return fetchBody(`${URL}/users/sign_in`, parameters);
   };
 
   const signUp = (email, password, firstName, lastName, ageRange) => {
@@ -28,7 +28,7 @@ const UserApi = () => {
       },
     };
     const parameters = Parameter.post(body);
-    return fetchData(`${URL}/users`, parameters);
+    return fetchBody(`${URL}/users`, parameters);
   };
 
   const signOut = async (jwt) => {
