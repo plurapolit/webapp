@@ -1,7 +1,6 @@
 @import '../../styles/global.scss';
 
 .navbar {
-  --bgcolor: "";
   position: fixed;
   top: 0;
   left: 0;
@@ -11,16 +10,41 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: var(--bgcolor);
+  box-shadow: 0 0 10px $color-grey;
+  background-color: $color-white;
   z-index: 300;
+  transition: all .3s;
+  
+  &_top {
+    composes: navbar;
+    background-color: transparent;
+    box-shadow: none;
+  }
+}
 
-  &-container {
-    display: flex;
-    list-style-type: none;
+.logo {
+  height: 2.5rem;
+  object-fit: cover;
+  margin-right: 4rem;
+}
 
-    &_item {
-      font-size: 1.6rem;
-      margin: 0 1.1rem;
-    }
+.container {
+  display: flex;
+  list-style-type: none;
+}
+
+.item {
+  color: $color-grey;
+  text-decoration: none;
+  font-size: 2rem;
+  margin: 0 1.1rem;
+
+  @media screen and (max-width: 750px) {
+    display: none;
+  }
+
+  &_top {
+    composes: item;
+    color: $color-white;
   }
 }

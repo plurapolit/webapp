@@ -1,5 +1,8 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+
+import LogoWhite from './images/PluraPolitLogowhite.png';
+import LogoBlack from './images/PluraPolitLogoblack.png';
 
 import BurgerMenu from '../BurgerMenu/BurgerMenu';
 import styles from './Navbar.module.scss';
@@ -9,19 +12,15 @@ import SignOutButton from '../SignOutButton/SignOutButton';
 import StoreContext from '../../layouts/Store/StoreContext';
 
 const Navbar = ({ user }) => {
-  const refNavbar = useRef(undefined);
-
-  const setBackgroundColor = (color) => {
-    refNavbar.current.style.setProperty('--bgcolor', color);
-  };
+  const [isAtTop, setIsAtTop] = useState(true);
 
   const handleScroll = (event) => {
     const scrollTop = event.currentTarget.scrollY;
-    if (scrollTop > 50) {
-      setBackgroundColor('#cccccc');
+    if (scrollTop > 100) {
+      setIsAtTop(false);
     }
-    if (scrollTop <= 50) {
-      setBackgroundColor('transparent');
+    if (scrollTop <= 100) {
+      setIsAtTop(true);
     }
   };
 
@@ -30,21 +29,30 @@ const Navbar = ({ user }) => {
   }, []);
 
   return (
-    <nav ref={refNavbar} className={styles["navbar"]}>
-      <ul className={styles["navbar-container"]}>
-        <div>icon</div>
-        <li className={styles["navbar-container_item"]}>Thema</li>
-        <li className={styles["navbar-container_item"]}>
+    <nav className={isAtTop ? styles["navbar_top"] : styles["navbar"]}>
+      <ul className={styles["container"]}>
+        <img src={isAtTop ? LogoWhite : LogoBlack} className={styles["logo"]} alt="Logo"></img>
+        <li className={isAtTop ? styles["item_top"] : styles["item"]}>
+          Thema
+        </li>
+        <li className={isAtTop ? styles["item_top"] : styles["item"]}>
           <Link to="/">Home</Link>
+        </li>
+        <li className={isAtTop ? styles["item_top"] : styles["item"]}>
+          <Link to="terms">Nutzungsbedingungen</Link>
+        </li>
+        <li className={isAtTop ? styles["item_top"] : styles["item"]}>
+          <SignInButton user={user} />
         </li>
         <li className={styles["navbar-container_item"]}>
           <Link to="/terms/">Nutzungsbedingungen</Link>
         </li>
-        <li><SignInButton user={user} /></li>
-        <li><SignUpButton user={user} /></li>
+        <li className={isAtTop ? styles["item_top"] : styles["item"]}>
+          <SignUpButton user={user} />
+        </li>
         <StoreContext.Consumer>
           {(data) => (
-            <li>
+            <li className={isAtTop ? styles["item_top"] : styles["item"]}>
               <SignOutButton
                 user={user}
                 removeUser={data.removeUser}
@@ -53,9 +61,7 @@ const Navbar = ({ user }) => {
           )}
         </StoreContext.Consumer>
       </ul>
-
-      <BurgerMenu />
-
+      <BurgerMenu isTop={isAtTop} />
     </nav>
   );
 };
