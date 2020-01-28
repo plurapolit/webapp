@@ -1,17 +1,15 @@
-import React, { useState } from 'react';
-import { withRouter, Link } from 'react-router-dom';
+import React from 'react';
+import { withRouter } from 'react-router-dom';
 
 import styles from './SignIn.module.scss';
 import ContentWrapper from '../../components/ContentWrapper/ContentWrapper';
 import Button from '../../components/Button/Button';
 import UserApi from '../../api/UserApi';
-import { getDataFromEvent } from '../../helper/helper';
+import { getDataFromEvent, setNotification } from '../../helper/helper';
 import SignUpButton from '../../components/SignUpButton/SignUpButton';
 import JwtApi from '../../api/JwtApi';
 
 const SignIn = ({ setUser, history }) => {
-  const [error, setError] = useState(undefined);
-
   const handleSubmit = async (event) => {
     const inputData = getDataFromEvent(event);
     try {
@@ -19,14 +17,14 @@ const SignIn = ({ setUser, history }) => {
       setUser(data.user);
       JwtApi.set(data.token);
       history.push('/');
+      setNotification({ message: 'Sie wurden erfolgreich angemeldet', type: 'success' });
     } catch (obj) {
-      setError(obj.error);
+      setNotification({ message: obj.error, type: 'warning' });
     }
   };
 
   return (
     <div className={styles["sign_in"]}>
-      {error ? <p>{error}</p> : null}
       <div className={styles["container"]}>
         <form className={styles["form"]} onSubmit={(event) => handleSubmit(event)}>
           <input type="email" name="email" placeholder="E-Mail" required />

@@ -1,4 +1,4 @@
-export const fetchData = async (url, params = null) => {
+export const fetchBody = async (url, params = null) => {
   const res = await fetch(url, params);
   if (!res.ok) {
     const errorOkj = await res.json();
@@ -7,6 +7,10 @@ export const fetchData = async (url, params = null) => {
   return res.json();
 };
 
+export const fetchResponse = async (url, params = null) => {
+  const res = await fetch(url, params);
+  return res;
+};
 
 const getParameter = () => {
   const bearerToken = (jwt) => `Bearer ${jwt}`;

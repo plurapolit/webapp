@@ -1,16 +1,21 @@
-import React, { useState } from 'react';
-import { withRouter, Link } from 'react-router-dom';
+import React from 'react';
+import { withRouter } from 'react-router-dom';
 
 import styles from './SignUp.module.scss';
 import ContentWrapper from '../../components/ContentWrapper/ContentWrapper';
 import Button from '../../components/Button/Button';
-import { getDataFromEvent } from '../../helper/helper';
+import { getDataFromEvent, setNotification } from '../../helper/helper';
 import UserApi from '../../api/UserApi';
 import JwtApi from '../../api/JwtApi';
 import SignInButton from '../../components/SignInButton/SignInButton';
 
 const SignUp = ({ setUser, history }) => {
-  const [error, setError] = useState(undefined);
+  const setErrorMessages = (error) => {
+    Object.entries(error).forEach(([key, value]) => {
+      console.log('value ', value);
+      setNotification({ message: value[0], title: key, type: 'warning', duration: 5000 });
+    });
+  };
 
   const handleSubmit = async (event) => {
     const input = getDataFromEvent(event);
@@ -19,20 +24,15 @@ const SignUp = ({ setUser, history }) => {
       setUser(data.user);
       JwtApi.set(data.token);
       history.push('/');
+      setNotification({ message: 'Sie wurden erfolgreich angemeldet', type: 'success' });
     } catch (obj) {
-      setError(obj.errors);
+      setErrorMessages(obj.errors);
     }
   };
 
-  const getErrorMessage = () => {
-    return Object.entries(error).map(([key, value], index) => {
-      return <p key={index}>{`${key}: ${value}`}</p>;
-    });
-  };
 
   return (
     <div className={styles["sign_up"]}>
-      {error ? getErrorMessage() : null}
       <div className={styles["container"]}>
         <form className={styles["form"]} onSubmit={(event) => handleSubmit(event)}>
           <input type="text" name="firstName" placeholder="Vorname" required />

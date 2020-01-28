@@ -1,3 +1,5 @@
+import { store as notificationStore } from 'react-notifications-component';
+
 export const isLoaded = (condition, resolve, reject = null) => {
   if (condition) {
     return resolve;
@@ -16,4 +18,22 @@ export const getDataFromEvent = (event) => {
     }
   });
   return data;
+};
+
+export const setNotification = ({ message, title = null, type = 'default', duration = 3000 }) => {
+  notificationStore.addNotification({
+    title,
+    message,
+    type,
+    insert: "top",
+    container: "top-left",
+    animationIn: ["animated", "fadeIn"],
+    animationOut: ["animated", "zoomOut"],
+    dismiss: {
+      duration,
+      onScreen: false,
+      pauseOnHover: true,
+      showIcon: true,
+    },
+  });
 };
