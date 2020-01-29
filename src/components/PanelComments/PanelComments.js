@@ -11,7 +11,7 @@ import CommentModal from '../CommentModal/CommentModal';
 
 const PanelComments = ({ closeComments, comments, setSong }) => {
   const [isLiked, setIsLiked] = useState(true);
-  const [isModalOpen, setIsModalOpen] = useState(true);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -20,7 +20,7 @@ const PanelComments = ({ closeComments, comments, setSong }) => {
   const closeModal = () => {
     setIsModalOpen(false);
   };
-  
+
   return (
     <>
       <CommentModal isOpen={isModalOpen} onClose={closeModal} />
@@ -67,6 +67,7 @@ const PanelComments = ({ closeComments, comments, setSong }) => {
                   </div>
                 </div>
                 <div className={styles["comments-like"]}>
+                  {/* // TODO: implement like function */}
                   <img
                     alt="icon"
                     src={comment.likes.liked_by_current_user ? activeLikeButton : likeButton}

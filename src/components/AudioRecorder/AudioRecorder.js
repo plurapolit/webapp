@@ -97,6 +97,7 @@ const AudioRecorder = ({ userId }) => {
       <Button onClick={startRecording}>
         Aufname starten
       </Button>
+      {/* // TODO: Nutzungsbedingungen */}
     </div>
   );
 };
