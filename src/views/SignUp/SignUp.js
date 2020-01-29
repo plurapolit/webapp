@@ -10,7 +10,6 @@ import JwtApi from '../../api/JwtApi';
 const SignUp = ({ setUser, history }) => {
   const setErrorMessages = (error) => {
     Object.entries(error).forEach(([key, value]) => {
-      console.log('value ', value);
       setNotification({ message: value[0], title: key, type: 'warning', duration: 5000 });
     });
   };

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import UserApi from '../../api/UserApi';
 import JwtApi from '../../api/JwtApi';
@@ -10,17 +11,14 @@ const SignOutButton = ({ user, children = 'Abmelden', removeUser }) => {
       .then(() => {
         removeUser();
         JwtApi.delete();
-      })
-      .catch((error) => {
-        console.log('error ', error);
       });
   };
 
   if (user) {
     return (
-      <button type="button" onClick={() => signOutHandler()}>
+      <Link onClick={() => signOutHandler()}>
         {children}
-      </button>
+      </Link>
     );
   }
   return null;
