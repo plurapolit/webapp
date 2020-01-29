@@ -54,6 +54,9 @@ const PanelComments = ({ showUserComments }) => {
           className={styles['comments-comment']}
           onClick={() => console.log('Eddie, your turn! :)')}
         >
+          {
+            // TODO: Add module logic to add a comment
+          }
           Beitrag kommentieren ...
         </div>
       </div>

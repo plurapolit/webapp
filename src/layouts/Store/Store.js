@@ -16,7 +16,6 @@ const Store = ({ children }) => {
       setCategoryList(newCategoryList);
       setSlugList(newSlugList);
     });
-    console.log('JwtApi.get() ', JwtApi.get());
   }, []);
 
   const signUp = async (email = 'foo@bar.de', password = 'secret', firstName = 'Foo', lastName = 'Bar') => {
