@@ -10,7 +10,7 @@ const AudioRecorderHelper = () => {
     // TODO: update .env file
     const config = {
       bucketName: process.env.REACT_APP_BUCKETNAME,
-      dirName: `${process.env.REACT_APP_DIRNAME}/${getDatum()}`,
+      dirName: `statements/${getDatum()}`,
       region: process.env.REACT_APP_REGION,
       accessKeyId: process.env.REACT_APP_ACCESS_KEY_ID,
       secretAccessKey: process.env.REACT_APP_SECRET_ACCESS_KEY,

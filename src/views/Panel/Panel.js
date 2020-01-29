@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './Panel.module.scss';
 import PanelContent from '../../components/PanelContent/PanelContent';
 
-const IMAGEROOTURL = process.env.REACT_APP_BUCKETNAME;
+const IMAGEROOTURL = process.env.REACT_APP_BUCKET_URL;
 
 const Panel = ({ panel }) => {
 

@@ -3,7 +3,7 @@ import React from 'react';
 import styles from './ExpertsCard.module.scss';
 
 const ExpertsCard = ({ experts }) => {
-  const url = process.env.REACT_APP_BUCKETNAME;
+  const url = process.env.REACT_APP_BUCKET_URL;
   const speakerImage = `${url}/${experts.avatar}`;
   const speakerOrganisation = `${url}/${experts.organisation_avatar}`;
 

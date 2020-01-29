@@ -4,7 +4,7 @@ import styles from './PanelList.module.scss';
 import PanelCard from '../PanelCard/PanelCard';
 
 const PanelList = ({ data }) => {
-  const URL = process.env.REACT_APP_BUCKETNAME;
+  const URL = process.env.REACT_APP_BUCKET_URL;
   const list = data.map(({ panel, experts, panel_avatar }) => {
     return (
       <PanelCard

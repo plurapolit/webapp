@@ -7,7 +7,7 @@ import audioWave from '../../media/images/sound-wave.svg';
 import playButton from '../../media/images/play.svg';
 import PanelComments from '../PanelComments/PanelComments';
 
-const IMAGEROOTURL = process.env.REACT_APP_BUCKETNAME;
+const IMAGEROOTURL = process.env.REACT_APP_BUCKET_URL;
 
 const PanelContent = ({ content }) => {
   console.log('content', content)

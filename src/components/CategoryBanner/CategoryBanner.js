@@ -7,7 +7,7 @@ import styles from './CategoryBanner.module.scss';
 
 const CategoryBanner = ({ name, imageUrl, color, panels }) => {
 
-  const ROOTIMAGEURL = process.env.REACT_APP_BUCKETNAME;
+  const ROOTIMAGEURL = process.env.REACT_APP_BUCKET_URL;
 
   const customStyle = {
     '--bg': `${color}`,
