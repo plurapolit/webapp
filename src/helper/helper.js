@@ -1,4 +1,5 @@
 import { store as notificationStore } from 'react-notifications-component';
+import moment from 'moment';
 
 export const isLoaded = (condition, resolve, reject = null) => {
   if (condition) {
@@ -18,6 +19,10 @@ export const getDataFromEvent = (event) => {
   });
   return data;
 };
+
+export const getTimeStemp = () => moment().format('HH-mm-ss');
+
+export const getDatum = () => moment().format('YYYY-MM-DD');
 
 export const setNotification = ({ message, title = null, type = 'default', duration = 3000 }) => {
   notificationStore.addNotification({
