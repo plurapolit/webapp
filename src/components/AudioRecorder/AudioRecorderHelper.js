@@ -23,8 +23,7 @@ const AudioRecorderHelper = () => {
       .then((data) => {
         // TODO: save S3 string in backend
         console.log(data);
-      })
-      .catch((err) => console.error(err));
+      });
   };
 
   const getRecordingPermission = () => {

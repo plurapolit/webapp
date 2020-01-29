@@ -10,9 +10,6 @@ const SignOutButton = ({ user, children = 'Abmelden', removeUser }) => {
       .then(() => {
         removeUser();
         JwtApi.delete();
-      })
-      .catch((error) => {
-        console.log('error ', error);
       });
   };
 

@@ -12,7 +12,6 @@ const CommentModal = ({ isOpen, onClose }) => {
       <StoreContext.Consumer>
         {(data) => {
           if (data.user) {
-            console.log('data.user ', data.user);
             return (
               <AudioRecorder userId={data.user.id} />
             );
