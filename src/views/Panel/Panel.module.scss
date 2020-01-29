@@ -14,20 +14,18 @@
   background-color: transparent;
 }
 
-.row {
-  max-width: 80rem;
-  width: 100%;
-  margin: 0 auto;
-  padding: 0 2rem;
-}
-
 .headline {
   padding-bottom: 2rem;
   margin-top: -4.5rem;
+  margin-left: auto;
+  margin-right: auto;
   color: var(--color);
   font-size: 2.2rem;
   font-weight: bold;
   text-transform: uppercase;
+  max-width: 80rem;
+  width: 100%;
+  padding: 0 0 2rem 2rem;
 }
 
 .card-headline {

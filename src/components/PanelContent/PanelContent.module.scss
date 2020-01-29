@@ -1,5 +1,12 @@
 @import '../../styles/global.scss';
 
+.row {
+  max-width: 80rem;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
 .headline {
   color: var(--color);
   font-size: 2.2rem;
@@ -121,6 +128,7 @@
 
 .media-player-wrapper {
   width: 100%;
+  margin-bottom: -1rem;
   display: flex;
   justify-content: center;
   background-color: #F1F3F4;
@@ -136,4 +144,8 @@
     opacity: 100%;
     transform: translateY(0);
   }
+}
+
+.react-audio-plater {
+  border: 2px solid red;
 }
