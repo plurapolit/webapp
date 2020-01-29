@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 
 import styles from './Button.module.scss';
 
-const Button = ({ children, customClass = null, type = 'button', to = undefined }) => {
+const Button = ({ children, customClass = null, type = 'button', to = undefined, onClick = () => {} }) => {
   const button = (
-    <button type={type} className={styles["button"] + ` ${customClass}`}>
+    <button type={type} className={styles["button"] + ` ${customClass}`} onClick={onClick}>
       {children}
     </button>
   );

@@ -30,7 +30,7 @@ const Routes = () => (
           <Route exact path="/topics/" component={Topics} />
           <Route exact path="/thanks/" component={Thanks} />
           <Route exact path="/sign_in/">
-            <SignIn setUser={data.setUser} />
+            <SignIn />
           </Route>
           <Route exact path="/sign_up/">
             <SignUp setUser={data.setUser} />
