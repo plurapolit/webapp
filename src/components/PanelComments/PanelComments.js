@@ -7,49 +7,63 @@ import playButton from '../../media/images/play.svg';
 import audioWave from '../../media/images/sound-wave.svg';
 import closeButton from '../../media/images/close.svg';
 
-const PanelComments = ({ showUserComments }) => {
+const PanelComments = ({ closeComments, comments, setSong }) => {
   const [isLiked, setIsLiked] = useState(true);
+  console.log('comments', comments)
 
   return (
     <div className={styles['comments-wrapper']}>
       <div className={styles['comments-card-wrapper']}>
-        <div className={styles['comments-card']}>
-          <div className={styles['comments-panels']}>
-            <div className={styles['comments-panels-play']}>
-              <img
-                alt="icon"
-                src={playButton}
-                className={styles['comments-panels-play-img']}
-              />
+        {comments.comments.map(comment => {
+          return (
+            <div className={styles["comments-card"]}>
+              <div className={styles["comments-panels"]}>
+                <div className={styles["comments-panels-play"]} onClick={() => setSong(comment.audio_file.file_link)}>
+                  <img
+                    alt="icon"
+                    src={playButton}
+                    className={styles["comments-panels-play-img"]}
+                  />
+                </div>
+                <div className={styles["comments-panels-audio"]}>
+                  <img
+                    alt="icon"
+                    src={audioWave}
+                    className={styles["comments-panels-audio-img"]}
+                  />
+                  {moment
+                    .utc(
+                      moment
+                        .duration(
+                          comment.audio_file.duration_seconds,
+                          "seconds"
+                        )
+                        .asMilliseconds()
+                    )
+                    .format("mm:ss")}
+                </div>
+                <div className={styles["comments-panels-likes"]}>
+                  {comment.likes.total_likes} {comment.likes.total_likes === 1 ? 'Like' : 'Likes'}
+                </div>
+              </div>
+              <div className={styles["comments-content"]}>
+                <div className={styles["comments-content-user"]}>
+                  {comment.user.full_name}
+                </div>
+                <div className={styles["comments-content-statement"]}>
+                        &ldquo;{comment.comment.quote}&rdquo;
+                </div>
+              </div>
+              <div className={styles["comments-like"]}>
+                <img
+                  alt="icon"
+                  src={comment.likes.liked_by_current_user ? activeLikeButton : likeButton}
+                  className={styles["comments-like-img"]}
+                />
+              </div>
             </div>
-            <div className={styles['comments-panels-audio']}>
-              <img
-                alt="icon"
-                src={audioWave}
-                className={styles['comments-panels-audio-img']}
-              />
-              {moment
-                .utc(moment.duration(90, 'seconds').asMilliseconds())
-                .format('mm:ss')}
-            </div>
-            <div className={styles['comments-panels-likes']}>13 Likes</div>
-          </div>
-          <div className={styles['comments-content']}>
-            <div className={styles['comments-content-user']}>Jonas Gruner</div>
-            <div className={styles['comments-content-statement']}>
-              &ldquo;It is a long established fact that a reader will be
-              distracted by the readable content of a page when looking at its
-              layout.&rdquo;
-            </div>
-          </div>
-          <div className={styles['comments-like']}>
-            <img
-              alt="icon"
-              src={isLiked ? activeLikeButton : likeButton}
-              className={styles['comments-like-img']}
-            />
-          </div>
-        </div>
+          );
+        })}
         <div
           className={styles['comments-comment']}
           onClick={() => console.log('Eddie, your turn! :)')}
@@ -57,7 +71,7 @@ const PanelComments = ({ showUserComments }) => {
           Beitrag kommentieren ...
         </div>
       </div>
-      <img alt="icon" src={closeButton} className={styles['comments-close']} onClick={showUserComments} />
+      <img alt="icon" src={closeButton} className={styles['comments-close']} onClick={closeComments} />
     </div>
   );
 };
