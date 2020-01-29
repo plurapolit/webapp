@@ -5,6 +5,8 @@ import Helper from './AudioRecorderHelper';
 import Button from '../Button/Button';
 import Recorder from '../../helper/Recorder';
 
+import styles from './AudioRecorder.module.scss';
+
 const AudioRecorder = ({ userId }) => {
   const [audio, setAudio] = useState(null);
   const [isRecording, setIsRecording] = useState(false);
@@ -57,40 +59,45 @@ const AudioRecorder = ({ userId }) => {
     deleteCachedAudio();
   };
 
-  const displayAudioOptions = (
-    <div>
-      <audio src={blobURL} controls />
-      <Button onClick={send}>
-        Abschicken
-      </Button>
-      <Button onClick={deleteCachedAudio}>
-        Löschen
-      </Button>
-    </div>
-  );
-
   if (isRecording) {
     return (
-      <>
+      <div className={styles["container"]}>
+        <div className={styles["counter-wrapper"]}>
+          <div className={styles["counter"]}>
+            {counter}
+          </div>
+          <span className={styles["effect"]} />
+          <span className={styles["effect2"]} />
+        </div>
         <Button onClick={stopMicrophone}>
           Aufname stoppen
         </Button>
-        <div>
-          {counter}
+      </div>
+    );
+  }
+
+  if (blobURL) {
+    return (
+      <div className={styles["container"]}>
+        <audio src={blobURL} controls />
+        <div className={styles["button-container"]}>
+          <Button onClick={deleteCachedAudio}>
+            Löschen
+          </Button>
+          <Button onClick={send}>
+            Abschicken
+          </Button>
         </div>
-      </>
+      </div>
     );
   }
 
   return (
-    <>
+    <div className={styles["container"]}>
       <Button onClick={startRecording}>
         Aufname starten
       </Button>
-      <div>
-        {isLoaded(blobURL, displayAudioOptions)}
-      </div>
-    </>
+    </div>
   );
 };
 
