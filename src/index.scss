@@ -22,3 +22,7 @@ html {
   font-weight: 400;
   box-sizing: border-box;
 }
+
+.ReactModal__Body--open {
+  overflow-y: hidden;
+}
