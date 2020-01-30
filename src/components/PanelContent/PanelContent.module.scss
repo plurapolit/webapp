@@ -126,15 +126,6 @@
   }
 }
 
-.media-player-wrapper {
-  width: 100%;
-  margin-bottom: -1rem;
-  display: flex;
-  justify-content: center;
-  background-color: #F1F3F4;
-  animation: slideUp .5s ease-out;
-}
-
 @keyframes slideUp {
   0% {
     opacity: 20%;
@@ -146,6 +137,31 @@
   }
 }
 
-.react-audio-plater {
-  border: 2px solid red;
+.media-player-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: -1rem;
+  box-shadow: 0 -.75rem 2rem -1rem rgba(black, 0.3);
+  animation: slideUp .3s ease-out;
+  background-color: white;
+  &-user {
+    text-transform: uppercase;
+    color: $headline-dark-1;
+    font-size: 1.5rem;
+    font-weight: 500;
+    padding: .5rem 0;
+  }
+  &-statement {
+    color: var(--color);
+    font-size: 1.5rem;
+    padding: .5rem 0;
+  }
+}
+
+audio::-webkit-media-controls-panel {
+  width: 80rem;
+  background-color: white;
 }

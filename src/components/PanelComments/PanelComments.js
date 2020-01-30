@@ -9,7 +9,6 @@ import closeButton from '../../media/images/close.svg';
 
 const PanelComments = ({ closeComments, comments, setSong }) => {
   const [isLiked, setIsLiked] = useState(true);
-
   return (
     <div className={styles['comments-wrapper']}>
       <div className={styles['comments-card-wrapper']}>
@@ -17,7 +16,7 @@ const PanelComments = ({ closeComments, comments, setSong }) => {
           return (
             <div className={styles["comments-card"]} key={comment.comment.id}>
               <div className={styles["comments-panels"]}>
-                <div className={styles["comments-panels-play"]} onClick={() => setSong(comment.audio_file.file_link, true)}>
+                <div className={styles["comments-panels-play"]} onClick={() => setSong(comment.audio_file.file_link, true, comment.user.full_name)}>
                   <img
                     alt="icon"
                     src={playButton}

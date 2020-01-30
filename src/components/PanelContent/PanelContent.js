@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import moment from 'moment';
 import ReactAudioPlayer from 'react-audio-player';
-
 import styles from './PanelContent.module.scss';
 import audioWave from '../../media/images/sound-wave.svg';
 import playButton from '../../media/images/play.svg';
@@ -10,7 +9,6 @@ import PanelComments from '../PanelComments/PanelComments';
 const IMAGEROOTURL = process.env.REACT_APP_BUCKETNAME;
 
 const PanelContent = ({ content }) => {
-  console.log('content', content)
   const refContent = useRef(undefined);
   const [audioStatement, setAudioStatement] = useState('');
   const [songIndex, setSongIndex] = useState(null);
@@ -19,42 +17,42 @@ const PanelContent = ({ content }) => {
   const [showMediaPlayer, setShowMediaPlayer] = useState(false);
   const [isAutoplayed, setIsAutoplayed] = useState(false);
   const [userComments, setUserComments] = useState([]);
+  const [currentUser, setCurrentUser] = useState('');
+  const [panelTitle, setPanelTitle] = useState('');
   const [playerTypeComments, setPlayerTypeComments] = useState(false);
   useEffect(() => {
     const color = content.panel.font_color;
     refContent.current.style.setProperty('--color', color);
-  }, []);
+    setPanelTitle(content.panel.short_title);
 
-  const setSong = (audioFile, type) => {
+    if (songIndex !== null && songIndex <= content.expert_statements.length) {
+      const nextSong = content.expert_statements.find(
+        song => song.index === songIndex
+      );
+      setAudioStatement(nextSong.statement_audio_file.file_link);
+    }
+  }, [songIndex]);
+
+
+  const setSong = async (audioFile, type, user) => {
     setShowMediaPlayer(true);
     setIsAutoplayed(true);
-    setPlayerTypeComments(type);
+    await setPlayerTypeComments(type);
     setAudioStatement(audioFile);
-    const currentIndex = content.expert_statements.find(file => file.statement_audio_file.file_link === audioFile);
-    if (currentIndex.index !== undefined) {
+    setCurrentUser(user);
+    if (!playerTypeComments) {
+      const currentIndex = content.expert_statements.find(file => file.statement_audio_file.file_link === audioFile);
       setSongIndex(currentIndex.index);
     }
   };
 
-  const getNewIndex = () => {
+  console.log('playerTypeComments', playerTypeComments)
+
+  const getNextSong = () => {
     const newIndex = songIndex + 1;
-    return setSongIndex(newIndex);
-  };
- 
-  const getNewAudioFile = () => {
-    if (songIndex <= content.expert_statements.length) {
-      const nextSong = content.expert_statements.find((song) => song.index === songIndex);
-      setAudioStatement(nextSong.statement_audio_file.file_link);
-      console.log('newSong', audioStatement, songIndex)
-    }
+    setSongIndex(newIndex);
   };
   
-  const getNextSong = async () => {
-    console.log('currentSong', audioStatement, songIndex)
-    await getNewIndex();
-    getNewAudioFile();
-  };
-
   const showUserComments = async (user_id) => {
     await fetch(`${process.env.REACT_APP_ROOT_URL}/statements/${user_id}/comments/`)
       .then((res) => res.json())
@@ -62,34 +60,38 @@ const PanelContent = ({ content }) => {
     setExpertsId(user_id);
     setShowComments(!showComments);
   };
-
+  
   const closeComments = () => {
     setShowComments(!showComments);
   };
-
-
+  
+  
   let playerType;
   if (!playerTypeComments) {
     playerType = (
       <div className={styles["media-player-wrapper"]}>
+        <p className={styles["media-player-wrapper-user"]}>{currentUser}</p>
         <ReactAudioPlayer
-        src={audioStatement}
-        onEnded={getNextSong}
-        autoPlay={isAutoplayed}
-        controls
+          src={audioStatement}
+          onEnded={getNextSong}
+          autoPlay={isAutoplayed}
+          controls
         />
+        <p className={styles["media-player-wrapper-statement"]}>{panelTitle}</p>
       </div>
-      );
-    } else {
-      playerType = (
-        <div className={styles["media-player-wrapper"]}>
-          <ReactAudioPlayer
-            src={audioStatement}
-            autoPlay={isAutoplayed}
-            controls
-          />
-        </div>
-      );
+    );
+  } else {
+    playerType = (
+      <div className={styles["media-player-wrapper"]}>
+        <p className={styles["media-player-wrapper-user"]}>{currentUser}</p>
+        <ReactAudioPlayer
+          src={audioStatement}
+          autoPlay={isAutoplayed}
+          controls
+        />
+        <p className={styles["media-player-wrapper-statement"]}>{panelTitle}</p>
+      </div>
+    );
   }
 
   return (
@@ -153,7 +155,7 @@ const PanelContent = ({ content }) => {
                     <button
                       className={styles["expert-card-nav-play"]}
                       onClick={() =>
-                        setSong(expert.statement_audio_file.file_link, false)
+                        setSong(expert.statement_audio_file.file_link, false, expert.user.full_name)
                       }
                     >
                       <img
