@@ -1,7 +1,8 @@
 import React from 'react';
 
 import Button from '../Button/Button';
-import { getDataFromEvent, setNotification } from '../../helper/helper';
+import { getDataFromEvent } from '../../helper/helper';
+import Notification from '../../helper/Notification';
 import ContentWrapper from '../ContentWrapper/ContentWrapper';
 import FeedbackApi from '../../api/FeedbackApi';
 
@@ -12,7 +13,7 @@ const Feedback = () => {
     const data = getDataFromEvent(event);
     FeedbackApi.send(data.email, data.text)
       .then(() => {
-        setNotification({ message: 'Vielen Dank für Ihre E-Mail.', type: 'success' });
+        Notification.success('Vielen Dank für Ihre E-Mail.');
       });
   };
 

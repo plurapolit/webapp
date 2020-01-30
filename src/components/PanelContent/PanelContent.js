@@ -10,7 +10,6 @@ import PanelComments from '../PanelComments/PanelComments';
 const IMAGEROOTURL = process.env.REACT_APP_BUCKET_URL;
 
 const PanelContent = ({ content }) => {
-  console.log('content', content)
   const refContent = useRef(undefined);
   const [audioStatement, setAudioStatement] = useState('');
   const [songIndex, setSongIndex] = useState(1);
@@ -138,6 +137,7 @@ const PanelContent = ({ content }) => {
                 closeComments={closeComments}
                 comments={userComments}
                 setSong={setSong}
+                statementId={expert.statement.id}
               />
             )}
           </div>

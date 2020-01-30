@@ -3,14 +3,15 @@ import { withRouter, Link } from 'react-router-dom';
 
 import styles from './SignUp.module.scss';
 import Button from '../../components/Button/Button';
-import { getDataFromEvent, setNotification } from '../../helper/helper';
+import { getDataFromEvent } from '../../helper/helper';
+import Notification from '../../helper/Notification';
 import UserApi from '../../api/UserApi';
 import JwtApi from '../../api/JwtApi';
 
 const SignUp = ({ setUser, history }) => {
   const setErrorMessages = (error) => {
     Object.entries(error).forEach(([key, value]) => {
-      setNotification({ message: value[0], title: key, type: 'warning', duration: 5000 });
+      Notification.warning(value[0], key);
     });
   };
 
@@ -21,7 +22,7 @@ const SignUp = ({ setUser, history }) => {
       setUser(data.user);
       JwtApi.set(data.token);
       history.push('/');
-      setNotification({ message: 'Sie wurden erfolgreich angemeldet', type: 'success' });
+      Notification.success('Sie wurden erfolgreich angemeldet');
     } catch (obj) {
       setErrorMessages(obj.errors);
     }
@@ -36,7 +37,7 @@ const SignUp = ({ setUser, history }) => {
           <input type="text" name="lastName" placeholder="Nachname" required />
           <input type="email" name="email" placeholder="E-Mail" required />
           <input type="password" name="password" placeholder="Passwort" required />
-          <label for="ageRange">Alter (optional)</label>
+          <label htmlFor="ageRange">Alter (optional)</label>
           <select name="ageRange" defaultValue="0">
             <option value="null" />
             <option value="1">0-15</option>

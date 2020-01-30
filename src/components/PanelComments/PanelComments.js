@@ -9,7 +9,7 @@ import audioWave from '../../media/images/sound-wave.svg';
 import closeButton from '../../media/images/close.svg';
 import CommentModal from '../CommentModal/CommentModal';
 
-const PanelComments = ({ closeComments, comments, setSong }) => {
+const PanelComments = ({ closeComments, comments, setSong, statementId }) => {
   const [isLiked, setIsLiked] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -23,7 +23,7 @@ const PanelComments = ({ closeComments, comments, setSong }) => {
 
   return (
     <>
-      <CommentModal isOpen={isModalOpen} onClose={closeModal} />
+      <CommentModal isOpen={isModalOpen} closeModal={closeModal} statementId={statementId} />
       <div className={styles['comments-wrapper']}>
         <div className={styles['comments-card-wrapper']}>
           {comments.comments.map(comment => {

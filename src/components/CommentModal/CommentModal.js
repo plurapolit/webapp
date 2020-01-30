@@ -1,44 +1,67 @@
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import Modal from '../Modal/Modal';
 
 import StoreContext from '../../layouts/Store/StoreContext';
 import AudioRecorder from '../AudioRecorder/AudioRecorder';
 import SignInComponent from '../SignInComponent/SignInComponent';
-import { setNotification } from '../../helper/helper';
-import { findByLabelText } from '@testing-library/react';
+import Notification from '../../helper/Notification';
+import CommentApi from '../../api/CommentApi';
+import Helper from './CommentModalHelper';
+import AcceptTerms from '../AcceptTerms/AcceptTerms';
+import AddQuote from '../AddQuote/AddQuote';
 
-const CommentModal = ({ isOpen, onClose }) => {
+// TODO: update Styling for all rendered components
+const CommentModal = ({ isOpen, closeModal, statementId }) => {
+  const [page, setPage] = useState(1);
+  const quote = useRef(undefined);
+  const fileLink = useRef(undefined);
+  const duration = useRef(undefined);
 
-  const customStyle = {
-    content: {
-      top: '50%',
-      left: '50%',
-      width: '90%',
-      maxWidth: '40rem',
-      transform: 'translate(-50%, -50%)',
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-      borderRadius: '1rem',
-    },
-    overlay: {
-      backgroundColor: '#000000cc',
-    }
-  }
+  const setQuote = (newQuote) => {
+    quote.current = newQuote;
+  };
+
+  const setFileLink = (newFileLink) => {
+    fileLink.current = newFileLink;
+  };
+
+  const setDuration = (newDuration) => {
+    duration.current = newDuration;
+  };
+
+  const sendToRails = () => {
+    CommentApi.post(statementId, quote.current, fileLink.current, duration.current)
+      .then(() => {
+        Notification.success('Deine Aufnahme wurde gespeichert.');
+        closeModal();
+      });
+  };
+
+  const nextPage = () => {
+    setPage((prevPage) => prevPage += 1);
+  };
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose} style={customStyle}>
+    <Modal isOpen={isOpen} onClose={closeModal} style={Helper.modalStyle}>
       <StoreContext.Consumer>
         {(data) => {
-          if (data.user) {
+          if (!data.user) {
+            Notification.warning('Um diesen Service zu nutzen, müssen Sie sich anmelden.');
             return (
-              <AudioRecorder userId={data.user.id} />
+              <SignInComponent setUser={data.setUser} />
             );
           }
-          setNotification({ message: 'Um diesen Service zu nutzen, müssen Sie sich anmelden.', type: 'warning' });
-          return (
-            <SignInComponent setUser={data.setUser} />
-          );
+          switch (page) {
+            case 1:
+              return <AcceptTerms nextPage={nextPage} />;
+            case 2:
+              return <AudioRecorder userId={data.user.id} setFileLink={setFileLink} setDuration={setDuration} nextPage={nextPage} />;
+            case 3:
+              return <AddQuote setQuote={setQuote} sendToRails={sendToRails} />;
+            default:
+              // TODO: Error handling
+              break;
+          }
         }}
       </StoreContext.Consumer>
     </Modal>

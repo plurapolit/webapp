@@ -1,4 +1,3 @@
-import { store as notificationStore } from 'react-notifications-component';
 import moment from 'moment';
 
 export const isLoaded = (condition, resolve, reject = null) => {
@@ -23,21 +22,3 @@ export const getDataFromEvent = (event) => {
 export const getTimeStemp = () => moment().format('HH-mm-ss');
 
 export const getDatum = () => moment().format('YYYY-MM-DD');
-
-export const setNotification = ({ message, title = null, type = 'default', duration = 3000 }) => {
-  notificationStore.addNotification({
-    title,
-    message,
-    type,
-    insert: "top",
-    container: "top-left",
-    animationIn: ["animated", "fadeIn"],
-    animationOut: ["animated", "zoomOut"],
-    dismiss: {
-      duration,
-      onScreen: false,
-      pauseOnHover: true,
-      showIcon: true,
-    },
-  });
-};
