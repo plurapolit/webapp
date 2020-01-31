@@ -27,7 +27,7 @@ const getParameter = () => {
     JSON: 'application/json',
   };
 
-  const post = (body, jwt = null) => {
+  const post = (body = null, jwt = null) => {
     let bearer = jwt;
     if (jwt) {
       bearer = bearerToken(jwt);
