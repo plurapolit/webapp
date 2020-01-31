@@ -5,10 +5,9 @@ import PanelContent from '../../components/PanelContent/PanelContent';
 const IMAGEROOTURL = process.env.REACT_APP_BUCKET_URL;
 
 const Panel = ({ panel }) => {
-
   const customStyle = {
     '--color': `${panel.panel.font_color}`,
-  }
+  };
 
   return (
     <div className={styles["panel"]} style={customStyle}>
