@@ -7,6 +7,7 @@ import likeButton from '../../media/images/like.svg';
 import playButton from '../../media/images/play.svg';
 import audioWave from '../../media/images/sound-wave.svg';
 import closeButton from '../../media/images/close.svg';
+import microphoneButton from '../../media/images/microphone.svg';
 import CommentModal from '../CommentModal/CommentModal';
 
 const PanelComments = ({ closeComments, comments, setSong }) => {
@@ -26,11 +27,14 @@ const PanelComments = ({ closeComments, comments, setSong }) => {
       <CommentModal isOpen={isModalOpen} onClose={closeModal} />
       <div className={styles['comments-wrapper']}>
         <div className={styles['comments-card-wrapper']}>
-          {comments.comments.map(comment => {
+          {comments.comments.map((comment) => {
             return (
               <div className={styles["comments-card"]}>
                 <div className={styles["comments-panels"]}>
-                  <div className={styles["comments-panels-play"]} onClick={() => setSong(comment.audio_file.file_link)}>
+                  <div 
+                    className={styles["comments-panels-play"]} 
+                    onClick={() => setSong(comment.audio_file.file_link, comment.user.full_name)}
+                  >
                     <img
                       alt="icon"
                       src={playButton}
@@ -48,14 +52,15 @@ const PanelComments = ({ closeComments, comments, setSong }) => {
                         moment
                           .duration(
                             comment.audio_file.duration_seconds,
-                            "seconds"
+                            "seconds",
                           )
-                          .asMilliseconds()
+                          .asMilliseconds(),
                       )
                       .format("mm:ss")}
                   </div>
                   <div className={styles["comments-panels-likes"]}>
-                    {comment.likes.total_likes} {comment.likes.total_likes === 1 ? 'Like' : 'Likes'}
+                    {comment.likes.total_likes}
+                    {comment.likes.total_likes === 1 ? ' Like' : ' Likes'}
                   </div>
                 </div>
                 <div className={styles["comments-content"]}>
@@ -63,7 +68,9 @@ const PanelComments = ({ closeComments, comments, setSong }) => {
                     {comment.user.full_name}
                   </div>
                   <div className={styles["comments-content-statement"]}>
-                          &ldquo;{comment.comment.quote}&rdquo;
+                    &ldquo;
+                    {comment.comment.quote}
+                    &rdquo;
                   </div>
                 </div>
                 <div className={styles["comments-like"]}>
@@ -81,7 +88,8 @@ const PanelComments = ({ closeComments, comments, setSong }) => {
             className={styles['comments-comment']}
             onClick={() => openModal()}
           >
-            Beitrag kommentieren ...
+            <img alt="icon" src={microphoneButton} className={styles['comments-microphone-img']} />
+            <div className={styles['comments-comment-text']}>Beitrag kommentieren</div>
           </div>
         </div>
         <img alt="icon" src={closeButton} className={styles['comments-close']} onClick={closeComments} />
