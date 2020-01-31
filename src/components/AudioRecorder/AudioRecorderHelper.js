@@ -41,7 +41,6 @@ const AudioRecorderHelper = () => {
 
   return {
     sendToAWS,
-    getAudioTitle,
     getRecordingPermission,
   };
 };
