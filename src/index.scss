@@ -26,3 +26,41 @@ html {
 .ReactModal__Body--open {
   overflow-y: hidden;
 }
+
+// Audio Player global Styling
+#rhap_current-time {
+  color: $color-grey-2;
+  width: 40px;
+ }
+
+.rhap_total-time {
+  color: $color-grey-2;
+}
+
+ .rhap_container {
+   box-shadow: none;
+ }
+
+ .rhap_main-controls-button {
+   color: $color-primary;
+ }
+
+ .rhap_main-controls-button:focus {
+   outline: none;
+ }
+
+.rhap_progress-container:focus {
+  outline: none;
+}
+
+.rhap_main-controls-button:active {
+  color: $color-primary-hover;
+}
+
+.rhap_main-controls-button:hover {
+  color: $color-primary-hover;
+}
+
+ .rhap_progress-indicator {
+  background: $color-primary;
+ }

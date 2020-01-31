@@ -1,5 +1,12 @@
 @import '../../styles/global.scss';
 
+.row {
+  max-width: 80rem;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
 .headline {
   color: var(--color);
   font-size: 2.2rem;
@@ -117,14 +124,6 @@
       }
     }
   }
-}
-
-.media-player-wrapper {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  background-color: #F1F3F4;
-  animation: slideUp .5s ease-out;
 }
 
 @keyframes slideUp {
