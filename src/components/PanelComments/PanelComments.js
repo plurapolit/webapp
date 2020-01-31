@@ -9,9 +9,11 @@ import audioWave from '../../media/images/sound-wave.svg';
 import closeButton from '../../media/images/close.svg';
 import microphoneButton from '../../media/images/microphone.svg';
 import CommentModal from '../CommentModal/CommentModal';
+import LikeApi from '../../api/LikeApi';
+import JwtApi from '../../api/JwtApi';
+import Notification from '../../helper/Notification';
 
 const PanelComments = ({ closeComments, comments, setSong, statementId }) => {
-  const [isLiked, setIsLiked] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const openModal = () => {
@@ -20,6 +22,23 @@ const PanelComments = ({ closeComments, comments, setSong, statementId }) => {
 
   const closeModal = () => {
     setIsModalOpen(false);
+  };
+
+  const like = async () => {
+    const valid = await JwtApi.validate();
+    if (valid) {
+      LikeApi.post(statementId);
+    }
+    Notification.warning('Um diesen Service nutzen zu können, musst du dich anmelden');
+    // TODO: Error handling in einer seperaten Funktion auslagern und mit signin modal verbinden.
+  };
+
+  const disLike = async () => {
+    const valid = await JwtApi.validate();
+    if (valid) {
+      LikeApi.delete(statementId);
+    }
+    Notification.warning('Um diesen Service nutzen zu können, musst du dich anmelden');
   };
 
   return (
@@ -79,6 +98,7 @@ const PanelComments = ({ closeComments, comments, setSong, statementId }) => {
                     alt="icon"
                     src={comment.likes.liked_by_current_user ? activeLikeButton : likeButton}
                     className={styles["comments-like-img"]}
+                    onClick={comment.likes.liked_by_current_user ? () => disLike() : () => like()}
                   />
                 </div>
               </div>
