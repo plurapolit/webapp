@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
 
-import { isLoaded } from '../../helper/helper';
 import Helper from './AudioRecorderHelper';
 import Button from '../Button/Button';
 import Recorder from '../../helper/Recorder';
 
 import styles from './AudioRecorder.module.scss';
 
-const AudioRecorder = ({ userId }) => {
+const AudioRecorder = ({ userId, setFileLink, setDuration, nextPage }) => {
   const [audio, setAudio] = useState(null);
   const [isRecording, setIsRecording] = useState(false);
   const [blobURL, setBlobURL] = useState('');
@@ -40,11 +39,12 @@ const AudioRecorder = ({ userId }) => {
   };
 
   const stopMicrophone = () => {
-    Recorder.stop(Helper.getAudioTitle(userId))
+    Recorder.stop()
       .then(([audioFile, audioURL]) => {
         setBlobURL(audioURL);
         setAudio(audioFile);
         setIsRecording(false);
+        setDuration(counter);
         setTimerOn(false);
       });
   };
@@ -55,7 +55,11 @@ const AudioRecorder = ({ userId }) => {
   };
 
   const send = () => {
-    Helper.submitAudio(audio);
+    Helper.sendToAWS(audio)
+      .then((fileLink) => {
+        setFileLink(fileLink);
+        nextPage();
+      });
     deleteCachedAudio();
   };
 
@@ -69,7 +73,7 @@ const AudioRecorder = ({ userId }) => {
           <span className={styles["effect"]} />
           <span className={styles["effect2"]} />
         </div>
-        <Button onClick={stopMicrophone}>
+        <Button onClick={() => stopMicrophone()}>
           Aufname stoppen
         </Button>
       </div>
@@ -97,7 +101,6 @@ const AudioRecorder = ({ userId }) => {
       <Button onClick={startRecording}>
         Aufname starten
       </Button>
-      {/* // TODO: Nutzungsbedingungen */}
     </div>
   );
 };

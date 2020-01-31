@@ -27,13 +27,20 @@ const getParameter = () => {
     JSON: 'application/json',
   };
 
-  const post = (body) => ({
-    method: HttpMethods.POST,
-    headers: {
-      'Content-Type': ContentTypes.JSON,
-    },
-    body: JSON.stringify(body),
-  });
+  const post = (body, jwt = null) => {
+    let bearer = jwt;
+    if (jwt) {
+      bearer = bearerToken(jwt);
+    }
+    return {
+      method: HttpMethods.POST,
+      headers: {
+        'Content-Type': ContentTypes.JSON,
+        Authorization: bearer,
+      },
+      body: JSON.stringify(body),
+    };
+  };
 
   const get = (jwt = null) => {
     let bearer = jwt;

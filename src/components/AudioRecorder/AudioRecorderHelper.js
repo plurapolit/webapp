@@ -1,16 +1,11 @@
 import S3 from 'react-aws-s3';
-import { getDatum, getTimeStemp } from '../../helper/helper';
 
 const AudioRecorderHelper = () => {
 
-  const getAudioTitle = (userId) => `${getTimeStemp()}-user-${userId}`;
-
-  // TODO: Save mp3 to backend, pass user details
-  const submitAudio = (audio) => {
-    // TODO: update .env file
+  const sendToAWS = (audio) => {
     const config = {
       bucketName: process.env.REACT_APP_BUCKETNAME,
-      dirName: `statements/${getDatum()}`,
+      dirName: 'statements',
       region: process.env.REACT_APP_REGION,
       accessKeyId: process.env.REACT_APP_ACCESS_KEY_ID,
       secretAccessKey: process.env.REACT_APP_SECRET_ACCESS_KEY,
@@ -18,12 +13,15 @@ const AudioRecorderHelper = () => {
     const ReactS3Client = new S3(config);
     const newFileName = audio.name;
     const file = audio;
-    ReactS3Client
-      .uploadFile(file, newFileName)
-      .then((data) => {
-        // TODO: save S3 string in backend
-        console.log(data);
-      });
+
+    const promiseLocation = new Promise((resolve) => {
+      ReactS3Client
+        .uploadFile(file, newFileName)
+        .then((data) => {
+          resolve(data.location);
+        });
+    });
+    return promiseLocation;
   };
 
   const getRecordingPermission = () => {
@@ -42,8 +40,7 @@ const AudioRecorderHelper = () => {
   };
 
   return {
-    submitAudio,
-    getAudioTitle,
+    sendToAWS,
     getRecordingPermission,
   };
 };

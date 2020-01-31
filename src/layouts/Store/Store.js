@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import UserApi from '../../api/UserApi';
 import StoreContext from './StoreContext';
 import StoreHelper from './StoreHelper';
-import JwtApi from '../../api/JwtApi';
 
 const Store = ({ children }) => {
   const [user, setUser] = useState(undefined);
