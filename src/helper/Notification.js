@@ -26,9 +26,15 @@ const Notification = () => {
   const warning = (message, title = null) => {
     setNotification({ message, title, type: 'warning', duration: 4000 });
   };
+
+  const signedIn = (firstName, lastName) => {
+    setNotification({ message: `Hallo ${firstName} ${lastName}, du kannst jetzt Liken und eigene Statements aufnehmen.`, type: 'success' });
+  };
+
   return {
     success,
     warning,
+    signedIn,
   };
 };
 

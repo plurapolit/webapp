@@ -16,7 +16,7 @@ const SignInComponent = ({ setUser, routeBack = () => {} }) => {
       setUser(data.user);
       JwtApi.set(data.token);
       routeBack();
-      Notification.success('Sie wurden erfolgreich angemeldet');
+      Notification.signedIn(data.user.first_name, data.user.last_name);
     } catch (obj) {
       Notification.warning(obj.error);
     }

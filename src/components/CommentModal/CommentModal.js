@@ -32,7 +32,7 @@ const CommentModal = ({ isOpen, closeModal, statementId }) => {
   const sendToRails = () => {
     CommentApi.post(statementId, quote.current, fileLink.current, duration.current)
       .then(() => {
-        Notification.success('Deine Aufnahme wurde gespeichert.');
+        Notification.success('Danke für deine Einsendung. Wir überprüfen, ob das Statement unseren Nutzungsbedingungen entspricht, und schalten es dann frei.');
         closeModal();
       });
   };

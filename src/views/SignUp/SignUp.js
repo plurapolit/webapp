@@ -22,7 +22,7 @@ const SignUp = ({ setUser, history }) => {
       setUser(data.user);
       JwtApi.set(data.token);
       history.push('/');
-      Notification.success('Sie wurden erfolgreich angemeldet');
+      Notification.signedIn(data.user.fist_name, data.user.last_name);
     } catch (obj) {
       setErrorMessages(obj.errors);
     }

@@ -13,7 +13,7 @@ const Feedback = () => {
     const data = getDataFromEvent(event);
     FeedbackApi.send(data.email, data.text)
       .then(() => {
-        Notification.success('Vielen Dank für Ihre E-Mail.');
+        Notification.success('Danke für dein Feedback! Du hilfst uns sehr PluraPolit besser zu machen.');
       });
   };
 
