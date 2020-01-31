@@ -1,3 +1,4 @@
+@import '../../styles/global.scss';
 
 .question-banner {
   --url: "";
@@ -38,8 +39,10 @@
   top: 2rem;
   left: 2rem;
   color: var(--color);
-  font-size: 2rem;
-  font-weight: 500;
+  text-shadow: 1px 1px 4px #000000;
+  font-size: 2.5rem;
+  font-weight: 800;
+  width: 30rem;
   text-transform: uppercase;
 }
 
@@ -52,9 +55,10 @@
 }
 
 .title {
-  color: var(--color);
+  color: $color-grey;
   font-size: 2.2rem;
-  flex-grow: 1;
+  padding: 1rem;
+  flex: 1;
 }
 
 .experts-wrapper {

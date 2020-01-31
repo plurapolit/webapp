@@ -9,7 +9,7 @@
   height: 7rem;
   border-radius: 50%;
   margin: .3rem;
-  border: solid 3px green;
+  box-shadow: 0 0 10px rgba($color-grey, .3);
   object-fit: fill;
   transition: transform .2s;
 }

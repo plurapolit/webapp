@@ -33,6 +33,6 @@ const Feedback = () => {
       </ContentWrapper>
     </section>
   );
-}
+};
 
 export default Feedback;

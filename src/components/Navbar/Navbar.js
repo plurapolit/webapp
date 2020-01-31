@@ -45,7 +45,7 @@ const Navbar = ({ user }) => {
     <nav className={customStyle.nav}>
       <ul className={styles["container"]}>
         <Link to="/">
-          <img src={customStyle.logo} className={styles["logo"]} alt="Logo"></img>
+          <img src={customStyle.logo} className={styles["logo"]} alt="Logo" />
         </Link>
         <div className={styles["container_items"]}>
           <li className={customStyle.item}>

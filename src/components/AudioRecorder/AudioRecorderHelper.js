@@ -1,7 +1,6 @@
 import S3 from 'react-aws-s3';
 
 const AudioRecorderHelper = () => {
-
   const sendToAWS = (audio) => {
     const config = {
       bucketName: process.env.REACT_APP_BUCKETNAME,

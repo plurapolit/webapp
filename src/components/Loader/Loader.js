@@ -8,8 +8,8 @@ const Loader = () => (
     <ScaleLoader
       height={140}
       width={20}
-      color={"#123abc"}
-      loading={true}
+      color="#123abc"
+      loading
     />
   </div>
 );

@@ -45,13 +45,25 @@ const PanelContent = ({ content }) => {
     setShowComments(!showComments);
   };
 
+  const numberOfComments = (expert) => (
+    `${expert.number_of_comments} ${expert.number_of_comments === 1 ? ' Antwort' : ' Antworten'}`
+  );
+
+  const audioDuration = (expert) => (
+    moment.utc(
+      moment.duration(
+        expert.statement_audio_file.duration_seconds, 'seconds',
+      ).asMilliseconds(),
+    ).format('mm:ss')
+  );
+
   return (
     <div>
       <div className={styles["row"]}>
         <div ref={refContent} className={styles.headline}>
           {content.panel.title}
         </div>
-        <div className={styles.description}>{content.panel.short_title}</div>
+        <div className={styles.description}>{content.panel.description}</div>
         <div className={styles.wrapper}>
           <div className={styles["experts-headline"]}>Experten</div>
           {content.expert_statements.map((expert) => (
@@ -82,8 +94,7 @@ const PanelContent = ({ content }) => {
                     className={styles["expert-card-comments"]}
                     onClick={() => showUserComments(expert.statement.id)}
                   >
-                    {expert.number_of_comments}
-                    {expert.number_of_comments === 1 ? ' Antwort' : ' Antworten'}
+                    {numberOfComments(expert)}
                   </div>
                   <div className={styles["expert-card-nav"]}>
                     <img
@@ -92,16 +103,7 @@ const PanelContent = ({ content }) => {
                       className={styles["expert-card-nav-img"]}
                     />
                     <div className={styles["expert-card-nav-time"]}>
-                      {moment
-                        .utc(
-                          moment
-                            .duration(
-                              expert.statement_audio_file.duration_seconds,
-                              'seconds',
-                            )
-                            .asMilliseconds(),
-                        )
-                        .format('mm:ss')}
+                      {audioDuration(expert)}
                     </div>
                     <button
                       className={styles["expert-card-nav-play"]}

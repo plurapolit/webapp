@@ -8,15 +8,15 @@ class UserCard extends React.Component {
   constructor(props) {
     super(props);
 
-    this.audios = props.list.map(audio => new Audio(audio));
+    this.audios = props.list.map((audio) => new Audio(audio));
   }
 
   getCurrentAudio() {
     console.log(
       "audio",
-      this.audios.find(audio => false === audio.paused)
+      this.audios.find((audio) => audio.paused === false),
     );
-    return this.audios.find(audio => false === audio.paused);
+    return this.audios.find((audio) => audio.paused === false);
   }
 
   toggle(nextAudio) {
@@ -33,7 +33,10 @@ class UserCard extends React.Component {
     return (
       <div>
         {this.audios.map((audio, index) => (
-          <button onClick={() => this.toggle(audio)}>PLAY AUDIO {index}</button>
+          <button onClick={() => this.toggle(audio)}>
+PLAY AUDIO
+            {index}
+          </button>
         ))}
       </div>
     );
@@ -45,7 +48,7 @@ export default () => (
     list={[
       "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
       "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
-      "https://plurapolit.de/wp-content/uploads/2019/11/plura-sample.mp3"
+      "https://plurapolit.de/wp-content/uploads/2019/11/plura-sample.mp3",
     ]}
   />
 );

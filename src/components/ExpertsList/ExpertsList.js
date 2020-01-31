@@ -4,16 +4,12 @@ import ExpertsCard from '../ExpertsCard/ExpertsCard';
 
 import styles from './ExpertsList.module.scss';
 
-const ExpertsList = ({ experts }) => {
-  return (
-    <>
-      {experts.map((avatar, index) => {
-        return(
-          <ExpertsCard key={index} experts={avatar} />
-        );
-      })}
-    </>
-  );
-}
+const ExpertsList = ({ experts }) => (
+  <>
+    {experts.map((avatar, index) => (
+      <ExpertsCard key={index} experts={avatar} />
+    ))}
+  </>
+);
 
 export default ExpertsList;

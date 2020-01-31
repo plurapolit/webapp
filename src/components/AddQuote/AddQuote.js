@@ -3,7 +3,6 @@ import Button from '../Button/Button';
 import { getDataFromEvent } from '../../helper/helper';
 
 const AddQuote = ({ setQuote, sendToRails }) => {
-
   const addQuote = (event) => {
     const data = getDataFromEvent(event);
     setQuote(data.quote);

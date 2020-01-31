@@ -1,7 +1,9 @@
 import { store as notificationStore } from 'react-notifications-component';
 
 const Notification = () => {
-  const setNotification = ({ message, title = null, type = 'default', duration = 3000 }) => {
+  const setNotification = ({
+    message, title = null, type = 'default', duration = 3000,
+  }) => {
     notificationStore.addNotification({
       title,
       message,
@@ -24,7 +26,9 @@ const Notification = () => {
   };
 
   const warning = (message, title = null) => {
-    setNotification({ message, title, type: 'warning', duration: 4000 });
+    setNotification({
+      message, title, type: 'warning', duration: 4000,
+    });
   };
 
   const signedIn = (firstName, lastName) => {
