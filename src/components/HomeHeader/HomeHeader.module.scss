@@ -3,7 +3,7 @@
 .home-header {
   display: flex;
   align-items: flex-end;
-  height: 50vh;
+  height: 60vh;
   padding: $spacing-section 0;
   background-image: url("./images/HomeHeader_bg.png");
   background-size: cover;
@@ -14,6 +14,6 @@
 h1 {
   color: white;
   font-size: 4rem;
-  font-weight: bold;
+  font-weight: 900;
   text-transform: uppercase;
 }

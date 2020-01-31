@@ -5,13 +5,14 @@
 }
 
 .image {
-  height: 40vh;
+  height: 50vh;
   width: 100%;
   object-fit: cover;
 }
 
 .container {
   background-color: transparent;
+  margin-top: -7rem;
 }
 
 .row {
@@ -22,8 +23,7 @@
 }
 
 .headline {
-  padding-bottom: 2rem;
-  margin-top: -4.5rem;
+  margin-bottom: 7rem;
   color: var(--color);
   font-size: 2.2rem;
   font-weight: bold;
@@ -36,8 +36,8 @@
 
 .bg {
   position: relative;
-  padding: 1rem 0;
   border-top-left-radius: 1.5rem;
   border-top-right-radius: 1.5rem;
   background-color: $color-white;
+  margin-top: -5rem;
 }

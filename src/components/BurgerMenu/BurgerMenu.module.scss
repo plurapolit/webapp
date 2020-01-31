@@ -1,5 +1,70 @@
 @import '../../styles/global.scss';
 
+
+
+.slider {
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 25rem;
+  height: 100vh;
+  background-color: $color-grey;
+  display: flex;
+  flex-direction: column;
+  padding-top: 8rem;
+  z-index: 500;
+  animation: test .5s ease-out;
+}
+
+@keyframes test {
+  0% {
+    transform: translateX(100%);
+  }
+  100%{
+    transform: translateX(0);
+  }
+}
+
+.x {
+  position: absolute;
+  top: 3.5rem;
+  right: 1.5rem;
+  width: 3rem;
+  height: .4rem;
+  border-radius: 2rem;
+  background-color: #fff;
+}
+
+.x_1 {
+  composes: x;
+  transform: rotate(-45deg);
+}
+
+.x_2 {
+  composes: x;
+  transform: rotate(45deg);
+}
+
+
+.list {
+  list-style: none;
+  text-align: right;
+  color: $color-white;
+}
+
+.item {
+  font-size: 2.2rem;
+  font-weight: 800;
+  padding: 1.5rem 2rem;
+
+  &:hover {
+    color: $color-primary;
+  }
+}
+
+
+
+
 .menuToggle {
   --burgerColor: '';
 
