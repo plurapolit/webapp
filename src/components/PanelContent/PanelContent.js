@@ -1,98 +1,49 @@
+/* eslint-disable react/button-has-type */
 import React, { useEffect, useRef, useState } from 'react';
 import moment from 'moment';
-import ReactAudioPlayer from 'react-audio-player';
 import styles from './PanelContent.module.scss';
 import audioWave from '../../media/images/sound-wave.svg';
 import playButton from '../../media/images/play.svg';
 import PanelComments from '../PanelComments/PanelComments';
+import Player from '../Player/Player';
 
 const IMAGEROOTURL = process.env.REACT_APP_BUCKET_URL;
 
 const PanelContent = ({ content }) => {
   const refContent = useRef(undefined);
   const [audioStatement, setAudioStatement] = useState('');
-  const [songIndex, setSongIndex] = useState(null);
   const [showComments, setShowComments] = useState(false);
   const [expertsId, setExpertsId] = useState(null);
   const [showMediaPlayer, setShowMediaPlayer] = useState(false);
   const [isAutoplayed, setIsAutoplayed] = useState(false);
   const [userComments, setUserComments] = useState([]);
   const [currentUser, setCurrentUser] = useState('');
-  const [panelTitle, setPanelTitle] = useState('');
-  const [playerTypeComments, setPlayerTypeComments] = useState(false);
+
   useEffect(() => {
     const color = content.panel.font_color;
     refContent.current.style.setProperty('--color', color);
-    setPanelTitle(content.panel.short_title);
+  });
 
-    if (songIndex !== null && songIndex <= content.expert_statements.length) {
-      const nextSong = content.expert_statements.find(
-        song => song.index === songIndex
-      );
-      setAudioStatement(nextSong.statement_audio_file.file_link);
-    }
-  }, [songIndex]);
+  const panelTitle = content.panel.short_title;
 
-
-  const setSong = async (audioFile, type, user) => {
+  const setSong = async (audioFile, user) => {
     setShowMediaPlayer(true);
     setIsAutoplayed(true);
-    await setPlayerTypeComments(type);
     setAudioStatement(audioFile);
     setCurrentUser(user);
-    if (!playerTypeComments) {
-      const currentIndex = content.expert_statements.find(file => file.statement_audio_file.file_link === audioFile);
-      setSongIndex(currentIndex.index);
-    }
   };
 
-  console.log('playerTypeComments', playerTypeComments)
-
-  const getNextSong = () => {
-    const newIndex = songIndex + 1;
-    setSongIndex(newIndex);
-  };
-  
-  const showUserComments = async (user_id) => {
-    await fetch(`${process.env.REACT_APP_ROOT_URL}/statements/${user_id}/comments/`)
+  const showUserComments = async (userId) => {
+    await fetch(`${process.env.REACT_APP_ROOT_URL}/statements/${userId}/comments/`)
       .then((res) => res.json())
       .then((json) => setUserComments(json));
-    setExpertsId(user_id);
+    setExpertsId(userId);
     setShowComments(!showComments);
   };
-  
+
   const closeComments = () => {
     setShowComments(!showComments);
   };
-  
-  
-  let playerType;
-  if (!playerTypeComments) {
-    playerType = (
-      <div className={styles["media-player-wrapper"]}>
-        <p className={styles["media-player-wrapper-user"]}>{currentUser}</p>
-        <ReactAudioPlayer
-          src={audioStatement}
-          onEnded={getNextSong}
-          autoPlay={isAutoplayed}
-          controls
-        />
-        <p className={styles["media-player-wrapper-statement"]}>{panelTitle}</p>
-      </div>
-    );
-  } else {
-    playerType = (
-      <div className={styles["media-player-wrapper"]}>
-        <p className={styles["media-player-wrapper-user"]}>{currentUser}</p>
-        <ReactAudioPlayer
-          src={audioStatement}
-          autoPlay={isAutoplayed}
-          controls
-        />
-        <p className={styles["media-player-wrapper-statement"]}>{panelTitle}</p>
-      </div>
-    );
-  }
 
   return (
     <div>
@@ -103,7 +54,7 @@ const PanelContent = ({ content }) => {
         <div className={styles.description}>{content.panel.short_title}</div>
         <div className={styles.wrapper}>
           <div className={styles["experts-headline"]}>Experten</div>
-          {content.expert_statements.map(expert => (
+          {content.expert_statements.map((expert) => (
             <div key={expert.statement.id} className={styles["expert-wrapper"]}>
               <div className={styles["expert-card"]}>
                 <div className={styles["expert-card-header"]}>
@@ -131,8 +82,8 @@ const PanelContent = ({ content }) => {
                     className={styles["expert-card-comments"]}
                     onClick={() => showUserComments(expert.statement.id)}
                   >
-                    {expert.number_of_comments}{" "}
-                    {expert.number_of_comments === 1 ? "Antwort" : "Antworten"}
+                    {expert.number_of_comments}
+                    {expert.number_of_comments === 1 ? ' Antwort' : ' Antworten'}
                   </div>
                   <div className={styles["expert-card-nav"]}>
                     <img
@@ -146,17 +97,20 @@ const PanelContent = ({ content }) => {
                           moment
                             .duration(
                               expert.statement_audio_file.duration_seconds,
-                              "seconds"
+                              'seconds',
                             )
-                            .asMilliseconds()
+                            .asMilliseconds(),
                         )
-                        .format("mm:ss")}
+                        .format('mm:ss')}
                     </div>
                     <button
                       className={styles["expert-card-nav-play"]}
-                      onClick={() =>
-                        setSong(expert.statement_audio_file.file_link, false, expert.user.full_name)
-                      }
+                      onClick={() => {
+                        setSong(
+                          expert.statement_audio_file.file_link,
+                          expert.user.full_name,
+                        );
+                      }}
                     >
                       <img
                         src={playButton}
@@ -178,7 +132,14 @@ const PanelContent = ({ content }) => {
           ))}
         </div>
       </div>
-      {showMediaPlayer && playerType}
+      {showMediaPlayer && (
+        <Player
+          audioStatement={audioStatement}
+          isAutoplayed={isAutoplayed}
+          currentUser={currentUser}
+          panelTitle={panelTitle}
+        />
+      )}
     </div>
   );
 };
