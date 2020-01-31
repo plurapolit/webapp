@@ -23,6 +23,7 @@
             "extensions": [".js", ".jsx"]
         }],
         "react/prop-types": 0,
-        "quotes": 0
+        "quotes": 0,
+        "dot-notation": 0
     }
 }
