@@ -10,7 +10,7 @@ import SignOutButton from '../SignOutButton/SignOutButton';
 import StoreContext from '../../layouts/Store/StoreContext';
 
 const Navbar = ({ user }) => {
-  const [isAtTop, setIsAtTop] = useState(true);
+  const [isAtTop, setIsAtTop] = useState(false);
   let customStyle;
 
   const handleScroll = (event) => {
@@ -23,9 +23,9 @@ const Navbar = ({ user }) => {
     }
   };
 
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
-  }, []);
+  // useEffect(() => {
+  //   window.addEventListener('scroll', handleScroll);
+  // }, []);
 
   if (isAtTop) {
     customStyle = {
