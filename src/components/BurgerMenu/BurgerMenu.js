@@ -18,30 +18,42 @@ const BurgerMenu = ({ isTop }) => {
   const standardStyle = {
     '--burgerColor': '#282828',
   }
+
+  const sliderClass = `${styles["slider"]} ${show ? styles["slider_active"] : null}`;
+
   
   return (
-    <div className={styles["slider"]}>
-      <div onClick={handleClick}>
-        <span className={styles["x_1"]}/>
-        <span className={styles["x_2"]}/>
+    <div>
+      <div className={show ? styles["overlay"] : null} onClick={handleClick} />
+      <div className={styles["burger"]} onClick={handleClick}>
+        <span className={styles["burger_item"]} />
+        <span className={styles["burger_item"]} />
+        <span className={styles["burger_item"]} />
       </div>
-      <ul className={styles["list"]}>
-         <li className={styles["item"]}>
-           <Link to="/sign_up/">
-             Registieren
-           </Link>
-         </li>
-         <li className={styles["item"]}>
-           <Link to="/sign_in/">
-             Anmelden
-           </Link>
-         </li>
-         <li className={styles["item"]}>
-           <Link to="/terms/">
-             Nutzungsbedingungen
-           </Link>
-         </li>
-       </ul>
+
+      <div className={sliderClass}>
+        <div className={styles["x_wrapper"]} onClick={handleClick}>
+          <span className={styles["x_1"]}/>
+          <span className={styles["x_2"]}/>
+        </div>
+        <ul className={styles["list"]}>
+          <li className={styles["item"]}>
+            <Link to="/sign_up/">
+              Registieren
+            </Link>
+          </li>
+          <li className={styles["item"]}>
+            <Link to="/sign_in/">
+              Anmelden
+            </Link>
+          </li>
+          <li className={styles["item"]}>
+            <Link to="/terms/">
+              Nutzungsbedingungen
+            </Link>
+          </li>
+        </ul>
+      </div>
     </div>
   );
 
