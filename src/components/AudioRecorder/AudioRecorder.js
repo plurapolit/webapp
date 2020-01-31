@@ -39,7 +39,7 @@ const AudioRecorder = ({ userId, setFileLink, setDuration, nextPage }) => {
   };
 
   const stopMicrophone = () => {
-    Recorder.stop(Helper.getAudioTitle(userId))
+    Recorder.stop()
       .then(([audioFile, audioURL]) => {
         setBlobURL(audioURL);
         setAudio(audioFile);
