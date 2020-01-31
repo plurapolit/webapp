@@ -7,11 +7,11 @@ const HomeHeader = () => {
   return (
     <header className={styles["home-header"]}>
       <ContentWrapper>
-          <h1 className={styles["heading"]}>
+          <div className={styles["heading"]}>
             <u>Hör dir an,</u> 
             <br/>was Politiker 
             <br/>denken.
-          </h1>
+          </div>
         </ContentWrapper>
       </header>
   );

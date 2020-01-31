@@ -1,5 +1,92 @@
 @import '../../styles/global.scss';
 
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #00000055;
+}
+
+.burger {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+
+  &_item {
+    display: inline-block;
+    width: 3rem;
+    height: .4rem;
+    border-radius: 2rem;
+    background-color: #000;
+
+    &:nth-child(2) {
+      margin: .5rem 0;
+    }
+  }
+}
+
+.slider {
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 25rem;
+  height: 100vh;
+  background-color: $color-grey;
+  display: flex;
+  flex-direction: column;
+  padding-top: 8rem;
+  z-index: 500;
+  transition: all .5s ease-out;
+  transform: translateX(100%);
+
+  &_active {
+    transform: translateX(0);
+  }
+}
+
+.x {
+  position: absolute;
+  top: 3.5rem;
+  right: 1.5rem;
+  width: 3rem;
+  height: .4rem;
+  border-radius: 2rem;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.x_1 {
+  composes: x;
+  transform: rotate(-45deg);
+}
+
+.x_2 {
+  composes: x;
+  transform: rotate(45deg);
+}
+
+
+.list {
+  list-style: none;
+  text-align: right;
+  color: $color-white;
+}
+
+.item {
+  font-size: 2.2rem;
+  font-weight: 800;
+  padding: 1.8rem 2rem;
+
+  &:hover {
+    color: $color-primary;
+  }
+}
+
+
+
+
 .menuToggle {
   --burgerColor: '';
 
