@@ -1,9 +1,5 @@
 @import '../../styles/global.scss';
 
-.panel {
-  --color: red;
-}
-
 .image {
   height: 30vh;
   width: 100%;
@@ -18,8 +14,9 @@
 .headline {
   margin-bottom: 7rem;
   color: var(--color);
-  font-size: 2.2rem;
-  font-weight: bold;
+  text-shadow: 1px 1px 4px #000000;
+  font-size: 4rem;
+  font-weight: 800;
   text-transform: uppercase;
   max-width: 80rem;
   width: 100%;
@@ -27,7 +24,7 @@
 }
 
 .card-headline {
-  color: var(--color);
+  color: $headline-blue;
 }
 
 .bg {

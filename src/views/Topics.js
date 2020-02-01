@@ -13,7 +13,7 @@ const styles = {
     justifyContent: 'center',
     alignItems: 'flex-start',
     flexDirection: 'column',
-    marginTop: 20
+    marginTop: 20,
   }),
   topicContainer: css({
     display: 'flex',

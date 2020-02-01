@@ -1,7 +1,9 @@
 import React from 'react';
 import ReactModal from 'react-modal';
 
-const Modal = ({ children, isOpen, onClose, label = 'PluraPolit', style = {} }) => (
+const Modal = ({
+  children, isOpen, onClose, label = 'PluraPolit', style = {},
+}) => (
   // TODO: Stell sicher, dass das Modal auf allen screens gut aussehen.
 
   <ReactModal
@@ -9,6 +11,7 @@ const Modal = ({ children, isOpen, onClose, label = 'PluraPolit', style = {} }) 
     onRequestClose={onClose}
     contentLabel={label}
     style={style}
+    ariaHideApp={false}
   >
     {children}
   </ReactModal>

@@ -6,7 +6,9 @@ import Recorder from '../../helper/Recorder';
 
 import styles from './AudioRecorder.module.scss';
 
-const AudioRecorder = ({ userId, setFileLink, setDuration, nextPage }) => {
+const AudioRecorder = ({
+  userId, setFileLink, setDuration, nextPage,
+}) => {
   const [audio, setAudio] = useState(null);
   const [isRecording, setIsRecording] = useState(false);
   const [blobURL, setBlobURL] = useState('');

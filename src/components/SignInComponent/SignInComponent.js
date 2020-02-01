@@ -32,7 +32,7 @@ const SignInComponent = ({ setUser, routeBack = () => {} }) => {
         </form>
         <div className={styles["text"]}>
           <span>Du besitzt keinen Account? </span>
-          <Link to={'/sign_up/'}>
+          <Link to="/sign_up/">
             Registieren
           </Link>
         </div>

@@ -9,19 +9,19 @@ const BurgerMenu = ({ isTop }) => {
 
   const handleClick = () => {
     setShow(!show);
-  }
+  };
 
   const topStyle = {
     '--burgerColor': '#fff',
-  }
+  };
 
   const standardStyle = {
     '--burgerColor': '#282828',
-  }
+  };
 
   const sliderClass = `${styles["slider"]} ${show ? styles["slider_active"] : null}`;
 
-  
+
   return (
     <div>
       <div className={show ? styles["overlay"] : null} onClick={handleClick} />
@@ -33,8 +33,8 @@ const BurgerMenu = ({ isTop }) => {
 
       <div className={sliderClass}>
         <div className={styles["x_wrapper"]} onClick={handleClick}>
-          <span className={styles["x_1"]}/>
-          <span className={styles["x_2"]}/>
+          <span className={styles["x_1"]} />
+          <span className={styles["x_2"]} />
         </div>
         <ul className={styles["list"]}>
           <li className={styles["item"]}>
@@ -85,5 +85,5 @@ const BurgerMenu = ({ isTop }) => {
   //     </ul>
   //   </div>
   // );
-}
+};
 export default BurgerMenu;

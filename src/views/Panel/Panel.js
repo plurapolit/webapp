@@ -21,7 +21,7 @@ const Panel = ({ panel }) => {
         <ContentWrapper>
           <div className={styles["headline"]}>{panel.category.name}</div>
         </ContentWrapper>
-        <div className={styles["bg"]}>  
+        <div className={styles["bg"]}>
           <ContentWrapper>
             <PanelContent content={panel} />
           </ContentWrapper>

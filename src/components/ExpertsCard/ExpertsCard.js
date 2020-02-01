@@ -9,10 +9,10 @@ const ExpertsCard = ({ experts }) => {
 
   return (
     <div className={styles["ExpertsCard"]}>
-      <img src={speakerImage} className={styles["speaker-image"]}  alt={experts.full_name}/>
+      <img src={speakerImage} className={styles["speaker-image"]} alt={experts.full_name} />
       <img src={speakerOrganisation} className={styles["image-placeholder"]} />
     </div>
   );
-}
+};
 
 export default ExpertsCard;
