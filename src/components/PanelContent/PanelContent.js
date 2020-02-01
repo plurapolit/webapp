@@ -6,6 +6,8 @@ import audioWave from '../../media/images/sound-wave.svg';
 import playButton from '../../media/images/play.svg';
 import PanelComments from '../PanelComments/PanelComments';
 import Player from '../Player/Player';
+import JwtApi from '../../api/JwtApi';
+import { Parameter } from '../../api/APIUtils';
 
 const IMAGEROOTURL = process.env.REACT_APP_BUCKET_URL;
 
@@ -34,7 +36,9 @@ const PanelContent = ({ content }) => {
   };
 
   const showUserComments = async (userId) => {
-    await fetch(`${process.env.REACT_APP_ROOT_URL}/statements/${userId}/comments/`)
+    const jwt = JwtApi.get();
+    const headers = Parameter.get(jwt);
+    await fetch(`${process.env.REACT_APP_ROOT_URL}/statements/${userId}/comments/`, headers)
       .then((res) => res.json())
       .then((json) => setUserComments(json));
     setExpertsId(userId);

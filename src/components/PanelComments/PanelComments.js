@@ -1,17 +1,13 @@
 import React, { useState } from 'react';
 import moment from 'moment';
-
 import styles from './PanelComments.module.scss';
-import activeLikeButton from '../../media/images/likeActive.svg';
-import likeButton from '../../media/images/like.svg';
-import playButton from '../../media/images/play.svg';
+
+import CommentModal from '../CommentModal/CommentModal';
+import LikeButton from '../LikeButton/LikeButton';
 import audioWave from '../../media/images/sound-wave.svg';
 import closeButton from '../../media/images/close.svg';
 import microphoneButton from '../../media/images/microphone.svg';
-import CommentModal from '../CommentModal/CommentModal';
-import LikeApi from '../../api/LikeApi';
-import JwtApi from '../../api/JwtApi';
-import Notification from '../../helper/Notification';
+import playButton from '../../media/images/play.svg';
 
 const PanelComments = ({
   closeComments, comments, setSong, statementId,
@@ -24,23 +20,6 @@ const PanelComments = ({
 
   const closeModal = () => {
     setIsModalOpen(false);
-  };
-
-  const like = async () => {
-    const valid = await JwtApi.validate();
-    if (valid) {
-      LikeApi.post(statementId);
-    }
-    Notification.warning('Um diesen Service nutzen zu können, musst du dich anmelden');
-    // TODO: Error handling in einer seperaten Funktion auslagern und mit signin modal verbinden.
-  };
-
-  const disLike = async () => {
-    const valid = await JwtApi.validate();
-    if (valid) {
-      LikeApi.delete(statementId);
-    }
-    Notification.warning('Um diesen Service nutzen zu können, musst du dich anmelden');
   };
 
   const audioDuration = (comment) => (
@@ -92,15 +71,10 @@ const PanelComments = ({
                     &rdquo;
                 </div>
               </div>
-              <div className={styles["comments-like"]}>
-                {/* // TODO: implement like function */}
-                <img
-                  alt="icon"
-                  src={comment.likes.liked_by_current_user ? activeLikeButton : likeButton}
-                  className={styles["comments-like-img"]}
-                  onClick={comment.likes.liked_by_current_user ? () => disLike() : () => like()}
-                />
-              </div>
+              <LikeButton
+                isLiked={comment.likes.liked_by_current_user}
+                commentId={comment.comment.id}
+              />
             </div>
           ))}
           <div

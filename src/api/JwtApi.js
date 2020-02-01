@@ -14,12 +14,21 @@ const JwtApi = () => {
     return null;
   };
 
+  function get() {
+    if (!jwt) {
+      jwt = getJwtFromCookie();
+    }
+    return jwt;
+  }
+
   async function validate() {
     const URL = process.env.REACT_APP_ROOT_URL;
-    const parameters = Parameter.get(this.jwt);
+    get();
+    const parameters = Parameter.get(jwt);
     const res = await fetch(`${URL}/authenticate`, parameters);
     if (res.ok) {
-      return true;
+      const response = await res.json();
+      return response;
     }
     if (res.status === 401) {
       return false;
@@ -28,22 +37,15 @@ const JwtApi = () => {
     throw errorObj;
   }
 
-  function get() {
-    if (!this.jwt) {
-      this.jwt = getJwtFromCookie();
-    }
-    return this.jwt;
-  }
-
   function set(token) {
     Cookie.set('jwt', token);
-    this.jwt = token;
+    jwt = token;
   }
 
   async function deleteJwt() {
-    UserApi.signOut(this.jwt)
+    UserApi.signOut(jwt)
       .then(() => {
-        this.set(null);
+        set(null);
       });
   }
 
