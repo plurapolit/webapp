@@ -8,8 +8,7 @@ import audioWave from '../../media/images/sound-wave.svg';
 import closeButton from '../../media/images/close.svg';
 import microphoneButton from '../../media/images/microphone.svg';
 import playButton from '../../media/images/play.svg';
-import JwtApi from '../../api/JwtApi';
-import { Parameter } from '../../api/APIUtils';
+import CommentApi from '../../api/CommentApi';
 
 
 const PanelComments = ({
@@ -19,9 +18,7 @@ const PanelComments = ({
   const [userComments, setUserComments] = useState(null);
 
   const fetchUserComments = async () => {
-    const jwt = JwtApi.get();
-    const headers = Parameter.get(jwt);
-    await fetch(`${process.env.REACT_APP_ROOT_URL}/statements/${statementId}/comments/`, headers)
+    await CommentApi.getComments(statementId)
       .then((res) => res.json())
       .then((json) => setUserComments(json));
   };
