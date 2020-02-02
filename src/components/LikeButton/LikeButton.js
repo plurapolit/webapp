@@ -8,28 +8,25 @@ import Notification from '../../helper/Notification';
 
 const LikeButton = ({ isLiked, commentId }) => {
   const [liked, setLiked] = useState(isLiked);
+
   const like = async () => {
-    const valid = await JwtApi.validate();
-    if (valid) {
-      LikeApi.post(commentId);
-    } else {
-      Notification.warning('Um diesen Service nutzen zu können, musst du dich anmelden');
-    }
-    // TODO: Error handling in einer seperaten Funktion auslagern und mit signin modal verbinden.
+    LikeApi.post(commentId);
   };
 
   const dislike = async () => {
-    const valid = await JwtApi.validate();
-    if (valid) {
-      LikeApi.delete(commentId);
-    }
+    LikeApi.delete(commentId);
   };
 
   const toggleLike = () => {
     setLiked(!liked);
   };
 
-  const handleLikeClick = () => {
+  const handleLikeClick = async () => {
+    const valid = await JwtApi.validate();
+    if (!valid) {
+      return Notification.warning('Um diesen Service nutzen zu können, musst du dich anmelden');
+    }
+
     if (liked) {
       dislike();
     } else {
