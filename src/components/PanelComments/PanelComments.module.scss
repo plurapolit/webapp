@@ -1,6 +1,9 @@
 @import '../../styles/global.scss';
 
 .comments {
+  &-wrapper {
+    margin: 0 10px;
+  }
   &-card {
     display: flex;
     justify-content: space-between;
