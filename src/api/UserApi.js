@@ -3,8 +3,6 @@ import { fetchBody, Parameter } from './APIUtils';
 const UserApi = () => {
   const URL = process.env.REACT_APP_ROOT_URL;
 
-  // TODO: Load user just with valid jwt
-
   const signIn = (email, password) => {
     const body = {
       user: {

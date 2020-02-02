@@ -10,7 +10,6 @@ import Helper from './CommentModalHelper';
 import AcceptTerms from '../AcceptTerms/AcceptTerms';
 import AddQuote from '../AddQuote/AddQuote';
 
-// TODO: update Styling for all rendered components
 const CommentModal = ({ isOpen, closeModal, statementId }) => {
   const [page, setPage] = useState(1);
   const quote = useRef(undefined);
@@ -55,7 +54,7 @@ const CommentModal = ({ isOpen, closeModal, statementId }) => {
             case 1:
               return <AcceptTerms nextPage={nextPage} />;
             case 2:
-              return <AudioRecorder userId={data.user.id} setFileLink={setFileLink} setDuration={setDuration} nextPage={nextPage} />;
+              return <AudioRecorder setFileLink={setFileLink} setDuration={setDuration} nextPage={nextPage} />;
             case 3:
               return <AddQuote setQuote={setQuote} sendToRails={sendToRails} />;
             default:

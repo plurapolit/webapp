@@ -1,6 +1,9 @@
 @import '../../styles/global.scss';
 
 .comments {
+  &-wrapper {
+    margin: 0 10px;
+  }
   &-card {
     display: flex;
     justify-content: space-between;
@@ -67,13 +70,6 @@
       color: $text-dark-2;
     }
 
-  }
-  &-like {
-    margin-top: auto;
-    cursor: pointer;
-    &-img {
-      height: 2.5rem;
-    }
   }
   &-comment {
     display: flex;

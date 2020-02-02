@@ -11,9 +11,10 @@ const Store = ({ children }) => {
   const [slugList, setSlugList] = useState(undefined);
 
   useEffect(() => {
-    StoreHelper.loadContent((newCategoryList, newSlugList) => {
+    StoreHelper.loadContent((newCategoryList, newSlugList, recognisedUser) => {
       setCategoryList(newCategoryList);
       setSlugList(newSlugList);
+      setUser(recognisedUser);
     });
   }, []);
 
