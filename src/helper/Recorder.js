@@ -2,7 +2,7 @@ import MicRecorder from 'mic-recorder-to-mp3';
 import uid from 'uid';
 
 const Recorder = () => {
-  const Mp3Recorder = new MicRecorder({ bitRate: 128 });
+  const Mp3Recorder = new MicRecorder({ bitRate: 256 });
 
   const stop = () => {
     const promise = new Promise((resolve) => {
