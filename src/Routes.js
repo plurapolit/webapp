@@ -5,6 +5,7 @@ import 'react-notifications-component/dist/theme.css';
 
 import StoreContext from './layouts/Store/StoreContext';
 import NavBar from './components/Navbar/Navbar';
+import NavbarBuffer from './layouts/NavbarBuffer/NavbarBuffer';
 import Footer from './components/Footer/Footer';
 import HomePage from './views/HomePage/HomePage';
 import Terms from './views/Terms/Terms';
@@ -20,25 +21,27 @@ const Routes = () => (
       <>
         <NavBar user={data.user} />
         <Notification />
-        <Switch>
-          <Route exact path="/">
-            <HomePage categoryList={data.categoryList} />
-          </Route>
-          <Route exact path="/terms/">
-            <Terms />
-          </Route>
-          <Route exact path="/topics/" component={Topics} />
-          <Route exact path="/thanks/" component={Thanks} />
-          <Route exact path="/sign_in/">
-            <SignIn />
-          </Route>
-          <Route exact path="/sign_up/">
-            <SignUp setUser={data.setUser} />
-          </Route>
-          <Route path="/:slug">
-            <PanelWrapper slugList={data.slugList} />
-          </Route>
-        </Switch>
+        <NavbarBuffer>
+          <Switch>
+            <Route exact path="/">
+              <HomePage categoryList={data.categoryList} />
+            </Route>
+            <Route exact path="/terms/">
+              <Terms />
+            </Route>
+            <Route exact path="/topics/" component={Topics} />
+            <Route exact path="/thanks/" component={Thanks} />
+            <Route exact path="/sign_in/">
+              <SignIn />
+            </Route>
+            <Route exact path="/sign_up/">
+              <SignUp setUser={data.setUser} />
+            </Route>
+            <Route path="/:slug">
+              <PanelWrapper slugList={data.slugList} />
+            </Route>
+          </Switch>
+        </NavbarBuffer>
         <Footer />
       </>
     )}
