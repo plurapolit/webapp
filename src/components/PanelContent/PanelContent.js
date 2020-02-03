@@ -11,8 +11,13 @@ const PanelContent = ({ content }) => {
   const [showMediaPlayer, setShowMediaPlayer] = useState(false);
   const [isAutoplayed, setIsAutoplayed] = useState(false);
   const [currentUser, setCurrentUser] = useState('');
+  const [playerIsStopped, setPlayerIsStopped] = useState(false);
 
   const panelTitle = content.panel.short_title;
+
+  const stopPlayer = () => {
+    setPlayerIsStopped(true);
+  };
 
   return (
     <div>
@@ -39,6 +44,7 @@ const PanelContent = ({ content }) => {
           isAutoplayed={isAutoplayed}
           currentUser={currentUser}
           panelTitle={panelTitle}
+          isStopped={playerIsStopped}
         />
       )}
     </div>
