@@ -51,6 +51,8 @@ const Comment = ({ commentData, setSong }) => {
     const currentUserLikeFetched = commentData.likes.liked_by_current_user;
     if (!currentUserLikeFetched && liked) {
       likeAmount = totalLikes + 1;
+    } else if (currentUserLikeFetched && !liked) {
+      likeAmount = totalLikes - 1;
     } else {
       likeAmount = totalLikes;
     }
