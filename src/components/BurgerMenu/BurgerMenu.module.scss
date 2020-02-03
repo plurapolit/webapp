@@ -10,7 +10,7 @@
 }
 
 .burger {
-  display: flex;
+  display: none;
   flex-direction: column;
   cursor: pointer;
 
@@ -24,6 +24,10 @@
     &:nth-child(2) {
       margin: .5rem 0;
     }
+  }
+
+  @media screen and (max-width: 750px) {
+    display: flex;
   }
 }
 

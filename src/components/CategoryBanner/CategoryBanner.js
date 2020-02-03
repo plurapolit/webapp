@@ -17,7 +17,7 @@ const CategoryBanner = ({
 
   return (
     <section className={styles["category-banner"]} style={customStyle}>
-      <div className={styles["image"]} />
+      <img src={`${ROOTIMAGEURL}/${imageUrl}`} alt={name} className={styles["image"]}/>
       <ContentWrapper>
         <div className={styles["name"]}>{name}</div>
         <PanelList data={panels} />

@@ -5,7 +5,6 @@
   --url: "";
   position: relative;
   width: 100%;
-  padding: $spacing-section 0;
   background-color: var(--bg);
 }
 
@@ -21,8 +20,6 @@
   position: absolute;
   top: 0;
   left: 0;
-  background-image: var(--url);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  object-fit: cover;
+  object-position: center;
 }
