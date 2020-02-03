@@ -3,7 +3,8 @@
 .home-header {
   display: flex;
   align-items: flex-end;
-  height: 30vh;
+  height: 40vh;
+  max-height: 35rem;
   padding: $spacing-section 0;
   background-image: url("./images/HomeHeader_bg.png");
   background-size: cover;
@@ -16,4 +17,8 @@
   font-size: 4rem;
   font-weight: 900;
   text-transform: uppercase;
+
+  @media screen and (max-width: 450px) {
+    font-size: 3rem;
+  }
 }

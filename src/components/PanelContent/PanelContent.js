@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import styles from './PanelContent.module.scss';
 
 import Player from '../Player/Player';
+import ContentWrapper from '../ContentWrapper/ContentWrapper';
 import Statement from '../Statement/Statement';
 
 const PanelContent = ({ content }) => {
@@ -20,25 +21,22 @@ const PanelContent = ({ content }) => {
 
   return (
     <div>
-      <div className={styles["row"]}>
-        <div className={styles.headline}>
-          {content.panel.title}
-        </div>
-        <div className={styles.description}>{content.panel.description}</div>
-        <div className={styles.wrapper}>
-          <div className={styles["experts-headline"]}>Experten</div>
-          {content.expert_statements.map((expert) => (
-            <Statement
-              key={expert.statement.id}
-              expert={expert}
-              setAudioStatement={setAudioStatement}
-              setShowMediaPlayer={setShowMediaPlayer}
-              setIsAutoplayed={setIsAutoplayed}
-              setCurrentUser={setCurrentUser}
-              stopPlayer={stopPlayer}
-            />
-          ))}
-        </div>
+      <div className={styles.headline}>
+        {content.panel.title}
+      </div>
+      <div className={styles.description}>{content.panel.description}</div>
+      <div className={styles.wrapper}>
+        <div className={styles["experts-headline"]}>Experten</div>
+        {content.expert_statements.map((expert) => (
+          <Statement
+            key={expert.statement.id}
+            expert={expert}
+            setAudioStatement={setAudioStatement}
+            setShowMediaPlayer={setShowMediaPlayer}
+            setIsAutoplayed={setIsAutoplayed}
+            setCurrentUser={setCurrentUser}
+          />
+        ))}
       </div>
       {showMediaPlayer && (
         <Player

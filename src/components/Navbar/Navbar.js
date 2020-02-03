@@ -66,7 +66,7 @@ const Navbar = ({ user }) => {
           </StoreContext.Consumer>
         </div>
       </ul>
-      <BurgerMenu isTop={isAtTop} />
+      <BurgerMenu isTop={isAtTop} user={user} />
     </nav>
   );
 };

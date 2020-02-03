@@ -1,18 +1,12 @@
 @import '../../styles/global.scss';
 
-.row {
-  max-width: 80rem;
-  width: 100%;
-  margin: 0 auto;
-  padding: 0 2rem;
-}
-
 .headline {
   color: $headline-blue;
   font-size: 2.2rem;
   line-height: 2.4rem;
   font-weight: bold;
-  padding-top: 2rem;
+  padding-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 .description {

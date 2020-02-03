@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import SignUpButton from '../SignUpButton/SignUpButton';
+import SignOutButton from '../SignOutButton/SignOutButton';
+
+import StoreContext from '../../layouts/Store/StoreContext';
+
 import styles from './BurgerMenu.module.scss';
 
-
-const BurgerMenu = ({ isTop }) => {
+const BurgerMenu = ({ isTop, user }) => {
   const [show, setShow] = useState(false);
 
 
@@ -38,52 +42,40 @@ const BurgerMenu = ({ isTop }) => {
         </div>
         <ul className={styles["list"]}>
           <li className={styles["item"]}>
-            <Link to="/sign_up/">
-              Registieren
+            <Link to="/" onClick={handleClick}>
+              Home
             </Link>
           </li>
-          <li className={styles["item"]}>
-            <Link to="/sign_in/">
-              Anmelden
-            </Link>
-          </li>
-          <li className={styles["item"]}>
+          <li className={styles["item"]} onClick={handleClick}>
             <Link to="/terms/">
               Nutzungsbedingungen
             </Link>
           </li>
+          <li className={styles["item"]} onClick={handleClick}>
+            <Link to="/sign_in/">
+              Anmelden
+            </Link>
+          </li>
+          {!user ? 
+            <li className={styles["item"]}>
+              <SignUpButton user={user} />
+            </li>
+            : null
+          }
+          <StoreContext.Consumer>
+            {(data) => (
+              <li className={styles["item"]}>
+                <SignOutButton
+                  user={user}
+                  removeUser={data.removeUser}
+                />
+              </li>
+            )}
+          </StoreContext.Consumer>
         </ul>
       </div>
     </div>
   );
-
-
-  // return (
-  //   <div className={styles["menuToggle"]} style={isTop ? topStyle : standardStyle}>
-  //     <input type="checkbox"></input>
-
-  //       <span></span>
-  //       <span></span>
-  //       <span></span>
-
-  //     <ul className={styles["menu"]}>
-  //       <li className={styles["navbar-hamburger_item"]}>
-  //         <Link to="/sign_up/">
-  //           Registieren
-  //         </Link>
-  //       </li>
-  //       <li className={styles["navbar-hamburger_item"]}>
-  //         <Link to="/sign_in/">
-  //           Anmelden
-  //         </Link>
-  //       </li>
-  //       <li className={styles["navbar-hamburger_item"]}>
-  //         <Link to="/terms/">
-  //           Nutzungsbedingungen
-  //         </Link>
-  //       </li>
-  //     </ul>
-  //   </div>
-  // );
 };
+
 export default BurgerMenu;

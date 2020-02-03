@@ -11,6 +11,7 @@
 .container {
   display: flex;
   justify-content: space-around;
+  flex-wrap: wrap;
   list-style-type: none;
   width: 100%;
 }
