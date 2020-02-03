@@ -6,8 +6,10 @@
 
 .image {
   height: 40vh;
+  max-height: 35rem;
   width: 100%;
   object-fit: cover;
+  object-position: center;
 }
 
 .wrapper {

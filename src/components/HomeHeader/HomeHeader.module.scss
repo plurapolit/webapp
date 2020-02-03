@@ -3,16 +3,13 @@
 .home-header {
   display: flex;
   align-items: flex-end;
-  height: 65vh;
+  height: 40vh;
+  max-height: 35rem;
   padding: $spacing-section 0;
   background-image: url("./images/HomeHeader_bg.png");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-
-  @media screen and (max-width: 450px) {
-    height: 50vh;
-  }
 }
 
 .heading {

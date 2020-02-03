@@ -51,6 +51,11 @@ const BurgerMenu = ({ isTop, user }) => {
               Nutzungsbedingungen
             </Link>
           </li>
+          <li className={styles["item"]} onClick={handleClick}>
+            <Link to="/sign_in/">
+              Anmelden
+            </Link>
+          </li>
           {!user ? 
             <li className={styles["item"]}>
               <SignUpButton user={user} />
