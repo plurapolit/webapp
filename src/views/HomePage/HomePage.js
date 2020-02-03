@@ -9,14 +9,18 @@ import { isLoaded } from '../../helper/helper';
 import CategoryList from '../../components/CategoryList/CategoryList';
 import Feedback from '../../components/Feedback/Feedback';
 
+import styles from './HomePage.module.scss';
+
 const HomePage = ({ categoryList }) => (
   <div>
     <HomePageMetaTags />
     <HomeHeader />
     <About />
     {isLoaded(categoryList, <CategoryList categoryList={categoryList} />)}
-    <MoreSection />
-    <Feedback />
+    <div className={styles["bottom-wrapper"]}>
+      <MoreSection />
+      <Feedback />
+    </div>
   </div>
 );
 

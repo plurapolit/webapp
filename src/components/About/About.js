@@ -8,11 +8,14 @@ const About = () => (
   <section className={styles["about"]}>
     <ContentWrapper>
       <Text
-        headline="PluraPolit hilft Dir Dich politish zu informieren und mitzudiskutieren"
+        headline="Auf PluraPolit kannst du dich politisch informieren und mitdiskutieren."
       >
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-          Deserunt, ipsam, nihil minus laudantium voluptates, ab soluta voluptas sequi
-          ad vero repellat dolor temporibus cum quos labore error assumenda. Suscipit, aperiam!
+        Zu jedem Thema findest du bei
+        uns die Meinungen von Politiker/-innen aller Parteien,
+        die im Bundestag sitzen sowie von drei weiteren
+        Expert/-innen. Alles in kurzen Audio-Statements.
+        <br />
+        Diskutier durch eigene Sprachnotizen mit!
       </Text>
     </ContentWrapper>
   </section>

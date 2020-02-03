@@ -9,16 +9,14 @@ import styles from './MoreSection.module.scss';
 const MoreSection = () => (
   <section className={styles["more-section"]}>
     <ContentWrapper>
-      <div className={styles["line"]} />
-      <Text
-        headline="More to come. Short Preview. Stay tuned. Newsletter signup"
-      >
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-          Deserunt, ipsam, nihil minus laudantium voluptates, ab soluta voluptas sequi
-          ad vero repellat dolor temporibus cum quos labore error assumenda. Suscipit, aperiam!
+      <div className={`${styles["heading"]} u-margin-bottom--medium`}>
+        Werde Teil von PluraPolit
+      </div>
+      <Text>
+        Diskutier bei uns mit und gib deiner Meinung eine Stimme!
       </Text>
       <Button customClass="u-margin-top--medium" to="/sign_up/">
-          Tell me more
+        Jetzt kostenlos anmelden
       </Button>
     </ContentWrapper>
   </section>

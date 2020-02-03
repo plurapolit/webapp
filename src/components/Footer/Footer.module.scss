@@ -5,7 +5,7 @@
   align-items: center;
   width: 100%;
   height: $footer-height;
-  border-top: solid 1px black;
+  // border-top: solid 1px black;
 }
 
 .container {
@@ -17,6 +17,7 @@
 }
 
 .item {
-  font-size: 1.4rem;
-  font-weight: 600;
+  font-size: 1.7rem;
+  font-weight: 500;
+  margin: 1rem;
 }
