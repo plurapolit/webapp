@@ -16,7 +16,7 @@ const PanelContent = ({ content }) => {
 
   return (
     <div>
-      <div className={styles.headline} style={customStyle}>
+      <div className={styles.headline}>
         {content.panel.title}
       </div>
       <div className={styles.description}>{content.panel.description}</div>
