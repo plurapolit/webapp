@@ -12,7 +12,6 @@ const CategoryBanner = ({
 
   const customStyle = {
     '--bg': `${color}`,
-    '--url': `url(${ROOTIMAGEURL}/${imageUrl})`,
   };
 
   return (

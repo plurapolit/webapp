@@ -1,12 +1,17 @@
 const CommentModalHelper = () => {
   const modalStyle = {
     content: {
-      marginTop: '60px',
-      maxHeight: '100vh',
-      maxWidth: '100vw',
+      position: 'absolute',
+      left: '50%',
+      top: '50%',
+      transform: 'translate(-50%, -50%)',
+      marginTop: '6rem',
+      height: '80vh',
+      width: '90vh',
+      maxWidth: '60rem',
       overflowY: 'auto',
-      display: 'flex',
       padding: '2rem',
+      display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
       borderRadius: '1rem',

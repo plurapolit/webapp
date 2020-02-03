@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import SignUpButton from '../SignUpButton/SignUpButton';
+import SignOutButton from '../SignOutButton/SignOutButton';
+
+import StoreContext from '../../layouts/Store/StoreContext';
+
 import styles from './BurgerMenu.module.scss';
 
-
-const BurgerMenu = ({ isTop }) => {
+const BurgerMenu = ({ isTop, user }) => {
   const [show, setShow] = useState(false);
 
 
@@ -38,13 +42,8 @@ const BurgerMenu = ({ isTop }) => {
         </div>
         <ul className={styles["list"]}>
           <li className={styles["item"]}>
-            <Link to="/sign_up/" onClick={handleClick}>
-              Registieren
-            </Link>
-          </li>
-          <li className={styles["item"]} onClick={handleClick}>
-            <Link to="/sign_in/">
-              Anmelden
+            <Link to="/" onClick={handleClick}>
+              Home
             </Link>
           </li>
           <li className={styles["item"]} onClick={handleClick}>
@@ -52,6 +51,22 @@ const BurgerMenu = ({ isTop }) => {
               Nutzungsbedingungen
             </Link>
           </li>
+          {!user ? 
+            <li className={styles["item"]}>
+              <SignUpButton user={user} />
+            </li>
+            : null
+          }
+          <StoreContext.Consumer>
+            {(data) => (
+              <li className={styles["item"]}>
+                <SignOutButton
+                  user={user}
+                  removeUser={data.removeUser}
+                />
+              </li>
+            )}
+          </StoreContext.Consumer>
         </ul>
       </div>
     </div>
