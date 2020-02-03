@@ -9,24 +9,26 @@ const Panel = ({ panel }) => {
   const customStyle = {
     '--color': `${panel.panel.font_color}`,
   };
-
+  
   return (
     <div className={styles["panel"]} style={customStyle}>
-      <img
-        src={`${IMAGEROOTURL}/${panel.panel_avatar_key}`}
-        alt={panel.category.name}
-        className={styles["image"]}
-      />
-      <div className={styles["container"]}>
-        <ContentWrapper>
-          <div className={styles["headline"]}>{panel.category.name}</div>
-        </ContentWrapper>
-        <div className={styles["bg"]}>
+      <div className={styles["header"]}>
+        <img
+          src={`${IMAGEROOTURL}/${panel.panel_avatar_key}`}
+          alt={panel.category.name}
+          className={styles["image"]}
+        />
+        <div className={styles["wrapper"]}>
           <ContentWrapper>
-            <PanelContent content={panel} />
+            <div className={styles["headline"]}>{panel.category.name}</div>
           </ContentWrapper>
+          <div className={styles["rounder"]} />
         </div>
+
       </div>
+      <ContentWrapper>
+        <PanelContent content={panel} />
+      </ContentWrapper>
     </div>
   );
 };
