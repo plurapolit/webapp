@@ -14,11 +14,6 @@ const PanelContent = ({ content }) => {
 
   const panelTitle = content.panel.short_title;
 
-  const customStyle = {
-    '--color': `${content.panel.font_color}`,
-  };
-
-  console.log('content', content);
   return (
     <div>
       <div className={styles.headline} style={customStyle}>
