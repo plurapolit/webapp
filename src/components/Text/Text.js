@@ -1,6 +1,5 @@
 import React from 'react';
 
-import ContentWrapper from '../ContentWrapper/ContentWrapper';
 import styles from './Text.module.scss';
 
 const Text = ({ headline, children }) => (

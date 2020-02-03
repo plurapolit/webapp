@@ -7,11 +7,13 @@ const HomeHeader = () => (
   <header className={styles["home-header"]}>
     <ContentWrapper>
       <div className={styles["heading"]}>
-        <u>Hör dir an,</u>
+        Ein Thema.
         <br />
-was Politiker
+        9 Meinungen.
         <br />
-denken.
+        <span className={styles["heading-accent"]}>
+          deine Stimme.
+        </span>
       </div>
     </ContentWrapper>
   </header>

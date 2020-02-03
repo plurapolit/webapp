@@ -23,6 +23,14 @@
   margin-bottom: 2rem;
 }
 
+.disclaimer {
+  font-size: 1.5rem;
+  line-height: 1.2;
+  color: $text-dark-1;
+  font-weight: 400;
+  padding: 1rem;
+}
+
 @keyframes slideUp {
   0% {
     opacity: 20%;
