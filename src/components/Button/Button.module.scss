@@ -1,0 +1,25 @@
+@import '../../styles/global.scss';
+
+.button {
+  padding: 1rem 2rem;
+  font-size: 1.8rem;
+  font-weight: 500;
+  color: $color-white;
+  background-color: $color-primary;
+  border-radius: 50rem;
+  box-shadow: 0 3px 4px 0 rgba(0,0,0,0.14), 0 3px 3px -2px rgba(0,0,0,0.12), 0 1px 8px 0 rgba(0,0,0,0.20);
+  transition: all .2s;
+  cursor: pointer;
+
+  &:hover {
+    transform: translateY(-3px);
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &:active {
+    transform: translateY(-1px);
+  }
+}

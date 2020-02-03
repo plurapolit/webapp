@@ -1,11 +1,9 @@
 import React from 'react';
 
-const Thanks = () => {
-  return (
-    <div>
+const Thanks = () => (
+  <div>
       thank you for submitting your audio.
-    </div>
-  );
-};
+  </div>
+);
 
 export default Thanks;

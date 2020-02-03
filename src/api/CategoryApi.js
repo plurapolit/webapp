@@ -1,10 +1,10 @@
-import { fetchData } from './APIUtils';
+import { fetchBody } from './APIUtils';
 
 const CategoryApi = () => {
   const URL = process.env.REACT_APP_ROOT_URL;
 
-  const fetchAllCategories = async () => {
-    const categories = fetchData(`${URL}/panels`);
+  const fetchAllCategories = () => {
+    const categories = fetchBody(`${URL}/panels`);
     return categories;
   };
 

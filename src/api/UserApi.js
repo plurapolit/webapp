@@ -1,4 +1,4 @@
-import { fetchData, Parameter } from './APIUtils';
+import { fetchBody, Parameter } from './APIUtils';
 
 const UserApi = () => {
   const URL = process.env.REACT_APP_ROOT_URL;
@@ -12,25 +12,37 @@ const UserApi = () => {
     };
 
     const parameters = Parameter.post(body);
-    return fetchData(`${URL}/users/sign_in`, parameters);
+    return fetchBody(`${URL}/users/sign_in`, parameters);
   };
 
-  const signUp = (email, password, firstName, lastName) => {
+  const signUp = (email, password, firstName, lastName, ageRange) => {
     const body = {
       user: {
         email,
         password,
         first_name: firstName,
         last_name: lastName,
+        age_range_id: ageRange,
       },
     };
     const parameters = Parameter.post(body);
-    return fetchData(`${URL}/users`, parameters);
+    return fetchBody(`${URL}/users`, parameters);
+  };
+
+  const signOut = async (jwt) => {
+    const parameters = Parameter.delete(jwt);
+    const res = await fetch(`${URL}/users/sign_out`, parameters);
+    if (!res.ok) {
+      const errorOkj = await res.json();
+      throw errorOkj;
+    }
+    return true;
   };
 
   return {
     signIn,
     signUp,
+    signOut,
   };
 };
 

@@ -1,0 +1,41 @@
+@import '../../styles/global.scss';
+
+.row {
+  max-width: 80rem;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.headline {
+  color: $headline-blue;
+  font-size: 2.2rem;
+  line-height: 2.4rem;
+  font-weight: bold;
+  padding-top: 2rem;
+}
+
+.description {
+  color: $text-dark-1;
+  font-size: 1.8rem;
+  line-height: 1.9rem;
+}
+
+.experts-headline {
+  color: $headline-dark-1;
+  font-size: 2.6rem;
+  line-height: 3.8rem;
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+}
+
+@keyframes slideUp {
+  0% {
+    opacity: 20%;
+    transform: translateY(3rem);
+  }
+  100% {
+    opacity: 100%;
+    transform: translateY(0);
+  }
+}

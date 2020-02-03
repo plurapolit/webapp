@@ -1,5 +1,10 @@
+@import '../../styles/global';
+
 .text {
   font-size: 1.8rem;
+  line-height: 1.2;
+  color: $text-dark-1;
+  font-weight: 400;
 }
 
 .headline {

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 import UserApi from '../../api/UserApi';
@@ -7,22 +7,24 @@ import StoreHelper from './StoreHelper';
 
 const Store = ({ children }) => {
   const [user, setUser] = useState(undefined);
-  const [categories, setCategories] = useState(undefined);
-  const jwt = useRef(null);
+  const [categoryList, setCategoryList] = useState(undefined);
+  const [slugList, setSlugList] = useState(undefined);
 
   useEffect(() => {
-    StoreHelper.loadCategories((newCategories) => setCategories(newCategories));
+    StoreHelper.loadContent((newCategoryList, newSlugList, recognisedUser) => {
+      setCategoryList(newCategoryList);
+      setSlugList(newSlugList);
+      setUser(recognisedUser);
+    });
   }, []);
-
-  const signIn = async (email = 'robinzuschke@hotmail.de', password = 'secret') => {
-    const data = await UserApi.signIn(email, password);
-    jwt.current = data.token;
-    setUser(data.user);
-  };
 
   const signUp = async (email = 'foo@bar.de', password = 'secret', firstName = 'Foo', lastName = 'Bar') => {
     const newUser = await UserApi.signUp(email, password, firstName, lastName);
     setUser(newUser);
+  };
+
+  const removeUser = () => {
+    setUser(undefined);
   };
 
   return (
@@ -30,9 +32,11 @@ const Store = ({ children }) => {
       value={
         {
           user,
-          categories,
-          signIn,
+          categoryList,
+          slugList,
+          setUser,
           signUp,
+          removeUser,
         }
       }
     >

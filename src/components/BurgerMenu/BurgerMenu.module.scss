@@ -1,31 +1,119 @@
+@import '../../styles/global.scss';
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #00000055;
+}
+
+.burger {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+
+  &_item {
+    display: inline-block;
+    width: 3rem;
+    height: .4rem;
+    border-radius: 2rem;
+    background-color: #000;
+
+    &:nth-child(2) {
+      margin: .5rem 0;
+    }
+  }
+}
+
+.slider {
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 25rem;
+  height: 100vh;
+  background-color: $color-grey;
+  display: flex;
+  flex-direction: column;
+  padding-top: 8rem;
+  z-index: 500;
+  transition: all .5s ease-out;
+  transform: translateX(100%);
+
+  &_active {
+    transform: translateX(0);
+  }
+}
+
+.x {
+  position: absolute;
+  top: 3.5rem;
+  right: 1.5rem;
+  width: 3rem;
+  height: .4rem;
+  border-radius: 2rem;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.x_1 {
+  composes: x;
+  transform: rotate(-45deg);
+}
+
+.x_2 {
+  composes: x;
+  transform: rotate(45deg);
+}
+
+
+.list {
+  list-style: none;
+  text-align: right;
+  color: $color-white;
+}
+
+.item {
+  font-size: 2.2rem;
+  font-weight: 800;
+  padding: 1.8rem 2rem;
+
+  &:hover {
+    color: $color-primary;
+  }
+}
+
+
+
+
 .menuToggle {
-  display: none; // block
+  --burgerColor: '';
+
+  display: none;
   position: relative;
-  top: 50px;
-  left: 50px;
-  
   z-index: 1;
   
-  -webkit-user-select: none;
   user-select: none;
+
+  @media screen and (max-width: 750px) {
+    display: block;
+  }
 
   & a {
     text-decoration: none;
-    color: #232323;
-    
+    color: $color-primary;
+
     transition: color 0.3s ease;
-    &:hover {
-      color: tomato;
-    }
   }
 
   & input {
     display: block;
-    width: 40px;
-    height: 32px;
+    width: 100%;
+    height: 100%;
     position: absolute;
-    top: -7px;
-    left: -5px;
+    top: 0;
+    left: 0;
     
     cursor: pointer;
     
@@ -42,7 +130,7 @@
     margin-bottom: 5px;
     position: relative;
     
-    background: #cdcdcd;
+    background: var(--burgerColor);
     border-radius: 3px;
     
     z-index: 1;
@@ -62,6 +150,7 @@
     }
   }
 
+
   & input:checked ~ span:nth-last-child(3) {
     opacity: 0;
     transform: rotate(0deg) scale(0.2, 0.2);
@@ -70,7 +159,7 @@
   & input:checked ~ span {
     opacity: 1;
     transform: rotate(45deg) translate(-2px, -1px);
-    background: #232323;
+    background: var(--burgerColor);
   }
 
   & input:checked ~ span:nth-last-child(2) {
@@ -79,30 +168,38 @@
 
   & input:checked ~ ul {
     transform: none;
+    opacity: 1;
   }
 
+  & input:checked ~ ul li {
+    visibility: visible;
+  }
 }
 
-
 .menu {
-  display: none; // del
-  position: absolute; 
-  width: 300px;
-  margin: -100px 0 0 -50px;
-  padding: 50px;
-  padding-top: 125px;
-  
-  background: #ededed;
+  position: absolute;
+  top: 4rem;
+  right: -1rem;
+  min-width: 20rem;
+  background-color: $color-white;
   list-style-type: none;
-  -webkit-font-smoothing: antialiased;
-  /* to stop flickering of text in safari */
+  border-radius: .3rem;
+  transform: translateX(10%);
+  box-shadow: 0 0 10px rgba($color-grey, .3);
+  opacity: 0;
+  transition: all .3s;
   
-  transform-origin: 0% 0%;
-  transform: translate(-100%, 0);
-  
-  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
   & li {
-    padding: 10px 0;
-    font-size: 22px;
+    visibility: hidden;
+    width: 100%;
+    text-align: right;
+    padding: 2rem 3rem;
+    font-size: 2.6rem;
+    border-top: solid 1px rgba($color-primary, .5);  
+
+    &:first-child {
+      border: none;
+    }
   }
+
 }

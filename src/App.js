@@ -3,12 +3,13 @@ import { BrowserRouter as Router } from 'react-router-dom';
 
 import Store from './layouts/Store/Store';
 import Routes from './Routes';
-import Player from './components/Player/Player';
+import ScrollToTop from './helper/ScrollToTop';
+
 
 const App = () => (
   <Store>
     <Router>
-      <Player />
+      <ScrollToTop />
       <Routes />
     </Router>
   </Store>

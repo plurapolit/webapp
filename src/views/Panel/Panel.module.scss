@@ -1,0 +1,36 @@
+@import '../../styles/global.scss';
+
+.image {
+  height: 30vh;
+  width: 100%;
+  object-fit: cover;
+}
+
+.container {
+  background-color: transparent;
+  margin-top: -7rem;
+}
+
+.headline {
+  margin-bottom: 7rem;
+  color: var(--color);
+  text-shadow: 1px 1px 4px #000000;
+  font-size: 4rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  max-width: 80rem;
+  width: 100%;
+  padding: 0 0 2rem 2rem;
+}
+
+.card-headline {
+  color: $headline-blue;
+}
+
+.bg {
+  position: relative;
+  border-top-left-radius: 1.5rem;
+  border-top-right-radius: 1.5rem;
+  background-color: $color-white;
+  margin-top: -5rem;
+}

@@ -1,28 +1,31 @@
-import React, { useRef, useEffect } from 'react';
+import React from 'react';
+import { Link } from 'react-router-dom';
+
+import ExpertsList from '../ExpertsList/ExpertsList';
 import styles from './PanelCard.module.scss';
 
-const PanelCard = ({ title, imageUrl, color, avatars, shortTitle }) => {
-  const refCard = useRef(null);
-
-  useEffect(() => {
-    refCard.current.style.setProperty('--url', `url(${imageUrl})`);
-    refCard.current.style.setProperty('--color', `${color}`);
-  }, []);
+const PanelCard = ({
+  title, imageUrl, color, shortTitle, slug, experts,
+}) => {
+  const customStyle = {
+    '--url': `url(${imageUrl})`,
+    '--color': `${color}`,
+  };
 
   return (
-    <div ref={refCard} className={styles["question-banner"]}>
-      <div className={styles["image-wrapper"]}>
-        <div className={styles["shortTitle"]}>{shortTitle}</div>
-      </div>
-      <div className={styles["detail-wrapper"]}>
-        <div className={styles["title"]}>{title}</div>
-        <div className={styles["avatar-wrapper"]}>
-          <p>Hello</p>
-          <p>there</p>
-          <p>there</p>
+    <Link to={`${slug}`}>
+      <div className={styles["question-banner"]} style={customStyle}>
+        <div className={styles["image-wrapper"]}>
+          <div className={styles["shortTitle"]}>{shortTitle}</div>
+        </div>
+        <div className={styles["detail-wrapper"]}>
+          <div className={styles["title"]}>{title}</div>
+          <div className={styles["experts-wrapper"]}>
+            <ExpertsList experts={experts} />
+          </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

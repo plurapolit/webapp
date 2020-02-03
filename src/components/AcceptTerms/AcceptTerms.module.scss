@@ -1,0 +1,34 @@
+@import '../../styles/global.scss';
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.headline {
+  font-weight: 500;
+  color: $headline-blue;
+  font-size: 2.5rem;
+}
+
+.terms {
+  font-size: 1.7rem;
+  padding: 2rem 0.5rem 4rem 2rem;
+  &-emphasis {
+    font-weight: 700;
+    color: $headline-blue;
+  }
+  &-link {
+    color: $headline-blue;
+    text-decoration: underline;
+    padding-top: 10px;
+  }
+}
+
+
+.step-index {
+  color: $color-grey-2;
+  text-align: center;
+  font-size: 1.5rem;
+  margin-top: 1rem;
+}

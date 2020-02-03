@@ -1,10 +1,12 @@
+@import '../../styles/global.scss';
+
 .category-banner {
-  --color: orangered;
+  --bg: "";
   --url: "";
   position: relative;
   width: 100%;
-  padding: 3rem 0;
-  background-color: var(--color);
+  padding: $spacing-section 0;
+  background-color: var(--bg);
 }
 
 .name {
@@ -23,11 +25,4 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-}
-
-.container_panels {
-  margin-top: 10rem;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
 }
