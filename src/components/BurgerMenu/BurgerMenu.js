@@ -38,16 +38,16 @@ const BurgerMenu = ({ isTop }) => {
         </div>
         <ul className={styles["list"]}>
           <li className={styles["item"]}>
-            <Link to="/sign_up/">
+            <Link to="/sign_up/" onClick={handleClick}>
               Registieren
             </Link>
           </li>
-          <li className={styles["item"]}>
+          <li className={styles["item"]} onClick={handleClick}>
             <Link to="/sign_in/">
               Anmelden
             </Link>
           </li>
-          <li className={styles["item"]}>
+          <li className={styles["item"]} onClick={handleClick}>
             <Link to="/terms/">
               Nutzungsbedingungen
             </Link>
@@ -56,34 +56,6 @@ const BurgerMenu = ({ isTop }) => {
       </div>
     </div>
   );
-
-
-  // return (
-  //   <div className={styles["menuToggle"]} style={isTop ? topStyle : standardStyle}>
-  //     <input type="checkbox"></input>
-
-  //       <span></span>
-  //       <span></span>
-  //       <span></span>
-
-  //     <ul className={styles["menu"]}>
-  //       <li className={styles["navbar-hamburger_item"]}>
-  //         <Link to="/sign_up/">
-  //           Registieren
-  //         </Link>
-  //       </li>
-  //       <li className={styles["navbar-hamburger_item"]}>
-  //         <Link to="/sign_in/">
-  //           Anmelden
-  //         </Link>
-  //       </li>
-  //       <li className={styles["navbar-hamburger_item"]}>
-  //         <Link to="/terms/">
-  //           Nutzungsbedingungen
-  //         </Link>
-  //       </li>
-  //     </ul>
-  //   </div>
-  // );
 };
+
 export default BurgerMenu;
