@@ -7,7 +7,7 @@ import PanelComments from '../PanelComments/PanelComments';
 import styles from './Statement.module.scss';
 
 const Statement = ({
-  expert, setShowMediaPlayer, setIsAutoplayed, setAudioStatement, setCurrentUser,
+  expert, setShowMediaPlayer, setIsAutoplayed, setAudioStatement, setCurrentUser, stopPlayer,
 }) => {
   const [commentsAreOpen, setCommentsAreOpen] = useState(false);
 
@@ -100,6 +100,7 @@ const Statement = ({
           toggleComments={toggleComments}
           setSong={setSong}
           statementId={expert.statement.id}
+          stopPlayer={stopPlayer}
         />
         )}
     </div>

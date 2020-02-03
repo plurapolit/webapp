@@ -12,7 +12,7 @@ import CommentApi from '../../api/CommentApi';
 
 
 const PanelComments = ({
-  toggleComments, setSong, statementId,
+  toggleComments, setSong, statementId, stopPlayer,
 }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [userComments, setUserComments] = useState(null);
@@ -28,6 +28,7 @@ const PanelComments = ({
   }, []);
 
   const openModal = () => {
+    stopPlayer();
     setIsModalOpen(true);
   };
 
