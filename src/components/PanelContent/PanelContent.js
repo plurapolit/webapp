@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import styles from './PanelContent.module.scss';
 
 import Player from '../Player/Player';
-import ContentWrapper from '../ContentWrapper/ContentWrapper';
 import Statement from '../Statement/Statement';
 
 const PanelContent = ({ content }) => {
@@ -35,6 +34,7 @@ const PanelContent = ({ content }) => {
             setShowMediaPlayer={setShowMediaPlayer}
             setIsAutoplayed={setIsAutoplayed}
             setCurrentUser={setCurrentUser}
+            stopPlayer={stopPlayer}
           />
         ))}
       </div>
