@@ -16,7 +16,7 @@ const Player = ({
     if (isStopped) {
       stopAudio();
     }
-  });
+  }, [isStopped]);
 
   return (
     <div className={styles["media-player-wrapper"]}>
