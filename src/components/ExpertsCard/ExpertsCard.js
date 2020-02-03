@@ -8,9 +8,9 @@ const ExpertsCard = ({ experts }) => {
   const speakerOrganisation = `${url}/${experts.organisation_avatar}`;
 
   return (
-    <div className={styles["ExpertsCard"]}>
+    <div className={styles["speaker-image-wrapper"]}>
       <img src={speakerImage} className={styles["speaker-image"]} alt={experts.full_name} />
-      <img src={speakerOrganisation} className={styles["image-placeholder"]} />
+      <img src={speakerOrganisation} className={styles["organisation-logo"]} />
     </div>
   );
 };
