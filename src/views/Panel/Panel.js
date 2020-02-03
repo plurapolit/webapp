@@ -9,7 +9,7 @@ const Panel = ({ panel }) => {
   const customStyle = {
     '--color': `${panel.panel.font_color}`,
   };
-  
+
   return (
     <div className={styles["panel"]} style={customStyle}>
       <div className={styles["header"]}>
