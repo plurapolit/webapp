@@ -55,9 +55,9 @@ const Statement = ({
           </div>
         </div>
         <div className={styles["expert-card-statement"]}>
-          &ldquo;
-          {expert.statement.quote}
-          &rdquo;
+          <div className={styles["expert-card-quote-text"]}>
+            {expert.statement.quote}
+          </div>
         </div>
         <div className={styles["expert-card-controls"]}>
           <div

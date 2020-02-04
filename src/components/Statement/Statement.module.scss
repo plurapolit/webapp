@@ -43,7 +43,11 @@
       color: $text-dark-2;
       font-size: 1.5rem;
       line-height: 1.6rem;
-      margin: 0 1.3rem;
+      margin: 1.3rem;
+      display: flex;
+    }
+    &-quote-text {
+      padding-left: 5px;
     }
     &-controls {
       margin-left: 1.3rem;
