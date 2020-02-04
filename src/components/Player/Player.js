@@ -12,6 +12,10 @@ const Player = ({
     player.current.audio.pause();
   };
 
+  const startAudio = () => {
+    player.current.audio.play();
+  };
+
   const setAudioTitleForMatomo = () => {
     player.current.audio.setAttribute('data-matomo-title', `${panelTitle} | ${currentUser} (${audioStatement})`);
   };
@@ -23,6 +27,12 @@ const Player = ({
     setAudioTitleForMatomo();
   }, [isStopped]);
 
+  useEffect(() => {
+    if (audioStatement) {
+      startAudio();
+    }
+  }, [audioStatement]);
+
   return (
     <div className={styles["media-player-wrapper"]}>
       <p className={styles["media-player-wrapper-user"]}>{currentUser}</p>
@@ -30,7 +40,6 @@ const Player = ({
       <div className={styles["media-player-wrapper-player"]}>
         <AudioPlayer
           src={audioStatement}
-          // autoPlay={isAutoplayed}
           showVolumeControl={false}
           showLoopControl={false}
           progressJumpStep={10000}
