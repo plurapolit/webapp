@@ -25,6 +25,35 @@ const BurgerMenu = ({ isTop, user }) => {
 
   const sliderClass = `${styles["slider"]} ${show ? styles["slider_active"] : null}`;
 
+  const getActions = (user) => {
+    if (user) {
+      return (
+        <StoreContext.Consumer>
+          {(data) => (
+            <li className={styles["item"]}>
+              <SignOutButton
+                user={user}
+                removeUser={data.removeUser}
+              />
+            </li>
+          )}
+        </StoreContext.Consumer>
+      );
+    }
+    return (
+      <>
+        <li className={styles["item"]} onClick={handleClick}>
+          <Link to="/sign_in/">
+            Anmelden
+            </Link>
+        </li>
+        <li className={styles["item"]}>
+          <SignUpButton user={user} />
+        </li>
+      </>
+    );
+  };
+
 
   return (
     <div>
@@ -51,27 +80,7 @@ const BurgerMenu = ({ isTop, user }) => {
               Nutzungsbedingungen
             </Link>
           </li>
-          <li className={styles["item"]} onClick={handleClick}>
-            <Link to="/sign_in/">
-              Anmelden
-            </Link>
-          </li>
-          {!user ? 
-            <li className={styles["item"]}>
-              <SignUpButton user={user} />
-            </li>
-            : null
-          }
-          <StoreContext.Consumer>
-            {(data) => (
-              <li className={styles["item"]}>
-                <SignOutButton
-                  user={user}
-                  removeUser={data.removeUser}
-                />
-              </li>
-            )}
-          </StoreContext.Consumer>
+          {getActions(user)}
         </ul>
       </div>
     </div>

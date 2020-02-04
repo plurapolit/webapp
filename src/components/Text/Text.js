@@ -4,12 +4,12 @@ import styles from './Text.module.scss';
 
 const Text = ({ headline, children }) => (
   <div className={styles["text"]}>
-    <p className={styles["headline"]}>
+    <div className={styles["headline"]}>
       {headline}
-    </p>
-    <p>
+    </div>
+    <div>
       {children}
-    </p>
+    </div>
   </div>
 );
 
