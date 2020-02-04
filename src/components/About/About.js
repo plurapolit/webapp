@@ -10,12 +10,14 @@ const About = () => (
       <Text
         headline="Auf PluraPolit kannst du dich politisch informieren und mitdiskutieren."
       >
-        Zu jedem Thema findest du bei
-        uns die Meinungen von Politiker/-innen aller Parteien,
-        die im Bundestag sitzen sowie von drei weiteren
-        Expert/-innen. Alles in kurzen Audio-Statements.
-        <br />
-        Diskutier durch eigene Sprachnotizen mit!
+        <div className={styles["about-description"]}>
+          Zu jedem Thema findest du bei
+          uns die Meinungen von Politiker/-innen aller Parteien,
+          die im Bundestag sitzen sowie von drei weiteren
+          Expert/-innen. Alles in kurzen Audio-Statements.
+          <br />
+          Diskutier durch eigene Sprachnotizen mit!
+        </div>
       </Text>
     </ContentWrapper>
   </section>
