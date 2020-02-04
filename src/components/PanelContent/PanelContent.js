@@ -18,6 +18,10 @@ const PanelContent = ({ content }) => {
     setPlayerIsStopped(true);
   };
 
+  const startPlayer = () => {
+    setPlayerIsStopped(false);
+  };
+
   return (
     <div>
       <div className={styles.headline}>
@@ -50,6 +54,7 @@ const PanelContent = ({ content }) => {
           currentUser={currentUser}
           panelTitle={panelTitle}
           isStopped={playerIsStopped}
+          startPlayer={startPlayer}
         />
       )}
     </div>

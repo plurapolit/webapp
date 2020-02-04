@@ -4,7 +4,7 @@ import 'react-h5-audio-player/src/styles.scss';
 import styles from './Player.module.scss';
 
 const Player = ({
-  audioStatement, isAutoplayed, currentUser, panelTitle, isStopped,
+  audioStatement, isAutoplayed, currentUser, panelTitle, isStopped, startPlayer,
 }) => {
   const player = useRef(null);
 
@@ -21,7 +21,7 @@ const Player = ({
       stopAudio();
     }
     setAudioTitleForMatomo();
-  });
+  }, [isStopped]);
 
   return (
     <div className={styles["media-player-wrapper"]}>
@@ -35,6 +35,7 @@ const Player = ({
           showLoopControl={false}
           progressJumpStep={10000}
           ref={player}
+          onPlay={() => startPlayer()}
         />
       </div>
     </div>
