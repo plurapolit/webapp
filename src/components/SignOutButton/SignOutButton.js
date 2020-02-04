@@ -1,6 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
+import styles from './SignOutButton.module.scss';
 import UserApi from '../../api/UserApi';
 import JwtApi from '../../api/JwtApi';
 
@@ -16,9 +16,9 @@ const SignOutButton = ({ user, children = 'Abmelden', removeUser }) => {
 
   if (user) {
     return (
-      <Link onClick={() => signOutHandler()}>
+      <div className={styles["pointer"]} onClick={() => signOutHandler()}>
         {children}
-      </Link>
+      </div>
     );
   }
   return null;
