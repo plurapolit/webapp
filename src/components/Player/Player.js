@@ -12,11 +12,16 @@ const Player = ({
     player.current.audio.pause();
   };
 
+  const setAudioTitleForMatomo = () => {
+    player.current.audio.setAttribute('data-matomo-title', `${panelTitle} | ${currentUser} (${audioStatement})`);
+  };
+
   useEffect(() => {
     if (isStopped) {
       stopAudio();
     }
-  }, [isStopped]);
+    setAudioTitleForMatomo();
+  });
 
   return (
     <div className={styles["media-player-wrapper"]}>
