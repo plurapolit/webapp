@@ -4,7 +4,7 @@ import 'react-h5-audio-player/src/styles.scss';
 import styles from './Player.module.scss';
 
 const Player = ({
-  audioStatement, isAutoplayed, currentUser, panelTitle, isStopped,
+  audioStatement, isAutoplayed, currentUser, panelTitle, isStopped, startPlayer,
 }) => {
   const player = useRef(null);
 
@@ -12,11 +12,26 @@ const Player = ({
     player.current.audio.pause();
   };
 
+  const startAudio = () => {
+    player.current.audio.play();
+  };
+
+  const setAudioTitleForMatomo = () => {
+    player.current.audio.setAttribute('data-matomo-title', `${panelTitle} | ${currentUser} (${audioStatement})`);
+  };
+
   useEffect(() => {
     if (isStopped) {
       stopAudio();
     }
+    setAudioTitleForMatomo();
   }, [isStopped]);
+
+  useEffect(() => {
+    if (audioStatement) {
+      startAudio();
+    }
+  }, [audioStatement]);
 
   return (
     <div className={styles["media-player-wrapper"]}>
@@ -25,11 +40,11 @@ const Player = ({
       <div className={styles["media-player-wrapper-player"]}>
         <AudioPlayer
           src={audioStatement}
-          autoPlay={isAutoplayed}
           showVolumeControl={false}
           showLoopControl={false}
           progressJumpStep={10000}
           ref={player}
+          onPlay={() => startPlayer()}
         />
       </div>
     </div>

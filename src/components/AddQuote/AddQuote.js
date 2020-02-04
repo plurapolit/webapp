@@ -31,6 +31,7 @@ const AddQuote = ({ setQuote, sendToRails }) => {
           maxLength="120"
           autoFocus
           onChange={(e) => handleCharacterInput(e)}
+          required
         />
         <div className={styles["input-length"]}>{inputLength}/120</div>
         <Button type="submit">Abschicken</Button>

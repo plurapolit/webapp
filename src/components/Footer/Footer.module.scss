@@ -5,17 +5,18 @@
   align-items: center;
   width: 100%;
   height: $footer-height;
-  border-top: solid 1px black;
 }
 
 .container {
   display: flex;
   justify-content: space-around;
+  flex-wrap: wrap;
   list-style-type: none;
   width: 100%;
 }
 
 .item {
-  font-size: 1.4rem;
-  font-weight: 600;
+  font-size: 1.7rem;
+  font-weight: 500;
+  margin: 0 1rem;
 }

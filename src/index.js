@@ -8,7 +8,7 @@ import './fonts/fonts.scss';
 
 Sentry.init({
   dsn: process.env.REACT_APP_SENTRY_DSN,
-  environment: process.env.REACT_APP_SENTRY_ENV,
+  environment: process.env.REACT_APP_ENV,
 });
 
 ReactDOM.render(

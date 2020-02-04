@@ -18,27 +18,34 @@ const PanelContent = ({ content }) => {
     setPlayerIsStopped(true);
   };
 
+  const startPlayer = () => {
+    setPlayerIsStopped(false);
+  };
+
   return (
     <div>
-      <div className={styles["row"]}>
-        <div className={styles.headline}>
-          {content.panel.title}
-        </div>
-        <div className={styles.description}>{content.panel.description}</div>
-        <div className={styles.wrapper}>
-          <div className={styles["experts-headline"]}>Experten</div>
-          {content.expert_statements.map((expert) => (
-            <Statement
-              key={expert.statement.id}
-              expert={expert}
-              setAudioStatement={setAudioStatement}
-              setShowMediaPlayer={setShowMediaPlayer}
-              setIsAutoplayed={setIsAutoplayed}
-              setCurrentUser={setCurrentUser}
-              stopPlayer={stopPlayer}
-            />
-          ))}
-        </div>
+      <div className={styles.headline}>
+        {content.panel.title}
+      </div>
+      <div className={styles.description}>{content.panel.description}</div>
+      <div className={styles.wrapper}>
+        <div className={styles["experts-headline"]}>Experten</div>
+        {content.expert_statements.map((expert) => (
+          <Statement
+            key={expert.statement.id}
+            expert={expert}
+            setAudioStatement={setAudioStatement}
+            setShowMediaPlayer={setShowMediaPlayer}
+            setIsAutoplayed={setIsAutoplayed}
+            setCurrentUser={setCurrentUser}
+            stopPlayer={stopPlayer}
+          />
+        ))}
+      </div>
+      <div className={styles["disclaimer"]}>
+        Alle zur Hamburgischen Bürgerschaftswahl 2020 antretenden Parteien wurden
+        zur Mitwirkung auf PluraPolit angefragt.
+        Nicht alle angefragten Parteien haben jedoch bislang Statements abgegeben.
       </div>
       {showMediaPlayer && (
         <Player
@@ -47,6 +54,7 @@ const PanelContent = ({ content }) => {
           currentUser={currentUser}
           panelTitle={panelTitle}
           isStopped={playerIsStopped}
+          startPlayer={startPlayer}
         />
       )}
     </div>

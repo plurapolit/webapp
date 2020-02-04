@@ -5,6 +5,7 @@ import { getDataFromEvent } from '../../helper/helper';
 import Notification from '../../helper/Notification';
 import ContentWrapper from '../ContentWrapper/ContentWrapper';
 import FeedbackApi from '../../api/FeedbackApi';
+import Text from '../Text/Text';
 
 import styles from './Feedback.module.scss';
 
@@ -21,11 +22,17 @@ const Feedback = () => {
     <section className={styles["feedback"]}>
       <ContentWrapper>
         <div className={`${styles["heading"]} u-margin-bottom--medium`}>
-          Lorem
+          Feedback
         </div>
+        <Text>
+          Was gefällt dir nicht? Was können wir noch besser machen?
+          <br />
+          <br />
+          Und vor allem, welche Themen würden dich interessieren?
+        </Text>
         <form className={styles["form"]} onSubmit={(event) => handleSubmit(event)}>
           <input className={styles["email"]} type="email" name="email" placeholder="E-Mail" required />
-          <textarea className={styles["textarea"]} type="text" name="text" placeholder="Ihr Feedback ..." required />
+          <textarea className={styles["textarea"]} type="text" name="text" placeholder="Dein Feedback oder Themenvorschlag..." required />
           <div>
             <Button type="submit">Senden</Button>
           </div>
