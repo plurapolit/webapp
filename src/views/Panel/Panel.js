@@ -1,20 +1,25 @@
 import React from 'react';
+import PanelMetaTags from './PanelMetaTags';
 import styles from './Panel.module.scss';
 import PanelContent from '../../components/PanelContent/PanelContent';
 import ContentWrapper from '../../components/ContentWrapper/ContentWrapper';
 
-const IMAGEROOTURL = process.env.REACT_APP_BUCKET_URL;
 
 const Panel = ({ panel }) => {
+  const IMAGEROOTURL = process.env.REACT_APP_BUCKET_URL;
+
   const customStyle = {
     '--color': `${panel.panel.font_color}`,
   };
 
+  const imageUrl = `${IMAGEROOTURL}/${panel.panel_avatar_key}`;
+
   return (
     <div className={styles["panel"]} style={customStyle}>
+      <PanelMetaTags panel={panel.panel} image={imageUrl} />
       <div className={styles["header"]}>
         <img
-          src={`${IMAGEROOTURL}/${panel.panel_avatar_key}`}
+          src={imageUrl}
           alt={panel.panel.short_title}
           className={styles["image"]}
         />
