@@ -8,7 +8,7 @@ const CommentModalHelper = () => {
       marginTop: '3rem',
       height: '80vh',
       maxHeight: '70rem',
-      width: '90vh',
+      width: '90vw',
       maxWidth: '50rem',
       overflowY: 'auto',
       padding: '2rem',

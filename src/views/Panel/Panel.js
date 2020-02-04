@@ -15,12 +15,12 @@ const Panel = ({ panel }) => {
       <div className={styles["header"]}>
         <img
           src={`${IMAGEROOTURL}/${panel.panel_avatar_key}`}
-          alt={panel.category.name}
+          alt={panel.panel.short_title}
           className={styles["image"]}
         />
         <div className={styles["wrapper"]}>
           <ContentWrapper>
-            <div className={styles["headline"]}>{panel.category.name}</div>
+            <div className={styles["headline"]}>{panel.panel.short_title}</div>
           </ContentWrapper>
           <div className={styles["rounder"]} />
         </div>
