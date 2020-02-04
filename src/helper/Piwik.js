@@ -22,4 +22,7 @@ const Piwik = new ReactPiwik({
   trackErrors: true,
 });
 
+ReactPiwik.push(['trackPageView']);
+ReactPiwik.push(['enableHeartBeatTimer']);
+
 export default Piwik;
