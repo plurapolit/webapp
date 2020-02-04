@@ -30,7 +30,7 @@ const Player = ({
       <div className={styles["media-player-wrapper-player"]}>
         <AudioPlayer
           src={audioStatement}
-          autoPlay={isAutoplayed}
+          // autoPlay={isAutoplayed}
           showVolumeControl={false}
           showLoopControl={false}
           progressJumpStep={10000}
