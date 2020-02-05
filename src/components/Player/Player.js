@@ -26,8 +26,11 @@ const Player = ({
     if (isStopped) {
       stopAudio();
     }
-    setAudioTitleForMatomo();
   }, [isStopped]);
+
+  useEffect(() => {
+    setAudioTitleForMatomo();
+  }, []);
 
   useEffect(() => {
     if (audioStatement) {
