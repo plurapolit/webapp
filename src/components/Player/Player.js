@@ -1,10 +1,12 @@
 import React, { useRef, useEffect } from 'react';
 import AudioPlayer from 'react-h5-audio-player';
 import 'react-h5-audio-player/src/styles.scss';
+
 import styles from './Player.module.scss';
+import PiwikMessages from '../../helper/PiwikMessages';
 
 const Player = ({
-  audioStatement, isAutoplayed, currentUser, panelTitle, isStopped, startPlayer,
+  audioStatement, currentUser, panelTitle, isStopped, startPlayer,
 }) => {
   const player = useRef(null);
 
