@@ -1,10 +1,10 @@
-import Piwik from './Piwik';
+import ReactPiwik from 'react-piwik';
 
 import { getTimeStamp } from './helper';
 
 const PiwikMessages = () => {
   const push = (category, action, name) => {
-    Piwik.push(['trackEvent', category, action, name]);
+    ReactPiwik.push(['trackEvent', category, action, name]);
   };
 
   const statement = () => {
