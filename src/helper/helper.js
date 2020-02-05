@@ -19,6 +19,6 @@ export const getDataFromEvent = (event) => {
   return data;
 };
 
-export const getTimeStemp = () => moment().format('HH-mm-ss');
+export const getTimeStamp = () => moment().format('HH-mm-ss');
 
 export const getDatum = () => moment().format('YYYY-MM-DD');

@@ -7,7 +7,7 @@ import PanelComments from '../PanelComments/PanelComments';
 import styles from './Statement.module.scss';
 
 const Statement = ({
-  expert, setShowMediaPlayer, setIsAutoplayed, setAudioStatement, setCurrentUser, stopPlayer,
+  expert, setShowMediaPlayer, setIsAutoplayed, setAudioStatement, setCurrentUser, stopPlayer, startPlayer,
 }) => {
   const [commentsAreOpen, setCommentsAreOpen] = useState(false);
 
@@ -18,6 +18,7 @@ const Statement = ({
     setIsAutoplayed(true);
     setAudioStatement(audioFile);
     setCurrentUser(user);
+    startPlayer();
   };
 
   const numberOfComments = () => (

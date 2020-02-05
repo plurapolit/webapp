@@ -1,3 +1,4 @@
+// const PiwikReactRouter = require('piwik-react-router');
 import ReactPiwik from 'react-piwik';
 
 let siteId;
@@ -22,7 +23,7 @@ const Piwik = new ReactPiwik({
   trackErrors: true,
 });
 
-ReactPiwik.push(['trackPageView']);
 ReactPiwik.push(['enableHeartBeatTimer']);
+ReactPiwik.push(['trackPageView']);
 
 export default Piwik;
