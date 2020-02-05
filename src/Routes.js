@@ -12,8 +12,6 @@ import Terms from './views/Terms/Terms';
 import SiteNotice from './views/SiteNotice/SiteNotice';
 import PrivacyPolicy from './views/PrivacyPolicy/PrivacyPolicy';
 import PanelWrapper from './layouts/PanelWrapper/PanelWrapper';
-import Topics from './views/Topics';
-import Thanks from './views/Thanks';
 import SignIn from './views/SignIn/SignIn';
 import SignUp from './views/SignUp/SignUp';
 
@@ -37,8 +35,6 @@ const Routes = () => (
             <Route exact path="/privacy-policy/">
               <PrivacyPolicy />
             </Route>
-            <Route exact path="/topics/" component={Topics} />
-            <Route exact path="/thanks/" component={Thanks} />
             <Route exact path="/sign_in/">
               <SignIn />
             </Route>

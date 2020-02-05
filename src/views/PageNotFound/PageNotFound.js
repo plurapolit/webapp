@@ -2,18 +2,20 @@ import React from 'react';
 
 import styles from './PageNotFound.module.scss';
 import ContentWrapper from '../../components/ContentWrapper/ContentWrapper';
-import Text from '../../components/Text/Text';
 import Button from '../../components/Button/Button';
 
 const PageNotFound = () => (
   <>
     <div className={styles["page-not-found"]}>
       <ContentWrapper>
-        <Text>
-          Auf dieser Webseite diskutiert heute leider keiner,
-          aber besuch doch eine unserer anderen Seiten.
-        </Text>
-        <Button to="/">Startseite</Button>
+        <div className={styles["page-not-found-wrapper"]}>
+          <h2>404</h2>
+          <div className={styles["page-not-found-text"]}>
+            Auf dieser Seite diskutiert heute leider keiner,
+            aber besuch doch eine unserer anderen Seiten.
+          </div>
+          <Button to="/">Startseite</Button>
+        </div>
       </ContentWrapper>
     </div>
   </>
