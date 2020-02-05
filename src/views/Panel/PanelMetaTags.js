@@ -1,8 +1,8 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
+import MetaTags from 'react-meta-tags';
 
 const PanelMetaTags = ({ panel, imageUrl }) => (
-  <Helmet>
+  <MetaTags>
     <title>{`PluraPolit | ${panel.short_title}`}</title>
     <link rel="canonical" href={`https://plurapolit.de/${panel.slug}`} />
     <meta name="description" content={panel.title} />
@@ -14,7 +14,7 @@ const PanelMetaTags = ({ panel, imageUrl }) => (
     <meta name="twitter:description" content={panel.title} />
     <meta name="twitter:image" content={imageUrl} />
     <meta name="twitter:card" content={imageUrl} />
-  </Helmet>
+  </MetaTags>
 );
 
 export default PanelMetaTags;
