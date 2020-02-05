@@ -4,9 +4,16 @@ import { Helmet } from 'react-helmet';
 const HomePageMetaTags = () => (
   <Helmet>
     <meta charSet="utf-8" />
-    <title>PluraPolit | Immer am Puls der Zeit</title>
+    <title>PluraPolit | Informieren & Diskutieren</title>
     <link rel="canonical" href="https://plurapolit.de" />
-    <meta name="description" content="..." />
+    <meta name="description" content="PluraPolit ist eine Plattform zur politischen Meinungsbildung und Diskussion" />
+    <meta property="og:title" content="PluraPolit | Informieren & Diskutieren" />
+    <meta property="og:description" content="PluraPolit ist eine Plattform zur politischen Meinungsbildung und Diskussion" />
+    <meta property="og:image" content="https://plurapolit-webapi-prod-media.s3.eu-central-1.amazonaws.com/social/PluraPolit+Go-Live.png" />
+    <meta property="og:url" content="https://plurapolit.de" />
+    <meta name="twitter:title" content="PluraPolit | Informieren & Diskutieren" />
+    <meta name="twitter:description" content=" PluraPolit ist eine Plattform zur politischen Meinungsbildung und Diskussion" />
+    <meta name="twitter:image" content=" https://plurapolit-webapi-prod-media.s3.eu-central-1.amazonaws.com/social/PluraPolit+Go-Live.png" />
   </Helmet>
 );
 
