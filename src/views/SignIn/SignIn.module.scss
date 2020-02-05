@@ -1,5 +1,7 @@
 @import '../../styles/global.scss';
 
 .container {
-  height: calc(100vh - #{$footer-height});
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

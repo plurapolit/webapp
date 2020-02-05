@@ -1,10 +1,13 @@
 import React from 'react';
+import { useHistory } from "react-router-dom";
 
 import styles from './SignOutButton.module.scss';
 import UserApi from '../../api/UserApi';
 import JwtApi from '../../api/JwtApi';
 
 const SignOutButton = ({ user, children = 'Abmelden', removeUser }) => {
+  const history = useHistory();
+
   const signOutHandler = () => {
     const jwt = JwtApi.get();
     UserApi.signOut(jwt)
@@ -12,6 +15,7 @@ const SignOutButton = ({ user, children = 'Abmelden', removeUser }) => {
         removeUser();
         JwtApi.delete();
       });
+    history.push("/");
   };
 
   if (user) {

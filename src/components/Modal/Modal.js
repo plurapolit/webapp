@@ -2,11 +2,11 @@ import React from 'react';
 import ReactModal from 'react-modal';
 
 const Modal = ({
-  children, isOpen, onClose, label = 'PluraPolit', style = {},
+  children, isOpen, closeModal, label = 'PluraPolit', style = {},
 }) => (
   <ReactModal
     isOpen={isOpen}
-    onRequestClose={onClose}
+    onRequestClose={closeModal}
     contentLabel={label}
     style={style}
     ariaHideApp={false}
