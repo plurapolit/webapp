@@ -76,7 +76,7 @@ const BurgerMenu = ({ isTop, user }) => {
             </Link>
           </li>
           <li className={styles["item"]} onClick={handleClick}>
-            <Link to="/2020-wir-uber-uns/">
+            <Link to="/2020-wir-uber-uns">
               Über uns
             </Link>
           </li>
