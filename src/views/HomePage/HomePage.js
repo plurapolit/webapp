@@ -8,6 +8,7 @@ import MoreSection from '../../components/MoreSection/MoreSection';
 import { isLoaded } from '../../helper/helper';
 import CategoryList from '../../components/CategoryList/CategoryList';
 import Feedback from '../../components/Feedback/Feedback';
+import Supporters from '../../components/Supporters/Supporters';
 
 import styles from './HomePage.module.scss';
 
@@ -20,6 +21,7 @@ const HomePage = ({ categoryList }) => (
     <div className={styles["bottom-wrapper"]}>
       <MoreSection />
       <Feedback />
+      <Supporters />
     </div>
   </div>
 );

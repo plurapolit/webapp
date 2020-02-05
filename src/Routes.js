@@ -9,6 +9,8 @@ import NavbarBuffer from './layouts/NavbarBuffer/NavbarBuffer';
 import Footer from './components/Footer/Footer';
 import HomePage from './views/HomePage/HomePage';
 import Terms from './views/Terms/Terms';
+import SiteNotice from './views/SiteNotice/SiteNotice';
+import PrivacyPolicy from './views/PrivacyPolicy/PrivacyPolicy';
 import PanelWrapper from './layouts/PanelWrapper/PanelWrapper';
 import Topics from './views/Topics';
 import Thanks from './views/Thanks';
@@ -28,6 +30,12 @@ const Routes = () => (
             </Route>
             <Route exact path="/terms/">
               <Terms />
+            </Route>
+            <Route exact path="/site-notice/">
+              <SiteNotice />
+            </Route>
+            <Route exact path="/privacy-policy/">
+              <PrivacyPolicy />
             </Route>
             <Route exact path="/topics/" component={Topics} />
             <Route exact path="/thanks/" component={Thanks} />

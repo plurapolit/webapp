@@ -13,11 +13,12 @@ const Button = ({
   };
 
   const button = (
-    <button 
+    <button
       type={type}
       className={`${styles["button"]} ${customClass}`}
       style={customStyle}
-      onClick={onClick}>
+      onClick={onClick}
+    >
       {children}
     </button>
   );

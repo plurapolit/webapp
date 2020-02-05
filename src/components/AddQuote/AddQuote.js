@@ -21,7 +21,7 @@ const AddQuote = ({ setQuote, sendToRails }) => {
   return (
     <div className={styles["container"]}>
       <div className={styles["headline"]}>Bitte fasse deine Aussage in wenigen Worten zusammen</div>
-      <form className={styles["form"]}  onSubmit={(event) => addQuote(event)}>
+      <form className={styles["form"]} onSubmit={(event) => addQuote(event)}>
         <textarea
           rows="4"
           cols="50"
@@ -33,7 +33,10 @@ const AddQuote = ({ setQuote, sendToRails }) => {
           onChange={(e) => handleCharacterInput(e)}
           required
         />
-        <div className={styles["input-length"]}>{inputLength}/120</div>
+        <div className={styles["input-length"]}>
+          {inputLength}
+/120
+        </div>
         <Button type="submit">Abschicken</Button>
       </form>
       <div className={styles["step-index"]}>Schritt 4 von 4</div>
