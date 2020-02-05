@@ -61,7 +61,7 @@ const Statement = ({
         </div>
         <div className={styles["expert-card-statement"]}>
           <div className={styles["expert-card-quote-text"]}>
-            {expert.statement.quote}
+            {`"${expert.statement.quote}"`}
           </div>
         </div>
         <div className={styles["expert-card-controls"]}>

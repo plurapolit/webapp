@@ -5,23 +5,28 @@ import PanelContent from '../../components/PanelContent/PanelContent';
 import ContentWrapper from '../../components/ContentWrapper/ContentWrapper';
 
 
-const Panel = ({ panel }) => {
+const Panel = ({ panel, objectPositionTop }) => {
   const IMAGEROOTURL = process.env.REACT_APP_BUCKET_URL;
 
-  const customStyle = {
+  const customStylePanel = {
     '--color': `${panel.panel.font_color}`,
+  };
+
+  const customStyleImage = {
+    '--objectPosition': `${objectPositionTop ? 'top' : 'center'}`,
   };
 
   const imageUrl = `${IMAGEROOTURL}/${panel.panel_avatar_key}`;
 
   return (
-    <div className={styles["panel"]} style={customStyle}>
+    <div className={styles["panel"]} style={customStylePanel}>
       <PanelMetaTags panel={panel.panel} image={imageUrl} />
       <div className={styles["header"]}>
         <img
           src={imageUrl}
           alt={panel.panel.short_title}
           className={styles["image"]}
+          style={customStyleImage}
         />
         <div className={styles["wrapper"]}>
           <ContentWrapper>
