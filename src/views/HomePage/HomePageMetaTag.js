@@ -1,8 +1,8 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
+import MetaTags from 'react-meta-tags';
 
 const HomePageMetaTags = () => (
-  <Helmet>
+  <MetaTags>
     <meta charSet="utf-8" />
     <title>PluraPolit | Informieren & Diskutieren</title>
     <link rel="canonical" href="https://plurapolit.de" />
@@ -14,7 +14,7 @@ const HomePageMetaTags = () => (
     <meta name="twitter:title" content="PluraPolit | Informieren & Diskutieren" />
     <meta name="twitter:description" content=" PluraPolit ist eine Plattform zur politischen Meinungsbildung und Diskussion" />
     <meta name="twitter:image" content=" https://plurapolit-webapi-prod-media.s3.eu-central-1.amazonaws.com/social/PluraPolit+Go-Live.png" />
-  </Helmet>
+  </MetaTags>
 );
 
 export default HomePageMetaTags;
