@@ -6,6 +6,8 @@ import PageNotFound from '../../views/PageNotFound/PageNotFound';
 import Loader from '../../components/Loader/Loader';
 
 const PanelWrapper = ({ slugList }) => {
+  const ABOUT_US_SLUG = '2020-wir-uber-uns';
+
   const [slug, setSlug] = useState(undefined);
   const panel = useRef(undefined);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -30,7 +32,7 @@ const PanelWrapper = ({ slugList }) => {
   }, [slug, slugList]);
 
   if (panel.current) {
-    return <Panel panel={panel.current} />;
+    return <Panel objectPositionTop={slug === ABOUT_US_SLUG} panel={panel.current} />;
   }
 
   if (slug && isLoaded) {

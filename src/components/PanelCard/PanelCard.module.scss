@@ -35,6 +35,11 @@
   background-position: center;
 }
 
+// About us picture should be focused on top
+.image-wrapper:last-child {
+  background-position: top;
+}
+
 .shortTitle {
   position: absolute;
   top: 2rem;
