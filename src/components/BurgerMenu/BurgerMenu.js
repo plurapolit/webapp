@@ -30,7 +30,7 @@ const BurgerMenu = ({ isTop, user }) => {
       return (
         <StoreContext.Consumer>
           {(data) => (
-            <li className={styles["item"]}>
+            <li onClick={() => handleClick()} className={styles["item"]}>
               <SignOutButton
                 user={user}
                 removeUser={data.removeUser}
@@ -45,9 +45,9 @@ const BurgerMenu = ({ isTop, user }) => {
         <li className={styles["item"]} onClick={handleClick}>
           <Link to="/sign_in/">
             Anmelden
-            </Link>
+          </Link>
         </li>
-        <li className={styles["item"]}>
+        <li onClick={() => handleClick()} className={styles["item"]}>
           <SignUpButton user={user} />
         </li>
       </>
@@ -73,6 +73,11 @@ const BurgerMenu = ({ isTop, user }) => {
           <li className={styles["item"]}>
             <Link to="/" onClick={handleClick}>
               Home
+            </Link>
+          </li>
+          <li className={styles["item"]} onClick={handleClick}>
+            <Link to="/2020-wir-uber-uns/">
+              Über uns
             </Link>
           </li>
           <li className={styles["item"]} onClick={handleClick}>

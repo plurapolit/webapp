@@ -8,6 +8,7 @@ import Notification from '../../helper/Notification';
 import UserApi from '../../api/UserApi';
 import JwtApi from '../../api/JwtApi';
 
+
 const SignUp = ({ setUser, history }) => {
   const setErrorMessages = (error) => {
     Object.entries(error).forEach(([key, value]) => {
@@ -30,7 +31,7 @@ const SignUp = ({ setUser, history }) => {
 
 
   return (
-    <div className={styles["sign_up"]}>
+    <div className={styles["sign-up"]}>
       <div className={styles["container"]}>
         <form className={styles["form"]} onSubmit={(event) => handleSubmit(event)}>
           <input type="text" name="firstName" placeholder="Vorname" required />

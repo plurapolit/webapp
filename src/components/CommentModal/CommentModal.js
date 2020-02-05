@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import Modal from '../Modal/Modal';
 
 import StoreContext from '../../layouts/Store/StoreContext';
@@ -19,6 +19,12 @@ const CommentModal = ({ isOpen, closeModal, statementId }) => {
   const setQuote = (newQuote) => {
     quote.current = newQuote;
   };
+
+  useEffect(() => {
+    if (!isOpen) {
+      setPage(1);
+    }
+  }, [isOpen]);
 
   const setFileLink = (newFileLink) => {
     fileLink.current = newFileLink;
@@ -41,7 +47,7 @@ const CommentModal = ({ isOpen, closeModal, statementId }) => {
   };
 
   return (
-    <Modal isOpen={isOpen} onClose={closeModal} style={Helper.modalStyle}>
+    <Modal isOpen={isOpen} closeModal={closeModal} style={Helper.modalStyle}>
       <StoreContext.Consumer>
         {(data) => {
           if (!data.user) {

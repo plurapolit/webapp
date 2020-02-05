@@ -4,7 +4,7 @@ import Button from '../Button/Button';
 const SignUpButton = ({ user, children = 'Registrieren' }) => {
   if (!user) {
     return (
-      <Button to="/sign_up/">
+      <Button cta to="/sign_up/">
         {children}
       </Button>
     );

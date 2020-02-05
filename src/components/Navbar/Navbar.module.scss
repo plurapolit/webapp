@@ -43,8 +43,9 @@
 .item {
   color: $color-grey;
   text-decoration: none;
-  font-size: 2rem;
-  margin: 0 1.1rem;
+  font-size: 1.4rem;
+  font-weight: 600;
+  padding: 0 1.1rem;
 
   @media screen and (max-width: 750px) {
     display: none;
@@ -54,4 +55,8 @@
     composes: item;
     color: $color-white;
   }
+}
+
+.item:last-child {
+  color: $color-grey-2;
 }

@@ -6,10 +6,19 @@ import styles from './Button.module.scss';
 // TODO: add button types button primary ...
 
 const Button = ({
-  children, customClass = null, type = "button", to = undefined, onClick = () => {},
+  children, cta, customClass = null, type = "button", to = undefined, onClick = () => {},
 }) => {
+  const customStyle = {
+    '--bg-color': cta ? '#EE8137' : '#4E0CED',
+  };
+
   const button = (
-    <button type={type} className={`${styles["button"]} ${customClass}`} onClick={onClick}>
+    <button
+      type={type}
+      className={`${styles["button"]} ${customClass}`}
+      style={customStyle}
+      onClick={onClick}
+    >
       {children}
     </button>
   );

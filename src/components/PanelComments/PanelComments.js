@@ -58,7 +58,7 @@ const PanelComments = ({
             ))}
             {commentCta()}
           </div>
-          <img 
+          <img
             alt="icon"
             src={closeButton}
             className={styles['comments-close']}
