@@ -12,13 +12,13 @@ const Footer = () => (
         </Link>
       </li>
       <li className={styles["item"]}>
-        <Link to="/site-notice/">
-          Impressum
+        <Link to="/privacy-policy/">
+          Datenschutzerklärung
         </Link>
       </li>
       <li className={styles["item"]}>
-        <Link to="/privacy-policy/">
-          Datenschutzerklärung
+        <Link to="/site-notice/">
+          Impressum
         </Link>
       </li>
     </ul>
