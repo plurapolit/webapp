@@ -9,6 +9,7 @@ import CommentApi from '../../api/CommentApi';
 import Helper from './CommentModalHelper';
 import AcceptTerms from '../AcceptTerms/AcceptTerms';
 import AddQuote from '../AddQuote/AddQuote';
+import CloseButton from '../CloseButton/CloseButton';
 
 const CommentModal = ({ isOpen, closeModal, statementId }) => {
   const [page, setPage] = useState(1);
@@ -48,6 +49,7 @@ const CommentModal = ({ isOpen, closeModal, statementId }) => {
 
   return (
     <Modal isOpen={isOpen} closeModal={closeModal} style={Helper.modalStyle}>
+      <CloseButton onClick={closeModal} />
       <StoreContext.Consumer>
         {(data) => {
           if (!data.user) {
