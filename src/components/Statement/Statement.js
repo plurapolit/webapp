@@ -36,6 +36,7 @@ const Statement = ({
     setCommentsAreOpen(!commentsAreOpen);
   };
 
+
   return (
     <div className={styles["expert-wrapper"]}>
       <div className={styles["expert-card"]}>
@@ -51,6 +52,9 @@ const Statement = ({
             </div>
             <div className={styles["expert-card-organisation"]}>
               {expert.organisation.name}
+            </div>
+            <div className={styles["expert-card-organisation"]}>
+              {expert.user.biography}
             </div>
           </div>
         </div>
