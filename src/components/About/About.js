@@ -15,6 +15,7 @@ const About = () => (
           uns die Meinungen von Politiker/-innen aller Parteien,
           die im Bundestag sitzen sowie von drei weiteren
           Expert/-innen. Alles in kurzen Audio-Statements.
+          Alles ohne Werbung und kostenlos, denn wir sind gemeinnützig.
           <br />
           Diskutier durch eigene Sprachnotizen mit!
         </div>
