@@ -14,7 +14,8 @@ const AcceptTerms = ({ nextPage }) => (
         lang sein
       </li>
       <li>Beiträge dürfen nicht beleidigen</li>
-      <li>Beiträge dürfen nicht ausgrenzen</li>
+      <li>Beiträge dürfen keine rassistischen Äußerungen beinhalten</li>
+      <li>Beiträge dürfen nicht zur Gewalt aufrufen</li>
       <div className={styles["terms-link"]}><a href="/terms/" target="_blank">Mehr dazu</a></div>
     </ol>
     <Button onClick={() => nextPage()}>
