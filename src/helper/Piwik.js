@@ -1,4 +1,4 @@
-import ReactPiwik from 'react-piwik';
+const PiwikReactRouter = require('piwik-react-router');
 
 let siteId;
 
@@ -16,13 +16,13 @@ switch (process.env.REACT_APP_ENV) {
     siteId = null;
 }
 
-const Piwik = new ReactPiwik({
+const Piwik = new PiwikReactRouter({
   url: 'https://plurapolit.matomo.cloud',
   siteId,
   trackErrors: true,
 });
 
-ReactPiwik.push(['trackPageView']);
-ReactPiwik.push(['enableHeartBeatTimer']);
+Piwik.push(['trackPageView']);
+Piwik.push(['enableHeartBeatTimer']);
 
 export default Piwik;
