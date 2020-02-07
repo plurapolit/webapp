@@ -49,12 +49,12 @@ const Navbar = ({ user }) => {
         </Link>
         <div className={styles["container_items"]}>
           <li className={customStyle.item}>
-            <Link to="2020-wir-uber-uns">
+            <Link to="/2020-wir-uber-uns">
               Über uns
             </Link>
           </li>
           <li className={customStyle.item}>
-            <Link to="terms">Nutzungsbedingungen</Link>
+            <Link to="/terms">Nutzungsbedingungen</Link>
           </li>
           <li className={customStyle.item}>
             <SignUpButton user={user} />
