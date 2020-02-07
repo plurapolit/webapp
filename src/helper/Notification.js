@@ -10,14 +10,18 @@ const Notification = () => {
       type,
       insert: "top",
       container: "top-left",
-      animationIn: ["animated", "fadeIn"],
-      animationOut: ["animated", "zoomOut"],
+      animationIn: ['animated', 'fadeIn'],
+      animationOut: ['animated', 'faster', 'fadeOut'],
       dismiss: {
         duration,
         onScreen: false,
         pauseOnHover: true,
+        waitForAnimation: false,
         showIcon: true,
+        click: true,
+        touch: true,
       },
+      dismissable: { click: true },
     });
   };
 

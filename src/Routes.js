@@ -42,7 +42,7 @@ const Routes = () => (
               <SignUp setUser={data.setUser} />
             </Route>
             <Route path="/:slug">
-              <PanelWrapper slugList={data.slugList} />
+              {(props) => <PanelWrapper slugList={data.slugList} location={props.location} />}
             </Route>
           </Switch>
         </NavbarBuffer>

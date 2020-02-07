@@ -54,7 +54,7 @@ const Navbar = ({ user }) => {
             </Link>
           </li>
           <li className={customStyle.item}>
-            <Link to="terms">Nutzungsbedingungen</Link>
+            <Link to="/terms">Nutzungsbedingungen</Link>
           </li>
           <li className={customStyle.item}>
             <SignUpButton user={user} />
