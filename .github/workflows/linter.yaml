@@ -17,9 +17,9 @@ jobs:
     - name: npm install
       run: |
         npm install
-    - name: npm install
+    - name: install eslint
       run: |
-        npm install eslint --save-dev
+        npm install -g eslint
     - name: run eslint
       run: |
         eslint .
