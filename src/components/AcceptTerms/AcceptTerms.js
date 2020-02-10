@@ -19,7 +19,7 @@ const AcceptTerms = ({ nextPage }) => (
       <div className={styles["terms-link"]}><a href="/terms/" target="_blank">Mehr dazu</a></div>
     </ol>
     <Button onClick={() => nextPage()}>
-        Ich akzeptiere die Nutzungsbedingungen
+      Ich akzeptiere die Nutzungsbedingungen
     </Button>
     <div className={styles["step-index"]}>Schritt 1 von 4</div>
   </div>
