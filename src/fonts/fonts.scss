@@ -1,42 +1,47 @@
-
 //light
 @font-face {
-  font-family: 'HelveticaNowDisplay';
-  src: url('./3AE984_0_0.woff2') format('woff2'), url('./3AE984_0_0.woff') format('woff');
+  font-family: "HelveticaNowDisplay";
+  src: url("./3AE984_0_0.woff2") format("woff2"),
+    url("./3AE984_0_0.woff") format("woff");
   font-weight: 300;
 }
 
 //regular
 @font-face {
-  font-family: 'HelveticaNowDisplay';
-  src: url('./3AE984_1_0.woff2') format('woff2'), url('./3AE984_1_0.woff') format('woff');
+  font-family: "HelveticaNowDisplay";
+  src: url("./3AE984_1_0.woff2") format("woff2"),
+    url("./3AE984_1_0.woff") format("woff");
   font-weight: 400;
 }
 
 //medium
 @font-face {
-  font-family: 'HelveticaNowDisplay';
-  src: url('./3AE984_3_0.woff2') format('woff2'), url('./3AE984_3_0.woff') format('woff');
+  font-family: "HelveticaNowDisplay";
+  src: url("./3AE984_3_0.woff2") format("woff2"),
+    url("./3AE984_3_0.woff") format("woff");
   font-weight: 600;
 }
 
 //bold
 @font-face {
-  font-family: 'HelveticaNowDisplay';
-  src: url('./3AE984_2_0.woff2') format('woff2'), url('./3AE984_2_0.woff') format('woff');
+  font-family: "HelveticaNowDisplay";
+  src: url("./3AE984_2_0.woff2") format("woff2"),
+    url("./3AE984_2_0.woff") format("woff");
   font-weight: 700;
 }
 
 //extra-bold
 @font-face {
-  font-family: 'HelveticaNowDisplay';
-  src: url('./3AE984_4_0.woff2') format('woff2'), url('./3AE984_4_0.woff') format('woff');
+  font-family: "HelveticaNowDisplay";
+  src: url("./3AE984_4_0.woff2") format("woff2"),
+    url("./3AE984_4_0.woff") format("woff");
   font-weight: 800;
 }
 
 //black
 @font-face {
-  font-family: 'HelveticaNowDisplay';
-  src: url('./3AE984_5_0.woff2') format('woff2'), url('./3AE984_5_0.woff') format('woff');
+  font-family: "HelveticaNowDisplay";
+  src: url("./3AE984_5_0.woff2") format("woff2"),
+    url("./3AE984_5_0.woff") format("woff");
   font-weight: 900;
 }

@@ -1,4 +1,4 @@
-@import '../../styles/global.scss';
+@import "../../styles/global.scss";
 
 .container {
   display: flex;
@@ -9,16 +9,17 @@
 .form {
   display: flex;
   flex-direction: column;
-  & input, select {
+  & input,
+  select {
     padding: 1.5rem;
     font-size: 1.8rem;
     margin-bottom: 2rem;
-    border-radius: .5rem;
-    border: solid 1px rgba($color-grey, .3);
+    border-radius: 0.5rem;
+    border: solid 1px rgba($color-grey, 0.3);
   }
   & label {
     font-size: 1.6rem;
-    margin-bottom: .5rem;
+    margin-bottom: 0.5rem;
   }
 }
 

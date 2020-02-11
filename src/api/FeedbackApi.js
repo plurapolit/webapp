@@ -1,4 +1,4 @@
-import { fetchResponse, Parameter } from './APIUtils';
+import { fetchResponse, Parameter } from "./APIUtils";
 
 const FeedbackApi = () => {
   const URL = process.env.REACT_APP_ROOT_URL;

@@ -1,13 +1,13 @@
-import Cookie from 'js-cookie';
+import Cookie from "js-cookie";
 
-import UserApi from './UserApi';
-import { Parameter } from './APIUtils';
+import UserApi from "./UserApi";
+import { Parameter } from "./APIUtils";
 
 const JwtApi = () => {
   let jwt;
 
   const getJwtFromCookie = () => {
-    const token = Cookie.get('jwt');
+    const token = Cookie.get("jwt");
     if (token) {
       return token;
     }
@@ -38,15 +38,14 @@ const JwtApi = () => {
   }
 
   function set(token) {
-    Cookie.set('jwt', token);
+    Cookie.set("jwt", token);
     jwt = token;
   }
 
   async function deleteJwt() {
-    UserApi.signOut(jwt)
-      .then(() => {
-        set(null);
-      });
+    UserApi.signOut(jwt).then(() => {
+      set(null);
+    });
   }
 
   return {

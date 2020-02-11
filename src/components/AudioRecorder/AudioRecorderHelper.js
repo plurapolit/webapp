@@ -1,10 +1,10 @@
-import S3 from 'react-aws-s3';
+import S3 from "react-aws-s3";
 
 const AudioRecorderHelper = () => {
   const sendToAWS = (audio) => {
     const config = {
       bucketName: process.env.REACT_APP_BUCKETNAME,
-      dirName: 'statements',
+      dirName: "statements",
       region: process.env.REACT_APP_REGION,
       accessKeyId: process.env.REACT_APP_ACCESS_KEY_ID,
       secretAccessKey: process.env.REACT_APP_SECRET_ACCESS_KEY,
@@ -14,11 +14,9 @@ const AudioRecorderHelper = () => {
     const file = audio;
 
     const promiseLocation = new Promise((resolve) => {
-      ReactS3Client
-        .uploadFile(file, newFileName)
-        .then((data) => {
-          resolve(data.location);
-        });
+      ReactS3Client.uploadFile(file, newFileName).then((data) => {
+        resolve(data.location);
+      });
     });
     return promiseLocation;
   };
@@ -31,7 +29,8 @@ const AudioRecorderHelper = () => {
       const errorHandler = (error) => {
         resolve(false, error);
       };
-      navigator.mediaDevices.getUserMedia({ audio: true })
+      navigator.mediaDevices
+        .getUserMedia({ audio: true })
         .then(() => successHandler())
         .catch((error) => errorHandler(error));
     });

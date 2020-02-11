@@ -1,19 +1,19 @@
-import React from 'react';
-import { Route, Switch } from 'react-router-dom';
-import Notification from 'react-notifications-component';
-import 'react-notifications-component/dist/theme.css';
+import React from "react";
+import { Route, Switch } from "react-router-dom";
+import Notification from "react-notifications-component";
+import "react-notifications-component/dist/theme.css";
 
-import StoreContext from './layouts/Store/StoreContext';
-import NavBar from './components/Navbar/Navbar';
-import NavbarBuffer from './layouts/NavbarBuffer/NavbarBuffer';
-import Footer from './components/Footer/Footer';
-import HomePage from './views/HomePage/HomePage';
-import Terms from './views/Terms/Terms';
-import SiteNotice from './views/SiteNotice/SiteNotice';
-import PrivacyPolicy from './views/PrivacyPolicy/PrivacyPolicy';
-import PanelWrapper from './layouts/PanelWrapper/PanelWrapper';
-import SignIn from './views/SignIn/SignIn';
-import SignUp from './views/SignUp/SignUp';
+import StoreContext from "./layouts/Store/StoreContext";
+import NavBar from "./components/Navbar/Navbar";
+import NavbarBuffer from "./layouts/NavbarBuffer/NavbarBuffer";
+import Footer from "./components/Footer/Footer";
+import HomePage from "./views/HomePage/HomePage";
+import Terms from "./views/Terms/Terms";
+import SiteNotice from "./views/SiteNotice/SiteNotice";
+import PrivacyPolicy from "./views/PrivacyPolicy/PrivacyPolicy";
+import PanelWrapper from "./layouts/PanelWrapper/PanelWrapper";
+import SignIn from "./views/SignIn/SignIn";
+import SignUp from "./views/SignUp/SignUp";
 
 const Routes = () => (
   <StoreContext.Consumer>
@@ -42,7 +42,12 @@ const Routes = () => (
               <SignUp setUser={data.setUser} />
             </Route>
             <Route path="/:slug">
-              {(props) => <PanelWrapper slugList={data.slugList} location={props.location} />}
+              {(props) => (
+                <PanelWrapper
+                  slugList={data.slugList}
+                  location={props.location}
+                />
+              )}
             </Route>
           </Switch>
         </NavbarBuffer>

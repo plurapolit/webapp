@@ -3,25 +3,25 @@ name: Run Linter
 on:
   pull_request:
     branches:
-      - 'staging'
+      - "staging"
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
-    - name: Use Node.js 12.x
-      uses: actions/setup-node@v1
-      with:
-        node-version: 12.x
-    - name: npm install
-      run: |
-        npm install
-    - name: install eslint
-      run: |
-        npm install -g eslint
-    - name: run eslint
-      run: |
-        eslint .
-      env:
-        CI: true
+      - uses: actions/checkout@v1
+      - name: Use Node.js 12.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+      - name: npm install
+        run: |
+          npm install
+      - name: install eslint
+        run: |
+          npm install -g eslint
+      - name: run eslint
+        run: |
+          eslint .
+        env:
+          CI: true
