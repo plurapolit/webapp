@@ -4,7 +4,7 @@ import { shallow } from "enzyme";
 import About from "./About";
 import ContentWrapper from "../ContentWrapper/ContentWrapper";
 
-const setup = (propOverrides) => {
+const setup = () => {
   const wrapper = shallow(<About />);
   return {
     wrapper,
