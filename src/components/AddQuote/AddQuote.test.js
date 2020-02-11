@@ -1,10 +1,7 @@
 import React from 'react';
-import { configure, shallow } from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
+import { shallow } from 'enzyme';
 
 import AddQuote from './AddQuote';
-
-configure({ adapter: new Adapter() });
 
 const setup = (propOverrides) => {
   const props = {
