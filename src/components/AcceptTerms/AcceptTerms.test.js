@@ -7,20 +7,30 @@ import Button from '../Button/Button';
 
 configure({ adapter: new Adapter() });
 
+const setup = (propOverrides) => {
+  const props = {
+    nextPage: jest.fn(),
+    ...propOverrides,
+  };
+  const wrapper = shallow(<AcceptTerms nextPage={props.nextPage} />);
+  return {
+    wrapper,
+  };
+};
+
 describe('<AcceptTerms />', () => {
   it('should render one Button component', () => {
-    const wrapper = shallow(<AcceptTerms />);
+    const { wrapper } = setup();
     expect(wrapper.find(Button)).toHaveLength(1);
   });
 
   it('should render terms', () => {
-    const wrapper = shallow(<AcceptTerms />);
+    const { wrapper } = setup();
     expect(wrapper.find('.terms')).toHaveLength(1);
   });
 
   it('should contain a link to our terms', () => {
-    const wrapper = shallow(<AcceptTerms />);
+    const { wrapper } = setup();
     expect(wrapper.find({ href: '/terms/' })).toHaveLength(1);
   });
-
 });
