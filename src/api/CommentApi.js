@@ -1,5 +1,5 @@
-import { fetchResponse, Parameter } from './APIUtils';
-import JwtApi from './JwtApi';
+import { fetchResponse, Parameter } from "./APIUtils";
+import JwtApi from "./JwtApi";
 
 const CommentApi = () => {
   const getUrl = (statementId) => `${process.env.REACT_APP_ROOT_URL}/statements/${statementId}/comments`;
@@ -7,7 +7,10 @@ const CommentApi = () => {
   const getComments = async (statementId) => {
     const jwt = JwtApi.get();
     const headers = Parameter.get(jwt);
-    return fetch(`${process.env.REACT_APP_ROOT_URL}/statements/${statementId}/comments/`, headers);
+    return fetch(
+      `${process.env.REACT_APP_ROOT_URL}/statements/${statementId}/comments/`,
+      headers,
+    );
   };
 
   const post = async (statementId, quote, fileLink, duration) => {

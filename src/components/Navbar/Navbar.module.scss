@@ -1,4 +1,4 @@
-@import '../../styles/global.scss';
+@import "../../styles/global.scss";
 
 .navbar {
   position: fixed;
@@ -6,14 +6,14 @@
   left: 0;
   width: 100%;
   height: $navbar-height;
-  padding:  0 4rem;
+  padding: 0 4rem;
   display: flex;
   align-items: center;
   box-shadow: 0 0 10px $color-grey;
   background-color: $color-white;
   z-index: 300;
-  transition: all .3s;
-  
+  transition: all 0.3s;
+
   &_top {
     composes: navbar;
     background-color: transparent;
@@ -33,7 +33,7 @@
   justify-content: space-between;
   align-items: center;
   list-style-type: none;
-  
+
   &_items {
     display: flex;
     align-items: center;

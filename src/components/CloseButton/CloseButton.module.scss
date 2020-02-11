@@ -10,10 +10,11 @@
 .close:hover {
   opacity: 1;
 }
-.close:before, .close:after {
+.close:before,
+.close:after {
   position: absolute;
   left: 15px;
-  content: ' ';
+  content: " ";
   height: 3rem;
   width: 2px;
   background-color: #333;

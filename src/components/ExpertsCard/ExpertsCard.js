@@ -1,6 +1,6 @@
-import React from 'react';
+import React from "react";
 
-import styles from './ExpertsCard.module.scss';
+import styles from "./ExpertsCard.module.scss";
 
 const ExpertsCard = ({ experts }) => {
   const url = process.env.REACT_APP_BUCKET_URL;
@@ -9,8 +9,16 @@ const ExpertsCard = ({ experts }) => {
 
   return (
     <div className={styles["speaker-image-wrapper"]}>
-      <img src={speakerImage} className={styles["speaker-image"]} alt={experts.full_name} />
-      <img src={speakerOrganisation} className={styles["organisation-logo"]} />
+      <img
+        src={speakerImage}
+        className={styles["speaker-image"]}
+        alt={experts.full_name}
+      />
+      <img
+        alt={experts.organisation_name}
+        src={speakerOrganisation}
+        className={styles["organisation-logo"]}
+      />
     </div>
   );
 };

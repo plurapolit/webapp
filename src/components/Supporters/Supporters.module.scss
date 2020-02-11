@@ -1,4 +1,4 @@
-@import '../../styles/global.scss';
+@import "../../styles/global.scss";
 
 .container {
   display: flex;
@@ -6,9 +6,9 @@
   justify-content: space-around;
   align-items: center;
   width: 100%;
-  -moz-box-shadow:    inset 0 0 10px rgba(0,0,0,0.2);
-  -webkit-box-shadow: inset 0 0 10px rgba(0,0,0,0.2);
-  box-shadow:         inset 0 0 10px rgba(0,0,0,0.2);
+  -moz-box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
 
   @media screen and (max-width: 450px) {
     flex-direction: column;

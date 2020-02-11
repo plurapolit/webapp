@@ -1,4 +1,4 @@
-import moment from 'moment';
+import moment from "moment";
 
 export const isLoaded = (condition, resolve, reject = null) => {
   if (condition) {
@@ -12,13 +12,13 @@ export const getDataFromEvent = (event) => {
   const data = {};
   const formElements = Array.from(event.target);
   formElements.forEach((input) => {
-    if (input.type !== 'submit') {
+    if (input.type !== "submit") {
       data[input.name] = input.value;
     }
   });
   return data;
 };
 
-export const getTimeStamp = () => moment().format('HH-mm-ss');
+export const getTimeStamp = () => moment().format("HH-mm-ss");
 
-export const getDatum = () => moment().format('YYYY-MM-DD');
+export const getDatum = () => moment().format("YYYY-MM-DD");

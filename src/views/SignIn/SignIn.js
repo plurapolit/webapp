@@ -1,14 +1,14 @@
-import React from 'react';
-import { withRouter } from 'react-router-dom';
+import React from "react";
+import { withRouter } from "react-router-dom";
 
-import StoreContext from '../../layouts/Store/StoreContext';
-import SignInComponent from '../../components/SignInComponent/SignInComponent';
+import StoreContext from "../../layouts/Store/StoreContext";
+import SignInComponent from "../../components/SignInComponent/SignInComponent";
 
-import styles from './SignIn.module.scss';
+import styles from "./SignIn.module.scss";
 
 const SignIn = ({ history }) => {
   const routeBack = () => {
-    history.push('/');
+    history.push("/");
   };
 
   return (

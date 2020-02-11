@@ -1,16 +1,16 @@
 /* eslint-disable react/jsx-filename-extension */
-import React from 'react';
+import React from "react";
 
-import HomePageMetaTags from './HomePageMetaTag';
-import HomeHeader from '../../components/HomeHeader/HomeHeader';
-import About from '../../components/About/About';
-import MoreSection from '../../components/MoreSection/MoreSection';
-import { isLoaded } from '../../helper/helper';
-import CategoryList from '../../components/CategoryList/CategoryList';
-import Feedback from '../../components/Feedback/Feedback';
-import Supporters from '../../components/Supporters/Supporters';
+import HomePageMetaTags from "./HomePageMetaTag";
+import HomeHeader from "../../components/HomeHeader/HomeHeader";
+import About from "../../components/About/About";
+import MoreSection from "../../components/MoreSection/MoreSection";
+import { isLoaded } from "../../helper/helper";
+import CategoryList from "../../components/CategoryList/CategoryList";
+import Feedback from "../../components/Feedback/Feedback";
+import Supporters from "../../components/Supporters/Supporters";
 
-import styles from './HomePage.module.scss';
+import styles from "./HomePage.module.scss";
 
 const HomePage = ({ categoryList }) => (
   <div>

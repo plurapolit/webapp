@@ -1,9 +1,9 @@
-import React from 'react';
+import React from "react";
 
-import ContentWrapper from '../ContentWrapper/ContentWrapper';
-import PanelList from '../PanelList/PanelList';
+import ContentWrapper from "../ContentWrapper/ContentWrapper";
+import PanelList from "../PanelList/PanelList";
 
-import styles from './CategoryBanner.module.scss';
+import styles from "./CategoryBanner.module.scss";
 
 const CategoryBanner = ({
   name, imageUrl, color, panels,
@@ -11,12 +11,16 @@ const CategoryBanner = ({
   const ROOTIMAGEURL = process.env.REACT_APP_BUCKET_URL;
 
   const customStyle = {
-    '--bg': `${color}`,
+    "--bg": `${color}`,
   };
 
   return (
     <section className={styles["category-banner"]} style={customStyle}>
-      <img src={`${ROOTIMAGEURL}/${imageUrl}`} alt={name} className={styles["image"]} />
+      <img
+        src={`${ROOTIMAGEURL}/${imageUrl}`}
+        alt={name}
+        className={styles["image"]}
+      />
       <ContentWrapper>
         <div className={styles["name"]}>{name}</div>
         <PanelList data={panels} />

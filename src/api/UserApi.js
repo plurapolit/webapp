@@ -1,4 +1,4 @@
-import { fetchBody, Parameter } from './APIUtils';
+import { fetchBody, Parameter } from "./APIUtils";
 
 const UserApi = () => {
   const URL = process.env.REACT_APP_ROOT_URL;

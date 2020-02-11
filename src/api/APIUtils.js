@@ -16,15 +16,15 @@ const getParameter = () => {
   const bearerToken = (jwt) => `Bearer ${jwt}`;
 
   const HttpMethods = {
-    GET: 'get',
-    PUT: 'put',
-    PATCH: 'patch',
-    POST: 'post',
-    DELETE: 'delete',
+    GET: "get",
+    PUT: "put",
+    PATCH: "patch",
+    POST: "post",
+    DELETE: "delete",
   };
 
   const ContentTypes = {
-    JSON: 'application/json',
+    JSON: "application/json",
   };
 
   const post = (body = null, jwt = null) => {
@@ -35,7 +35,7 @@ const getParameter = () => {
     return {
       method: HttpMethods.POST,
       headers: {
-        'Content-Type': ContentTypes.JSON,
+        "Content-Type": ContentTypes.JSON,
         Authorization: bearer,
       },
       body: JSON.stringify(body),

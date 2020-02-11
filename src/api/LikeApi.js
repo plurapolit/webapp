@@ -1,5 +1,5 @@
-import { fetchResponse, Parameter } from './APIUtils';
-import JwtApi from './JwtApi';
+import { fetchResponse, Parameter } from "./APIUtils";
+import JwtApi from "./JwtApi";
 
 const LikeApi = () => {
   const getUrl = (statementId) => `${process.env.REACT_APP_ROOT_URL}/statements/${statementId}/likes`;

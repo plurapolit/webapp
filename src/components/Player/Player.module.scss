@@ -1,4 +1,4 @@
-@import '../../styles/global.scss';
+@import "../../styles/global.scss";
 
 .media-player-wrapper {
   width: 100%;
@@ -8,8 +8,8 @@
   flex-direction: column;
   position: sticky;
   bottom: 0;
-  box-shadow: 0 -.75rem 2rem -1rem rgba(black, 0.3);
-  animation: slideUp .3s ease-out;
+  box-shadow: 0 -0.75rem 2rem -1rem rgba(black, 0.3);
+  animation: slideUp 0.3s ease-out;
   background-color: $color-white;
   &-player {
     min-width: 300px;
@@ -25,7 +25,6 @@
   &-statement {
     color: $headline-blue;
     font-size: 1.5rem;
-    padding-bottom: .5rem;
+    padding-bottom: 0.5rem;
   }
 }
-

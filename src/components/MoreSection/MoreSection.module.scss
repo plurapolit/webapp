@@ -1,4 +1,4 @@
-@import '../../styles/global.scss';
+@import "../../styles/global.scss";
 
 .more-section {
   padding: $spacing-section 0;
@@ -9,12 +9,11 @@
   display: inline-block;
   font-size: 2.4rem;
   font-weight: bold;
-  border-bottom: solid .3rem $color-primary;
+  border-bottom: solid 0.3rem $color-primary;
 }
-
 
 .line {
   width: 100%;
-  border-top: solid .3rem $color-primary;
+  border-top: solid 0.3rem $color-primary;
   margin-bottom: 2rem;
 }

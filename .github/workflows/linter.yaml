@@ -1,4 +1,4 @@
-name: Run Tests
+name: Run Linter
 
 on:
   pull_request:
@@ -17,8 +17,11 @@ jobs:
       - name: npm install
         run: |
           npm install
-      - name: run jest
+      - name: install eslint
         run: |
-          npm test
+          npm install -g eslint
+      - name: run eslint
+        run: |
+          eslint .
         env:
           CI: true
