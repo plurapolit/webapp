@@ -1,7 +1,7 @@
-import React from 'react';
-import Button from '../Button/Button';
+import React from "react";
+import Button from "../Button/Button";
 
-const SignUpButton = ({ user, children = 'Registrieren' }) => {
+const SignUpButton = ({ user, children = "Registrieren" }) => {
   if (!user) {
     return (
       <Button cta to="/sign_up/">

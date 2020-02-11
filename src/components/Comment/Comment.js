@@ -1,24 +1,22 @@
-import React, { useState } from 'react';
-import moment from 'moment';
+import React, { useState } from "react";
+import moment from "moment";
 
-import styles from './Comment.module.scss';
-import playButton from '../../media/images/play.svg';
-import LikeButton from '../LikeButton/LikeButton';
-import audioWave from '../../media/images/sound-wave.svg';
-import LikeApi from '../../api/LikeApi';
-import JwtApi from '../../api/JwtApi';
-import Notification from '../../helper/Notification';
+import styles from "./Comment.module.scss";
+import playButton from "../../media/images/play.svg";
+import LikeButton from "../LikeButton/LikeButton";
+import audioWave from "../../media/images/sound-wave.svg";
+import LikeApi from "../../api/LikeApi";
+import JwtApi from "../../api/JwtApi";
+import Notification from "../../helper/Notification";
 
 const Comment = ({ commentData, setSong }) => {
   const [liked, setLiked] = useState(commentData.likes.liked_by_current_user);
 
-  const audioDuration = (audioFile) => (
-    moment.utc(
-      moment.duration(
-        audioFile.duration_seconds, 'seconds',
-      ).asMilliseconds(),
-    ).format('mm:ss')
-  );
+  const audioDuration = (audioFile) => moment
+    .utc(
+      moment.duration(audioFile.duration_seconds, "seconds").asMilliseconds(),
+    )
+    .format("mm:ss");
 
   const like = async () => {
     LikeApi.post(commentData.comment.id);
@@ -35,7 +33,9 @@ const Comment = ({ commentData, setSong }) => {
   const handleLikeClick = async () => {
     const valid = await JwtApi.validate();
     if (!valid) {
-      return Notification.warning('Um diesen Service nutzen zu können, musst du dich anmelden');
+      return Notification.warning(
+        "Um diesen Service nutzen zu können, musst du dich anmelden",
+      );
     }
 
     if (liked) {
@@ -43,7 +43,7 @@ const Comment = ({ commentData, setSong }) => {
     } else {
       like();
     }
-    toggleLike();
+    return toggleLike();
   };
 
   const numberOfLikes = (totalLikes) => {
@@ -59,7 +59,7 @@ const Comment = ({ commentData, setSong }) => {
     return (
       <div className={styles["comments-panels-likes"]}>
         {likeAmount}
-        {likeAmount === 1 ? ' Like' : ' Likes'}
+        {likeAmount === 1 ? " Like" : " Likes"}
       </div>
     );
   };
@@ -78,7 +78,10 @@ const Comment = ({ commentData, setSong }) => {
         <div className={styles["comments-panels"]}>
           <div
             className={styles["comments-panels-play"]}
-            onClick={() => setSong(commentData.audio_file.file_link, commentData.user.full_name)}
+            onClick={() => setSong(
+              commentData.audio_file.file_link,
+              commentData.user.full_name,
+            )}
           >
             <img
               alt="icon"
@@ -102,10 +105,7 @@ const Comment = ({ commentData, setSong }) => {
           </div>
           {commentQuote(commentData.comment.quote)}
         </div>
-        <LikeButton
-          liked={liked}
-          handleLikeClick={handleLikeClick}
-        />
+        <LikeButton liked={liked} handleLikeClick={handleLikeClick} />
       </div>
     </div>
   );

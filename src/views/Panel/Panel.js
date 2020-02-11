@@ -1,19 +1,18 @@
-import React from 'react';
-import PanelMetaTags from './PanelMetaTags';
-import styles from './Panel.module.scss';
-import PanelContent from '../../components/PanelContent/PanelContent';
-import ContentWrapper from '../../components/ContentWrapper/ContentWrapper';
-
+import React from "react";
+import PanelMetaTags from "./PanelMetaTags";
+import styles from "./Panel.module.scss";
+import PanelContent from "../../components/PanelContent/PanelContent";
+import ContentWrapper from "../../components/ContentWrapper/ContentWrapper";
 
 const Panel = ({ panel, objectPositionTop }) => {
   const IMAGEROOTURL = process.env.REACT_APP_BUCKET_URL;
 
   const customStylePanel = {
-    '--color': `${panel.panel.font_color}`,
+    "--color": `${panel.panel.font_color}`,
   };
 
   const customStyleImage = {
-    '--objectPosition': `${objectPositionTop ? 'top' : 'center'}`,
+    "--objectPosition": `${objectPositionTop ? "top" : "center"}`,
   };
 
   const imageUrl = `${IMAGEROOTURL}/${panel.panel_avatar_key}`;
@@ -34,7 +33,6 @@ const Panel = ({ panel, objectPositionTop }) => {
           </ContentWrapper>
           <div className={styles["rounder"]} />
         </div>
-
       </div>
       <ContentWrapper>
         <PanelContent content={panel} />

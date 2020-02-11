@@ -1,8 +1,12 @@
-import React from 'react';
-import ReactModal from 'react-modal';
+import React from "react";
+import ReactModal from "react-modal";
 
 const Modal = ({
-  children, isOpen, closeModal, label = 'PluraPolit', style = {},
+  children,
+  isOpen,
+  closeModal,
+  label = "PluraPolit",
+  style = {},
 }) => (
   <ReactModal
     isOpen={isOpen}

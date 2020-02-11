@@ -1,8 +1,7 @@
-import React from 'react';
-import Button from '../Button/Button';
+import React from "react";
+import Button from "../Button/Button";
 
-import styles from './AcceptTerms.module.scss';
-
+import styles from "./AcceptTerms.module.scss";
 
 const AcceptTerms = ({ nextPage }) => (
   <div className={styles["container"]}>
@@ -16,7 +15,11 @@ const AcceptTerms = ({ nextPage }) => (
       <li>Beiträge dürfen nicht beleidigen</li>
       <li>Beiträge dürfen keine rassistischen Äußerungen beinhalten</li>
       <li>Beiträge dürfen nicht zur Gewalt aufrufen</li>
-      <div className={styles["terms-link"]}><a href="/terms/" target="_blank">Mehr dazu</a></div>
+      <div className={styles["terms-link"]}>
+        <a href="/terms/" target="_blank">
+          Mehr dazu
+        </a>
+      </div>
     </ol>
     <Button onClick={() => nextPage()}>
       Ich akzeptiere die Nutzungsbedingungen

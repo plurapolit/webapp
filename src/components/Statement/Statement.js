@@ -1,13 +1,19 @@
-import React, { useState } from 'react';
-import moment from 'moment';
+import React, { useState, useEffect } from "react";
+import moment from "moment";
 
-import audioWave from '../../media/images/sound-wave.svg';
-import playButton from '../../media/images/play.svg';
-import PanelComments from '../PanelComments/PanelComments';
-import styles from './Statement.module.scss';
+import audioWave from "../../media/images/sound-wave.svg";
+import playButton from "../../media/images/play.svg";
+import PanelComments from "../PanelComments/PanelComments";
+import styles from "./Statement.module.scss";
 
 const Statement = ({
-  expert, setShowMediaPlayer, setIsAutoplayed, setAudioStatement, setCurrentUser, stopPlayer, startPlayer,
+  expert,
+  setShowMediaPlayer,
+  setIsAutoplayed,
+  setAudioStatement,
+  setCurrentUser,
+  stopPlayer,
+  startPlayer,
 }) => {
   const [commentsAreOpen, setCommentsAreOpen] = useState(false);
 
@@ -21,22 +27,39 @@ const Statement = ({
     startPlayer();
   };
 
-  const numberOfComments = () => (
-    `${expert.number_of_comments} ${expert.number_of_comments === 1 ? ' Antwort' : ' Antworten'}`
-  );
+  const { number_of_comments: commentNumber } = expert;
+  const numberOfComments = () => {
+    if (commentNumber === 0) {
+      return "Kommentieren";
+    }
 
-  const audioDuration = () => (
-    moment.utc(
-      moment.duration(
-        expert.statement_audio_file.duration_seconds, 'seconds',
-      ).asMilliseconds(),
-    ).format('mm:ss')
-  );
+    if (commentNumber === 1) {
+      return "1 Kommentar";
+    }
+
+    return `${commentNumber} Kommentare`;
+  };
+
+  useEffect(() => {
+    const openCommentsIfCommentsAreAvailable = () => {
+      if (commentNumber > 0) {
+        setCommentsAreOpen(true);
+      }
+    };
+    openCommentsIfCommentsAreAvailable();
+  }, [commentNumber]);
+
+  const audioDuration = () => moment
+    .utc(
+      moment
+        .duration(expert.statement_audio_file.duration_seconds, "seconds")
+        .asMilliseconds(),
+    )
+    .format("mm:ss");
 
   const toggleComments = () => {
     setCommentsAreOpen(!commentsAreOpen);
   };
-
 
   return (
     <div className={styles["expert-wrapper"]}>
@@ -99,15 +122,14 @@ const Statement = ({
           </div>
         </div>
       </div>
-      {commentsAreOpen
-        && (
+      {commentsAreOpen && (
         <PanelComments
           toggleComments={toggleComments}
           setSong={setSong}
           statementId={expert.statement.id}
           stopPlayer={stopPlayer}
         />
-        )}
+      )}
     </div>
   );
 };

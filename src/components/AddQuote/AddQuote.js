@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import Button from '../Button/Button';
-import { getDataFromEvent } from '../../helper/helper';
+import React, { useState } from "react";
+import Button from "../Button/Button";
+import { getDataFromEvent } from "../../helper/helper";
 
-import styles from './AddQuote.module.scss';
+import styles from "./AddQuote.module.scss";
 
 const AddQuote = ({ setQuote, sendToRails }) => {
   const [inputLength, setInputLength] = useState(0);
@@ -20,7 +20,9 @@ const AddQuote = ({ setQuote, sendToRails }) => {
 
   return (
     <div className={styles["container"]}>
-      <div className={styles["headline"]}>Bitte fasse deine Aussage in wenigen Worten zusammen</div>
+      <div className={styles["headline"]}>
+        Bitte fasse deine Aussage in wenigen Worten zusammen
+      </div>
       <form className={styles["form"]} onSubmit={(event) => addQuote(event)}>
         <textarea
           rows="4"
@@ -29,8 +31,10 @@ const AddQuote = ({ setQuote, sendToRails }) => {
           name="quote"
           placeholder="Beschreibung ..."
           maxLength="120"
+          /* eslint-disable jsx-a11y/no-autofocus */
           autoFocus
-          onChange={(event) => handleCharacterInput(event)}
+          /* eslint-enable jsx-a11y/no-autofocus */
+          onChange={(e) => handleCharacterInput(e)}
           required
         />
         <div className={styles["input-length"]}>

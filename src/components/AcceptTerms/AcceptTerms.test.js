@@ -1,8 +1,8 @@
-import React from 'react';
-import { shallow } from 'enzyme';
+import React from "react";
+import { shallow } from "enzyme";
 
-import AcceptTerms from './AcceptTerms';
-import Button from '../Button/Button';
+import AcceptTerms from "./AcceptTerms";
+import Button from "../Button/Button";
 
 const setup = (propOverrides) => {
   const props = {
@@ -15,19 +15,19 @@ const setup = (propOverrides) => {
   };
 };
 
-describe('<AcceptTerms />', () => {
-  it('should render one Button component', () => {
+describe("<AcceptTerms />", () => {
+  it("should render one Button component", () => {
     const { wrapper } = setup();
     expect(wrapper.find(Button)).toHaveLength(1);
   });
 
-  it('should render terms', () => {
+  it("should render terms", () => {
     const { wrapper } = setup();
-    expect(wrapper.find('.terms')).toHaveLength(1);
+    expect(wrapper.find(".terms")).toHaveLength(1);
   });
 
-  it('should contain a link to our terms', () => {
+  it("should contain a link to our terms", () => {
     const { wrapper } = setup();
-    expect(wrapper.find({ href: '/terms/' })).toHaveLength(1);
+    expect(wrapper.find({ href: "/terms/" })).toHaveLength(1);
   });
 });

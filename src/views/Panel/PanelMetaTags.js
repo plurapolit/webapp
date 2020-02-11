@@ -1,5 +1,5 @@
-import React from 'react';
-import MetaTags from 'react-meta-tags';
+import React from "react";
+import MetaTags from "react-meta-tags";
 
 const PanelMetaTags = ({ panel, imageUrl }) => (
   <MetaTags>

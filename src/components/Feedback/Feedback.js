@@ -1,13 +1,13 @@
-import React, { useRef } from 'react';
+import React, { useRef } from "react";
 
-import Button from '../Button/Button';
-import { getDataFromEvent } from '../../helper/helper';
-import Notification from '../../helper/Notification';
-import ContentWrapper from '../ContentWrapper/ContentWrapper';
-import FeedbackApi from '../../api/FeedbackApi';
-import Text from '../Text/Text';
+import Button from "../Button/Button";
+import { getDataFromEvent } from "../../helper/helper";
+import Notification from "../../helper/Notification";
+import ContentWrapper from "../ContentWrapper/ContentWrapper";
+import FeedbackApi from "../../api/FeedbackApi";
+import Text from "../Text/Text";
 
-import styles from './Feedback.module.scss';
+import styles from "./Feedback.module.scss";
 
 const Feedback = () => {
   const emailInput = useRef(undefined);
@@ -15,12 +15,13 @@ const Feedback = () => {
 
   const handleSubmit = (event) => {
     const data = getDataFromEvent(event);
-    FeedbackApi.send(data.email, data.text)
-      .then(() => {
-        Notification.success('Danke für dein Feedback! Du hilfst uns sehr PluraPolit besser zu machen.');
-        emailInput.current.value = '';
-        feedbackInput.current.value = '';
-      });
+    FeedbackApi.send(data.email, data.text).then(() => {
+      Notification.success(
+        "Danke für dein Feedback! Du hilfst uns sehr PluraPolit besser zu machen.",
+      );
+      emailInput.current.value = "";
+      feedbackInput.current.value = "";
+    });
   };
 
   return (
@@ -35,9 +36,26 @@ const Feedback = () => {
           <br />
           Und vor allem, welche Themen würden dich interessieren?
         </Text>
-        <form className={styles["form"]} onSubmit={(event) => handleSubmit(event)}>
-          <input className={styles["email"]} type="email" name="email" placeholder="E-Mail" ref={emailInput} required />
-          <textarea className={styles["textarea"]} type="text" name="text" placeholder="Dein Feedback oder Themenvorschlag..." ref={feedbackInput} required />
+        <form
+          className={styles["form"]}
+          onSubmit={(event) => handleSubmit(event)}
+        >
+          <input
+            className={styles["email"]}
+            type="email"
+            name="email"
+            placeholder="E-Mail"
+            ref={emailInput}
+            required
+          />
+          <textarea
+            className={styles["textarea"]}
+            type="text"
+            name="text"
+            placeholder="Dein Feedback oder Themenvorschlag..."
+            ref={feedbackInput}
+            required
+          />
           <div>
             <Button type="submit">Senden</Button>
           </div>

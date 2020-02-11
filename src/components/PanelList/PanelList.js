@@ -1,8 +1,8 @@
 /* eslint-disable camelcase */
-import React from 'react';
+import React from "react";
 
-import styles from './PanelList.module.scss';
-import PanelCard from '../PanelCard/PanelCard';
+import styles from "./PanelList.module.scss";
+import PanelCard from "../PanelCard/PanelCard";
 
 const PanelList = ({ data }) => {
   const URL = process.env.REACT_APP_BUCKET_URL;
@@ -18,11 +18,7 @@ const PanelList = ({ data }) => {
     />
   ));
 
-  return (
-    <div className={styles["panel-list"]}>
-      {list}
-    </div>
-  );
+  return <div className={styles["panel-list"]}>{list}</div>;
 };
 
 export default PanelList;
