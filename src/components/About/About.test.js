@@ -21,7 +21,7 @@ const setup = (propOverrides) => {
 describe('<About />', () => {
   it('should render a text component', () => {
     const { wrapper } = setup();
-    expect(wrapper.find(Text)).toHaveLength(1);
+    expect(wrapper.find('Text[headline]')).toHaveLength(1);
   });
 
   it('should render an about description', () => {
