@@ -84,26 +84,22 @@ const Terms = () => (
       <p>
         geeignet sind, andere zu verleumden, zu beleidigen, zu bedrohen, zu
         verunglimpfen oder in ihren Persönlichkeitsrechten zu verletzen;
-        {" "}
       </p>
       <p>rassistisch sind,</p>
       <p>der Volksverhetzung dienen, </p>
       <p>
         zu Straftaten anleiten oder Gewalt verherrlichen oder verharmlosen,
-        {" "}
       </p>
       <p>zu Gewalt aufrufen</p>
       <p>
         sexistisch, pornografisch, obszön oder sexuell anstößig sowie geeignet
         sind, Kinder oder Jugendliche sittlich schwer zu gefährden;
-        {" "}
       </p>
       <p>Menschen in einer die Menschenwürde verletzenden Weise darstellen;</p>
       <p>In sonstiger Weise strafrechtlich relevant sind.</p>
       <p>
         (5) Die Beiträge dürfen keine Werbung für kommerzielle Produkte oder
         Dienstleistungen beinhalten.
-        {" "}
       </p>
       <p>
         (6) Die User*innen versichern, dass die von Ihnen eingereichten Beiträge
@@ -175,7 +171,6 @@ const Terms = () => (
         verursachte Sach- oder Vermögensschäden auf den vertragstypischen und
         vorhersehbaren Schaden. Gleiches gilt für Pflichterfüllungen unserer
         Erfüllungsgehilfen.
-        {" "}
       </p>
       <br />
       <p>9. Änderungen</p>
