@@ -13,8 +13,8 @@ const AddQuote = ({ setQuote, sendToRails }) => {
     sendToRails();
   };
 
-  const handleCharacterInput = (e) => {
-    const { length } = e.target.value;
+  const handleCharacterInput = (event) => {
+    const { length } = event.target.value;
     setInputLength(length);
   };
 
@@ -30,12 +30,11 @@ const AddQuote = ({ setQuote, sendToRails }) => {
           placeholder="Beschreibung ..."
           maxLength="120"
           autoFocus
-          onChange={(e) => handleCharacterInput(e)}
+          onChange={(event) => handleCharacterInput(event)}
           required
         />
         <div className={styles["input-length"]}>
-          {inputLength}
-/120
+          {`${inputLength}/120`}
         </div>
         <Button type="submit">Abschicken</Button>
       </form>
