@@ -14,9 +14,13 @@
     overflow: hidden;
     &-header {
       display: flex;
-      justify-content: flex-start;
+      justify-content: space-between;
       align-items: center;
       margin-bottom: 7px;
+      &-left {
+        display: flex;
+        align-items: center;
+      }
     }
     &-image {
       height: 8rem;
@@ -26,13 +30,16 @@
       margin-left: -1rem;
     }
     &-user {
-      margin-left: 1rem;
+      margin-left: 1rem;      
     }
     &-name {
       color: $headline-dark-2;
       font-size: 1.5rem;
       line-height: 2.2rem;
       font-weight: 700;
+      &-wrapper {
+        display: flex;
+      }
     }
     &-organisation {
       color: $headline-dark-2;
