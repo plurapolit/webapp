@@ -31,7 +31,7 @@ const Statement = ({
 
     if (expert.user.website_link) {
       return (
-        <a href={expert.user.website_link}>
+        <a href={expert.user.website_link} target="_blank" rel="noopener noreferrer">
           {image}
         </a>
       );
