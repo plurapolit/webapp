@@ -1,6 +1,6 @@
-import CategoryApi from '../../api/CategoryApi';
-import SlugApi from '../../api/SlugApi';
-import JwtApi from '../../api/JwtApi';
+import CategoryApi from "../../api/CategoryApi";
+import SlugApi from "../../api/SlugApi";
+import JwtApi from "../../api/JwtApi";
 
 const StoreHelper = () => {
   const loadCategoryList = async (done) => {
@@ -14,7 +14,11 @@ const StoreHelper = () => {
   };
 
   const loadContent = async (done) => {
-    const promises = [CategoryApi.fetchAllCategories(), SlugApi.fetchSlugList(), JwtApi.validate()];
+    const promises = [
+      CategoryApi.fetchAllCategories(),
+      SlugApi.fetchSlugList(),
+      JwtApi.validate(),
+    ];
     const [dataCategories, slugs, user] = await Promise.all(promises);
     done(dataCategories.categories, slugs.panels, user.user);
   };

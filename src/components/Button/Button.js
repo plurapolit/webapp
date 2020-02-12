@@ -1,17 +1,23 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
-import styles from './Button.module.scss';
+import styles from "./Button.module.scss";
 
 // TODO: add button types button primary ...
 
 const Button = ({
-  children, cta, customClass = null, type = "button", to = undefined, onClick = () => {},
+  children,
+  cta,
+  customClass = null,
+  type = "button",
+  to = undefined,
+  onClick = () => {},
 }) => {
   const customStyle = {
-    '--bg-color': cta ? '#EE8137' : '#4E0CED',
+    "--bg-color": cta ? "#EE8137" : "#4E0CED",
   };
 
+  /* eslint-disable react/button-has-type */
   const button = (
     <button
       type={type}
@@ -22,13 +28,10 @@ const Button = ({
       {children}
     </button>
   );
+  /* eslint-enable react/button-has-type */
 
   if (to) {
-    return (
-      <Link to={to}>
-        {button}
-      </Link>
-    );
+    return <Link to={to}>{button}</Link>;
   }
   return button;
 };

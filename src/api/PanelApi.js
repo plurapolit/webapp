@@ -1,4 +1,4 @@
-import { fetchBody } from './APIUtils';
+import { fetchBody } from "./APIUtils";
 
 const PanelApi = () => {
   const URL = process.env.REACT_APP_ROOT_URL;

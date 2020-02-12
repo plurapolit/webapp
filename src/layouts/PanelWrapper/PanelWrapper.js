@@ -1,38 +1,36 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from "react";
 
-import Helper from './PanelWrapperHelper';
-import Panel from '../../views/Panel/Panel';
-import PageNotFound from '../../views/PageNotFound/PageNotFound';
-import Loader from '../../components/Loader/Loader';
+import Helper from "./PanelWrapperHelper";
+import Panel from "../../views/Panel/Panel";
+import PageNotFound from "../../views/PageNotFound/PageNotFound";
+import Loader from "../../components/Loader/Loader";
 
-const PanelWrapper = ({ slugList }) => {
-  const ABOUT_US_SLUG = '2020-wir-uber-uns';
-
-  const [slug, setSlug] = useState(undefined);
-  const panel = useRef(undefined);
+const PanelWrapper = ({ slugList, location }) => {
+  const [currentPanel, setCurrentPanel] = useState(undefined);
   const [isLoaded, setIsLoaded] = useState(false);
 
-  useEffect(() => {
-    const newSlug = window.location.pathname.substr(1);
-    setSlug(newSlug);
-  }, []);
+  const slug = Helper.getSlug(location);
+  const isAboutUsSlug = () => slug === Helper.ABOUT_US_SLUG;
 
   useEffect(() => {
     if (slug && slugList) {
       const slugObj = slugList.find(({ panel }) => panel.slug === slug);
       if (slugObj) {
         Helper.loadPanelById(slugObj.panel.id, (newPanel) => {
-          panel.current = newPanel;
+          setCurrentPanel(newPanel);
           setIsLoaded(true);
         });
       } else {
+        setCurrentPanel(undefined);
         setIsLoaded(true);
       }
     }
   }, [slug, slugList]);
 
-  if (panel.current) {
-    return <Panel objectPositionTop={slug === ABOUT_US_SLUG} panel={panel.current} />;
+  if (currentPanel) {
+    return (
+      <Panel objectPositionTop={isAboutUsSlug()} panel={currentPanel} />
+    );
   }
 
   if (slug && isLoaded) {

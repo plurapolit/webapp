@@ -1,4 +1,4 @@
-@import '../../styles/global.scss';
+@import "../../styles/global.scss";
 
 .expert {
   &-wrapper {
@@ -14,9 +14,13 @@
     overflow: hidden;
     &-header {
       display: flex;
-      justify-content: flex-start;
+      justify-content: space-between;
       align-items: center;
       margin-bottom: 7px;
+      &-left {
+        display: flex;
+        align-items: center;
+      }
     }
     &-image {
       height: 8rem;
@@ -26,13 +30,16 @@
       margin-left: -1rem;
     }
     &-user {
-      margin-left: 1rem;
+      margin-left: 1rem;      
     }
     &-name {
       color: $headline-dark-2;
       font-size: 1.5rem;
       line-height: 2.2rem;
       font-weight: 700;
+      &-wrapper {
+        display: flex;
+      }
     }
     &-organisation {
       color: $headline-dark-2;
@@ -63,10 +70,10 @@
       color: $color-primary;
       text-transform: uppercase;
       cursor: pointer;
-      transition: all .2s;
+      transition: all 0.2s;
       &:hover {
         opacity: 0.8;
-      } 
+      }
     }
     &-nav {
       display: flex;
@@ -91,9 +98,9 @@
         justify-content: center;
         cursor: pointer;
         outline: 0;
-        transition: all .2s;
+        transition: all 0.2s;
         &:hover {
-          opacity: .8;
+          opacity: 0.8;
         }
         &-img {
           height: 2.5rem;

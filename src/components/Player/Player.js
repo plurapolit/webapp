@@ -1,12 +1,15 @@
-import React, { useRef, useEffect } from 'react';
-import AudioPlayer from 'react-h5-audio-player';
-import 'react-h5-audio-player/src/styles.scss';
+import React, { useRef, useEffect } from "react";
+import AudioPlayer from "react-h5-audio-player";
+import "react-h5-audio-player/src/styles.scss";
 
-import styles from './Player.module.scss';
-import PiwikMessages from '../../helper/PiwikMessages';
+import styles from "./Player.module.scss";
 
 const Player = ({
-  audioStatement, currentUser, panelTitle, isStopped, startPlayer,
+  audioStatement,
+  currentUser,
+  panelTitle,
+  isStopped,
+  startPlayer,
 }) => {
   const player = useRef(null);
 
@@ -18,10 +21,6 @@ const Player = ({
     player.current.audio.play();
   };
 
-  const setAudioTitleForMatomo = () => {
-    player.current.audio.setAttribute('data-matomo-title', `${panelTitle} | ${currentUser} (${audioStatement})`);
-  };
-
   useEffect(() => {
     if (isStopped) {
       stopAudio();
@@ -29,8 +28,14 @@ const Player = ({
   }, [isStopped]);
 
   useEffect(() => {
+    const setAudioTitleForMatomo = () => {
+      player.current.audio.setAttribute(
+        "data-matomo-title",
+        `${panelTitle} | ${currentUser} (${audioStatement})`,
+      );
+    };
     setAudioTitleForMatomo();
-  }, []);
+  }, [panelTitle, currentUser, audioStatement]);
 
   useEffect(() => {
     if (audioStatement) {

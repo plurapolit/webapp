@@ -1,8 +1,7 @@
-import React from 'react';
-import styles from './LikeButton.module.scss';
-import activeLikeButton from '../../media/images/likeActive.svg';
-import likeButton from '../../media/images/like.svg';
-
+import React from "react";
+import styles from "./LikeButton.module.scss";
+import activeLikeButton from "../../media/images/likeActive.svg";
+import likeButton from "../../media/images/like.svg";
 
 const LikeButton = ({ liked, handleLikeClick }) => (
   <div className={styles["comments-like"]}>

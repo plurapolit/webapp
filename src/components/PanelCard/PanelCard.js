@@ -1,15 +1,15 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
-import ExpertsList from '../ExpertsList/ExpertsList';
-import styles from './PanelCard.module.scss';
+import ExpertsList from "../ExpertsList/ExpertsList";
+import styles from "./PanelCard.module.scss";
 
 const PanelCard = ({
   title, imageUrl, color, shortTitle, slug, experts,
 }) => {
   const customStyle = {
-    '--url': `url(${imageUrl})`,
-    '--color': `${color}`,
+    "--url": `url(${imageUrl})`,
+    "--color": `${color}`,
   };
 
   return (

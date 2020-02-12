@@ -1,11 +1,7 @@
-import React from 'react';
+import React from "react";
 
-import styles from './CloseButton.module.scss';
+import styles from "./CloseButton.module.scss";
 
-const CloseButton = ({ onClick = () => {} }) => {
-  return (
-    <div className={styles["close"]} onClick={onClick} />
-  );
-};
+const CloseButton = ({ onClick = () => {} }) => <div className={styles["close"]} onClick={onClick} />;
 
 export default CloseButton;

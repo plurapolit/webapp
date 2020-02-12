@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
+import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 
-import UserApi from '../../api/UserApi';
-import StoreContext from './StoreContext';
-import StoreHelper from './StoreHelper';
+import UserApi from "../../api/UserApi";
+import StoreContext from "./StoreContext";
+import StoreHelper from "./StoreHelper";
 
 const Store = ({ children }) => {
   const [user, setUser] = useState(undefined);
@@ -18,7 +18,12 @@ const Store = ({ children }) => {
     });
   }, []);
 
-  const signUp = async (email = 'foo@bar.de', password = 'secret', firstName = 'Foo', lastName = 'Bar') => {
+  const signUp = async (
+    email = "foo@bar.de",
+    password = "secret",
+    firstName = "Foo",
+    lastName = "Bar",
+  ) => {
     const newUser = await UserApi.signUp(email, password, firstName, lastName);
     setUser(newUser);
   };
@@ -29,16 +34,14 @@ const Store = ({ children }) => {
 
   return (
     <StoreContext.Provider
-      value={
-        {
-          user,
-          categoryList,
-          slugList,
-          setUser,
-          signUp,
-          removeUser,
-        }
-      }
+      value={{
+        user,
+        categoryList,
+        slugList,
+        setUser,
+        signUp,
+        removeUser,
+      }}
     >
       {children}
     </StoreContext.Provider>
