@@ -4,7 +4,7 @@ import styles from "./TwitterButton.module.scss";
 
 const TwitterButton = ({ handle }) => {
   const link = `https://twitter.com/${handle}`;
-  if (handle != null) {
+  if (handle) {
     return (
       <a href={link} target="_blank" rel="noopener noreferrer">
         <div>

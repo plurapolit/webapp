@@ -20,6 +20,27 @@ const Statement = ({
 
   const IMAGEROOTURL = process.env.REACT_APP_BUCKET_URL;
 
+  const avatar = () => {
+    if (expert.user.website_link) {
+      return (
+        <a href={expert.user.website_link}>
+          <img
+            src={`${IMAGEROOTURL}/${expert.user_avatar_key}`}
+            alt={expert.user.full_name}
+            className={styles["expert-card-image"]}
+          />
+        </a>
+      );
+    }
+    return (
+      <img
+        src={`${IMAGEROOTURL}/${expert.user_avatar_key}`}
+        alt={expert.user.full_name}
+        className={styles["expert-card-image"]}
+      />
+    );
+  };
+
   const setSong = async (audioFile, user) => {
     setShowMediaPlayer(true);
     setIsAutoplayed(true);
@@ -67,13 +88,7 @@ const Statement = ({
       <div className={styles["expert-card"]}>
         <div className={styles["expert-card-header"]}>
           <div className={styles["expert-card-header-left"]}>
-            <a href={expert.user.website_link}>
-              <img
-                src={`${IMAGEROOTURL}/${expert.user_avatar_key}`}
-                alt={expert.user.full_name}
-                className={styles["expert-card-image"]}
-              />
-            </a>
+            {avatar()}
             <div className={styles["expert-card-user"]}>
               <div className={styles["expert-card-name-wrapper"]}>
                 <div className={styles["expert-card-name"]}>
