@@ -21,24 +21,22 @@ const Statement = ({
   const IMAGEROOTURL = process.env.REACT_APP_BUCKET_URL;
 
   const avatar = () => {
-    if (expert.user.website_link) {
-      return (
-        <a href={expert.user.website_link}>
-          <img
-            src={`${IMAGEROOTURL}/${expert.user_avatar_key}`}
-            alt={expert.user.full_name}
-            className={styles["expert-card-image"]}
-          />
-        </a>
-      );
-    }
-    return (
+    const image = (
       <img
         src={`${IMAGEROOTURL}/${expert.user_avatar_key}`}
         alt={expert.user.full_name}
         className={styles["expert-card-image"]}
       />
     );
+
+    if (expert.user.website_link) {
+      return (
+        <a href={expert.user.website_link}>
+          {image}
+        </a>
+      );
+    }
+    return image;
   };
 
   const setSong = async (audioFile, user) => {
