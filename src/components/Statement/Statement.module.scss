@@ -15,22 +15,21 @@
     &-header {
       display: flex;
       justify-content: space-between;
-      align-items: center;
       margin-bottom: 7px;
       &-left {
         display: flex;
-        align-items: center;
       }
     }
     &-image {
       height: 8rem;
       width: 8rem;
       border-radius: 1rem;
-      margin-top: -1rem;
-      margin-left: -1rem;
+      margin-top: -0.8rem;
+      margin-left: -0.8rem;
     }
     &-user {
       margin-left: 1rem;      
+      margin-top: 1rem;      
     }
     &-name {
       color: $headline-dark-2;
