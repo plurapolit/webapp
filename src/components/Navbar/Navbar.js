@@ -26,7 +26,7 @@ const Navbar = ({ user }) => {
             <Link to="/2020-wir-uber-uns">Über uns</Link>
           </li>
           <li className={customStyle.item}>
-            <Link to="/terms">Nutzungsbedingungen</Link>
+            <Link to="/terms/">Nutzungsbedingungen</Link>
           </li>
           <li className={customStyle.item}>
             <SignUpButton user={user} />
