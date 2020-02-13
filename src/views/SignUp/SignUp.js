@@ -63,7 +63,7 @@ const SignUp = ({ setUser, history }) => {
               </select>
             </div>
           </label>
-          <Button type="submit">Registieren</Button>
+          <Button type="submit">Registrieren</Button>
         </form>
         <div className={styles["text"]}>
           <span>Du hast bereits ein Konto? </span>

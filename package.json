@@ -16,6 +16,7 @@
     "mic-recorder-to-mp3": "git://github.com/plurapolit/mic-recorder-to-mp3.git",
     "moment": "^2.24.0",
     "node-sass": "^4.13.1",
+    "outdated-browser-rework": "^2.10.0",
     "piwik-react-router": "^0.12.1",
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
