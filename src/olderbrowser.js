@@ -8,7 +8,7 @@ outdatedBrowserRework({
     Chrome: 56,
     Edge: 16,
     Safari: 11,
-    "Mobile Safari": 12,
+    "Mobile Safari": 11,
     Firefox: 39,
     Opera: 43,
     Vivaldi: 1,
@@ -23,9 +23,9 @@ outdatedBrowserRework({
       url: "https://www.browser-update.org/de/update.html",
       "outOfDate": "Dein Browser ist veraltet!",
       "update": {
-        "web": "Bitte aktualisiere deinen Browser, um PluraPolit korrekt darzustellen. ",
-        "googlePlay": "Bitte installiere die neuste Version von Chrome aus dem Play Store",
-        "appStore": "Bitte update dein iOS in den Einstellungen"
+        "web": "Bitte aktualisiere deinen Browser, um PluraPolit korrekt darzustellen.",
+        "googlePlay": "Bitte installiere die neueste Version deines Browsers aus dem PlayStore, um Plurapolit korrekt darzustellen.",
+        "appStore": "Bitte update dein Betriebssystem in den Einstellungen, um PluraPolit korrekt darzustellen."
       },
 		}
 	}
