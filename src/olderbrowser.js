@@ -20,7 +20,13 @@ outdatedBrowserRework({
   language: "de",
   messages: {
 		de: {
-			url: "https://www.browser-update.org/de/update.html"
+      url: "https://www.browser-update.org/de/update.html",
+      "outOfDate": "Dein Browser ist veraltet!",
+      "update": {
+        "web": "Bitte aktualisiere deinen Browser, um PluraPolit korrekt darzustellen. ",
+        "googlePlay": "Bitte installiere die neuste Version von Chrome aus dem Play Store",
+        "appStore": "Bitte update dein iOS in den Einstellungen"
+      },
 		}
 	}
 });
