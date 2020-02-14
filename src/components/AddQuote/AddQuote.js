@@ -24,23 +24,27 @@ const AddQuote = ({ setQuote, sendToRails }) => {
         Bitte fasse deine Aussage in wenigen Worten zusammen
       </div>
       <form className={styles["form"]} onSubmit={(event) => addQuote(event)}>
-        <textarea
-          rows="4"
-          cols="50"
-          className={styles["form-input"]}
-          name="quote"
-          placeholder="Beschreibung ..."
-          maxLength="120"
-          /* eslint-disable jsx-a11y/no-autofocus */
-          autoFocus
-          /* eslint-enable jsx-a11y/no-autofocus */
-          onChange={(e) => handleCharacterInput(e)}
-          required
-        />
-        <div className={styles["input-length"]}>
-          {`${inputLength}/120`}
+        <div className={styles["textarea-container"]}>
+          <textarea
+            rows="4"
+            cols="50"
+            className={styles["form-input"]}
+            name="quote"
+            placeholder="Beschreibung ..."
+            maxLength="120"
+            /* eslint-disable jsx-a11y/no-autofocus */
+            autoFocus
+            /* eslint-enable jsx-a11y/no-autofocus */
+            onChange={(e) => handleCharacterInput(e)}
+            required
+          />
+          <div className={styles["input-length"]}>
+            {`${inputLength}/120`}
+          </div>
+          <span>
+            <Button type="submit">Abschicken</Button>
+          </span>
         </div>
-        <Button type="submit">Abschicken</Button>
       </form>
       <div className={styles["step-index"]}>Schritt 4 von 4</div>
     </div>
