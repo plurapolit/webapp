@@ -56,6 +56,16 @@ const getParameter = () => {
     };
   };
 
+  const put = (body = null) => (
+    {
+      method: HttpMethods.PUT,
+      headers: {
+        "Content-Type": ContentTypes.JSON,
+      },
+      body: JSON.stringify(body),
+    }
+  );
+
   const deleteParam = (jwt = null) => {
     let bearer = jwt;
     if (jwt) {
@@ -73,6 +83,7 @@ const getParameter = () => {
   return {
     post,
     get,
+    put,
     delete: deleteParam,
   };
 };

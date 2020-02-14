@@ -25,6 +25,7 @@ const SignInComponent = ({ setUser, routeBack = () => {} }) => {
   return (
     <div className={styles["sign_in"]}>
       <div className={styles["container"]}>
+        <h1>Anmeldung</h1>
         <form
           className={styles["form"]}
           onSubmit={(event) => handleSubmit(event)}
@@ -41,6 +42,10 @@ const SignInComponent = ({ setUser, routeBack = () => {} }) => {
         <div className={styles["text"]}>
           <span>Du besitzt keinen Account? </span>
           <Link to="/sign_up/">Registrieren</Link>
+        </div>
+        <div className={styles["text"]}>
+          <span>Passwort vergessen? </span>
+          <Link to="/request_new_password/">Neues Passwort</Link>
         </div>
       </div>
     </div>
