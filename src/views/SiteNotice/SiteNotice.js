@@ -7,9 +7,9 @@ const SiteNotice = () => (
   <div className={styles["wrapper"]}>
     <ContentWrapper>
       <br />
-      <h2>
+      <h1>
         <strong>Impressum</strong>
-      </h2>
+      </h1>
       <br />
       <p>Angaben gemäß §5 TMG:</p>
       <br />
