@@ -25,7 +25,7 @@ outdatedBrowserRework({
       "update": {
         "web": "Bitte aktualisiere deinen Browser, um PluraPolit korrekt darzustellen.",
         "googlePlay": "Bitte installiere die neueste Version deines Browsers aus dem PlayStore, um Plurapolit korrekt darzustellen.",
-        "appStore": "Bitte update dein Betriebssystem in den Einstellungen, um PluraPolit korrekt darzustellen."
+        "appStore": "Bitte update dein Betriebssystem, um PluraPolit korrekt darzustellen."
       },
 		}
 	}
