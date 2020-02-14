@@ -6,7 +6,7 @@ import ContentWrapper from "../../components/ContentWrapper/ContentWrapper";
 const PrivacyPolicy = () => (
   <div className={styles["wrapper"]}>
     <ContentWrapper>
-      <p>DATENSCHUTZERKLÄRUNG</p>
+      <h1>DATENSCHUTZERKLÄRUNG</h1>
       <br />
       <p>
         Nachfolgend informieren wir Sie, welche Daten wir von Ihnen erfassen und

@@ -14,6 +14,8 @@ import PrivacyPolicy from "./views/PrivacyPolicy/PrivacyPolicy";
 import PanelWrapper from "./layouts/PanelWrapper/PanelWrapper";
 import SignIn from "./views/SignIn/SignIn";
 import SignUp from "./views/SignUp/SignUp";
+import ResetPassword from "./views/ResetPassword/ResetPassword";
+import RequestNewPassword from "./views/RequestNewPassword/RequestNewPassword";
 
 const Routes = () => (
   <StoreContext.Consumer>
@@ -37,6 +39,12 @@ const Routes = () => (
             </Route>
             <Route exact path="/sign_in/">
               <SignIn />
+            </Route>
+            <Route path="/reset_password/:resetPasswordToken">
+              <ResetPassword />
+            </Route>
+            <Route path="/request_new_password/">
+              <RequestNewPassword />
             </Route>
             <Route exact path="/sign_up/">
               <SignUp setUser={data.setUser} />

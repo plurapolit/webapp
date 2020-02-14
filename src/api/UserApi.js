@@ -39,10 +39,34 @@ const UserApi = () => {
     return true;
   };
 
+  const resetPassword = async (password, passwordConfirmation, resetPasswordToken) => {
+    const body = {
+      user: {
+        password,
+        password_confirmation: passwordConfirmation,
+        reset_password_token: resetPasswordToken,
+      },
+    };
+    const parameters = Parameter.put(body);
+    return fetch(`${URL}/users/password`, parameters);
+  };
+
+  const requestNewPassword = async (email) => {
+    const body = {
+      user: {
+        email,
+      },
+    };
+    const parameters = Parameter.post(body);
+    return fetch(`${URL}/users/password`, parameters);
+  };
+
   return {
     signIn,
     signUp,
     signOut,
+    resetPassword,
+    requestNewPassword,
   };
 };
 
