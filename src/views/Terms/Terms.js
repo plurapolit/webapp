@@ -6,7 +6,7 @@ import ContentWrapper from "../../components/ContentWrapper/ContentWrapper";
 const Terms = () => (
   <div className={styles["wrapper"]}>
     <ContentWrapper>
-      <p>NUTZUNGSBEDINGUNGEN</p>
+      <h1>NUTZUNGSBEDINGUNGEN</h1>
       <br />
       <p>
         Der PluraPolit gUG (in Gründung), Paul-Nevermann-Platz 5, 22765 Hamburg

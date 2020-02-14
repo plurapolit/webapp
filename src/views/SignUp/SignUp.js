@@ -37,6 +37,7 @@ const SignUp = ({ setUser, history }) => {
   return (
     <div className={styles["sign-up"]}>
       <div className={styles["container"]}>
+        <h1>Registrierung</h1>
         <form
           className={styles["form"]}
           onSubmit={(event) => handleSubmit(event)}
