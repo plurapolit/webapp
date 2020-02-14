@@ -4,18 +4,12 @@ import { withRouter, Link } from "react-router-dom";
 
 import styles from "./ResetPassword.module.scss";
 import Button from "../../components/Button/Button";
-import { getDataFromEvent } from "../../helper/helper";
+import { getDataFromEvent, setErrorMessages } from "../../helper/helper";
 import Notification from "../../helper/Notification";
 import UserApi from "../../api/UserApi";
 
 const ResetPassword = ({ history }) => {
   const { resetPasswordToken } = useParams();
-
-  const setErrorMessages = (error) => {
-    Object.entries(error).forEach(([key, value]) => {
-      Notification.warning(value[0], key);
-    });
-  };
 
   const handleSubmit = async (event) => {
     const input = getDataFromEvent(event);

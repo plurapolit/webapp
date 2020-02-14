@@ -1,18 +1,16 @@
 import React from "react";
-import { withRouter, Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 import styles from "./RequestNewPassword.module.scss";
 import Button from "../../components/Button/Button";
-import { getDataFromEvent } from "../../helper/helper";
+import { getDataFromEvent, setErrorMessages } from "../../helper/helper";
 import Notification from "../../helper/Notification";
 import UserApi from "../../api/UserApi";
 
+const FIVE_SECONDS = 5000;
+
 const RequestNewPassword = () => {
-  const setErrorMessages = (error) => {
-    Object.entries(error).forEach(([key, value]) => {
-      Notification.warning(value[0], key);
-    });
-  };
+  const history = useHistory();
 
   const handleSubmit = async (event) => {
     const input = getDataFromEvent(event);
@@ -22,6 +20,9 @@ const RequestNewPassword = () => {
         const json = await res.json();
         return setErrorMessages(json.errors);
       }
+      setTimeout(() => {
+        history.push("/");
+      }, FIVE_SECONDS);
       return Notification.success("Schau in deinem E-Mail Postfach nach", "Passwort Änderung erfolgreich angefordert");
     } catch (obj) {
       return setErrorMessages(obj.errors);
@@ -40,7 +41,7 @@ const RequestNewPassword = () => {
           onSubmit={(event) => handleSubmit(event)}
         >
           <input type="email" name="email" placeholder="E-Mail" required />
-          <Button type="submit">Passwort Änderung anfordern</Button>
+          <Button type="submit">Passwortänderung anfordern</Button>
         </form>
         <div className={styles["text"]}>
           <span>Passwort wieder eingefallen? </span>
@@ -51,4 +52,4 @@ const RequestNewPassword = () => {
   );
 };
 
-export default withRouter(RequestNewPassword);
+export default RequestNewPassword;
