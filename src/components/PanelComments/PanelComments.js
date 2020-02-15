@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
-import styles from "./PanelComments.module.scss";
 
+import Button from "../Button/Button";
 import CommentModal from "../CommentModal/CommentModal";
 import closeButton from "../../media/images/close.svg";
 import microphoneButton from "../../media/images/microphone.svg";
 import CommentApi from "../../api/CommentApi";
 import Comment from "../Comment/Comment";
+
+import styles from "./PanelComments.module.scss";
 
 const PanelComments = ({
   toggleComments,
@@ -35,7 +37,7 @@ const PanelComments = ({
   };
 
   const commentCta = () => (
-    <div className={styles["comments-comment"]} onClick={() => openModal()}>
+    <Button onClick={() => openModal()}>
       <img
         alt="icon"
         src={microphoneButton}
@@ -44,7 +46,7 @@ const PanelComments = ({
       <div className={styles["comments-comment-text"]}>
         Beitrag kommentieren
       </div>
-    </div>
+    </Button>
   );
 
   if (userComments) {

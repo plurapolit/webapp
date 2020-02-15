@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import moment from "moment";
-import styles from "./Statement.module.scss";
 
+import Button, { ButtonStyle } from "../Button/Button";
 import audioWave from "../../media/images/sound-wave.svg";
 import playButton from "../../media/images/play.svg";
 import PanelComments from "../PanelComments/PanelComments";
 import TwitterButton from "../TwitterButton/TwitterButton";
+
+import styles from "./Statement.module.scss";
 
 const Statement = ({
   expert,
@@ -109,12 +111,13 @@ const Statement = ({
           </div>
         </div>
         <div className={styles["expert-card-controls"]}>
-          <div
-            className={styles["expert-card-comments"]}
+          <Button
+            buttonStyle={ButtonStyle.COMMENT}
+            // {styles["expert-card-comments"]}
             onClick={() => toggleComments()}
           >
             {numberOfComments(expert)}
-          </div>
+          </Button>
           <div className={styles["expert-card-nav"]}>
             <img
               src={audioWave}
