@@ -14,25 +14,31 @@
     overflow: hidden;
     &-header {
       display: flex;
-      justify-content: flex-start;
-      align-items: center;
+      justify-content: space-between;
       margin-bottom: 7px;
+      &-left {
+        display: flex;
+      }
     }
     &-image {
       height: 8rem;
       width: 8rem;
       border-radius: 1rem;
-      margin-top: -1rem;
-      margin-left: -1rem;
+      margin-top: -0.8rem;
+      margin-left: -0.8rem;
     }
     &-user {
-      margin-left: 1rem;
+      margin-left: 1rem;      
+      margin-top: 1rem;      
     }
     &-name {
       color: $headline-dark-2;
       font-size: 1.5rem;
       line-height: 2.2rem;
       font-weight: 700;
+      &-wrapper {
+        display: flex;
+      }
     }
     &-organisation {
       color: $headline-dark-2;

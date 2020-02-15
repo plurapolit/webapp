@@ -1,4 +1,5 @@
 import moment from "moment";
+import Notification from "./Notification";
 
 export const isLoaded = (condition, resolve, reject = null) => {
   if (condition) {
@@ -17,6 +18,12 @@ export const getDataFromEvent = (event) => {
     }
   });
   return data;
+};
+
+export const setErrorMessages = (error) => {
+  Object.entries(error).forEach(([key, value]) => {
+    Notification.warning(value[0], key);
+  });
 };
 
 export const getTimeStamp = () => moment().format("HH-mm-ss");

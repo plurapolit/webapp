@@ -3,18 +3,12 @@ import { withRouter, Link } from "react-router-dom";
 
 import styles from "./SignUp.module.scss";
 import Button from "../../components/Button/Button";
-import { getDataFromEvent } from "../../helper/helper";
+import { getDataFromEvent, setErrorMessages } from "../../helper/helper";
 import Notification from "../../helper/Notification";
 import UserApi from "../../api/UserApi";
 import JwtApi from "../../api/JwtApi";
 
 const SignUp = ({ setUser, history }) => {
-  const setErrorMessages = (error) => {
-    Object.entries(error).forEach(([key, value]) => {
-      Notification.warning(value[0], key);
-    });
-  };
-
   const handleSubmit = async (event) => {
     const input = getDataFromEvent(event);
     try {
@@ -37,6 +31,7 @@ const SignUp = ({ setUser, history }) => {
   return (
     <div className={styles["sign-up"]}>
       <div className={styles["container"]}>
+        <h1>Registrierung</h1>
         <form
           className={styles["form"]}
           onSubmit={(event) => handleSubmit(event)}
@@ -63,7 +58,7 @@ const SignUp = ({ setUser, history }) => {
               </select>
             </div>
           </label>
-          <Button type="submit">Registieren</Button>
+          <Button type="submit">Registrieren</Button>
         </form>
         <div className={styles["text"]}>
           <span>Du hast bereits ein Konto? </span>

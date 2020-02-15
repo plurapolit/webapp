@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import moment from "moment";
+import styles from "./Statement.module.scss";
 
 import audioWave from "../../media/images/sound-wave.svg";
 import playButton from "../../media/images/play.svg";
 import PanelComments from "../PanelComments/PanelComments";
-import styles from "./Statement.module.scss";
+import TwitterButton from "../TwitterButton/TwitterButton";
 
 const Statement = ({
   expert,
@@ -18,6 +19,25 @@ const Statement = ({
   const [commentsAreOpen, setCommentsAreOpen] = useState(false);
 
   const IMAGEROOTURL = process.env.REACT_APP_BUCKET_URL;
+
+  const avatar = () => {
+    const image = (
+      <img
+        src={`${IMAGEROOTURL}/${expert.user_avatar_key}`}
+        alt={expert.user.full_name}
+        className={styles["expert-card-image"]}
+      />
+    );
+
+    if (expert.user.website_link) {
+      return (
+        <a href={expert.user.website_link} target="_blank" rel="noopener noreferrer">
+          {image}
+        </a>
+      );
+    }
+    return image;
+  };
 
   const setSong = async (audioFile, user) => {
     setShowMediaPlayer(true);
@@ -65,22 +85,23 @@ const Statement = ({
     <div className={styles["expert-wrapper"]}>
       <div className={styles["expert-card"]}>
         <div className={styles["expert-card-header"]}>
-          <img
-            src={`${IMAGEROOTURL}/${expert.user_avatar_key}`}
-            alt={expert.user.full_name}
-            className={styles["expert-card-image"]}
-          />
-          <div className={styles["expert-card-user"]}>
-            <div className={styles["expert-card-name"]}>
-              {expert.user.full_name}
-            </div>
-            <div className={styles["expert-card-organisation"]}>
-              {expert.organisation.name}
-            </div>
-            <div className={styles["expert-card-organisation"]}>
-              {expert.user.biography}
+          <div className={styles["expert-card-header-left"]}>
+            {avatar()}
+            <div className={styles["expert-card-user"]}>
+              <div className={styles["expert-card-name-wrapper"]}>
+                <div className={styles["expert-card-name"]}>
+                  {expert.user.full_name}
+                </div>
+              </div>
+              <div className={styles["expert-card-organisation"]}>
+                {expert.organisation.name}
+              </div>
+              <div className={styles["expert-card-organisation"]}>
+                {expert.user.biography}
+              </div>
             </div>
           </div>
+          <TwitterButton handle={expert.user.twitter_handle} />
         </div>
         <div className={styles["expert-card-statement"]}>
           <div className={styles["expert-card-quote-text"]}>
