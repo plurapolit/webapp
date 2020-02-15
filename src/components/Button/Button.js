@@ -3,26 +3,45 @@ import { Link } from "react-router-dom";
 
 import styles from "./Button.module.scss";
 
-// TODO: add button types button primary ...
+export const ButtonStyle = {
+  CTA: "cta",
+  PRIMARY: "primary",
+  SECONDARY: "secondary",
+  NONE: "none",
+  COMMENT: "comment",
+};
 
 const Button = ({
   children,
-  cta,
-  customClass = null,
+  style = null,
+  buttonStyle = ButtonStyle.PRIMARY,
   type = "button",
   to = undefined,
   onClick = () => {},
 }) => {
-  const customStyle = {
-    "--bg-color": cta ? "#EE8137" : "#4E0CED",
+  const getButtonStyle = () => {
+    switch (buttonStyle) {
+      case ButtonStyle.CTA:
+        return "button--cta";
+      case ButtonStyle.PRIMARY:
+        return "button--primary";
+      case ButtonStyle.SECONDARY:
+        return "button--secondary";
+      case ButtonStyle.NONE:
+        return null;
+      case ButtonStyle.COMMENT:
+        return "button--comment";
+      default:
+        return "button--primary";
+    }
   };
 
   /* eslint-disable react/button-has-type */
   const button = (
     <button
       type={type}
-      className={`${styles["button"]} ${customClass}`}
-      style={customStyle}
+      className={styles[`${getButtonStyle()}`]}
+      style={style}
       onClick={onClick}
     >
       {children}

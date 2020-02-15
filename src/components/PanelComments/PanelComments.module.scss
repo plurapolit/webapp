@@ -88,6 +88,7 @@
 
   &-comment-text {
     font-size: 1.5rem;
+    display: inline-block;
     text-transform: uppercase;
     color: $color-white;
     font-weight: 700;
@@ -95,8 +96,8 @@
   }
 
   &-microphone-img {
-    padding-top: 0.6rem;
-    height: 4rem;
+    margin-right: .5rem;
+    height: 3rem;
   }
   &-close {
     height: 1.8rem;
