@@ -5,7 +5,7 @@ import audioWave from "../../media/images/sound-wave.svg";
 import playButton from "../../media/images/play.svg";
 import PanelComments from "../PanelComments/PanelComments";
 import TwitterButton from "../TwitterButton/TwitterButton";
-import { getDatumOrTime } from "../../helper/helper";
+import { getDateOrTime } from "../../helper/helper";
 
 import styles from "./Statement.module.scss";
 
@@ -119,7 +119,7 @@ const Statement = ({
           </div>
           <div className={styles["expert-card-nav"]}>
             <div className={styles["expert-card-nav_info-container"]}>
-              {getDatumOrTime(moment(expert.statement.created_at))}
+              {getDateOrTime(moment(expert.statement.created_at))}
               <div className={styles["expert-card-nav-time-wrapper"]}>
                 <img
                   src={audioWave}
