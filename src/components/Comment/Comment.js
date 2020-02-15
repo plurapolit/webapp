@@ -5,9 +5,9 @@ import LikeButton from "../LikeButton/LikeButton";
 import LikeApi from "../../api/LikeApi";
 import JwtApi from "../../api/JwtApi";
 import Notification from "../../helper/Notification";
-import { getDatumOrTime } from "../../helper/helper";
+import { getDateOrTime } from "../../helper/helper";
 
-import likeBatch from '../../media/images/like-batch.svg';
+import likeBadge from "../../media/images/like-badge.svg";
 import audioWave from "../../media/images/sound-wave.svg";
 import playButton from "../../media/images/play.svg";
 
@@ -109,11 +109,11 @@ const Comment = ({ commentData, setSong }) => {
           </div>
           {commentQuote(commentData.comment.quote)}
         </div>
-        <img src={likeBatch} alt="meisten Likes" className={styles["comments-content_image"]}></img>
+        <img src={likeBadge} alt="am meisten gemochte Antwort" className={styles["comments-content_image"]} />
         <div className={styles["comments-content_bottom-right"]}>
           <div className={styles["comments-content_bottom-right_container"]}>
             <div className={styles["comments-content_date"]}>
-              {getDatumOrTime(moment(commentData.comment.created_at))}
+              {getDateOrTime(moment(commentData.comment.created_at))}
             </div>
             <LikeButton liked={liked} handleLikeClick={handleLikeClick} />
           </div>

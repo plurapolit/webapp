@@ -20,16 +20,16 @@ export const getDataFromEvent = (event) => {
   return data;
 };
 
-export const getDatumOrTime = (timeStemp) => {
-  return timeStemp.calendar(null, {
-    sameDay: '[Today]',
-    nextDay: '[Tomorrow]',
-    nextWeek: 'dddd',
-    lastDay: '[Yesterday]',
-    lastWeek: '[Last] dddd',
-    sameElse: 'll',
-  });
-};
+export const getDateOrTime = (timeStemp) => (
+  timeStemp.calendar(null, {
+    sameDay: "[Today]",
+    nextDay: "[Tomorrow]",
+    nextWeek: "dddd",
+    lastDay: "[Yesterday]",
+    lastWeek: "[Last] dddd",
+    sameElse: "ll",
+  })
+);
 
 export const setErrorMessages = (error) => {
   Object.entries(error).forEach(([key, value]) => {
