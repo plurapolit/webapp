@@ -17,8 +17,6 @@ const Panel = ({ panel, objectPositionTop }) => {
 
   const imageUrl = `${IMAGEROOTURL}/${panel.panel_avatar_key}`;
 
-  console.log('panel', panel);
-
   return (
     <div className={styles["panel"]} style={customStylePanel}>
       <PanelMetaTags panel={panel.panel} image={imageUrl} />

@@ -20,6 +20,17 @@ export const getDataFromEvent = (event) => {
   return data;
 };
 
+export const getDatumOrTime = (timeStemp) => {
+  return timeStemp.calendar(null, {
+    sameDay: "[Heute]",
+    nextDay: "[Morgen]",
+    nextWeek: "dddd",
+    lastDay: "[Gestern]",
+    lastWeek: "DD. MMM.",
+    sameElse: "DD. MMM."
+  });
+};
+
 export const setErrorMessages = (error) => {
   Object.entries(error).forEach(([key, value]) => {
     Notification.warning(value[0], key);

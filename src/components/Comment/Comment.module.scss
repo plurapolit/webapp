@@ -7,7 +7,7 @@
   &-card {
     position: relative;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     padding: 3.4rem 1rem;
     &-wrapper {
       border-left: 3px solid $color-primary;
@@ -56,7 +56,7 @@
   &-content {
     display: flex;
     flex-direction: column;
-    margin-right: auto;
+    flex-grow: 1;
     margin-left: 1rem;
     &-user {
       font-size: 1.5rem;
@@ -75,6 +75,21 @@
       top: 1rem;
       right: .3rem;
       height: 4rem;
+    }
+    &_bottom-right {
+      display: flex;
+      align-items: flex-end;
+
+      &_container {
+        display: flex;
+        align-items: center;
+      }
+    }
+    &_date {
+      color: $color-grey-2;
+      font-size: 1.3rem;
+      margin-top: .4rem;
+      margin-right: 1rem;
     }
   }
   &-comment {

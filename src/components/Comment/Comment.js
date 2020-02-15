@@ -5,6 +5,7 @@ import LikeButton from "../LikeButton/LikeButton";
 import LikeApi from "../../api/LikeApi";
 import JwtApi from "../../api/JwtApi";
 import Notification from "../../helper/Notification";
+import { getDatumOrTime } from "../../helper/helper";
 
 import likeBatch from '../../media/images/like-batch.svg';
 import audioWave from "../../media/images/sound-wave.svg";
@@ -14,6 +15,7 @@ import styles from "./Comment.module.scss";
 
 const Comment = ({ commentData, setSong }) => {
   const [liked, setLiked] = useState(commentData.likes.liked_by_current_user);
+  console.log('commentData ', commentData);
 
   const audioDuration = (audioFile) => moment
     .utc(
@@ -109,7 +111,14 @@ const Comment = ({ commentData, setSong }) => {
           {commentQuote(commentData.comment.quote)}
         </div>
         <img src={likeBatch} alt="meisten Likes" className={styles["comments-content_image"]}></img>
-        <LikeButton liked={liked} handleLikeClick={handleLikeClick} />
+        <div className={styles["comments-content_bottom-right"]}>
+          <div className={styles["comments-content_bottom-right_container"]}>
+            <div className={styles["comments-content_date"]}>
+              {getDatumOrTime(moment(commentData.comment.created_at))}
+            </div>
+            <LikeButton liked={liked} handleLikeClick={handleLikeClick} />
+          </div>
+        </div>
       </div>
     </div>
   );
