@@ -1,13 +1,16 @@
 import React, { useState } from "react";
 import moment from "moment";
 
-import styles from "./Comment.module.scss";
-import playButton from "../../media/images/play.svg";
 import LikeButton from "../LikeButton/LikeButton";
-import audioWave from "../../media/images/sound-wave.svg";
 import LikeApi from "../../api/LikeApi";
 import JwtApi from "../../api/JwtApi";
 import Notification from "../../helper/Notification";
+
+import likeBatch from '../../media/images/like-batch.svg';
+import audioWave from "../../media/images/sound-wave.svg";
+import playButton from "../../media/images/play.svg";
+
+import styles from "./Comment.module.scss";
 
 const Comment = ({ commentData, setSong }) => {
   const [liked, setLiked] = useState(commentData.likes.liked_by_current_user);
@@ -105,6 +108,7 @@ const Comment = ({ commentData, setSong }) => {
           </div>
           {commentQuote(commentData.comment.quote)}
         </div>
+        <img src={likeBatch} alt="meisten Likes" className={styles["comments-content_image"]}></img>
         <LikeButton liked={liked} handleLikeClick={handleLikeClick} />
       </div>
     </div>

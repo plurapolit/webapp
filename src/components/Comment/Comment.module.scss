@@ -5,6 +5,7 @@
     margin: 0 10px;
   }
   &-card {
+    position: relative;
     display: flex;
     justify-content: space-between;
     padding: 3.4rem 1rem;
@@ -68,6 +69,12 @@
       font-size: 1.5rem;
       line-height: 1.6rem;
       color: $text-dark-2;
+    }
+    &_image {
+      position: absolute;
+      top: 1rem;
+      right: .3rem;
+      height: 4rem;
     }
   }
   &-comment {
