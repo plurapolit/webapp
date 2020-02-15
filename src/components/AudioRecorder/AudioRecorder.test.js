@@ -2,6 +2,7 @@ import React from "react";
 import { shallow } from "enzyme";
 
 import AudioRecorder from "./AudioRecorder";
+import Button from "../Button/Button";
 
 const setup = (propOverrides) => {
   const props = {
@@ -26,7 +27,7 @@ const setup = (propOverrides) => {
 describe("<AudioRecorder />", () => {
   it("should render button for recording", () => {
     const { wrapper } = setup();
-    expect(wrapper.find(".recording-button")).toHaveLength(1);
+    expect(wrapper.find(Button)).toHaveLength(1);
   });
 
   // it("should render stop button while recording", () => {

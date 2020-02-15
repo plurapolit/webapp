@@ -1,10 +1,10 @@
 import React from "react";
 import { shallow } from "enzyme";
 import { Link } from "react-router-dom";
-import SignUpButton from "../SignUpButton/SignUpButton";
-import SignOutButton from "../SignOutButton/SignOutButton";
 
+import SignOutButton from "../SignOutButton/SignOutButton";
 import BurgerMenu from "./BurgerMenu";
+import Button from "../Button/Button";
 
 const setup = (propOverrides) => {
   const props = {
@@ -38,14 +38,14 @@ describe("<BurgerMenu />", () => {
 
   it("should render a sign in button while no user is set", () => {
     const { wrapper } = setup({ user: undefined });
-    const SignInButton = wrapper.findWhere((element) => element.type() === Link && element.props().to === "/sign_in/");
+    const SignInButton = wrapper.findWhere((element) => element.type() === Button && element.props().to === "/sign_in/");
     expect(SignInButton).toHaveLength(1);
   });
 
   it("should render component SignUpButton while no user is set", () => {
     const { wrapper } = setup({ user: undefined });
-    const signUpButton = wrapper.find(SignUpButton);
-    expect(signUpButton).toHaveLength(1);
+    const SignUpButton = wrapper.findWhere((element) => element.type() === Button && element.props().to === "/sign_up/");
+    expect(SignUpButton).toHaveLength(1);
   });
 
   it("should render no sign out button while no user is set", () => {
@@ -62,7 +62,7 @@ describe("<BurgerMenu />", () => {
 
   it("should not render one sign up button while user is set", () => {
     const { wrapper } = setup({ user: true });
-    const signUpButton = wrapper.find(SignUpButton);
-    expect(signUpButton).toHaveLength(0);
+    const SignUpButton = wrapper.findWhere((element) => element.type() === Button && element.props().to === "/sign_up/");
+    expect(SignUpButton).toHaveLength(0);
   });
 });
