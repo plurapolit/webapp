@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
 import moment from "moment";
 
+import styles from "./Statement.module.scss";
+
 import audioWave from "../../media/images/sound-wave.svg";
 import playButton from "../../media/images/play.svg";
 import PanelComments from "../PanelComments/PanelComments";
 import TwitterButton from "../TwitterButton/TwitterButton";
 import { getDateOrTime } from "../../helper/helper";
 
-import styles from "./Statement.module.scss";
 
 const Statement = ({
   expert,
