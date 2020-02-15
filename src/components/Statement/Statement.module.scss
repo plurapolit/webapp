@@ -62,18 +62,6 @@
       justify-content: space-between;
       align-items: center;
     }
-    &-comments {
-      font-size: 1.5rem;
-      font-weight: 700;
-      line-height: 2.2rem;
-      color: $color-primary;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: all 0.2s;
-      &:hover {
-        opacity: 0.8;
-      }
-    }
     &-nav {
       display: flex;
       align-items: center;
