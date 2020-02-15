@@ -3,8 +3,6 @@ import { Link } from "react-router-dom";
 
 import styles from "./Button.module.scss";
 
-// TODO: add button types button primary ...
-
 export const ButtonStyle = {
   CTA: "cta",
   PRIMARY: "primary",
@@ -21,7 +19,6 @@ const Button = ({
   to = undefined,
   onClick = () => {},
 }) => {
-
   const getButtonStyle = () => {
     switch (buttonStyle) {
       case ButtonStyle.CTA:

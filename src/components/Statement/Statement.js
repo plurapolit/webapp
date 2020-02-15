@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import moment from "moment";
 
-import Button, { ButtonStyle } from '../Button/Button';
+import Button, { ButtonStyle } from "../Button/Button";
 import audioWave from "../../media/images/sound-wave.svg";
 import playButton from "../../media/images/play.svg";
 import PanelComments from "../PanelComments/PanelComments";
