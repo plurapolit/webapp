@@ -22,12 +22,12 @@ export const getDataFromEvent = (event) => {
 
 export const getDatumOrTime = (timeStemp) => {
   return timeStemp.calendar(null, {
-    sameDay: "[Heute]",
-    nextDay: "[Morgen]",
-    nextWeek: "dddd",
-    lastDay: "[Gestern]",
-    lastWeek: "DD. MMM.",
-    sameElse: "DD. MMM."
+    sameDay: '[Today]',
+    nextDay: '[Tomorrow]',
+    nextWeek: 'dddd',
+    lastDay: '[Yesterday]',
+    lastWeek: '[Last] dddd',
+    sameElse: 'll',
   });
 };
 

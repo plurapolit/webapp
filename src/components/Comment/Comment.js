@@ -15,7 +15,6 @@ import styles from "./Comment.module.scss";
 
 const Comment = ({ commentData, setSong }) => {
   const [liked, setLiked] = useState(commentData.likes.liked_by_current_user);
-  console.log('commentData ', commentData);
 
   const audioDuration = (audioFile) => moment
     .utc(

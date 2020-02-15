@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import moment from "moment";
-import styles from "./Statement.module.scss";
 
 import audioWave from "../../media/images/sound-wave.svg";
 import playButton from "../../media/images/play.svg";
 import PanelComments from "../PanelComments/PanelComments";
 import TwitterButton from "../TwitterButton/TwitterButton";
+import { getDatumOrTime } from "../../helper/helper";
+
+import styles from "./Statement.module.scss";
 
 const Statement = ({
   expert,
@@ -116,6 +118,9 @@ const Statement = ({
             {numberOfComments(expert)}
           </div>
           <div className={styles["expert-card-nav"]}>
+            <div>
+              {getDatumOrTime(moment(expert.statement.created_at))}
+            </div>
             <img
               src={audioWave}
               alt={expert.user.full_name}
