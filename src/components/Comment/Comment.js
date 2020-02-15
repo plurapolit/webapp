@@ -104,18 +104,24 @@ const Comment = ({ commentData, setSong }) => {
           {numberOfLikes(commentData.likes.total_likes)}
         </div>
         <div className={styles["comments-content"]}>
-          <div className={styles["comments-content-user"]}>
-            {commentData.user.full_name}
-          </div>
-          {commentQuote(commentData.comment.quote)}
-        </div>
-        <img src={likeBatch} alt="meisten Likes" className={styles["comments-content_image"]}></img>
-        <div className={styles["comments-content_bottom-right"]}>
-          <div className={styles["comments-content_bottom-right_container"]}>
-            <div className={styles["comments-content_date"]}>
-              {getDatumOrTime(moment(commentData.comment.created_at))}
+          <div>
+            <div className={styles["comments-content_heading"]}>
+              <div className={styles["comments-content-user"]}>
+                {commentData.user.full_name}
+              </div>
+              <div className={styles["comments-content_image-anker"]}>
+                <img src={likeBatch} alt="meisten Likes" className={styles["comments-content_image"]}></img>
+              </div>
             </div>
-            <LikeButton liked={liked} handleLikeClick={handleLikeClick} />
+            {commentQuote(commentData.comment.quote)}
+          </div>
+          <div className={styles["comments-content_bottom"]}>
+            <div className={styles["comments-content_bottom_container"]}>
+              <div className={styles["comments-content_date"]}>
+                {getDatumOrTime(moment(commentData.comment.created_at))}
+              </div>
+              <LikeButton liked={liked} handleLikeClick={handleLikeClick} />
+            </div>
           </div>
         </div>
       </div>
