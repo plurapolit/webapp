@@ -110,7 +110,7 @@ const Comment = ({ commentData, setSong }) => {
                 {commentData.user.full_name}
               </div>
               <div className={styles["comments-content_image-anker"]}>
-                <img src={likeBadge} alt="am meisten gemochte Antwort" className={styles["comments-content_image"]}></img>
+                <img src={likeBadge} alt="am meisten gemochte Antwort" className={styles["comments-content_image"]} />
               </div>
             </div>
             {commentQuote(commentData.comment.quote)}
