@@ -118,16 +118,18 @@ const Statement = ({
             {numberOfComments(expert)}
           </div>
           <div className={styles["expert-card-nav"]}>
-            <div>
+            <div className={styles["expert-card-nav_info-container"]}>
               {getDatumOrTime(moment(expert.statement.created_at))}
-            </div>
-            <img
-              src={audioWave}
-              alt={expert.user.full_name}
-              className={styles["expert-card-nav-img"]}
-            />
-            <div className={styles["expert-card-nav-time"]}>
-              {audioDuration(expert)}
+              <div className={styles["expert-card-nav-time-wrapper"]}>
+                <img
+                  src={audioWave}
+                  alt={expert.user.full_name}
+                  className={styles["expert-card-nav-img"]}
+                />
+                <div className={styles["expert-card-nav-time"]}>
+                  {audioDuration(expert)}
+                </div>
+              </div>
             </div>
             <button
               type="button"
