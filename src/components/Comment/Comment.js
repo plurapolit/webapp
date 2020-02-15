@@ -1,13 +1,17 @@
 import React, { useState } from "react";
 import moment from "moment";
 
-import styles from "./Comment.module.scss";
-import playButton from "../../media/images/play.svg";
 import LikeButton from "../LikeButton/LikeButton";
-import audioWave from "../../media/images/sound-wave.svg";
 import LikeApi from "../../api/LikeApi";
 import JwtApi from "../../api/JwtApi";
 import Notification from "../../helper/Notification";
+import { getDateOrTime } from "../../helper/helper";
+
+import likeBadge from "../../media/images/like-badge.svg";
+import audioWave from "../../media/images/sound-wave.svg";
+import playButton from "../../media/images/play.svg";
+
+import styles from "./Comment.module.scss";
 
 const Comment = ({ commentData, setSong }) => {
   const [liked, setLiked] = useState(commentData.likes.liked_by_current_user);
@@ -100,12 +104,26 @@ const Comment = ({ commentData, setSong }) => {
           {numberOfLikes(commentData.likes.total_likes)}
         </div>
         <div className={styles["comments-content"]}>
-          <div className={styles["comments-content-user"]}>
-            {commentData.user.full_name}
+          <div>
+            <div className={styles["comments-content_heading"]}>
+              <div className={styles["comments-content-user"]}>
+                {commentData.user.full_name}
+              </div>
+              <div className={styles["comments-content_image-anker"]}>
+                <img src={likeBadge} alt="am meisten gemochte Antwort" className={styles["comments-content_image"]} />
+              </div>
+            </div>
+            {commentQuote(commentData.comment.quote)}
           </div>
-          {commentQuote(commentData.comment.quote)}
+          <div className={styles["comments-content_bottom"]}>
+            <div className={styles["comments-content_bottom_container"]}>
+              <div className={styles["comments-content_date"]}>
+                {getDateOrTime(moment(commentData.comment.created_at))}
+              </div>
+              <LikeButton liked={liked} handleLikeClick={handleLikeClick} />
+            </div>
+          </div>
         </div>
-        <LikeButton liked={liked} handleLikeClick={handleLikeClick} />
       </div>
     </div>
   );
