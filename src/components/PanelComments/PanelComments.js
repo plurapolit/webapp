@@ -6,6 +6,7 @@ import closeButton from "../../media/images/close.svg";
 import microphoneButton from "../../media/images/microphone.svg";
 import CommentApi from "../../api/CommentApi";
 import Comment from "../Comment/Comment";
+import AnswerDisclaimer from "../AnswerDisclaimer/AnswerDisclaimer";
 
 import styles from "./PanelComments.module.scss";
 
@@ -14,6 +15,8 @@ const PanelComments = ({
   setSong,
   statementId,
   stopPlayer,
+  expertFullName,
+  statementDate,
 }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [userComments, setUserComments] = useState(null);
@@ -36,19 +39,6 @@ const PanelComments = ({
     setIsModalOpen(false);
   };
 
-  const commentCta = () => (
-    <Button onClick={() => openModal()}>
-      <img
-        alt="icon"
-        src={microphoneButton}
-        className={styles["comments-microphone-img"]}
-      />
-      <div className={styles["comments-comment-text"]}>
-        Beitrag kommentieren
-      </div>
-    </Button>
-  );
-
   if (userComments) {
     return (
       <div>
@@ -59,6 +49,11 @@ const PanelComments = ({
         />
         <div className={styles["comments-wrapper"]}>
           <div className={styles["comments-card-wrapper"]}>
+            <AnswerDisclaimer
+              expertFullName={expertFullName}
+              statementDate={statementDate}
+              commentLength={userComments.comments.length}
+            />
             {userComments.comments.map((commentData) => (
               <Comment
                 key={commentData.comment.id}
@@ -66,7 +61,16 @@ const PanelComments = ({
                 setSong={setSong}
               />
             ))}
-            {commentCta()}
+            <Button onClick={() => openModal()}>
+              <img
+                alt="icon"
+                src={microphoneButton}
+                className={styles["comments-microphone-img"]}
+              />
+              <div className={styles["comments-comment-text"]}>
+                Beitrag kommentieren
+              </div>
+            </Button>
           </div>
           <img
             alt="icon"

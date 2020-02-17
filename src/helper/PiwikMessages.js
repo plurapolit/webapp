@@ -1,6 +1,6 @@
 import ReactPiwik from "react-piwik";
 
-import { getTimeStamp } from "./helper";
+import Time from "./Time";
 
 const PiwikMessages = () => {
   const push = (category, action, name) => {
@@ -12,7 +12,7 @@ const PiwikMessages = () => {
       push(
         "Statement",
         "start",
-        `${panelTitle} | ${expertName} (${audioStatement} - ${getTimeStamp()})`,
+        `${panelTitle} | ${expertName} (${audioStatement} - ${Time.getTimeStamp()})`,
       );
     };
 
@@ -20,7 +20,7 @@ const PiwikMessages = () => {
       push(
         "Statement",
         "stop",
-        `${panelTitle} | ${expertName} (${audioStatement} - ${getTimeStamp()})`,
+        `${panelTitle} | ${expertName} (${audioStatement} - ${Time.getTimeStamp()})`,
       );
     };
 

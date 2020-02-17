@@ -7,10 +7,12 @@
   &-card {
     display: flex;
     justify-content: space-between;
-    padding: 3.4rem 1rem;
+    padding: 3.4rem 0;
     &-wrapper {
       border-left: 3px solid $color-primary;
       padding-bottom: 2rem;
+      padding-left: 1rem;
+      padding-right: 1rem;
     }
   }
   &-panels {

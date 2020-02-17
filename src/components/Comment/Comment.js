@@ -5,7 +5,7 @@ import LikeButton from "../LikeButton/LikeButton";
 import LikeApi from "../../api/LikeApi";
 import JwtApi from "../../api/JwtApi";
 import Notification from "../../helper/Notification";
-import { getDateOrTime } from "../../helper/helper";
+import Time from "../../helper/Time";
 
 import likeBadge from "../../media/images/like-badge.svg";
 import audioWave from "../../media/images/sound-wave.svg";
@@ -61,9 +61,8 @@ const Comment = ({ commentData, setSong }) => {
       likeAmount = totalLikes;
     }
     return (
-      <div className={styles["comments-panels-likes"]}>
+      <div className={`${styles["comments-panels-likes"]} ${liked ? styles["comments-panels-likes--liked"] : null}`}>
         {likeAmount}
-        {likeAmount === 1 ? " Like" : " Likes"}
       </div>
     );
   };
@@ -77,7 +76,10 @@ const Comment = ({ commentData, setSong }) => {
   );
 
   return (
-    <div>
+    <div className={styles["comment"]}>
+      <div className={styles["answer-mark"]}>
+        Antwort
+      </div>
       <div className={styles["comments-card"]}>
         <div className={styles["comments-panels"]}>
           <div
@@ -101,7 +103,9 @@ const Comment = ({ commentData, setSong }) => {
             />
             {audioDuration(commentData.audio_file)}
           </div>
-          {numberOfLikes(commentData.likes.total_likes)}
+          <div className={styles["comments-panels-audio-date"]}>
+            {Time.getDateOrTime(commentData.comment.created_at)}
+          </div>
         </div>
         <div className={styles["comments-content"]}>
           <div>
@@ -117,8 +121,8 @@ const Comment = ({ commentData, setSong }) => {
           </div>
           <div className={styles["comments-content_bottom"]}>
             <div className={styles["comments-content_bottom_container"]}>
-              <div className={styles["comments-content_date"]}>
-                {getDateOrTime(moment(commentData.comment.created_at))}
+              <div className={styles["comments-content_like"]}>
+                {numberOfLikes(commentData.likes.total_likes)}
               </div>
               <LikeButton liked={liked} handleLikeClick={handleLikeClick} />
             </div>

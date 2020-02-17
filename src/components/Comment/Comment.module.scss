@@ -1,5 +1,16 @@
 @import "../../styles/global.scss";
 
+.comment {
+  padding: 3rem 0;
+}
+
+.answer-mark {
+  color: $orange;
+  font-size: 1.6rem;
+  font-weight: 300;
+  margin-bottom: .5rem;
+}
+
 .comments {
   &-wrapper {
     margin: 0 10px;
@@ -8,7 +19,6 @@
     position: relative;
     display: flex;
     justify-content: flex-start;
-    padding: 3.4rem 1rem;
     &-wrapper {
       border-left: 3px solid $color-primary;
       padding-bottom: 2rem;
@@ -44,13 +54,21 @@
       &-img {
         height: 1.5rem;
       }
+      &-date {
+        margin-top: 1rem;
+        font-size: 1.3rem;
+        line-height: 1.9rem;
+        color: $color-grey-2;
+      }
     }
     &-likes {
-      color: $color-primary;
-      font-size: 1.3rem;
-      line-height: 1.9rem;
+      color: $color-grey-2;
+      font-size: 1.6rem;
       text-align: center;
-      font-weight: 300;
+
+      &--liked {
+        color: $color-primary;
+      }
     }
   }
   &-content {
@@ -85,7 +103,7 @@
       position: absolute;
       top: -2rem;
       left: 0;
-      transform: translateX(-50%);
+      transform: translateX(-80%);
       height: 4rem;
     }
     &_bottom {
@@ -98,11 +116,9 @@
         align-items: center;
       }
     }
-    &_date {
-      color: $color-grey-2;
-      font-size: 1.3rem;
-      margin-top: .4rem;
-      margin-right: 1rem;
+    &_like {
+      margin-top: 0.4rem;
+      margin-right: 0.8rem;
     }
   }
   &-comment {
