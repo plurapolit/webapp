@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import moment from "moment";
+import moment from "moment-with-locales-es6";
 
 import LikeButton from "../LikeButton/LikeButton";
 import LikeApi from "../../api/LikeApi";

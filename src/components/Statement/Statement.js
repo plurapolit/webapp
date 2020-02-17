@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import moment from "moment";
+import moment from "moment-with-locales-es6";
 
 import styles from "./Statement.module.scss";
 
