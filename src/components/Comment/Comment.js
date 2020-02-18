@@ -77,9 +77,11 @@ const Comment = ({ commentData, setSong }) => {
 
   return (
     <div className={styles["comment"]}>
-      <div className={styles["answer-mark"]}>
-        Antwort
-      </div>
+      {commentData.user.role === "expert" ? (
+        <div className={styles["answer-mark"]}>
+          Antwort
+        </div>
+      ) : null}
       <div className={styles["comments-card"]}>
         <div className={styles["comments-panels"]}>
           <div
@@ -113,9 +115,11 @@ const Comment = ({ commentData, setSong }) => {
               <div className={styles["comments-content-user"]}>
                 {commentData.user.full_name}
               </div>
-              <div className={styles["comments-content_image-anker"]}>
-                <img src={likeBadge} alt="am meisten gemochte Antwort" className={styles["comments-content_image"]} />
-              </div>
+              {commentData.likes.most_liked_comment ? (
+                <div className={styles["comments-content_image-anker"]}>
+                  <img src={likeBadge} alt="am meisten gemochte Antwort" className={styles["comments-content_image"]} />
+                </div>
+              ) : null}
             </div>
             {commentQuote(commentData.comment.quote)}
           </div>

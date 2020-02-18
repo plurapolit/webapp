@@ -15,7 +15,6 @@ const PanelContent = ({ content }) => {
   const [playerIsStopped, setPlayerIsStopped] = useState(true);
 
   const panelTitle = content.panel.short_title;
-
   const stopPlayer = () => {
     setPlayerIsStopped(true);
     PiwikMessages.statement.stop(panelTitle, currentUser, audioStatement);
