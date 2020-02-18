@@ -30,12 +30,18 @@ const Time = () => {
 
   const getTimeStamp = () => moment().format("HH-mm-ss");
 
+  const getDurationInSeconds = (durationInSeconds) => {
+    const duration = moment.duration(durationInSeconds, "seconds").asMilliseconds();
+    return moment.utc(duration).format("mm:ss");
+  };
+
   return {
     getDateOrTime,
     getTimeStamp,
     getDate,
     getDateInDays,
     isDaysAway,
+    getDurationInSeconds,
   };
 };
 

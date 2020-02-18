@@ -1,11 +1,10 @@
 import React, { useState } from "react";
-import moment from "moment-with-locales-es6";
 
 import LikeButton from "../LikeButton/LikeButton";
-import LikeApi from "../../api/LikeApi";
 import JwtApi from "../../api/JwtApi";
 import Notification from "../../helper/Notification";
 import Time from "../../helper/Time";
+import Helper from "./CommentHelper";
 
 import likeBadge from "../../media/images/like-badge.svg";
 import audioWave from "../../media/images/sound-wave.svg";
@@ -19,24 +18,7 @@ const Comment = ({
   setAnswered,
 }) => {
   const [liked, setLiked] = useState(commentData.likes.liked_by_current_user);
-
-  const audioDuration = (audioFile) => moment
-    .utc(
-      moment.duration(audioFile.duration_seconds, "seconds").asMilliseconds(),
-    )
-    .format("mm:ss");
-
-  const like = async () => {
-    LikeApi.post(commentData.comment.id);
-  };
-
-  const dislike = async () => {
-    LikeApi.delete(commentData.comment.id);
-  };
-
-  const toggleLike = () => {
-    setLiked(!liked);
-  };
+  const [likes, setLikes] = useState(commentData.likes.total_likes);
 
   const handleLikeClick = async () => {
     const valid = await JwtApi.validate();
@@ -45,30 +27,14 @@ const Comment = ({
         "Um diesen Service nutzen zu können, musst du dich anmelden",
       );
     }
-
     if (liked) {
-      dislike();
-    } else {
-      like();
+      Helper.removeLike(commentData.comment.id);
+      setLikes((prevLikes) => prevLikes - 1);
+      return setLiked(false);
     }
-    return toggleLike();
-  };
-
-  const numberOfLikes = (totalLikes) => {
-    let likeAmount;
-    const currentUserLikeFetched = commentData.likes.liked_by_current_user;
-    if (!currentUserLikeFetched && liked) {
-      likeAmount = totalLikes + 1;
-    } else if (currentUserLikeFetched && !liked) {
-      likeAmount = totalLikes - 1;
-    } else {
-      likeAmount = totalLikes;
-    }
-    return (
-      <div className={`${styles["comments-panels-likes"]} ${liked ? styles["comments-panels-likes--liked"] : null}`}>
-        {likeAmount}
-      </div>
-    );
+    Helper.addLike(commentData.comment.id);
+    setLikes((prevLikes) => prevLikes + 1);
+    return setLiked(true);
   };
 
   if (commentData.user.role === "expert") {
@@ -103,7 +69,7 @@ const Comment = ({
               src={audioWave}
               className={styles["comments-panels-audio-img"]}
             />
-            {audioDuration(commentData.audio_file)}
+            {Time.getDurationInSeconds(commentData.audio_file.duration_seconds)}
           </div>
           <div className={styles["comments-panels-audio-date"]}>
             {Time.getDateOrTime(commentData.comment.created_at)}
@@ -130,7 +96,9 @@ const Comment = ({
           <div className={styles["comments-content_bottom"]}>
             <div className={styles["comments-content_bottom_container"]}>
               <div className={styles["comments-content_like"]}>
-                {numberOfLikes(commentData.likes.total_likes)}
+                <div className={`${styles["comments-panels-likes"]} ${liked ? styles["comments-panels-likes--liked"] : null}`}>
+                  {likes}
+                </div>
               </div>
               <LikeButton liked={liked} handleLikeClick={handleLikeClick} />
             </div>
