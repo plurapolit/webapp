@@ -20,6 +20,7 @@ const PanelComments = ({
 }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [userComments, setUserComments] = useState(null);
+  const [answered, setAnswered] = useState(false);
 
   useEffect(() => {
     const fetchUserComments = async () => {
@@ -49,16 +50,19 @@ const PanelComments = ({
         />
         <div className={styles["comments-wrapper"]}>
           <div className={styles["comments-card-wrapper"]}>
-            <AnswerDisclaimer
-              expertFullName={expertFullName}
-              statementDate={statementDate}
-              commentLength={userComments.comments.length}
-            />
+            {answered ? null : (
+              <AnswerDisclaimer
+                expertFullName={expertFullName}
+                statementDate={statementDate}
+                commentLength={userComments.comments.length}
+              />
+            )}
             {userComments.comments.map((commentData) => (
               <Comment
                 key={commentData.comment.id}
                 commentData={commentData}
                 setSong={setSong}
+                setAnswered={setAnswered}
               />
             ))}
             <Button onClick={() => openModal()}>

@@ -3,16 +3,16 @@ import moment from "moment-with-locales-es6";
 moment.locale("de");
 
 const Time = () => {
-  const getCalendar = (timeStemp) => {
-    return timeStemp.calendar(null, {
+  const getCalendar = (timeStemp) => (
+    timeStemp.calendar(null, {
       sameDay: "[Today]",
       nextDay: "[Tomorrow]",
       nextWeek: "[nächsten] dddd",
       lastDay: "[Yesterday]",
       lastWeek: "dddd",
       sameElse: "l",
-    });
-  };
+    })
+  );
 
   const getDateOrTime = (string) => {
     const timeStemp = moment(string);

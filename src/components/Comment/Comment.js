@@ -13,7 +13,11 @@ import playButton from "../../media/images/play.svg";
 
 import styles from "./Comment.module.scss";
 
-const Comment = ({ commentData, setSong }) => {
+const Comment = ({
+  commentData,
+  setSong,
+  setAnswered,
+}) => {
   const [liked, setLiked] = useState(commentData.likes.liked_by_current_user);
 
   const audioDuration = (audioFile) => moment
@@ -67,13 +71,9 @@ const Comment = ({ commentData, setSong }) => {
     );
   };
 
-  const commentQuote = (quote) => (
-    <div className={styles["comments-content-statement"]}>
-      &ldquo;
-      {quote}
-      &rdquo;
-    </div>
-  );
+  if (commentData.user.role === "expert") {
+    setAnswered(true);
+  }
 
   return (
     <div className={styles["comment"]}>
@@ -121,7 +121,11 @@ const Comment = ({ commentData, setSong }) => {
                 </div>
               ) : null}
             </div>
-            {commentQuote(commentData.comment.quote)}
+            <div className={styles["comments-content-statement"]}>
+              &ldquo;
+              {commentData.comment.quote}
+              &rdquo;
+            </div>
           </div>
           <div className={styles["comments-content_bottom"]}>
             <div className={styles["comments-content_bottom_container"]}>
