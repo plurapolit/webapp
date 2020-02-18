@@ -1,6 +1,7 @@
 /* eslint-disable react/jsx-filename-extension */
-import React from "react";
+import React, { useContext } from "react";
 
+import { StoreContext } from "../../layouts/Store/StoreContext";
 import HomePageMetaTags from "./HomePageMetaTag";
 import HomeHeader from "../../components/HomeHeader/HomeHeader";
 import About from "../../components/About/About";
@@ -12,18 +13,21 @@ import Supporters from "../../components/Supporters/Supporters";
 
 import styles from "./HomePage.module.scss";
 
-const HomePage = ({ categoryList }) => (
-  <div>
-    <HomePageMetaTags />
-    <HomeHeader />
-    <About />
-    {isLoaded(categoryList, <CategoryList categoryList={categoryList} />)}
-    <div className={styles["bottom-wrapper"]}>
-      <MoreSection />
-      <Feedback />
-      <Supporters />
+const HomePage = () => {
+  const { categoryList } = useContext(StoreContext);
+  return (
+    <div>
+      <HomePageMetaTags />
+      <HomeHeader />
+      <About />
+      {isLoaded(categoryList, <CategoryList />)}
+      <div className={styles["bottom-wrapper"]}>
+        <MoreSection />
+        <Feedback />
+        <Supporters />
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 export default HomePage;
