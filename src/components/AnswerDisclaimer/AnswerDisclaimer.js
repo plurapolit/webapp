@@ -14,9 +14,9 @@ const AnswerDisclaimer = ({
     return (
       <div className={styles["disclaimer"]}>
         <span>{expertFullName}</span>
-        &nbsp; antwortet bis zum &nbsp;
+        &nbsp; wird am &nbsp;
         <span>{Time.getDateInDays(statementDate, 21)}</span>
-        &nbsp; auf das best bewertete Kommentar.
+        &nbsp; aufgefordert, auf den Kommentar mit den meisten Likes zu antworten.
       </div>
     );
   }
