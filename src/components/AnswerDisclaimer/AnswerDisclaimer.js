@@ -8,7 +8,9 @@ const AnswerDisclaimer = ({
   statementDate,
   commentLength,
 }) => {
-  if (commentLength > 0 && Time.isDaysAway(statementDate, 7)) {
+  const showAfterNDays = 0;
+
+  if (commentLength > 0 && Time.isDaysAway(statementDate, showAfterNDays)) {
     return (
       <div className={styles["disclaimer"]}>
         <span>{expertFullName}</span>
