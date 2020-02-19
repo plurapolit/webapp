@@ -9,7 +9,10 @@ import Notification from "../../helper/Notification";
 import JwtApi from "../../api/JwtApi";
 import { StoreContext } from "../../layouts/Store/StoreContext";
 
-const SignInComponent = ({ routeBack = () => {} }) => {
+const SignInComponent = ({
+  routeBack = () => {},
+  onLinkClick = () => {},
+}) => {
   const { setUser } = useContext(StoreContext);
 
   const handleSubmit = async (event) => {
@@ -44,11 +47,11 @@ const SignInComponent = ({ routeBack = () => {} }) => {
         </form>
         <div className={styles["text"]}>
           <span>Du besitzt keinen Account? </span>
-          <Link to="/sign_up/">Registrieren</Link>
+          <Link to="/sign_up/" onClick={onLinkClick}>Registrieren</Link>
         </div>
         <div className={styles["text"]}>
           <span>Passwort vergessen? </span>
-          <Link to="/request_new_password/">Neues Passwort</Link>
+          <Link to="/request_new_password/" onClick={onLinkClick}>Neues Passwort</Link>
         </div>
       </div>
     </div>

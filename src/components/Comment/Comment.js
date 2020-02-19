@@ -27,7 +27,7 @@ const Comment = ({
     const valid = await JwtApi.validate();
     if (!valid) {
       modal.showContent(
-        <SignInComponent routeBack={modal.closeModal} />,
+        <SignInComponent routeBack={modal.closeModal} onLinkClick={modal.closeModal} />,
       );
       return Notification.warning(
         "Um diesen Service nutzen zu können, musst du dich anmelden",
