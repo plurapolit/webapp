@@ -26,10 +26,9 @@ const Comment = ({
   const handleLikeClick = async () => {
     const valid = await JwtApi.validate();
     if (!valid) {
-      modal.setContent(
+      modal.showContent(
         <SignInComponent routeBack={modal.closeModal} />,
       );
-      modal.setIsOpen(true);
       return Notification.warning(
         "Um diesen Service nutzen zu können, musst du dich anmelden",
       );

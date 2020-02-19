@@ -10,20 +10,21 @@ const Modal = ({
   show = false,
   children,
 }) => {
-  const [isOpen, setIsOpen] = useState(show);
+  const [open, setOpen] = useState(show);
   const style = useRef();
   const label = useRef("PluraPolit");
   const content = useRef(null);
-  const closeModal = () => setIsOpen(false);
+  const closeModal = () => setOpen(false);
 
-  const setContent = (newContent) => {
+  const showContent = (newContent) => {
     content.current = newContent;
+    setOpen(true);
   };
 
   return (
     <>
       <ReactModal
-        isOpen={isOpen}
+        isOpen={open}
         onRequestClose={closeModal}
         contentLabel={label.current}
         style={style.current}
@@ -33,11 +34,10 @@ const Modal = ({
         {content.current}
       </ReactModal>
       <Provider value={{
-        setIsOpen,
         label: label.current,
         style: style.current,
-        setContent,
-        isOpen,
+        showContent,
+        isModalOpen: open,
         closeModal,
       }}
       >

@@ -37,13 +37,12 @@ const PanelComments = ({
     stopPlayer();
     // TODO: Update Modal Styling to render well.
     modal.style = Helper.modalStyle;
-    modal.setContent(
+    modal.showContent(
       <CommentModal
         closeModal={modal.closeModal}
         statementId={statementId}
       />,
     );
-    modal.setIsOpen(true);
   };
 
   if (userComments) {
