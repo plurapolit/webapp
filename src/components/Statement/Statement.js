@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import moment from "moment";
+import moment from "moment-with-locales-es6";
 
 import styles from "./Statement.module.scss";
 
@@ -8,7 +8,7 @@ import audioWave from "../../media/images/sound-wave.svg";
 import playButton from "../../media/images/play.svg";
 import PanelComments from "../PanelComments/PanelComments";
 import TwitterButton from "../TwitterButton/TwitterButton";
-import { getDateOrTime } from "../../helper/helper";
+import Time from "../../helper/Time";
 
 const Statement = ({
   expert,
@@ -121,7 +121,7 @@ const Statement = ({
           </Button>
           <div className={styles["expert-card-nav"]}>
             <div className={styles["expert-card-nav_info-container"]}>
-              {getDateOrTime(moment(expert.statement.created_at))}
+              {Time.getDateOrTime(expert.statement.created_at)}
               <div className={styles["expert-card-nav-time-wrapper"]}>
                 <img
                   src={audioWave}
@@ -158,6 +158,8 @@ const Statement = ({
           setSong={setSong}
           statementId={expert.statement.id}
           stopPlayer={stopPlayer}
+          expertFullName={expert.user.full_name}
+          statementDate={expert.statement.created_at}
         />
       )}
     </div>

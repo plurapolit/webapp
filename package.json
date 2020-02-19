@@ -16,6 +16,7 @@
     "js-cookie": "^2.2.1",
     "mic-recorder-to-mp3": "git://github.com/plurapolit/mic-recorder-to-mp3.git",
     "moment": "^2.24.0",
+    "moment-with-locales-es6": "^1.0.1",
     "node-sass": "^4.13.1",
     "outdated-browser-rework": "^2.10.0",
     "piwik-react-router": "^0.12.1",
