@@ -4,7 +4,7 @@ import UserApi from "../../api/UserApi";
 import StoreHelper from "./StoreHelper";
 
 const StoreContext = React.createContext();
-const { Provider, Consumer } = StoreContext;
+const { Provider } = StoreContext;
 
 const Store = ({ children }) => {
   const [user, setUser] = useState(undefined);
@@ -49,4 +49,4 @@ const Store = ({ children }) => {
   );
 };
 
-export { Store, Consumer as StoreConsumer, StoreContext };
+export { Store, StoreContext };
