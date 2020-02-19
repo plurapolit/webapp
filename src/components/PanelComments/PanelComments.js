@@ -24,9 +24,12 @@ const PanelComments = ({
 
   useEffect(() => {
     const fetchUserComments = async () => {
-      await CommentApi.getComments(statementId)
-        .then((res) => res.json())
-        .then((json) => setUserComments(json));
+      const res = await CommentApi.getComments(statementId);
+      if (res.status === 204) {
+        return;
+      }
+      const json = await res.json();
+      setUserComments(json);
     };
     fetchUserComments();
   }, [statementId]);
@@ -40,53 +43,50 @@ const PanelComments = ({
     setIsModalOpen(false);
   };
 
-  if (userComments) {
-    return (
-      <div>
-        <CommentModal
-          isOpen={isModalOpen}
-          closeModal={closeModal}
-          statementId={statementId}
-        />
-        <div className={styles["comments-wrapper"]}>
-          <div className={styles["comments-card-wrapper"]}>
-            {answered ? null : (
-              <AnswerDisclaimer
-                expertFullName={expertFullName}
-                statementDate={statementDate}
-                commentLength={userComments.comments.length}
-              />
-            )}
-            {userComments.comments.map((commentData) => (
-              <Comment
-                key={commentData.comment.id}
-                commentData={commentData}
-                setSong={setSong}
-                setAnswered={setAnswered}
-              />
-            ))}
-            <Button onClick={() => openModal()}>
-              <img
-                alt="icon"
-                src={microphoneButton}
-                className={styles["comments-microphone-img"]}
-              />
-              <div className={styles["comments-comment-text"]}>
-                Beitrag kommentieren
-              </div>
-            </Button>
-          </div>
-          <img
-            alt="icon"
-            src={closeButton}
-            className={styles["comments-close"]}
-            onClick={() => toggleComments()}
-          />
+  return (
+    <div>
+      <CommentModal
+        isOpen={isModalOpen}
+        closeModal={closeModal}
+        statementId={statementId}
+      />
+      <div className={styles["comments-wrapper"]}>
+        <div className={styles["comments-card-wrapper"]}>
+          {userComments && !answered && (
+            <AnswerDisclaimer
+              expertFullName={expertFullName}
+              statementDate={statementDate}
+              commentLength={userComments.comments.length}
+            />
+          )}
+          {userComments
+          && (userComments.comments.map((commentData) => (
+            <Comment
+              key={commentData.comment.id}
+              commentData={commentData}
+              setSong={setSong}
+              setAnswered={setAnswered}
+            />
+          )))}
+          <Button onClick={() => openModal()}>
+            <img
+              alt="icon"
+              src={microphoneButton}
+              className={styles["comments-microphone-img"]}
+            />
+            <div className={styles["comments-comment-text"]}>
+              Beitrag kommentieren
+            </div>
+          </Button>
         </div>
+        <img
+          alt="icon"
+          src={closeButton}
+          className={styles["comments-close"]}
+          onClick={() => toggleComments()}
+        />
       </div>
-    );
-  }
-  return null;
+    </div>
+  );
 };
-
 export default PanelComments;
