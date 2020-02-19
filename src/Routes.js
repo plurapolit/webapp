@@ -15,46 +15,49 @@ import SignIn from "./views/SignIn/SignIn";
 import SignUp from "./views/SignUp/SignUp";
 import ResetPassword from "./views/ResetPassword/ResetPassword";
 import RequestNewPassword from "./views/RequestNewPassword/RequestNewPassword";
+import { Modal } from "./layouts/Modal/ModalContext";
 
 const Routes = () => (
   <>
     <NavBar />
     <Notification />
-    <NavbarBuffer>
-      <Switch>
-        <Route exact path="/">
-          <HomePage />
-        </Route>
-        <Route exact path="/terms/">
-          <Terms />
-        </Route>
-        <Route exact path="/site-notice/">
-          <SiteNotice />
-        </Route>
-        <Route exact path="/privacy-policy/">
-          <PrivacyPolicy />
-        </Route>
-        <Route exact path="/sign_in/">
-          <SignIn />
-        </Route>
-        <Route path="/reset_password/:resetPasswordToken">
-          <ResetPassword />
-        </Route>
-        <Route path="/request_new_password/">
-          <RequestNewPassword />
-        </Route>
-        <Route exact path="/sign_up/">
-          <SignUp />
-        </Route>
-        <Route path="/:slug">
-          {(props) => (
-            <PanelWrapper
-              location={props.location}
-            />
-          )}
-        </Route>
-      </Switch>
-    </NavbarBuffer>
+    <Modal>
+      <NavbarBuffer>
+        <Switch>
+          <Route exact path="/">
+            <HomePage />
+          </Route>
+          <Route exact path="/terms/">
+            <Terms />
+          </Route>
+          <Route exact path="/site-notice/">
+            <SiteNotice />
+          </Route>
+          <Route exact path="/privacy-policy/">
+            <PrivacyPolicy />
+          </Route>
+          <Route exact path="/sign_in/">
+            <SignIn />
+          </Route>
+          <Route path="/reset_password/:resetPasswordToken">
+            <ResetPassword />
+          </Route>
+          <Route path="/request_new_password/">
+            <RequestNewPassword />
+          </Route>
+          <Route exact path="/sign_up/">
+            <SignUp />
+          </Route>
+          <Route path="/:slug">
+            {(props) => (
+              <PanelWrapper
+                location={props.location}
+              />
+            )}
+          </Route>
+        </Switch>
+      </NavbarBuffer>
+    </Modal>
     <Footer />
   </>
 );

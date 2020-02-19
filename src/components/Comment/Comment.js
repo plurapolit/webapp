@@ -23,6 +23,7 @@ const Comment = ({
   const handleLikeClick = async () => {
     const valid = await JwtApi.validate();
     if (!valid) {
+
       return Notification.warning(
         "Um diesen Service nutzen zu können, musst du dich anmelden",
       );

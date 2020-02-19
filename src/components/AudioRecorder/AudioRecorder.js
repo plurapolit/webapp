@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import Helper from "./AudioRecorderHelper";
 import Button from "../Button/Button";
 import Recorder from "../../helper/Recorder";
+import Loader from "../Loader/Loader";
 
 import styles from "./AudioRecorder.module.scss";
 import microphoneButton from "../../media/images/microphone.svg";
@@ -13,6 +14,7 @@ const AudioRecorder = ({ setFileLink, setDuration, nextPage }) => {
   const [blobURL, setBlobURL] = useState("");
   const [timerOn, setTimerOn] = useState(false);
   const [counter, setCounter] = useState(0);
+  const [sending, setSending] = useState(false);
 
   const increaseCounter = () => {
     setCounter((prevCount) => prevCount + 1);
@@ -59,6 +61,7 @@ const AudioRecorder = ({ setFileLink, setDuration, nextPage }) => {
   };
 
   const send = () => {
+    setSending(true);
     Helper.sendToAWS(audio).then((fileLink) => {
       setFileLink(fileLink);
       nextPage();
@@ -96,6 +99,10 @@ const AudioRecorder = ({ setFileLink, setDuration, nextPage }) => {
         <div className={styles["step-index"]}>Schritt 3 von 4</div>
       </div>
     );
+  }
+
+  if (sending) {
+    return <Loader />;
   }
 
   return (
