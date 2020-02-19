@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 
 import styles from "./SignInComponent.module.scss";
@@ -7,8 +7,11 @@ import UserApi from "../../api/UserApi";
 import { getDataFromEvent } from "../../helper/helper";
 import Notification from "../../helper/Notification";
 import JwtApi from "../../api/JwtApi";
+import { StoreContext } from "../../layouts/Store/StoreContext";
 
-const SignInComponent = ({ setUser, routeBack = () => {} }) => {
+const SignInComponent = ({ routeBack = () => {} }) => {
+  const { setUser } = useContext(StoreContext);
+
   const handleSubmit = async (event) => {
     const inputData = getDataFromEvent(event);
     try {

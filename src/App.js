@@ -2,7 +2,7 @@ import React from "react";
 import { Router } from "react-router-dom";
 import { createBrowserHistory } from "history";
 
-import Store from "./layouts/Store/Store";
+import { Store } from "./layouts/Store/StoreContext";
 import Routes from "./Routes";
 import ScrollToTop from "./helper/ScrollToTop";
 import Piwik from "./helper/Piwik";

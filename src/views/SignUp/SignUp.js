@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { withRouter, Link } from "react-router-dom";
 
 import styles from "./SignUp.module.scss";
@@ -7,8 +7,10 @@ import { getDataFromEvent, setErrorMessages } from "../../helper/helper";
 import Notification from "../../helper/Notification";
 import UserApi from "../../api/UserApi";
 import JwtApi from "../../api/JwtApi";
+import { StoreContext } from "../../layouts/Store/StoreContext";
 
-const SignUp = ({ setUser, history }) => {
+const SignUp = ({ history }) => {
+  const { setUser } = useContext(StoreContext);
   const handleSubmit = async (event) => {
     const input = getDataFromEvent(event);
     try {

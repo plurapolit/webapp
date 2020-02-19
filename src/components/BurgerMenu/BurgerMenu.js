@@ -1,14 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
+
 import SignOutButton from "../SignOutButton/SignOutButton";
 import Button, { ButtonStyle } from "../Button/Button";
-
-import StoreContext from "../../layouts/Store/StoreContext";
+import { StoreContext } from "../../layouts/Store/StoreContext";
 
 import styles from "./BurgerMenu.module.scss";
 
-const BurgerMenu = ({ user }) => {
+const BurgerMenu = () => {
   const [show, setShow] = useState(false);
+  const { user } = useContext(StoreContext);
 
   const handleClick = () => {
     setShow(!show);
@@ -38,13 +39,9 @@ const BurgerMenu = ({ user }) => {
 
   if (user) {
     buttons = (
-      <StoreContext.Consumer>
-        {(data) => (
-          <div tabIndex="0" role="link" onClick={() => handleClick()} className={styles["item"]}>
-            <SignOutButton user={user} removeUser={data.removeUser} />
-          </div>
-        )}
-      </StoreContext.Consumer>
+      <div tabIndex="0" role="link" onClick={() => handleClick()} className={styles["item"]}>
+        <SignOutButton />
+      </div>
     );
   }
 

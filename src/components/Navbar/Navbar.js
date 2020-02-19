@@ -1,14 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 
+import { StoreContext } from "../../layouts/Store/StoreContext";
 import LogoBlack from "./images/PluraPolitLogoblack.png";
 import BurgerMenu from "../BurgerMenu/BurgerMenu";
 import styles from "./Navbar.module.scss";
 import SignOutButton from "../SignOutButton/SignOutButton";
-import StoreContext from "../../layouts/Store/StoreContext";
 import Button, { ButtonStyle } from "../Button/Button";
 
-const Navbar = ({ user }) => {
+const Navbar = () => {
+  const { user } = useContext(StoreContext);
   const customStyle = {
     nav: styles["navbar"],
     item: styles["item"],
@@ -32,13 +33,9 @@ const Navbar = ({ user }) => {
 
   if (user) {
     buttons = (
-      <StoreContext.Consumer>
-        {(data) => (
-          <li className={customStyle.item}>
-            <SignOutButton user={user} removeUser={data.removeUser} />
-          </li>
-        )}
-      </StoreContext.Consumer>
+      <li className={customStyle.item}>
+        <SignOutButton />
+      </li>
     );
   }
 
@@ -58,7 +55,7 @@ const Navbar = ({ user }) => {
           {buttons}
         </div>
       </ul>
-      <BurgerMenu isTop={false} user={user} />
+      <BurgerMenu isTop={false} />
     </nav>
   );
 };
