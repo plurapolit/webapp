@@ -38,6 +38,7 @@ const Modal = ({
         style: style.current,
         setContent,
         isOpen,
+        closeModal,
       }}
       >
         {children}

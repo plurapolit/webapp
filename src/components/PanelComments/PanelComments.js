@@ -39,7 +39,7 @@ const PanelComments = ({
     modal.style = Helper.modalStyle;
     modal.setContent(
       <CommentModal
-        closeModal={() => modal.setIsOpen(false)}
+        closeModal={modal.closeModal}
         statementId={statementId}
       />,
     );
