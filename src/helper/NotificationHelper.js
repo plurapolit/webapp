@@ -48,10 +48,17 @@ const Notification = () => {
     });
   };
 
+  const setErrorMessages = (error) => {
+    Object.entries(error).forEach(([key, value]) => {
+      Notification.warning(value[0], key);
+    });
+  };
+
   return {
     success,
     warning,
     signedIn,
+    setErrorMessages,
   };
 };
 

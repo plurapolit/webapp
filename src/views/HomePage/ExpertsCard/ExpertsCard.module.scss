@@ -1,0 +1,30 @@
+@import "../../../assets/styles/global.scss";
+
+.speaker-image-wrapper {
+  position: relative;
+}
+
+.speaker-image {
+  width: 7rem;
+  height: 7rem;
+  border-radius: 50%;
+  margin: 0.3rem;
+  box-shadow: 0 0 10px rgba($color-grey, 0.3);
+  object-fit: fill;
+  transition: transform 0.2s;
+  box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.14),
+    0 3px 3px -2px rgba(0, 0, 0, 0.12), 0 1px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.organisation-logo {
+  position: absolute;
+  bottom: 0.3rem;
+  left: 70%;
+  transform: translateX(-50%);
+  height: 30%;
+  width: 65%;
+  border-radius: 5px;
+  box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.14),
+    0 3px 3px -2px rgba(0, 0, 0, 0.12), 0 1px 8px 0 rgba(0, 0, 0, 0.2);
+  object-fit: cover;
+}

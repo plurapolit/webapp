@@ -1,0 +1,44 @@
+@import "../../../assets/styles/global.scss";
+
+.headline {
+  color: $headline-blue;
+  font-size: 2.2rem;
+  line-height: 2.4rem;
+  font-weight: bold;
+  padding-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.description {
+  color: $text-dark-1;
+  font-size: 1.8rem;
+  line-height: 1.5;
+}
+
+.experts-headline {
+  color: $headline-dark-1;
+  font-size: 2.6rem;
+  line-height: 3.8rem;
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+}
+
+.disclaimer {
+  font-size: 1.5rem;
+  line-height: 1.5;
+  color: $text-dark-1;
+  font-weight: 400;
+  padding: 1rem;
+  text-align: justify;
+}
+
+@keyframes slideUp {
+  0% {
+    opacity: 20%;
+    transform: translateY(3rem);
+  }
+  100% {
+    opacity: 100%;
+    transform: translateY(0);
+  }
+}

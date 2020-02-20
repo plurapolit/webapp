@@ -4,10 +4,10 @@ import { Link } from "react-router-dom";
 import styles from "./SignInComponent.module.scss";
 import Button from "../Button/Button";
 import UserApi from "../../api/UserApi";
-import { getDataFromEvent } from "../../helper/helper";
+import { getDataFromEvent } from "../../helper/FormHelper";
 import Notification from "../../helper/NotificationHelper";
 import JwtApi from "../../api/JwtApi";
-import { StoreContext } from "../../contexts/Store/StoreContext";
+import { StoreContext } from "../../contexts/StoreContext/StoreContext";
 
 const SignInComponent = ({
   routeBack = () => {},

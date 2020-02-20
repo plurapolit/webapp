@@ -3,11 +3,11 @@ import { withRouter, Link } from "react-router-dom";
 
 import styles from "./SignUp.module.scss";
 import Button from "../../components/Button/Button";
-import { getDataFromEvent, setErrorMessages } from "../../helper/helper";
+import { getDataFromEvent } from "../../helper/FormHelper";
 import Notification from "../../helper/NotificationHelper";
 import UserApi from "../../api/UserApi";
 import JwtApi from "../../api/JwtApi";
-import { StoreContext } from "../../contexts/Store/StoreContext";
+import { StoreContext } from "../../contexts/StoreContext/StoreContext";
 
 const SignUp = ({ history }) => {
   const { setUser } = useContext(StoreContext);
@@ -26,7 +26,7 @@ const SignUp = ({ history }) => {
       history.push("/");
       Notification.signedIn(data.user.first_name, data.user.last_name);
     } catch (obj) {
-      setErrorMessages(obj.errors);
+      Notification.setErrorMessages(obj.errors);
     }
   };
 

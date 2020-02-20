@@ -3,10 +3,10 @@ import { Route, Switch } from "react-router-dom";
 import Notification from "react-notifications-component";
 import "react-notifications-component/dist/theme.css";
 
-import { Player } from "./contexts/Player/PlayerContext";
-import NavBar from "./components/Navbar/Navbar";
+import { Player } from "./contexts/PlayerContext/PlayerContext";
+import NavBar from "./layouts/Navbar/Navbar";
 import NavbarBuffer from "./layouts/NavbarBuffer/NavbarBuffer";
-import Footer from "./components/Footer/Footer";
+import Footer from "./layouts/Footer/Footer";
 import HomePage from "./views/HomePage/HomePage";
 import Terms from "./views/Terms/Terms";
 import SiteNotice from "./views/SiteNotice/SiteNotice";
@@ -16,7 +16,7 @@ import SignIn from "./views/SignIn/SignIn";
 import SignUp from "./views/SignUp/SignUp";
 import ResetPassword from "./views/ResetPassword/ResetPassword";
 import RequestNewPassword from "./views/RequestNewPassword/RequestNewPassword";
-import { Modal } from "./contexts/Modal/ModalContext";
+import { Modal } from "./contexts/ModalContext/ModalContext";
 
 const Routes = () => (
   <>

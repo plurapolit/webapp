@@ -3,7 +3,7 @@ import { Link, useHistory } from "react-router-dom";
 
 import styles from "./RequestNewPassword.module.scss";
 import Button from "../../components/Button/Button";
-import { getDataFromEvent, setErrorMessages } from "../../helper/helper";
+import { getDataFromEvent } from "../../helper/FormHelper";
 import Notification from "../../helper/NotificationHelper";
 import UserApi from "../../api/UserApi";
 
@@ -18,14 +18,14 @@ const RequestNewPassword = () => {
       const res = await UserApi.requestNewPassword(input.email);
       if (res.status !== 201) {
         const json = await res.json();
-        return setErrorMessages(json.errors);
+        return Notification.setErrorMessages(json.errors);
       }
       setTimeout(() => {
         history.push("/");
       }, FIVE_SECONDS);
       return Notification.success("Schau in deinem E-Mail Postfach nach", "Passwort Änderung erfolgreich angefordert");
     } catch (obj) {
-      return setErrorMessages(obj.errors);
+      return Notification.setErrorMessages(obj.errors);
     }
   };
 

@@ -4,7 +4,7 @@ import Helper from "./PanelWrapperHelper";
 import Panel from "../../views/Panel/Panel";
 import PageNotFound from "../../views/PageNotFound/PageNotFound";
 import Loader from "../../components/Loader/Loader";
-import { StoreContext } from "../../contexts/Store/StoreContext";
+import { StoreContext } from "../../contexts/StoreContext/StoreContext";
 
 const PanelWrapper = ({ location }) => {
   const [currentPanel, setCurrentPanel] = useState(undefined);
