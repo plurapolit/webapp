@@ -17,7 +17,7 @@ const Player = ({
   const [audioStatement, setAudioStatement] = useState("");
   const [author, setAuthor] = useState("");
   const [panelTitle, setPanelTitle] = useState();
-  const player = useRef(null);
+  const player = useRef();
 
   const stopPlayer = () => {
     player.current.audio.pause();
@@ -25,7 +25,6 @@ const Player = ({
   };
 
   const startPlayer = () => {
-    console.log("player.current ", player.current);
     player.current.audio.play();
     PiwikMessages.statement.start(panelTitle, author, audioStatement);
   };
@@ -34,7 +33,6 @@ const Player = ({
     setShowMediaPlayer(true);
     setAudioStatement(audioFile);
     setAuthor(newAuthor);
-    startPlayer();
   };
 
   useEffect(() => {
