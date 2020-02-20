@@ -42,7 +42,7 @@ const AddQuote = ({ setQuote, sendToRails }) => {
             {`${inputLength}/120`}
           </div>
           <span>
-            <Button style={{margin: "0 auto"}} type="submit">Abschicken</Button>
+            <Button style={{ margin: "0 auto" }} type="submit">Abschicken</Button>
           </span>
         </div>
       </form>
