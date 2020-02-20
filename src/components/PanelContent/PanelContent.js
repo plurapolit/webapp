@@ -1,29 +1,14 @@
 /* eslint-disable react/button-has-type */
-import React, { useState } from "react";
+import React, { useContext } from "react";
 
-import Player from "../Player/Player";
+import { PlayerContext } from "../../layouts/Player/PlayerContext";
 import Statement from "../Statement/Statement";
-import PiwikMessages from "../../helper/PiwikMessages";
 
 import styles from "./PanelContent.module.scss";
 
 const PanelContent = ({ content }) => {
-  const [audioStatement, setAudioStatement] = useState("");
-  const [showMediaPlayer, setShowMediaPlayer] = useState(false);
-  const [isAutoplayed, setIsAutoplayed] = useState(false);
-  const [currentUser, setCurrentUser] = useState("");
-  const [playerIsStopped, setPlayerIsStopped] = useState(true);
-
-  const panelTitle = content.panel.short_title;
-  const stopPlayer = () => {
-    setPlayerIsStopped(true);
-    PiwikMessages.statement.stop(panelTitle, currentUser, audioStatement);
-  };
-
-  const startPlayer = () => {
-    setPlayerIsStopped(false);
-    PiwikMessages.statement.start(panelTitle, currentUser, audioStatement);
-  };
+  const { setPanelTitle } = useContext(PlayerContext);
+  setPanelTitle(content.panel.short_title);
 
   return (
     <div>
@@ -35,12 +20,6 @@ const PanelContent = ({ content }) => {
           <Statement
             key={expert.statement.id}
             expert={expert}
-            setAudioStatement={setAudioStatement}
-            setShowMediaPlayer={setShowMediaPlayer}
-            setIsAutoplayed={setIsAutoplayed}
-            setCurrentUser={setCurrentUser}
-            stopPlayer={stopPlayer}
-            startPlayer={startPlayer}
           />
         ))}
       </div>
@@ -49,16 +28,6 @@ const PanelContent = ({ content }) => {
         wurden zur Mitwirkung auf PluraPolit angefragt. Nicht alle angefragten
         Parteien haben jedoch bislang Statements abgegeben.
       </div>
-      {showMediaPlayer && (
-        <Player
-          audioStatement={audioStatement}
-          isAutoplayed={isAutoplayed}
-          currentUser={currentUser}
-          panelTitle={panelTitle}
-          isStopped={playerIsStopped}
-          startPlayer={startPlayer}
-        />
-      )}
     </div>
   );
 };

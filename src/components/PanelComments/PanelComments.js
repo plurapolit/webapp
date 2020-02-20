@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 
+import { PlayerContext } from "../../layouts/Player/PlayerContext";
 import Button from "../Button/Button";
 import CommentModal from "../CommentModal/CommentModal";
 import closeButton from "../../media/images/close.svg";
@@ -13,15 +14,14 @@ import { ModalContext } from "../../layouts/Modal/ModalContext";
 
 const PanelComments = ({
   toggleComments,
-  setSong,
   statementId,
-  stopPlayer,
   expertFullName,
   statementDate,
 }) => {
   const [userComments, setUserComments] = useState(null);
   const [answered, setAnswered] = useState(false);
   const modal = useContext(ModalContext);
+  const { stopPlayer } = useContext(PlayerContext);
 
   useEffect(() => {
     const fetchUserComments = async () => {
@@ -37,7 +37,6 @@ const PanelComments = ({
 
   const openCommentModal = () => {
     stopPlayer();
-
     modal.showContent(
       <CommentModal
         closeModal={modal.closeModal}
@@ -62,7 +61,6 @@ const PanelComments = ({
             <Comment
               key={commentData.comment.id}
               commentData={commentData}
-              setSong={setSong}
               setAnswered={setAnswered}
             />
           )))}

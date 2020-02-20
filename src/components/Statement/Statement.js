@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import moment from "moment-with-locales-es6";
 
 import styles from "./Statement.module.scss";
 
+import { PlayerContext } from "../../layouts/Player/PlayerContext";
 import Button, { ButtonStyle } from "../Button/Button";
 import audioWave from "../../media/images/sound-wave.svg";
 import playButton from "../../media/images/play.svg";
@@ -12,14 +13,9 @@ import Time from "../../helper/Time";
 
 const Statement = ({
   expert,
-  setShowMediaPlayer,
-  setIsAutoplayed,
-  setAudioStatement,
-  setCurrentUser,
-  stopPlayer,
-  startPlayer,
 }) => {
   const [commentsAreOpen, setCommentsAreOpen] = useState(false);
+  const { setSong } = useContext(PlayerContext);
 
   const IMAGEROOTURL = process.env.REACT_APP_BUCKET_URL;
 
@@ -40,14 +36,6 @@ const Statement = ({
       );
     }
     return image;
-  };
-
-  const setSong = async (audioFile, user) => {
-    setShowMediaPlayer(true);
-    setIsAutoplayed(true);
-    setAudioStatement(audioFile);
-    setCurrentUser(user);
-    startPlayer();
   };
 
   const { number_of_comments: commentNumber } = expert;
@@ -155,9 +143,7 @@ const Statement = ({
       {commentsAreOpen && (
         <PanelComments
           toggleComments={toggleComments}
-          setSong={setSong}
           statementId={expert.statement.id}
-          stopPlayer={stopPlayer}
           expertFullName={expert.user.full_name}
           statementDate={expert.statement.created_at}
         />

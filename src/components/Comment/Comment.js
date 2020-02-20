@@ -1,5 +1,6 @@
 import React, { useState, useContext } from "react";
 
+import { PlayerContext } from "../../layouts/Player/PlayerContext";
 import LikeButton from "../LikeButton/LikeButton";
 import JwtApi from "../../api/JwtApi";
 import Notification from "../../helper/Notification";
@@ -16,12 +17,12 @@ import styles from "./Comment.module.scss";
 
 const Comment = ({
   commentData,
-  setSong,
   setAnswered,
 }) => {
   const [liked, setLiked] = useState(commentData.likes.liked_by_current_user);
   const [likes, setLikes] = useState(commentData.likes.total_likes);
   const modal = useContext(ModalContext);
+  const { setSong } = useContext(PlayerContext);
 
   const handleLikeClick = async () => {
     const valid = await JwtApi.validate();
