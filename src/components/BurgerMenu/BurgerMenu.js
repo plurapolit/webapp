@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import SignOutButton from "../SignOutButton/SignOutButton";
 import Button, { ButtonStyle } from "../Button/Button";
-import { StoreContext } from "../../layouts/Store/StoreContext";
+import { StoreContext } from "../../contexts/Store/StoreContext";
 
 import styles from "./BurgerMenu.module.scss";
 

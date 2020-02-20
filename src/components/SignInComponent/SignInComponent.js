@@ -7,7 +7,7 @@ import UserApi from "../../api/UserApi";
 import { getDataFromEvent } from "../../helper/helper";
 import Notification from "../../helper/NotificationHelper";
 import JwtApi from "../../api/JwtApi";
-import { StoreContext } from "../../layouts/Store/StoreContext";
+import { StoreContext } from "../../contexts/Store/StoreContext";
 
 const SignInComponent = ({
   routeBack = () => {},

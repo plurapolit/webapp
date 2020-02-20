@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-filename-extension */
 import React, { useContext } from "react";
 
-import { StoreContext } from "../../layouts/Store/StoreContext";
+import { StoreContext } from "../../contexts/Store/StoreContext";
 import HomePageMetaTags from "./HomePageMetaTag";
 import HomeHeader from "../../components/HomeHeader/HomeHeader";
 import About from "../../components/About/About";

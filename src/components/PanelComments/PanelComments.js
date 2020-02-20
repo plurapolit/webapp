@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 
-import { PlayerContext } from "../../layouts/Player/PlayerContext";
+import { PlayerContext } from "../../contexts/Player/PlayerContext";
 import Button from "../Button/Button";
 import CommentModal from "../CommentModal/CommentModal";
 import closeButton from "../../assets/images/close.svg";
@@ -10,7 +10,7 @@ import Comment from "../Comment/Comment";
 import AnswerDisclaimer from "../AnswerDisclaimer/AnswerDisclaimer";
 
 import styles from "./PanelComments.module.scss";
-import { ModalContext } from "../../layouts/Modal/ModalContext";
+import { ModalContext } from "../../contexts/Modal/ModalContext";
 
 const PanelComments = ({
   toggleComments,

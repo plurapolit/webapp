@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { useHistory } from "react-router-dom";
 
-import { StoreContext } from "../../layouts/Store/StoreContext";
+import { StoreContext } from "../../contexts/Store/StoreContext";
 import styles from "./SignOutButton.module.scss";
 import UserApi from "../../api/UserApi";
 import JwtApi from "../../api/JwtApi";

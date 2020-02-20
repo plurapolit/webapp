@@ -4,7 +4,7 @@ import React, {
   useContext,
 } from "react";
 
-import { StoreContext } from "../../layouts/Store/StoreContext";
+import { StoreContext } from "../../contexts/Store/StoreContext";
 import AudioRecorder from "../AudioRecorder/AudioRecorder";
 import SignInComponent from "../SignInComponent/SignInComponent";
 import Notification from "../../helper/NotificationHelper";

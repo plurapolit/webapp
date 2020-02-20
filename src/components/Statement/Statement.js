@@ -3,7 +3,7 @@ import moment from "moment-with-locales-es6";
 
 import styles from "./Statement.module.scss";
 
-import { PlayerContext } from "../../layouts/Player/PlayerContext";
+import { PlayerContext } from "../../contexts/Player/PlayerContext";
 import Button, { ButtonStyle } from "../Button/Button";
 import audioWave from "../../assets/images/sound-wave.svg";
 import playButton from "../../assets/images/play.svg";

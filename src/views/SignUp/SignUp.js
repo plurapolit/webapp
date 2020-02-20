@@ -7,7 +7,7 @@ import { getDataFromEvent, setErrorMessages } from "../../helper/helper";
 import Notification from "../../helper/NotificationHelper";
 import UserApi from "../../api/UserApi";
 import JwtApi from "../../api/JwtApi";
-import { StoreContext } from "../../layouts/Store/StoreContext";
+import { StoreContext } from "../../contexts/Store/StoreContext";
 
 const SignUp = ({ history }) => {
   const { setUser } = useContext(StoreContext);

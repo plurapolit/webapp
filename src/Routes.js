@@ -3,7 +3,7 @@ import { Route, Switch } from "react-router-dom";
 import Notification from "react-notifications-component";
 import "react-notifications-component/dist/theme.css";
 
-import { Player } from "./layouts/Player/PlayerContext";
+import { Player } from "./contexts/Player/PlayerContext";
 import NavBar from "./components/Navbar/Navbar";
 import NavbarBuffer from "./layouts/NavbarBuffer/NavbarBuffer";
 import Footer from "./components/Footer/Footer";
@@ -16,7 +16,7 @@ import SignIn from "./views/SignIn/SignIn";
 import SignUp from "./views/SignUp/SignUp";
 import ResetPassword from "./views/ResetPassword/ResetPassword";
 import RequestNewPassword from "./views/RequestNewPassword/RequestNewPassword";
-import { Modal } from "./layouts/Modal/ModalContext";
+import { Modal } from "./contexts/Modal/ModalContext";
 
 const Routes = () => (
   <>

@@ -1,12 +1,12 @@
 import React, { useState, useContext } from "react";
 
-import { PlayerContext } from "../../layouts/Player/PlayerContext";
+import { PlayerContext } from "../../contexts/Player/PlayerContext";
 import LikeButton from "../LikeButton/LikeButton";
 import JwtApi from "../../api/JwtApi";
 import Notification from "../../helper/NotificationHelper";
 import Time from "../../helper/TimeHelper";
 import Helper from "./CommentHelper";
-import { ModalContext } from "../../layouts/Modal/ModalContext";
+import { ModalContext } from "../../contexts/Modal/ModalContext";
 import SignInComponent from "../SignInComponent/SignInComponent";
 
 import likeBadge from "../../assets/images/like-badge.svg";

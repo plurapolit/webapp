@@ -1,7 +1,7 @@
 /* eslint-disable react/button-has-type */
 import React, { useContext } from "react";
 
-import { PlayerContext } from "../../layouts/Player/PlayerContext";
+import { PlayerContext } from "../../contexts/Player/PlayerContext";
 import Statement from "../Statement/Statement";
 
 import styles from "./PanelContent.module.scss";

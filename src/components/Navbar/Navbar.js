@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 
-import { StoreContext } from "../../layouts/Store/StoreContext";
+import { StoreContext } from "../../contexts/Store/StoreContext";
 import LogoBlack from "./images/PluraPolitLogoblack.png";
 import BurgerMenu from "../BurgerMenu/BurgerMenu";
 import styles from "./Navbar.module.scss";

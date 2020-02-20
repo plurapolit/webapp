@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 
 import CategoryBanner from "../CategoryBanner/CategoryBanner";
-import { StoreContext } from "../../layouts/Store/StoreContext";
+import { StoreContext } from "../../contexts/Store/StoreContext";
 
 /* eslint-disable camelcase */
 const CategoryList = () => {
