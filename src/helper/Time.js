@@ -5,10 +5,10 @@ moment.locale("de");
 const Time = () => {
   const getCalendar = (timeStemp) => (
     timeStemp.calendar(null, {
-      sameDay: "[Today]",
-      nextDay: "[Tomorrow]",
+      sameDay: "[Heute]",
+      nextDay: "[Morgen]",
       nextWeek: "[nächsten] dddd",
-      lastDay: "[Yesterday]",
+      lastDay: "[Gestern]",
       lastWeek: "dddd",
       sameElse: "l",
     })
