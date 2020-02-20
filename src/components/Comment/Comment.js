@@ -9,9 +9,9 @@ import Helper from "./CommentHelper";
 import { ModalContext } from "../../layouts/Modal/ModalContext";
 import SignInComponent from "../SignInComponent/SignInComponent";
 
-import likeBadge from "../../media/images/like-badge.svg";
-import audioWave from "../../media/images/sound-wave.svg";
-import playButton from "../../media/images/play.svg";
+import likeBadge from "../../assets/images/like-badge.svg";
+import audioWave from "../../assets/images/sound-wave.svg";
+import playButton from "../../assets/images/play.svg";
 
 import styles from "./Comment.module.scss";
 

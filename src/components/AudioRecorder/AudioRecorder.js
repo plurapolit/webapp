@@ -6,7 +6,7 @@ import Recorder from "../../helper/RecorderHelper";
 import Loader from "../Loader/Loader";
 
 import styles from "./AudioRecorder.module.scss";
-import microphoneButton from "../../media/images/microphone.svg";
+import microphoneButton from "../../assets/images/microphone.svg";
 
 const AudioRecorder = ({ setFileLink, setDuration, nextPage }) => {
   const [audio, setAudio] = useState(null);

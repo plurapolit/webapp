@@ -1,4 +1,4 @@
-@import "../../styles/global.scss";
+@import "../../assets/styles/global.scss";
 
 .home-header {
   display: flex;
@@ -6,7 +6,7 @@
   height: 40vh;
   max-height: 35rem;
   padding: $spacing-section 0;
-  background-image: url("../../media/images/header.svg");
+  background-image: url("../../assets/images/header.svg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;

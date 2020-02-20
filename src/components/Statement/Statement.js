@@ -5,8 +5,8 @@ import styles from "./Statement.module.scss";
 
 import { PlayerContext } from "../../layouts/Player/PlayerContext";
 import Button, { ButtonStyle } from "../Button/Button";
-import audioWave from "../../media/images/sound-wave.svg";
-import playButton from "../../media/images/play.svg";
+import audioWave from "../../assets/images/sound-wave.svg";
+import playButton from "../../assets/images/play.svg";
 import PanelComments from "../PanelComments/PanelComments";
 import TwitterButton from "../TwitterButton/TwitterButton";
 import Time from "../../helper/TimeHelper";
