@@ -114,14 +114,13 @@ const Statement = ({
         <div className={styles["expert-card-controls"]}>
           <Button
             buttonStyle={ButtonStyle.COMMENT}
-            // {styles["expert-card-comments"]}
             onClick={() => toggleComments()}
           >
             {numberOfComments(expert)}
           </Button>
           <div className={styles["expert-card-nav"]}>
             <div className={styles["expert-card-nav_info-container"]}>
-              {Time.getDateOrTime(expert.statement.created_at)}
+              <span>{Time.getDateOrTime(expert.statement.created_at)}</span>
               <div className={styles["expert-card-nav-time-wrapper"]}>
                 <img
                   src={audioWave}
