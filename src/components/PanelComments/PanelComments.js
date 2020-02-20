@@ -7,7 +7,6 @@ import microphoneButton from "../../media/images/microphone.svg";
 import CommentApi from "../../api/CommentApi";
 import Comment from "../Comment/Comment";
 import AnswerDisclaimer from "../AnswerDisclaimer/AnswerDisclaimer";
-import Helper from "../CommentModal/CommentModalHelper";
 
 import styles from "./PanelComments.module.scss";
 import { ModalContext } from "../../layouts/Modal/ModalContext";
@@ -35,8 +34,7 @@ const PanelComments = ({
 
   const openCommentModal = () => {
     stopPlayer();
-    // TODO: Update Modal Styling to render well.
-    modal.style = Helper.modalStyle;
+
     modal.showContent(
       <CommentModal
         closeModal={modal.closeModal}
