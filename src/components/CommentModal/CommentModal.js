@@ -1,22 +1,18 @@
 import React, {
   useState,
   useRef,
-  useEffect,
   useContext,
 } from "react";
-import Modal from "../Modal/Modal";
 
 import { StoreContext } from "../../layouts/Store/StoreContext";
 import AudioRecorder from "../AudioRecorder/AudioRecorder";
 import SignInComponent from "../SignInComponent/SignInComponent";
 import Notification from "../../helper/Notification";
 import CommentApi from "../../api/CommentApi";
-import Helper from "./CommentModalHelper";
 import AcceptTerms from "../AcceptTerms/AcceptTerms";
 import AddQuote from "../AddQuote/AddQuote";
-import CloseButton from "../CloseButton/CloseButton";
 
-const CommentModal = ({ isOpen, closeModal, statementId }) => {
+const CommentModal = ({ closeModal, statementId }) => {
   const [page, setPage] = useState(1);
   const quote = useRef(undefined);
   const fileLink = useRef(undefined);
@@ -26,12 +22,6 @@ const CommentModal = ({ isOpen, closeModal, statementId }) => {
   const setQuote = (newQuote) => {
     quote.current = newQuote;
   };
-
-  useEffect(() => {
-    if (!isOpen) {
-      setPage(1);
-    }
-  }, [isOpen]);
 
   const setFileLink = (newFileLink) => {
     fileLink.current = newFileLink;
@@ -59,39 +49,31 @@ const CommentModal = ({ isOpen, closeModal, statementId }) => {
     setPage((prevPage) => (prevPage + 1));
   };
 
-  const getContent = () => {
-    if (!user && isOpen) {
-      Notification.warning(
-        "Um diesen Service zu nutzen, müssen Sie sich anmelden.",
-      );
-      return <SignInComponent />;
-    }
-    switch (page) {
-      case 1:
-        return <AcceptTerms nextPage={nextPage} />;
-      case 2:
-        return (
-          <AudioRecorder
-            setFileLink={setFileLink}
-            setDuration={setDuration}
-            nextPage={nextPage}
-          />
-        );
-      case 3:
-        return <AddQuote setQuote={setQuote} sendToRails={sendToRails} />;
-      default:
-        // TODO: Error handling
-        break;
-    }
-    return undefined;
-  };
+  if (!user) {
+    Notification.warning(
+      "Um diesen Service zu nutzen, müssen Sie sich anmelden.",
+    );
+    return <SignInComponent />;
+  }
 
-  return (
-    <Modal isOpen={isOpen} closeModal={closeModal} style={Helper.modalStyle}>
-      <CloseButton onClick={closeModal} />
-      {getContent()}
-    </Modal>
-  );
+  switch (page) {
+    case 1:
+      return <AcceptTerms nextPage={nextPage} />;
+    case 2:
+      return (
+        <AudioRecorder
+          setFileLink={setFileLink}
+          setDuration={setDuration}
+          nextPage={nextPage}
+        />
+      );
+    case 3:
+      return <AddQuote setQuote={setQuote} sendToRails={sendToRails} />;
+    default:
+      // TODO: Error handling
+      break;
+  }
+  return undefined;
 };
 
 export default CommentModal;

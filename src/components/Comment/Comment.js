@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 
 import LikeButton from "../LikeButton/LikeButton";
 import JwtApi from "../../api/JwtApi";
 import Notification from "../../helper/Notification";
 import Time from "../../helper/Time";
 import Helper from "./CommentHelper";
+import { ModalContext } from "../../layouts/Modal/ModalContext";
+import SignInComponent from "../SignInComponent/SignInComponent";
 
 import likeBadge from "../../media/images/like-badge.svg";
 import audioWave from "../../media/images/sound-wave.svg";
@@ -19,10 +21,14 @@ const Comment = ({
 }) => {
   const [liked, setLiked] = useState(commentData.likes.liked_by_current_user);
   const [likes, setLikes] = useState(commentData.likes.total_likes);
+  const modal = useContext(ModalContext);
 
   const handleLikeClick = async () => {
     const valid = await JwtApi.validate();
     if (!valid) {
+      modal.showContent(
+        <SignInComponent routeBack={modal.closeModal} onLinkClick={modal.closeModal} />,
+      );
       return Notification.warning(
         "Um diesen Service nutzen zu können, musst du dich anmelden",
       );

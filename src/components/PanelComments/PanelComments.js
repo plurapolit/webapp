@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 
 import Button from "../Button/Button";
 import CommentModal from "../CommentModal/CommentModal";
@@ -9,6 +9,7 @@ import Comment from "../Comment/Comment";
 import AnswerDisclaimer from "../AnswerDisclaimer/AnswerDisclaimer";
 
 import styles from "./PanelComments.module.scss";
+import { ModalContext } from "../../layouts/Modal/ModalContext";
 
 const PanelComments = ({
   toggleComments,
@@ -18,9 +19,9 @@ const PanelComments = ({
   expertFullName,
   statementDate,
 }) => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const [userComments, setUserComments] = useState(null);
   const [answered, setAnswered] = useState(false);
+  const modal = useContext(ModalContext);
 
   useEffect(() => {
     const fetchUserComments = async () => {
@@ -34,22 +35,19 @@ const PanelComments = ({
     fetchUserComments();
   }, [statementId]);
 
-  const openModal = () => {
+  const openCommentModal = () => {
     stopPlayer();
-    setIsModalOpen(true);
-  };
 
-  const closeModal = () => {
-    setIsModalOpen(false);
+    modal.showContent(
+      <CommentModal
+        closeModal={modal.closeModal}
+        statementId={statementId}
+      />,
+    );
   };
 
   return (
     <div>
-      <CommentModal
-        isOpen={isModalOpen}
-        closeModal={closeModal}
-        statementId={statementId}
-      />
       <div className={styles["comments-wrapper"]}>
         <div className={styles["comments-card-wrapper"]}>
           {userComments && !answered && (
@@ -68,7 +66,7 @@ const PanelComments = ({
               setAnswered={setAnswered}
             />
           )))}
-          <Button onClick={() => openModal()}>
+          <Button onClick={() => openCommentModal()}>
             <img
               alt="icon"
               src={microphoneButton}
