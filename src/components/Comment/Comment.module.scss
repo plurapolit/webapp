@@ -1,13 +1,24 @@
 @import "../../styles/global.scss";
 
+.comment {
+  padding: 2.5rem 0;
+}
+
+.answer-mark {
+  color: $text-dark-2;
+  font-size: 1.6rem;
+  font-weight: 400;
+  margin-bottom: .5rem;
+}
+
 .comments {
   &-wrapper {
     margin: 0 10px;
   }
   &-card {
+    position: relative;
     display: flex;
-    justify-content: space-between;
-    padding: 3.4rem 1rem;
+    justify-content: flex-start;
     &-wrapper {
       border-left: 3px solid $color-primary;
       padding-bottom: 2rem;
@@ -25,6 +36,10 @@
       align-items: center;
       cursor: pointer;
       transition: all 0.2s;
+      &--expert {
+        background-color: $orange;
+      }
+
       &:hover {
         opacity: 0.8;
       }
@@ -43,20 +58,34 @@
       &-img {
         height: 1.5rem;
       }
+      &-date {
+        margin-top: 1rem;
+        font-size: 1.3rem;
+        line-height: 1.9rem;
+        color: $color-grey-2;
+      }
     }
     &-likes {
-      color: $color-primary;
-      font-size: 1.3rem;
-      line-height: 1.9rem;
+      color: $color-grey-2;
+      font-size: 1.6rem;
       text-align: center;
-      font-weight: 300;
+
+      &--liked {
+        color: $color-primary;
+      }
     }
   }
   &-content {
     display: flex;
     flex-direction: column;
-    margin-right: auto;
+    justify-content: space-between;
+    width: 100%;
     margin-left: 1rem;
+
+    &_heading {
+      display: flex;
+      justify-content: space-between;
+    }
     &-user {
       font-size: 1.5rem;
       line-height: 2.2rem;
@@ -64,10 +93,36 @@
       text-transform: uppercase;
       color: $headline-dark-2;
     }
+    &_image-anker {
+      position: relative;
+      margin-left: 1.5rem;
+    }
     &-statement {
       font-size: 1.5rem;
       line-height: 1.6rem;
       color: $text-dark-2;
+      word-wrap: break-word;
+    }
+    &_image {
+      position: absolute;
+      top: -2rem;
+      left: 0;
+      transform: translateX(-80%);
+      height: 4rem;
+    }
+    &_bottom {
+      display: flex;
+      align-items: flex-end;
+      align-self: flex-end;
+
+      &_container {
+        display: flex;
+        align-items: center;
+      }
+    }
+    &_like {
+      margin-top: 0.4rem;
+      margin-right: 0.8rem;
     }
   }
   &-comment {

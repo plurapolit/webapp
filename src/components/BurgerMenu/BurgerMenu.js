@@ -1,14 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
-import SignUpButton from "../SignUpButton/SignUpButton";
-import SignOutButton from "../SignOutButton/SignOutButton";
 
-import StoreContext from "../../layouts/Store/StoreContext";
+import SignOutButton from "../SignOutButton/SignOutButton";
+import Button, { ButtonStyle } from "../Button/Button";
+import { StoreContext } from "../../layouts/Store/StoreContext";
 
 import styles from "./BurgerMenu.module.scss";
 
-const BurgerMenu = ({ user }) => {
+const BurgerMenu = () => {
   const [show, setShow] = useState(false);
+  const { user } = useContext(StoreContext);
 
   const handleClick = () => {
     setShow(!show);
@@ -18,29 +19,31 @@ const BurgerMenu = ({ user }) => {
     show ? styles["slider_active"] : null
   }`;
 
-  const getActions = () => {
-    if (user) {
-      return (
-        <StoreContext.Consumer>
-          {(data) => (
-            <div tabIndex="0" role="link" onClick={() => handleClick()} className={styles["item"]}>
-              <SignOutButton user={user} removeUser={data.removeUser} />
-            </div>
-          )}
-        </StoreContext.Consumer>
-      );
-    }
-    return (
-      <>
-        <li className={styles["item"]} onClick={handleClick}>
-          <Link to="/sign_in/">Anmelden</Link>
-        </li>
-        <li onClick={() => handleClick()} className={styles["item"]}>
-          <SignUpButton user={user} />
-        </li>
-      </>
+  let buttons = (
+    <>
+      <li className={styles["item"]}>
+        <Button onClick={handleClick} buttonStyle={ButtonStyle.NONE} to="/sign_in/">Anmelden</Button>
+      </li>
+      <li className={styles["item"]}>
+        <Button
+          onClick={handleClick}
+          style={{ display: "inline" }}
+          buttonStyle={ButtonStyle.CTA}
+          to="/sign_up/"
+        >
+          Registrieren
+        </Button>
+      </li>
+    </>
+  );
+
+  if (user) {
+    buttons = (
+      <div tabIndex="0" role="link" onClick={() => handleClick()} className={styles["item"]}>
+        <SignOutButton />
+      </div>
     );
-  };
+  }
 
   return (
     <div>
@@ -68,7 +71,7 @@ const BurgerMenu = ({ user }) => {
           <li className={styles["item"]} onClick={handleClick}>
             <Link to="/terms/">Nutzungsbedingungen</Link>
           </li>
-          {getActions()}
+          {buttons}
         </ul>
       </div>
     </div>

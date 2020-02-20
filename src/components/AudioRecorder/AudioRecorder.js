@@ -100,14 +100,14 @@ const AudioRecorder = ({ setFileLink, setDuration, nextPage }) => {
 
   return (
     <div className={styles["container"]}>
-      <button type="button" className={styles["recording-button"]} onClick={startRecording}>
+      <Button type="button" onClick={startRecording}>
         <img
           alt="icon"
           src={microphoneButton}
           className={styles["recording-button-img"]}
         />
         <div className={styles["recording-button-text"]}>Aufnahme starten</div>
-      </button>
+      </Button>
       <div className={styles["step-index"]}>Schritt 2 von 4</div>
     </div>
   );

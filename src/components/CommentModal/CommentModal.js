@@ -1,7 +1,12 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, {
+  useState,
+  useRef,
+  useEffect,
+  useContext,
+} from "react";
 import Modal from "../Modal/Modal";
 
-import StoreContext from "../../layouts/Store/StoreContext";
+import { StoreContext } from "../../layouts/Store/StoreContext";
 import AudioRecorder from "../AudioRecorder/AudioRecorder";
 import SignInComponent from "../SignInComponent/SignInComponent";
 import Notification from "../../helper/Notification";
@@ -16,6 +21,7 @@ const CommentModal = ({ isOpen, closeModal, statementId }) => {
   const quote = useRef(undefined);
   const fileLink = useRef(undefined);
   const duration = useRef(undefined);
+  const { user } = useContext(StoreContext);
 
   const setQuote = (newQuote) => {
     quote.current = newQuote;
@@ -53,37 +59,37 @@ const CommentModal = ({ isOpen, closeModal, statementId }) => {
     setPage((prevPage) => (prevPage + 1));
   };
 
+  const getContent = () => {
+    if (!user && isOpen) {
+      Notification.warning(
+        "Um diesen Service zu nutzen, müssen Sie sich anmelden.",
+      );
+      return <SignInComponent />;
+    }
+    switch (page) {
+      case 1:
+        return <AcceptTerms nextPage={nextPage} />;
+      case 2:
+        return (
+          <AudioRecorder
+            setFileLink={setFileLink}
+            setDuration={setDuration}
+            nextPage={nextPage}
+          />
+        );
+      case 3:
+        return <AddQuote setQuote={setQuote} sendToRails={sendToRails} />;
+      default:
+        // TODO: Error handling
+        break;
+    }
+    return undefined;
+  };
+
   return (
     <Modal isOpen={isOpen} closeModal={closeModal} style={Helper.modalStyle}>
       <CloseButton onClick={closeModal} />
-      <StoreContext.Consumer>
-        {(data) => {
-          if (!data.user) {
-            Notification.warning(
-              "Um diesen Service zu nutzen, müssen Sie sich anmelden.",
-            );
-            return <SignInComponent setUser={data.setUser} />;
-          }
-          switch (page) {
-            case 1:
-              return <AcceptTerms nextPage={nextPage} />;
-            case 2:
-              return (
-                <AudioRecorder
-                  setFileLink={setFileLink}
-                  setDuration={setDuration}
-                  nextPage={nextPage}
-                />
-              );
-            case 3:
-              return <AddQuote setQuote={setQuote} sendToRails={sendToRails} />;
-            default:
-              // TODO: Error handling
-              break;
-          }
-          return undefined;
-        }}
-      </StoreContext.Consumer>
+      {getContent()}
     </Modal>
   );
 };

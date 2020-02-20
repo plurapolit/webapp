@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
-import moment from "moment";
+import moment from "moment-with-locales-es6";
+
 import styles from "./Statement.module.scss";
 
+import Button, { ButtonStyle } from "../Button/Button";
 import audioWave from "../../media/images/sound-wave.svg";
 import playButton from "../../media/images/play.svg";
 import PanelComments from "../PanelComments/PanelComments";
 import TwitterButton from "../TwitterButton/TwitterButton";
+import Time from "../../helper/Time";
 
 const Statement = ({
   expert,
@@ -109,20 +112,26 @@ const Statement = ({
           </div>
         </div>
         <div className={styles["expert-card-controls"]}>
-          <div
-            className={styles["expert-card-comments"]}
+          <Button
+            buttonStyle={ButtonStyle.COMMENT}
+            // {styles["expert-card-comments"]}
             onClick={() => toggleComments()}
           >
             {numberOfComments(expert)}
-          </div>
+          </Button>
           <div className={styles["expert-card-nav"]}>
-            <img
-              src={audioWave}
-              alt={expert.user.full_name}
-              className={styles["expert-card-nav-img"]}
-            />
-            <div className={styles["expert-card-nav-time"]}>
-              {audioDuration(expert)}
+            <div className={styles["expert-card-nav_info-container"]}>
+              {Time.getDateOrTime(expert.statement.created_at)}
+              <div className={styles["expert-card-nav-time-wrapper"]}>
+                <img
+                  src={audioWave}
+                  alt={expert.user.full_name}
+                  className={styles["expert-card-nav-img"]}
+                />
+                <div className={styles["expert-card-nav-time"]}>
+                  {audioDuration(expert)}
+                </div>
+              </div>
             </div>
             <button
               type="button"
@@ -149,6 +158,8 @@ const Statement = ({
           setSong={setSong}
           statementId={expert.statement.id}
           stopPlayer={stopPlayer}
+          expertFullName={expert.user.full_name}
+          statementDate={expert.statement.created_at}
         />
       )}
     </div>

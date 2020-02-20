@@ -18,7 +18,7 @@ a {
 
 html {
   font-size: 62.5%;
-  font-family: "HelveticaNowDisplay";
+  font-family: "HelveticaNowDisplay", "open-sans";
   font-weight: 400;
   box-sizing: border-box;
 }
@@ -26,13 +26,16 @@ html {
 button {
   display: inline-block;
   border: none;
-  padding: 1rem 2rem;
   margin: 0;
   text-decoration: none;
   background: none;
-  font-size: 1rem;
+  font: inherit;
+  color: inherit;
   cursor: pointer;
-  text-align: center;
+
+  &:focus {
+    outline: none;
+  }
 }
 
 .ReactModal__Body--open {

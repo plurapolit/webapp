@@ -1,10 +1,11 @@
 /* eslint-disable react/button-has-type */
 import React, { useState } from "react";
 
-import styles from "./PanelContent.module.scss";
 import Player from "../Player/Player";
 import Statement from "../Statement/Statement";
 import PiwikMessages from "../../helper/PiwikMessages";
+
+import styles from "./PanelContent.module.scss";
 
 const PanelContent = ({ content }) => {
   const [audioStatement, setAudioStatement] = useState("");
@@ -14,7 +15,6 @@ const PanelContent = ({ content }) => {
   const [playerIsStopped, setPlayerIsStopped] = useState(true);
 
   const panelTitle = content.panel.short_title;
-
   const stopPlayer = () => {
     setPlayerIsStopped(true);
     PiwikMessages.statement.stop(panelTitle, currentUser, audioStatement);

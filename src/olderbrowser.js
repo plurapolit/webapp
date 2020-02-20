@@ -16,7 +16,7 @@ outdatedBrowserRework({
     IE: false
 },
   requireChromeOnAndroid: false,
-  isUnknownBrowserOK: false,
+  isUnknownBrowserOK: true,
   language: "de",
   messages: {
 		de: {

@@ -7,10 +7,12 @@
   &-card {
     display: flex;
     justify-content: space-between;
-    padding: 3.4rem 1rem;
+    padding: 3.4rem 0;
     &-wrapper {
       border-left: 3px solid $color-primary;
       padding-bottom: 2rem;
+      padding-left: 1rem;
+      padding-right: 1rem;
     }
   }
   &-panels {
@@ -88,6 +90,7 @@
 
   &-comment-text {
     font-size: 1.5rem;
+    display: inline-block;
     text-transform: uppercase;
     color: $color-white;
     font-weight: 700;
@@ -95,8 +98,8 @@
   }
 
   &-microphone-img {
-    padding-top: 0.6rem;
-    height: 4rem;
+    margin-right: .5rem;
+    height: 3rem;
   }
   &-close {
     height: 1.8rem;

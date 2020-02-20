@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
+
 import CategoryBanner from "../CategoryBanner/CategoryBanner";
+import { StoreContext } from "../../layouts/Store/StoreContext";
 
 /* eslint-disable camelcase */
-const CategoryList = ({ categoryList }) => {
+const CategoryList = () => {
+  const { categoryList } = useContext(StoreContext);
   const list = categoryList.map(({ category, category_avatar, panels }) => (
     <CategoryBanner
       key={category.id}
