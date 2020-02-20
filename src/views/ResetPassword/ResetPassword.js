@@ -5,7 +5,7 @@ import { withRouter, Link } from "react-router-dom";
 import styles from "./ResetPassword.module.scss";
 import Button from "../../components/Button/Button";
 import { getDataFromEvent, setErrorMessages } from "../../helper/helper";
-import Notification from "../../helper/Notification";
+import Notification from "../../helper/NotificationHelper";
 import UserApi from "../../api/UserApi";
 
 const ResetPassword = ({ history }) => {

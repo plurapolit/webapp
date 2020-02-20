@@ -2,7 +2,7 @@ import React from "react";
 import { shallow } from "enzyme";
 
 import Statement from "./Statement";
-import { expert } from "../../test/helpers";
+import { expert } from "../../helper/TestHelper";
 
 const setup = (propOverrides) => {
   const props = {

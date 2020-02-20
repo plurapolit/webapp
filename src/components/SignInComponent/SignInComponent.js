@@ -5,7 +5,7 @@ import styles from "./SignInComponent.module.scss";
 import Button from "../Button/Button";
 import UserApi from "../../api/UserApi";
 import { getDataFromEvent } from "../../helper/helper";
-import Notification from "../../helper/Notification";
+import Notification from "../../helper/NotificationHelper";
 import JwtApi from "../../api/JwtApi";
 import { StoreContext } from "../../layouts/Store/StoreContext";
 

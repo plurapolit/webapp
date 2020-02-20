@@ -1,6 +1,6 @@
 import ReactPiwik from "react-piwik";
 
-import Time from "./Time";
+import Time from "./TimeHelper";
 
 const PiwikMessages = () => {
   const push = (category, action, name) => {

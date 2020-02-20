@@ -7,7 +7,7 @@ import React, {
 import { StoreContext } from "../../layouts/Store/StoreContext";
 import AudioRecorder from "../AudioRecorder/AudioRecorder";
 import SignInComponent from "../SignInComponent/SignInComponent";
-import Notification from "../../helper/Notification";
+import Notification from "../../helper/NotificationHelper";
 import CommentApi from "../../api/CommentApi";
 import AcceptTerms from "../AcceptTerms/AcceptTerms";
 import AddQuote from "../AddQuote/AddQuote";

@@ -4,7 +4,7 @@ import { withRouter, Link } from "react-router-dom";
 import styles from "./SignUp.module.scss";
 import Button from "../../components/Button/Button";
 import { getDataFromEvent, setErrorMessages } from "../../helper/helper";
-import Notification from "../../helper/Notification";
+import Notification from "../../helper/NotificationHelper";
 import UserApi from "../../api/UserApi";
 import JwtApi from "../../api/JwtApi";
 import { StoreContext } from "../../layouts/Store/StoreContext";

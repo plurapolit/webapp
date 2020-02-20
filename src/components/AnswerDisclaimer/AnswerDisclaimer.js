@@ -2,7 +2,7 @@ import React from "react";
 import { If } from "react-if";
 
 import styles from "./AnswerDisclaimer.module.scss";
-import Time from "../../helper/Time";
+import Time from "../../helper/TimeHelper";
 
 const AnswerDisclaimer = ({
   expertFullName,

@@ -4,8 +4,8 @@ import { createBrowserHistory } from "history";
 
 import { Store } from "./layouts/Store/StoreContext";
 import Routes from "./Routes";
-import ScrollToTop from "./helper/ScrollToTop";
-import Piwik from "./helper/Piwik";
+import ScrollToTop from "./helper/ScrollToTopHelper";
+import Piwik from "./helper/PiwikHelper";
 
 const history = createBrowserHistory();
 

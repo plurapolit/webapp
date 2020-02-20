@@ -4,7 +4,7 @@ import { Link, useHistory } from "react-router-dom";
 import styles from "./RequestNewPassword.module.scss";
 import Button from "../../components/Button/Button";
 import { getDataFromEvent, setErrorMessages } from "../../helper/helper";
-import Notification from "../../helper/Notification";
+import Notification from "../../helper/NotificationHelper";
 import UserApi from "../../api/UserApi";
 
 const FIVE_SECONDS = 5000;

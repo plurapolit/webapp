@@ -1,4 +1,4 @@
-import Notification from "./Notification";
+import Notification from "./NotificationHelper";
 
 export const isLoaded = (condition, resolve, reject = null) => {
   if (condition) {

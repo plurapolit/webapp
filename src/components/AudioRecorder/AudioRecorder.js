@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 import Helper from "./AudioRecorderHelper";
 import Button from "../Button/Button";
-import Recorder from "../../helper/Recorder";
+import Recorder from "../../helper/RecorderHelper";
 import Loader from "../Loader/Loader";
 
 import styles from "./AudioRecorder.module.scss";

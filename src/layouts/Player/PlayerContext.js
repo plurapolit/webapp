@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import AudioPlayer from "react-h5-audio-player";
 import "react-h5-audio-player/src/styles.scss";
 
-import PiwikMessages from "../../helper/PiwikMessages";
+import PiwikMessages from "../../helper/PiwikMessagesHelper";
 
 import styles from "./Player.module.scss";
 

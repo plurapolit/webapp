@@ -9,7 +9,7 @@ import audioWave from "../../media/images/sound-wave.svg";
 import playButton from "../../media/images/play.svg";
 import PanelComments from "../PanelComments/PanelComments";
 import TwitterButton from "../TwitterButton/TwitterButton";
-import Time from "../../helper/Time";
+import Time from "../../helper/TimeHelper";
 
 const Statement = ({
   expert,

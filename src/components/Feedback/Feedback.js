@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 
 import Button from "../Button/Button";
 import { getDataFromEvent } from "../../helper/helper";
-import Notification from "../../helper/Notification";
+import Notification from "../../helper/NotificationHelper";
 import ContentWrapper from "../ContentWrapper/ContentWrapper";
 import FeedbackApi from "../../api/FeedbackApi";
 import Text from "../Text/Text";
