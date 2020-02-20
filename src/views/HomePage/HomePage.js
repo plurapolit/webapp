@@ -20,7 +20,7 @@ const HomePage = () => {
       <HomePageMetaTags />
       <HomeHeader />
       <About />
-      <If condition={categoryList}>
+      <If condition={!!categoryList}>
         <CategoryList />
       </If>
       <div className={styles["bottom-wrapper"]}>
