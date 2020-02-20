@@ -1,7 +1,6 @@
 import React from "react";
 import { shallow } from "enzyme";
 import moment from "moment";
-import { If } from "react-if";
 
 import AnswerDisclaimer from "./AnswerDisclaimer";
 
