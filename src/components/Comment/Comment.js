@@ -51,7 +51,7 @@ const Comment = ({
       <div className={styles["comments-card"]}>
         <div className={styles["comments-panels"]}>
           <div
-            className={styles["comments-panels-play"]}
+            className={[styles["comments-panels-play"], commentData.user.role === "expert" && styles["comments-panels-play--expert"]].join(" ")}
             onClick={() => setSong(
               commentData.audio_file.file_link,
               commentData.user.full_name,
