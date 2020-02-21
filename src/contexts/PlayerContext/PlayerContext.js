@@ -17,22 +17,22 @@ const Player = ({
   const [audioStatement, setAudioStatement] = useState("");
   const [author, setAuthor] = useState("");
   const [panelTitle, setPanelTitle] = useState();
+  const [running, setRunning] = useState(false);
   const player = useRef();
 
   const stopPlayer = () => {
-    player.current.audio.pause();
-    PiwikMessages.statement.stop(panelTitle, author, audioStatement);
+    setRunning(false);
   };
 
   const startPlayer = () => {
-    player.current.audio.play();
-    PiwikMessages.statement.start(panelTitle, author, audioStatement);
+    setRunning(true);
   };
 
   const setSong = async (audioFile, newAuthor) => {
     setShowMediaPlayer(true);
     setAudioStatement(audioFile);
     setAuthor(newAuthor);
+    startPlayer();
   };
 
   useEffect(() => {
@@ -46,6 +46,27 @@ const Player = ({
     };
     setAudioTitleForMatomo();
   }, [panelTitle, author, audioStatement]);
+
+  const stop = () => {
+    player.current.audio.pause();
+    PiwikMessages.statement.stop(panelTitle, author, audioStatement);
+  };
+
+  const start = () => {
+    player.current.audio.play();
+    PiwikMessages.statement.start(panelTitle, author, audioStatement);
+  };
+
+  useEffect(() => {
+    if (player.current) {
+      if (running) {
+        start();
+      }
+      if (!running) {
+        stop();
+      }
+    }
+  }, [player.current, running]);
 
   return (
     <Provider value={{
@@ -66,7 +87,7 @@ const Player = ({
               showLoopControl={false}
               progressJumpStep={10000}
               ref={player}
-              onPlay={() => startPlayer()}
+              onPlay={() => start()}
             />
           </div>
         </div>
