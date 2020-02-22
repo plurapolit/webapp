@@ -111,11 +111,13 @@ const Comment = ({
 
   return (
     <div className={styles["comment"]}>
-      {commentData.user.role === "expert" ? (
-        <div className={styles["answer-mark"]}>
-          Antwort
-        </div>
-      ) : null}
+      <If condition={commentData.user.role === "expert"}>
+        <Then>
+          <div className={styles["answer-mark"]}>
+            Antwort
+          </div>
+        </Then>
+      </If>
       <div className={styles["card"]}>
         {Audio()}
         {Statement()}
