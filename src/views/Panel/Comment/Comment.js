@@ -97,7 +97,7 @@ const Comment = ({
     <div className={styles["like"]}>
       <If condition={commentData.likes.most_liked_comment}>
         <Then>
-          <img src={likeBadge} alt="am meisten gemochte Antwort" className={styles["batch"]} />
+          <img src={likeBadge} alt="am meisten gemochte Antwort" className={styles["like-batch"]} />
         </Then>
       </If>
       <div className={styles["like_container"]}>
