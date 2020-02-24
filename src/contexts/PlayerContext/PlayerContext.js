@@ -1,18 +1,23 @@
 import React, {
-  useState, useRef, useEffect,
+  useState, useRef, useEffect, useContext,
 } from "react";
+
 import AudioPlayer from "react-h5-audio-player";
 import "react-h5-audio-player/src/styles.scss";
-import TrackingHelper from "../../helper/TrackingHelper";
+import withTracking from "../../helper/TrackingHelper";
+import { StoreContext } from "../StoreContext/StoreContext";
 
 import styles from "./Player.module.scss";
 
 const PlayerContext = React.createContext();
 const { Provider } = PlayerContext;
 
-const Player = ({
+const Player = withTracking(({
   children,
   show = false,
+  trackWhilePlaying,
+  updateTracking,
+  createNewTrackingEntry,
 }) => {
   const player = useRef();
   const [audioStatement, setAudioStatement] = useState("");
@@ -20,7 +25,7 @@ const Player = ({
   const [panelTitle, setPanelTitle] = useState();
   const [showMediaPlayer, setShowMediaPlayer] = useState(show);
   const [statementId, setStatementId] = useState(null);
-
+  const { user } = useContext(StoreContext);
 
   const stopPlayer = () => {
     player.current.audio.pause();
@@ -31,11 +36,11 @@ const Player = ({
   };
 
   const onListen = () => {
-    TrackingHelper.trackWhilePlaying(player);
+    trackWhilePlaying(player);
   };
 
   const onStop = () => {
-    TrackingHelper.updateTracking();
+    updateTracking();
   };
 
   const setAudio = async (audioFile, newAuthor, id) => {
@@ -47,7 +52,7 @@ const Player = ({
 
   useEffect(() => {
     if (statementId) {
-      TrackingHelper.createNewTrackingEntry(statementId);
+      createNewTrackingEntry(statementId, user);
     }
   }, [statementId]);
 
@@ -81,6 +86,6 @@ const Player = ({
       )}
     </Provider>
   );
-};
+});
 
 export { Player, PlayerContext };
