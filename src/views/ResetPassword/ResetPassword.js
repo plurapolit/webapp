@@ -4,8 +4,8 @@ import { withRouter, Link } from "react-router-dom";
 
 import styles from "./ResetPassword.module.scss";
 import Button from "../../components/Button/Button";
-import { getDataFromEvent, setErrorMessages } from "../../helper/helper";
-import Notification from "../../helper/Notification";
+import { getDataFromEvent } from "../../helper/FormHelper";
+import Notification from "../../helper/NotificationHelper";
 import UserApi from "../../api/UserApi";
 
 const ResetPassword = ({ history }) => {
@@ -21,12 +21,12 @@ const ResetPassword = ({ history }) => {
       );
       if (res.status !== 204) {
         const json = await res.json();
-        return setErrorMessages(json.errors);
+        return Notification.setErrorMessages(json.errors);
       }
       history.push("/sign_in");
       return Notification.success("Du kannst dich jetzt mit dem neuen Passwort anmeden", "Passwort erfolgreich geändert");
     } catch (obj) {
-      return setErrorMessages(obj.errors);
+      return Notification.setErrorMessages(obj.errors);
     }
   };
 

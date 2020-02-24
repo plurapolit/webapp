@@ -1,9 +1,9 @@
 import React from "react";
 import PanelMetaTags from "./PanelMetaTags";
 import styles from "./Panel.module.scss";
-import PanelContent from "../../components/PanelContent/PanelContent";
-import ContentWrapper from "../../components/ContentWrapper/ContentWrapper";
-import Hyphen from "../../helper/Hyphen";
+import PanelContent from "./PanelContent/PanelContent";
+import ContentWrapper from "../../layouts/ContentWrapper/ContentWrapper";
+import Hyphen from "../../helper/HyphenHelper";
 
 const Panel = ({ panel, objectPositionTop }) => {
   const IMAGEROOTURL = process.env.REACT_APP_BUCKET_URL;

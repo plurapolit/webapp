@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./Terms.module.scss";
 
-import ContentWrapper from "../../components/ContentWrapper/ContentWrapper";
+import ContentWrapper from "../../layouts/ContentWrapper/ContentWrapper";
 
 const Terms = () => (
   <div className={styles["wrapper"]}>

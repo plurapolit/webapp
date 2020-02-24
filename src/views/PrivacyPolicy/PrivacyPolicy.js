@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./PrivacyPolicy.module.scss";
 
-import ContentWrapper from "../../components/ContentWrapper/ContentWrapper";
+import ContentWrapper from "../../layouts/ContentWrapper/ContentWrapper";
 
 const PrivacyPolicy = () => (
   <div className={styles["wrapper"]}>

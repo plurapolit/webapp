@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./SiteNotice.module.scss";
 
-import ContentWrapper from "../../components/ContentWrapper/ContentWrapper";
+import ContentWrapper from "../../layouts/ContentWrapper/ContentWrapper";
 
 const SiteNotice = () => (
   <div className={styles["wrapper"]}>

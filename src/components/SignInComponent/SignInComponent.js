@@ -1,16 +1,19 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 
 import styles from "./SignInComponent.module.scss";
 import Button from "../Button/Button";
 import UserApi from "../../api/UserApi";
-import { getDataFromEvent } from "../../helper/helper";
-import Notification from "../../helper/Notification";
+import { getDataFromEvent } from "../../helper/FormHelper";
+import Notification from "../../helper/NotificationHelper";
 import JwtApi from "../../api/JwtApi";
-import { StoreContext } from "../../layouts/Store/StoreContext";
+import { useStoreContext } from "../../contexts/StoreContext/StoreContext";
 
-const SignInComponent = ({ routeBack = () => {} }) => {
-  const { setUser } = useContext(StoreContext);
+const SignInComponent = ({
+  routeBack = () => {},
+  onLinkClick = () => {},
+}) => {
+  const { setUser } = useStoreContext();
 
   const handleSubmit = async (event) => {
     const inputData = getDataFromEvent(event);
@@ -44,11 +47,11 @@ const SignInComponent = ({ routeBack = () => {} }) => {
         </form>
         <div className={styles["text"]}>
           <span>Du besitzt keinen Account? </span>
-          <Link to="/sign_up/">Registrieren</Link>
+          <Link to="/sign_up/" onClick={onLinkClick}>Registrieren</Link>
         </div>
         <div className={styles["text"]}>
           <span>Passwort vergessen? </span>
-          <Link to="/request_new_password/">Neues Passwort</Link>
+          <Link to="/request_new_password/" onClick={onLinkClick}>Neues Passwort</Link>
         </div>
       </div>
     </div>
