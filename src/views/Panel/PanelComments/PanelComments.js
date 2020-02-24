@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 
-import { PlayerContext } from "../../../contexts/PlayerContext/PlayerContext";
+import { usePlayerContext } from "../../../contexts/PlayerContext/PlayerContext";
 import Button from "../../../components/Button/Button";
 import CommentModal from "../CommentModal/CommentModal";
 import closeButton from "../../../assets/images/close.svg";
@@ -21,7 +21,7 @@ const PanelComments = ({
   const [userComments, setUserComments] = useState(null);
   const [answered, setAnswered] = useState(false);
   const modal = useContext(ModalContext);
-  const { stopPlayer } = useContext(PlayerContext);
+  const { stopPlayer } = usePlayerContext();
 
   useEffect(() => {
     const fetchUserComments = async () => {

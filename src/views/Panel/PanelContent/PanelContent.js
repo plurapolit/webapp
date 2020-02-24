@@ -1,13 +1,13 @@
 /* eslint-disable react/button-has-type */
-import React, { useContext } from "react";
+import React from "react";
 
-import { PlayerContext } from "../../../contexts/PlayerContext/PlayerContext";
+import { usePlayerContext } from "../../../contexts/PlayerContext/PlayerContext";
 import Statement from "../Statement/Statement";
 
 import styles from "./PanelContent.module.scss";
 
 const PanelContent = ({ content }) => {
-  const { setPanelTitle } = useContext(PlayerContext);
+  const { setPanelTitle } = usePlayerContext();
   setPanelTitle(content.panel.short_title);
 
   return (

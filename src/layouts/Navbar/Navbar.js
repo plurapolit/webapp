@@ -1,7 +1,7 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 
-import { StoreContext } from "../../contexts/StoreContext/StoreContext";
+import { useStoreContext } from "../../contexts/StoreContext/StoreContext";
 import LogoBlack from "./images/PluraPolitLogoblack.png";
 import BurgerMenu from "../BurgerMenu/BurgerMenu";
 import styles from "./Navbar.module.scss";
@@ -9,7 +9,7 @@ import SignOutButton from "../../components/SignOutButton/SignOutButton";
 import Button, { ButtonStyle } from "../../components/Button/Button";
 
 const Navbar = () => {
-  const { user } = useContext(StoreContext);
+  const { user } = useStoreContext();
   const customStyle = {
     nav: styles["navbar"],
     item: styles["item"],

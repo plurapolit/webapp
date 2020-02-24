@@ -1,9 +1,9 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import moment from "moment-with-locales-es6";
 
 import styles from "./Statement.module.scss";
 
-import { PlayerContext } from "../../../contexts/PlayerContext/PlayerContext";
+import { usePlayerContext } from "../../../contexts/PlayerContext/PlayerContext";
 import Button, { ButtonStyle } from "../../../components/Button/Button";
 import audioWave from "../../../assets/images/sound-wave.svg";
 import playButton from "../../../assets/images/play.svg";
@@ -15,7 +15,7 @@ const Statement = ({
   expert,
 }) => {
   const [commentsAreOpen, setCommentsAreOpen] = useState(false);
-  const { setAudio } = useContext(PlayerContext);
+  const { setAudio } = usePlayerContext();
 
   const IMAGEROOTURL = process.env.REACT_APP_BUCKET_URL;
 

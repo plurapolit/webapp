@@ -1,15 +1,15 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 import SignOutButton from "../../components/SignOutButton/SignOutButton";
 import Button, { ButtonStyle } from "../../components/Button/Button";
-import { StoreContext } from "../../contexts/StoreContext/StoreContext";
+import { useStoreContext } from "../../contexts/StoreContext/StoreContext";
 
 import styles from "./BurgerMenu.module.scss";
 
 const BurgerMenu = () => {
   const [show, setShow] = useState(false);
-  const { user } = useContext(StoreContext);
+  const { user } = useStoreContext();
 
   const handleClick = () => {
     setShow(!show);

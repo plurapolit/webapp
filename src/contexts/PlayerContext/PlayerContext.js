@@ -1,10 +1,12 @@
 import React, {
-  useState, useRef, useEffect, useContext,
+  useState,
+  useRef,
+  useEffect,
+  useContext,
 } from "react";
-
 import AudioPlayer from "react-h5-audio-player";
 import withTracking from "../../helper/TrackingHelper";
-import { StoreContext } from "../StoreContext/StoreContext";
+import { useStoreContext } from "../StoreContext/StoreContext";
 
 import "react-h5-audio-player/src/styles.scss";
 import styles from "./Player.module.scss";
@@ -25,14 +27,15 @@ const Player = withTracking(({
   const [panelTitle, setPanelTitle] = useState();
   const [showMediaPlayer, setShowMediaPlayer] = useState(show);
   const [statementId, setStatementId] = useState(null);
-  const { user } = useContext(StoreContext);
+  const { user } = useStoreContext();
+  const [running, setRunning] = useState(false);
 
   const stopPlayer = () => {
-    player.current.audio.pause();
+    setRunning(false);
   };
 
   const startPlayer = () => {
-    player.current.audio.play();
+    setRunning(true);
   };
 
   const onListen = () => {
@@ -44,6 +47,7 @@ const Player = withTracking(({
     setAudioStatement(audioFile);
     setStatementId(id);
     setAuthor(newAuthor);
+    startPlayer();
   };
 
   useEffect(() => {
@@ -51,6 +55,25 @@ const Player = withTracking(({
       createNewTrackingEntry(statementId, user);
     }
   }, [statementId]);
+
+  const stop = () => {
+    player.current.audio.pause();
+  };
+
+  const start = () => {
+    player.current.audio.play();
+  };
+
+  useEffect(() => {
+    if (player.current) {
+      if (running) {
+        start();
+      }
+      if (!running) {
+        stop();
+      }
+    }
+  }, [player.current, running]);
 
   return (
     <Provider value={{
@@ -68,7 +91,7 @@ const Player = withTracking(({
             <AudioPlayer
               src={audioStatement}
               ref={player}
-              onPlay={startPlayer}
+              onPlay={start}
               onPause={updateTracking}
               onEnded={updateTracking}
               onListen={onListen}
@@ -84,4 +107,6 @@ const Player = withTracking(({
   );
 });
 
-export { Player, PlayerContext };
+const usePlayerContext = () => useContext(PlayerContext);
+
+export { Player, Provider as PlayerProvider, usePlayerContext };
