@@ -1198,56 +1198,56 @@
   resolved "https://registry.yarnpkg.com/@nodelib/fs.stat/-/fs.stat-1.1.3.tgz#2b5a3ab3f918cca48a8c754c08168e3f03eba61b"
   integrity sha512-shAmDyaQC4H92APFoIaVDHCx5bStIocgvbwQyxPRrbUY20V1EYTbSDchWbuwlMG3V17cprZhA6+78JfB+3DTPw==
 
-"@sentry/browser@^5.11.1":
-  version "5.11.1"
-  resolved "https://registry.yarnpkg.com/@sentry/browser/-/browser-5.11.1.tgz#337ffcb52711b23064c847a07629e966f54a5ebb"
-  integrity sha512-oqOX/otmuP92DEGRyZeBuQokXdeT9HQRxH73oqIURXXNLMP3PWJALSb4HtT4AftEt/2ROGobZLuA4TaID6My/Q==
+"@sentry/browser@^5.12.4":
+  version "5.12.4"
+  resolved "https://registry.yarnpkg.com/@sentry/browser/-/browser-5.12.4.tgz#6eb41ea1440161787f2312e4d2544167858c4cd7"
+  integrity sha512-D74LtB9sevPpYgczYsbKTcx7IdCxHPuv5JxD9YQfzNmpCzBiwlUGqr3u03SdVOwmdVrzfRLjxO+vYPe071zjbA==
   dependencies:
-    "@sentry/core" "5.11.1"
-    "@sentry/types" "5.11.0"
-    "@sentry/utils" "5.11.1"
+    "@sentry/core" "5.12.4"
+    "@sentry/types" "5.12.4"
+    "@sentry/utils" "5.12.4"
     tslib "^1.9.3"
 
-"@sentry/core@5.11.1":
-  version "5.11.1"
-  resolved "https://registry.yarnpkg.com/@sentry/core/-/core-5.11.1.tgz#9e2da485e196ae32971545c1c49ee6fe719930e2"
-  integrity sha512-BpvPosVNT20Xso4gAV54Lu3KqDmD20vO63HYwbNdST5LUi8oYV4JhvOkoBraPEM2cbBwQvwVcFdeEYKk4tin9A==
+"@sentry/core@5.12.4":
+  version "5.12.4"
+  resolved "https://registry.yarnpkg.com/@sentry/core/-/core-5.12.4.tgz#d50cebe6af425be425ed5830b3b579de2b9c8251"
+  integrity sha512-n4ZQxqq78GhYMeY2hiP0pn9Z+/2/yNfXwxnh4o59qagD/NfUe5wj4l8cwMvzFn5I7gy0xmUp3BkJrwsZlAYfUw==
   dependencies:
-    "@sentry/hub" "5.11.1"
-    "@sentry/minimal" "5.11.1"
-    "@sentry/types" "5.11.0"
-    "@sentry/utils" "5.11.1"
+    "@sentry/hub" "5.12.4"
+    "@sentry/minimal" "5.12.4"
+    "@sentry/types" "5.12.4"
+    "@sentry/utils" "5.12.4"
     tslib "^1.9.3"
 
-"@sentry/hub@5.11.1":
-  version "5.11.1"
-  resolved "https://registry.yarnpkg.com/@sentry/hub/-/hub-5.11.1.tgz#ddcb865563fae53852d405885c46b4c6de68a91b"
-  integrity sha512-ucKprYCbGGLLjVz4hWUqHN9KH0WKUkGf5ZYfD8LUhksuobRkYVyig0ZGbshECZxW5jcDTzip4Q9Qimq/PkkXBg==
+"@sentry/hub@5.12.4":
+  version "5.12.4"
+  resolved "https://registry.yarnpkg.com/@sentry/hub/-/hub-5.12.4.tgz#eba014c38670528fb9f48a3d71299a498795395e"
+  integrity sha512-x0IGqTXgjRQrrLbjkjYa2qbwSa6dFejM3F29cpwjD7yp87MVkmDy/S7LwFFsjThOzsHXsjQxmPlQB8nu4sIOXw==
   dependencies:
-    "@sentry/types" "5.11.0"
-    "@sentry/utils" "5.11.1"
+    "@sentry/types" "5.12.4"
+    "@sentry/utils" "5.12.4"
     tslib "^1.9.3"
 
-"@sentry/minimal@5.11.1":
-  version "5.11.1"
-  resolved "https://registry.yarnpkg.com/@sentry/minimal/-/minimal-5.11.1.tgz#0e705d01a567282d8fbbda2aed848b4974cc3cec"
-  integrity sha512-HK8zs7Pgdq7DsbZQTThrhQPrJsVWzz7MaluAbQA0rTIAJ3TvHKQpsVRu17xDpjZXypqWcKCRsthDrC4LxDM1Bg==
+"@sentry/minimal@5.12.4":
+  version "5.12.4"
+  resolved "https://registry.yarnpkg.com/@sentry/minimal/-/minimal-5.12.4.tgz#fde8ca4f6f52b49c676a66e42fc0d1ac6fad1d50"
+  integrity sha512-/cDkibXPIXYjboMZ4nSytJmpR/QIT1d0i9qxqlZh4vwsb2mrGdU9KxNvR6G3AXTQNybehm6TGewPo8rGz1GJQQ==
   dependencies:
-    "@sentry/hub" "5.11.1"
-    "@sentry/types" "5.11.0"
+    "@sentry/hub" "5.12.4"
+    "@sentry/types" "5.12.4"
     tslib "^1.9.3"
 
-"@sentry/types@5.11.0":
-  version "5.11.0"
-  resolved "https://registry.yarnpkg.com/@sentry/types/-/types-5.11.0.tgz#40f0f3174362928e033ddd9725d55e7c5cb7c5b6"
-  integrity sha512-1Uhycpmeo1ZK2GLvrtwZhTwIodJHcyIS6bn+t4IMkN9MFoo6ktbAfhvexBDW/IDtdLlCGJbfm8nIZerxy0QUpg==
+"@sentry/types@5.12.4":
+  version "5.12.4"
+  resolved "https://registry.yarnpkg.com/@sentry/types/-/types-5.12.4.tgz#6e52639bc3b4e136e9a0da5385890f8f78bb7697"
+  integrity sha512-JoN3YIp7Z+uxUZArj2B6NcEoXFQDhd0kqO0QpfiHZyg4Dhx2/E2aHuVx0H6Fndk+60iEZSECaCBXe2MOPo4fqA==
 
-"@sentry/utils@5.11.1":
-  version "5.11.1"
-  resolved "https://registry.yarnpkg.com/@sentry/utils/-/utils-5.11.1.tgz#aa19fcc234cf632257b2281261651d2fac967607"
-  integrity sha512-O0Zl4R2JJh8cTkQ8ZL2cDqGCmQdpA5VeXpuBbEl1v78LQPkBDISi35wH4mKmLwMsLBtTVpx2UeUHBj0KO5aLlA==
+"@sentry/utils@5.12.4":
+  version "5.12.4"
+  resolved "https://registry.yarnpkg.com/@sentry/utils/-/utils-5.12.4.tgz#f62491a90843cdd01f2ee197c11ca0a7c382c10a"
+  integrity sha512-7ISjK+AH676NXtW5n2/MHxEPS0Y2cpIXqJppg7ReVvCFNKHGovKmK4d5yXcP+AoEJt84in3A8D5Y3BONdpjWHQ==
   dependencies:
-    "@sentry/types" "5.11.0"
+    "@sentry/types" "5.12.4"
     tslib "^1.9.3"
 
 "@sheerun/mutationobserver-shim@^0.3.2":
@@ -5615,6 +5615,23 @@ hyphenate-style-name@^1.0.2:
   resolved "https://registry.yarnpkg.com/hyphenate-style-name/-/hyphenate-style-name-1.0.3.tgz#097bb7fa0b8f1a9cf0bd5c734cf95899981a9b48"
   integrity sha512-EcuixamT82oplpoJ2XU4pDtKGWQ7b00CD9f1ug9IaQ3p1bkHMiKCZ9ut9QDI6qsa6cpUuB+A/I+zLtdNK4n2DQ==
 
+hyphenated-de@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/hyphenated-de/-/hyphenated-de-1.2.0.tgz#05d112a69216be42ed89dacfc137ca29ddf21bea"
+  integrity sha512-A6+E9aLuTdtrAsBZ/01NSQBnfhMYKHMkYRJFnbyy4NHy3GsHkZbsm+NwpJJiJT3JW7eXs7LFuBfMGYDd4OMyrQ==
+
+hyphenated-en-us@^1.1.1:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/hyphenated-en-us/-/hyphenated-en-us-1.2.0.tgz#03f9e227de7ad302e9c3ffad6fd9a2dbaae1340e"
+  integrity sha512-Tz9OMog//SSMnIOK18MmRumfI+r0goJZZAAVJ1Itho7r9GSZcGrGiIZNYfScAW1hqvFJLu2yRh7haa0YF+8i/Q==
+
+hyphenated@1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/hyphenated/-/hyphenated-1.1.1.tgz#d63c2f938d6a2ea325ce2a036b4acccfd2a01225"
+  integrity sha512-tA9TMjyjDEmjWmkobQa/LlFJ5lhvWbJ1J9V1moemRt51Q6jWOYzpacj8C6CeH/BNM7R7SW69al/1d5a/A7K9yQ==
+  dependencies:
+    hyphenated-en-us "^1.1.1"
+
 iconv-lite@0.4.24, iconv-lite@^0.4.24, iconv-lite@^0.4.4, iconv-lite@~0.4.13:
   version "0.4.24"
   resolved "https://registry.yarnpkg.com/iconv-lite/-/iconv-lite-0.4.24.tgz#2022b4b25fbddc21d2f524974a474aafe733908b"
@@ -7478,6 +7495,11 @@ mkdirp@0.5.1, "mkdirp@>=0.5 0", mkdirp@^0.5.0, mkdirp@^0.5.1, mkdirp@~0.5.1:
   dependencies:
     minimist "0.0.8"
 
+moment-with-locales-es6@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/moment-with-locales-es6/-/moment-with-locales-es6-1.0.1.tgz#c2eec19c902f98baa959afeacc34275bb61a3336"
+  integrity sha512-aKHuk7hHGVGk1X86rhu4aVwSEpBEwL3Lo5BEvZnqGueZeVK9pfpTrlLT3qN4A64vMkiKkxWpwQCcyg2YpoZGaQ==
+
 moment@^2.24.0:
   version "2.24.0"
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.24.0.tgz#0d055d53f5052aa653c9f6eb68bb5d12bf5c2b5b"
@@ -8144,6 +8166,13 @@ osenv@0, osenv@^0.1.4:
   dependencies:
     os-homedir "^1.0.0"
     os-tmpdir "^1.0.0"
+
+outdated-browser-rework@^2.10.0:
+  version "2.10.0"
+  resolved "https://registry.yarnpkg.com/outdated-browser-rework/-/outdated-browser-rework-2.10.0.tgz#339e537affb9cfc68523c9f89b49df731839bd22"
+  integrity sha512-uFOhUvzEB0ADDM53lEswqm2I/bi6m8MvgwXEQqzTaMZAWTt/QU0lqtuNCEOl1ECiugPOQ2IlIElDBYPeK14sQA==
+  dependencies:
+    ua-parser-js "^0.7.18"
 
 p-defer@^1.0.0:
   version "1.0.0"
@@ -9559,10 +9588,10 @@ react-error-overlay@^6.0.4:
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-6.0.4.tgz#0d165d6d27488e660bc08e57bdabaad741366f7a"
   integrity sha512-ueZzLmHltszTshDMwyfELDq8zOA803wQ1ZuzCccXa1m57k1PxSHfflPD5W9YIiTXLs0JTLzoj6o1LuM5N6zzNA==
 
-react-h5-audio-player@^2.3.0:
-  version "2.3.1"
-  resolved "https://registry.yarnpkg.com/react-h5-audio-player/-/react-h5-audio-player-2.3.1.tgz#cceba719850160932c1274ddfa6202bef1a1d861"
-  integrity sha512-Pm2VpsfcdWV6oGgdm6G41Besgkf/i5+K9hAM65HuCBt+WOgWMsNvy8ZKN1+mh+0GjFDu/sdrQ+FM/Zs0De730w==
+react-h5-audio-player@^2.3.5:
+  version "2.3.6"
+  resolved "https://registry.yarnpkg.com/react-h5-audio-player/-/react-h5-audio-player-2.3.6.tgz#ba1076b7efacd9c1a917574be3da731a2f9eaee7"
+  integrity sha512-XQjxMUWu3TzS4r2PM6ZNkpz6oRcCAukrVpig1zwWHE9NXlbWiySrRidOCr/VjyEHpvoVqdQRFsq66gn6xCy5QQ==
   dependencies:
     "@iconify/icons-mdi" "^1.0.46"
     "@iconify/react" "^1.1.1"
@@ -9588,6 +9617,18 @@ react-howler@^3.7.4:
   dependencies:
     howler "^2.1.1"
     prop-types "^15.5.6"
+
+react-hyphen@^1.3.0:
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/react-hyphen/-/react-hyphen-1.3.0.tgz#36ac4965e7374254a135b848c76831cb8b3d2842"
+  integrity sha512-vdRvm5gV9h/4KS+jbO8SVCkPeCniVwflzGSRdoNM5UbyY65GuChVCHCnBuhvsF9v1KK25JblXqn+tJVz4zWlYw==
+  dependencies:
+    hyphenated "1.1.1"
+
+react-if@^3.4.3:
+  version "3.4.3"
+  resolved "https://registry.yarnpkg.com/react-if/-/react-if-3.4.3.tgz#bab45478dd0374b1c5fe44aa972a2fa921416a57"
+  integrity sha512-DddMrbjAA4lkVhhYJgoeKC9+dj950I9hx4KClhJXySTL3GsQ7hxl9eWkcqS2i/qWvfPiQheJOwTYQ+Wv2BNdMA==
 
 react-is@^16.12.0, react-is@^16.6.0, react-is@^16.7.0, react-is@^16.8.1, react-is@^16.8.4, react-is@^16.8.6, react-is@^16.9.0:
   version "16.12.0"
@@ -9616,11 +9657,6 @@ react-modal@^3.11.1:
     react-lifecycles-compat "^3.0.0"
     warning "^4.0.3"
 
-react-mp3-player@^0.8.2:
-  version "0.8.2"
-  resolved "https://registry.yarnpkg.com/react-mp3-player/-/react-mp3-player-0.8.2.tgz#b690c30946832f637b0fdb4bc78f333fc6efdacc"
-  integrity sha512-/Mn5ppwMeeAwN9AOFcXlIbHD3FHIdGHzrup990vUZGPnwfNyWQd3Ya4GKbkOOkI72KThDnMhB+/GjuG9e0wJzg==
-
 react-notifications-component@^2.2.7:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/react-notifications-component/-/react-notifications-component-2.3.0.tgz#37b0cfbd908e37cc1ad163e1c675e8235dc6fdbd"
@@ -9646,7 +9682,7 @@ react-router-dom@^5.1.2:
     tiny-invariant "^1.0.2"
     tiny-warning "^1.0.0"
 
-react-router@5.1.2:
+react-router@5.1.2, react-router@^5.1.2:
   version "5.1.2"
   resolved "https://registry.yarnpkg.com/react-router/-/react-router-5.1.2.tgz#6ea51d789cb36a6be1ba5f7c0d48dd9e817d3418"
   integrity sha512-yjEuMFy1ONK246B+rsa0cUam5OeAQ8pyclRDgpxuSCrAlJ1qN9uZ5IgyKC7gQg0w8OM50NXHEegPh/ks9YuR2A==
