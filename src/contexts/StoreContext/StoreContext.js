@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 
 import UserApi from "../../api/UserApi";
 import StoreHelper from "./StoreHelper";
@@ -49,4 +49,6 @@ const Store = ({ children }) => {
   );
 };
 
-export { Store, StoreContext };
+const useStoreContext = () => useContext(StoreContext);
+
+export { Store, Provider as StoreProvider, useStoreContext };

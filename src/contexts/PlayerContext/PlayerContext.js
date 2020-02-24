@@ -1,4 +1,9 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, {
+  useState,
+  useRef,
+  useEffect,
+  useContext,
+} from "react";
 import AudioPlayer from "react-h5-audio-player";
 import "react-h5-audio-player/src/styles.scss";
 
@@ -96,4 +101,6 @@ const Player = ({
   );
 };
 
-export { Player, PlayerContext };
+const usePlayerContext = () => useContext(PlayerContext);
+
+export { Player, Provider as PlayerProvider, usePlayerContext };

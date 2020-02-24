@@ -1,10 +1,9 @@
 import React, {
   useState,
   useRef,
-  useContext,
 } from "react";
 
-import { StoreContext } from "../../../contexts/StoreContext/StoreContext";
+import { useStoreContext } from "../../../contexts/StoreContext/StoreContext";
 import AudioRecorder from "../../../layouts/AudioRecorder/AudioRecorder";
 import SignInComponent from "../../../components/SignInComponent/SignInComponent";
 import Notification from "../../../helper/NotificationHelper";
@@ -17,7 +16,7 @@ const CommentModal = ({ closeModal, statementId }) => {
   const quote = useRef(undefined);
   const fileLink = useRef(undefined);
   const duration = useRef(undefined);
-  const { user } = useContext(StoreContext);
+  const { user } = useStoreContext;
 
   const setQuote = (newQuote) => {
     quote.current = newQuote;
