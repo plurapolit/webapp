@@ -50,7 +50,7 @@ const CommentModal = ({ closeModal, statementId }) => {
 
   if (!user) {
     Notification.warning(
-      "Um diesen Service zu nutzen, müssen Sie sich anmelden.",
+      "Um diesen Service zu nutzen, musst du dich anmelden.",
     );
     return <SignInComponent />;
   }
