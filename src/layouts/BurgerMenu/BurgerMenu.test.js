@@ -5,13 +5,23 @@ import { Link } from "react-router-dom";
 import SignOutButton from "../../components/SignOutButton/SignOutButton";
 import BurgerMenu from "./BurgerMenu";
 import Button from "../../components/Button/Button";
+import * as StoreContextModule from "../../contexts/StoreContext/StoreContext";
 
 const setup = (propOverrides) => {
   const props = {
     user: null,
     ...propOverrides,
   };
-  const wrapper = shallow(<BurgerMenu user={props.user} />);
+
+  jest.spyOn(StoreContextModule, "useStoreContext").mockImplementation(() => ({
+    user: props.user,
+  }));
+
+  const wrapper = shallow(
+    <StoreContextModule.StoreProvider>
+      <BurgerMenu />
+    </StoreContextModule.StoreProvider>,
+  ).dive();
   return {
     wrapper,
   };
