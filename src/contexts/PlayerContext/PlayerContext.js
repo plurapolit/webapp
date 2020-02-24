@@ -5,25 +5,30 @@ import React, {
   useContext,
 } from "react";
 import AudioPlayer from "react-h5-audio-player";
+import withTracking from "../../helper/TrackingHelper";
+import { useStoreContext } from "../StoreContext/StoreContext";
+
 import "react-h5-audio-player/src/styles.scss";
-
-import PiwikMessages from "../../helper/PiwikMessagesHelper";
-
 import styles from "./Player.module.scss";
 
 const PlayerContext = React.createContext();
 const { Provider } = PlayerContext;
 
-const Player = ({
+const Player = withTracking(({
   children,
   show = false,
+  trackWhilePlaying,
+  updateTracking,
+  createNewTrackingEntry,
 }) => {
-  const [showMediaPlayer, setShowMediaPlayer] = useState(show);
+  const player = useRef();
   const [audioStatement, setAudioStatement] = useState("");
   const [author, setAuthor] = useState("");
   const [panelTitle, setPanelTitle] = useState();
+  const [showMediaPlayer, setShowMediaPlayer] = useState(show);
+  const [statementId, setStatementId] = useState(null);
+  const { user } = useStoreContext();
   const [running, setRunning] = useState(false);
-  const player = useRef();
 
   const stopPlayer = () => {
     setRunning(false);
@@ -33,33 +38,30 @@ const Player = ({
     setRunning(true);
   };
 
-  const setSong = async (audioFile, newAuthor) => {
+  const onListen = () => {
+    trackWhilePlaying(player);
+  };
+
+  const setAudio = async (audioFile, newAuthor, id) => {
     setShowMediaPlayer(true);
     setAudioStatement(audioFile);
+    setStatementId(id);
     setAuthor(newAuthor);
     startPlayer();
   };
 
   useEffect(() => {
-    const setAudioTitleForMatomo = () => {
-      if (player.current) {
-        player.current.audio.setAttribute(
-          "data-matomo-title",
-          `${panelTitle} | ${author} (${audioStatement})`,
-        );
-      }
-    };
-    setAudioTitleForMatomo();
-  }, [panelTitle, author, audioStatement]);
+    if (statementId) {
+      createNewTrackingEntry(statementId, user);
+    }
+  }, [statementId]);
 
   const stop = () => {
     player.current.audio.pause();
-    PiwikMessages.statement.stop(panelTitle, author, audioStatement);
   };
 
   const start = () => {
     player.current.audio.play();
-    PiwikMessages.statement.start(panelTitle, author, audioStatement);
   };
 
   useEffect(() => {
@@ -76,7 +78,7 @@ const Player = ({
   return (
     <Provider value={{
       stopPlayer,
-      setSong,
+      setAudio,
       setPanelTitle,
     }}
     >
@@ -88,18 +90,22 @@ const Player = ({
           <div className={styles["media-player-wrapper-player"]}>
             <AudioPlayer
               src={audioStatement}
+              ref={player}
+              onPlay={start}
+              onPause={updateTracking}
+              onEnded={updateTracking}
+              onListen={onListen}
+              listenInterval={1000}
+              progressJumpStep={10000}
               showVolumeControl={false}
               showLoopControl={false}
-              progressJumpStep={10000}
-              ref={player}
-              onPlay={() => start()}
             />
           </div>
         </div>
       )}
     </Provider>
   );
-};
+});
 
 const usePlayerContext = () => useContext(PlayerContext);
 
