@@ -22,7 +22,7 @@ const Comment = ({
   const [liked, setLiked] = useState(commentData.likes.liked_by_current_user);
   const [likes, setLikes] = useState(commentData.likes.total_likes);
   const modal = useContext(ModalContext);
-  const { setSong } = useContext(PlayerContext);
+  const { setAudio } = useContext(PlayerContext);
 
   const handleLikeClick = async () => {
     const valid = await JwtApi.validate();
@@ -48,6 +48,7 @@ const Comment = ({
     setAnswered(true);
   }
 
+
   return (
     <div className={styles["comment"]}>
       {commentData.user.role === "expert" ? (
@@ -59,9 +60,10 @@ const Comment = ({
         <div className={styles["comments-panels"]}>
           <div
             className={[styles["comments-panels-play"], commentData.user.role === "expert" && styles["comments-panels-play--expert"]].join(" ")}
-            onClick={() => setSong(
+            onClick={() => setAudio(
               commentData.audio_file.file_link,
               commentData.user.full_name,
+              commentData.comment.id,
             )}
           >
             <img

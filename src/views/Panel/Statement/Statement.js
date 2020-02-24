@@ -15,7 +15,7 @@ const Statement = ({
   expert,
 }) => {
   const [commentsAreOpen, setCommentsAreOpen] = useState(false);
-  const { setSong } = useContext(PlayerContext);
+  const { setAudio } = useContext(PlayerContext);
 
   const IMAGEROOTURL = process.env.REACT_APP_BUCKET_URL;
 
@@ -124,9 +124,10 @@ const Statement = ({
               type="button"
               className={styles["expert-card-nav-play"]}
               onClick={() => {
-                setSong(
+                setAudio(
                   expert.statement_audio_file.file_link,
                   expert.user.full_name,
+                  expert.statement.id,
                 );
               }}
             >
