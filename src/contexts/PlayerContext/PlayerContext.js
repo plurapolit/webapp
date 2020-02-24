@@ -3,10 +3,10 @@ import React, {
 } from "react";
 
 import AudioPlayer from "react-h5-audio-player";
-import "react-h5-audio-player/src/styles.scss";
 import withTracking from "../../helper/TrackingHelper";
 import { StoreContext } from "../StoreContext/StoreContext";
 
+import "react-h5-audio-player/src/styles.scss";
 import styles from "./Player.module.scss";
 
 const PlayerContext = React.createContext();
@@ -31,16 +31,12 @@ const Player = withTracking(({
     player.current.audio.pause();
   };
 
-  const startPlayer = async () => {
+  const startPlayer = () => {
     player.current.audio.play();
   };
 
   const onListen = () => {
     trackWhilePlaying(player);
-  };
-
-  const onStop = () => {
-    updateTracking();
   };
 
   const setAudio = async (audioFile, newAuthor, id) => {
@@ -73,8 +69,8 @@ const Player = withTracking(({
               src={audioStatement}
               ref={player}
               onPlay={startPlayer}
-              onPause={onStop}
-              onEnded={onStop}
+              onPause={updateTracking}
+              onEnded={updateTracking}
               onListen={onListen}
               listenInterval={1000}
               progressJumpStep={10000}
