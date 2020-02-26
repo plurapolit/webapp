@@ -18,6 +18,7 @@ import styles from "./Comment.module.scss";
 const Comment = ({
   commentData,
   setAnswered,
+  panelTitle,
 }) => {
   const [liked, setLiked] = useState(commentData.likes.liked_by_current_user);
   const [likes, setLikes] = useState(commentData.likes.total_likes);
@@ -64,6 +65,7 @@ const Comment = ({
               commentData.audio_file.file_link,
               commentData.user.full_name,
               commentData.comment.id,
+              panelTitle,
             )}
           >
             <img

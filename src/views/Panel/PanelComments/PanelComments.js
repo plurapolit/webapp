@@ -17,6 +17,7 @@ const PanelComments = ({
   statementId,
   expertFullName,
   statementDate,
+  panelTitle,
 }) => {
   const [userComments, setUserComments] = useState(null);
   const [answered, setAnswered] = useState(false);
@@ -62,6 +63,7 @@ const PanelComments = ({
               key={commentData.comment.id}
               commentData={commentData}
               setAnswered={setAnswered}
+              panelTitle={panelTitle}
             />
           )))}
           <Button onClick={() => openCommentModal()}>
