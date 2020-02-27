@@ -1,7 +1,24 @@
 @import "../../../assets/styles/global.scss";
 
+$breakpoint: 450px;
+
 .comment {
   padding: 2.5rem 0;
+}
+
+.card {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  grid-template-areas: 
+    "audio statement like";
+
+  @media screen and (max-width: $breakpoint) {
+    grid-template-columns: 1fr auto;
+    grid-template-areas: 
+      "statement like"
+      "audio like";
+  }
 }
 
 .answer-mark {
@@ -9,158 +26,4 @@
   font-size: 1.6rem;
   font-weight: 400;
   margin-bottom: .5rem;
-}
-
-.comments {
-  &-wrapper {
-    margin: 0 10px;
-  }
-  &-card {
-    position: relative;
-    display: flex;
-    justify-content: flex-start;
-    &-wrapper {
-      border-left: 3px solid $color-primary;
-      padding-bottom: 2rem;
-    }
-  }
-  &-panels {
-    display: flex;
-    flex-direction: column;
-    &-play {
-      background-color: $color-primary;
-      padding: 1rem 1.5rem;
-      border-radius: 1rem;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      cursor: pointer;
-      transition: all 0.2s;
-      &--expert {
-        background-color: $orange;
-      }
-
-      &:hover {
-        opacity: 0.8;
-      }
-      &-img {
-        height: 2.5rem;
-      }
-    }
-    &-audio {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 8px;
-      font-size: 1.3rem;
-      line-height: 1.9rem;
-      color: $color-grey-2;
-      &-img {
-        height: 1.5rem;
-      }
-      &-date {
-        margin-top: 1rem;
-        font-size: 1.3rem;
-        line-height: 1.9rem;
-        color: $color-grey-2;
-      }
-    }
-    &-likes {
-      color: $color-grey-2;
-      font-size: 1.6rem;
-      text-align: center;
-
-      &--liked {
-        color: $color-primary;
-      }
-    }
-  }
-  &-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 100%;
-    margin-left: 1rem;
-
-    &_heading {
-      display: flex;
-      justify-content: space-between;
-    }
-    &-user {
-      font-size: 1.5rem;
-      line-height: 2.2rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      color: $headline-dark-2;
-    }
-    &_image-anker {
-      position: relative;
-      margin-left: 1.5rem;
-    }
-    &-statement {
-      font-size: 1.5rem;
-      line-height: 1.6rem;
-      color: $text-dark-2;
-      word-wrap: break-word;
-    }
-    &_image {
-      position: absolute;
-      top: -2rem;
-      left: 0;
-      transform: translateX(-80%);
-      height: 4rem;
-    }
-    &_bottom {
-      display: flex;
-      align-items: flex-end;
-      align-self: flex-end;
-
-      &_container {
-        display: flex;
-        align-items: center;
-      }
-    }
-    &_like {
-      margin-top: 0.4rem;
-      margin-right: 0.8rem;
-    }
-  }
-  &-comment {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    border-radius: 20px;
-    background-color: $color-primary;
-    margin-left: 1rem;
-    width: 26rem;
-    padding: 0 1.2rem;
-    cursor: pointer;
-    transition: all 0.2s;
-    &:hover {
-      opacity: 0.8;
-    }
-  }
-
-  &-comment-text {
-    font-size: 1.5rem;
-    text-transform: uppercase;
-    color: $color-white;
-    font-weight: 700;
-    margin-right: 1rem;
-  }
-
-  &-microphone-img {
-    padding-top: 0.6rem;
-    height: 4rem;
-  }
-  &-close {
-    height: 1.8rem;
-    margin-top: 1rem;
-    margin-left: -0.85rem;
-    cursor: pointer;
-    transition: all 0.2s;
-    &:hover {
-      opacity: 0.8;
-    }
-  }
 }

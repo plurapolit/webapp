@@ -30,4 +30,26 @@ export const expert = {
   user_avatar_key: "7zbzfy10wphh2l26oigmhpecin9f",
 };
 
+export const commentData = {
+  comment: {
+    id: 199,
+    quote: "Das ist ein Kommentar!",
+    created_at: "2020-02-20T15:26:46.882Z",
+  },
+  audio_file: {
+    file_link: "http://www.hochmuth.com/mp3/Beethoven_12_Variation.mp3",
+    duration_seconds: 67,
+  },
+  likes: {
+    total_likes: 0,
+    most_liked_comment: false,
+    liked_by_current_user: false,
+  },
+  user: {
+    full_name: "Soraya O'Connell",
+    role: "default",
+  },
+  user_avatar: "dtr9pw2th4pf8i9xjxq0r703v9ie",
+};
+
 export default { helper: expert };

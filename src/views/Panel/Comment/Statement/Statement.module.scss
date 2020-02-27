@@ -1,0 +1,29 @@
+@import "../../../../assets/styles/global.scss";
+
+$breakpoint: 450px;
+
+.statement {
+  grid-area: statement;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 1rem;
+  
+  @media screen and (max-width: $breakpoint) {
+    padding: 0;
+  }
+  
+  &_username {
+    font-size: 1.6rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: $headline-dark-2;
+  }
+  
+  &_comment {
+    font-size: 1.5rem;
+    line-height: 1.3;
+    color: $text-dark-2;
+    word-wrap: break-word;
+  }
+}
