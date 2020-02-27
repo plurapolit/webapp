@@ -54,7 +54,7 @@ const Player = withTracking(({
     if (statementId) {
       createNewTrackingEntry(statementId, user);
     }
-  }, [statementId]);
+  }, [statementId, user, createNewTrackingEntry]);
 
   const stop = () => {
     player.current.audio.pause();
@@ -73,7 +73,7 @@ const Player = withTracking(({
         stop();
       }
     }
-  }, [player.current, running]);
+  }, [running]);
 
   return (
     <Provider value={{
