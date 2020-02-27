@@ -1,6 +1,6 @@
-import React, { useContext } from "react";
+import React from "react";
 
-import { PlayerContext } from "../../../../contexts/PlayerContext/PlayerContext";
+import { usePlayerContext } from "../../../../contexts/PlayerContext/PlayerContext";
 import Time from "../../../../helper/TimeHelper";
 
 import audioWave from "../../../../assets/images/sound-wave.svg";
@@ -9,14 +9,16 @@ import playButton from "../../../../assets/images/play.svg";
 import styles from "./Audio.module.scss";
 
 const Audio = ({ commentData }) => {
-  const { setSong } = useContext(PlayerContext);
+  const { setAudio } = usePlayerContext();
   return (
     <div className={styles["audio"]}>
       <div
         className={[styles["audio-icon"], commentData.user.role === "expert" && styles["audio-icon--expert"]].join(" ")}
-        onClick={() => setSong(
+        onClick={() => setAudio(
           commentData.audio_file.file_link,
           commentData.user.full_name,
+          commentData.comment.id,
+          panelTitle,
         )}
       >
         <img

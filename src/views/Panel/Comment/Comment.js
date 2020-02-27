@@ -15,6 +15,7 @@ import styles from "./Comment.module.scss";
 const Comment = ({
   commentData,
   setAnswered,
+  panelTitle,
 }) => {
   const [liked, setLiked] = useState(commentData.likes.liked_by_current_user);
   const [likes, setLikes] = useState(commentData.likes.total_likes);
@@ -52,7 +53,7 @@ const Comment = ({
         </div>
       </If>
       <div className={styles["card"]}>
-        <Audio commentData={commentData} />
+        <Audio commentData={commentData} panelTitle={panelTitle} />
         <Statement commentData={commentData} />
         <Like
           commentData={commentData}

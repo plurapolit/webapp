@@ -3,13 +3,24 @@ import { shallow } from "enzyme";
 
 import Statement from "./Statement";
 import { expert } from "../../../helper/TestHelper";
+import * as PlayerContextModule from "../../../contexts/PlayerContext/PlayerContext";
 
 const setup = (propOverrides) => {
   const props = {
     expert,
+    setSong: jest.fn(),
     ...propOverrides,
   };
-  const wrapper = shallow(<Statement expert={props.expert} />);
+
+  jest.spyOn(PlayerContextModule, "usePlayerContext").mockImplementation(() => ({
+    setSong: props.setSong,
+  }));
+
+  const wrapper = shallow(
+    <PlayerContextModule.PlayerProvider>
+      <Statement expert={props.expert} />
+    </PlayerContextModule.PlayerProvider>,
+  ).dive();
   return {
     wrapper,
   };

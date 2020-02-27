@@ -1,14 +1,14 @@
-import React, { useContext } from "react";
+import React from "react";
 import { useHistory } from "react-router-dom";
 
-import { StoreContext } from "../../contexts/StoreContext/StoreContext";
+import { useStoreContext } from "../../contexts/StoreContext/StoreContext";
 import styles from "./SignOutButton.module.scss";
 import UserApi from "../../api/UserApi";
 import JwtApi from "../../api/JwtApi";
 
 const SignOutButton = ({ children = "Abmelden" }) => {
   const history = useHistory();
-  const { user, removeUser } = useContext(StoreContext);
+  const { user, removeUser } = useStoreContext();
 
   const signOutHandler = () => {
     const jwt = JwtApi.get();
