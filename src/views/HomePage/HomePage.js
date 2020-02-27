@@ -1,26 +1,28 @@
 /* eslint-disable react/jsx-filename-extension */
-import React, { useContext } from "react";
+import React from "react";
+import { If } from "react-if";
 
-import { StoreContext } from "../../layouts/Store/StoreContext";
+import { useStoreContext } from "../../contexts/StoreContext/StoreContext";
 import HomePageMetaTags from "./HomePageMetaTag";
-import HomeHeader from "../../components/HomeHeader/HomeHeader";
-import About from "../../components/About/About";
-import MoreSection from "../../components/MoreSection/MoreSection";
-import { isLoaded } from "../../helper/helper";
-import CategoryList from "../../components/CategoryList/CategoryList";
-import Feedback from "../../components/Feedback/Feedback";
-import Supporters from "../../components/Supporters/Supporters";
+import HomeHeader from "./HomeHeader/HomeHeader";
+import About from "./About/About";
+import MoreSection from "./MoreSection/MoreSection";
+import CategoryList from "./CategoryList/CategoryList";
+import Feedback from "./Feedback/Feedback";
+import Supporters from "./Supporters/Supporters";
 
 import styles from "./HomePage.module.scss";
 
 const HomePage = () => {
-  const { categoryList } = useContext(StoreContext);
+  const { categoryList } = useStoreContext();
   return (
     <div>
       <HomePageMetaTags />
       <HomeHeader />
       <About />
-      {isLoaded(categoryList, <CategoryList />)}
+      <If condition={!!categoryList}>
+        <CategoryList />
+      </If>
       <div className={styles["bottom-wrapper"]}>
         <MoreSection />
         <Feedback />

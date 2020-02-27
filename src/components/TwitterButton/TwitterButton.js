@@ -1,5 +1,5 @@
 import React from "react";
-import TwitterLogo from "../../media/images/Twitter_Logo.svg";
+import TwitterLogo from "../../assets/images/Twitter_Logo.svg";
 import styles from "./TwitterButton.module.scss";
 
 const TwitterButton = ({ handle }) => {

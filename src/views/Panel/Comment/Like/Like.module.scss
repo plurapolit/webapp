@@ -1,0 +1,32 @@
+@import "../../../../assets/styles/global.scss";
+
+.like {
+  grid-area: like;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  
+  &-batch {
+    height: 4rem;
+    position: absolute;
+    top: -1.5rem;
+    right: -1rem;
+  }
+
+  &_container {
+    display: flex;
+    align-items: center;
+  }
+
+  &_count {
+    color: $color-grey-2;
+    font-size: 1.6rem;
+    text-align: center;
+    margin-top: 0.4rem;
+    margin-right: 0.8rem;
+
+    &--liked {
+      color: $color-primary;
+    }
+  }
+}

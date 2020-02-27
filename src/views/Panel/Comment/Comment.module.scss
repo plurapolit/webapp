@@ -1,0 +1,29 @@
+@import "../../../assets/styles/global.scss";
+
+$breakpoint: 450px;
+
+.comment {
+  padding: 2.5rem 0;
+}
+
+.card {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  grid-template-areas: 
+    "audio statement like";
+
+  @media screen and (max-width: $breakpoint) {
+    grid-template-columns: 1fr auto;
+    grid-template-areas: 
+      "statement like"
+      "audio like";
+  }
+}
+
+.answer-mark {
+  color: $text-dark-2;
+  font-size: 1.6rem;
+  font-weight: 400;
+  margin-bottom: .5rem;
+}

@@ -1,4 +1,4 @@
-@import "./styles/global.scss";
+@import "./assets/styles/global.scss";
 
 *,
 *::after,
@@ -18,7 +18,7 @@ a {
 
 html {
   font-size: 62.5%;
-  font-family: "HelveticaNowDisplay", "open-sans";
+  font-family: "HelveticaNowDisplay", "Helvetica";
   font-weight: 400;
   box-sizing: border-box;
 }

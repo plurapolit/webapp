@@ -1,7 +1,7 @@
 import React from "react";
 
 import styles from "./PageNotFound.module.scss";
-import ContentWrapper from "../../components/ContentWrapper/ContentWrapper";
+import ContentWrapper from "../../layouts/ContentWrapper/ContentWrapper";
 import Button from "../../components/Button/Button";
 
 const PageNotFound = () => (

@@ -1,12 +1,17 @@
 import React from "react";
 import styles from "./PrivacyPolicy.module.scss";
 
-import ContentWrapper from "../../components/ContentWrapper/ContentWrapper";
+import ContentWrapper from "../../layouts/ContentWrapper/ContentWrapper";
 
 const PrivacyPolicy = () => (
   <div className={styles["wrapper"]}>
     <ContentWrapper>
       <h1>DATENSCHUTZERKLÄRUNG</h1>
+      <br />
+      <p>
+        Die Datenschutzinformation wurde von Rechtsanwältin Kathrin-E. Commandeur, Hamburg -
+        www.commandeur.org -  für die PluraPolit gUG erstellt.
+      </p>
       <br />
       <p>
         Nachfolgend informieren wir Sie, welche Daten wir von Ihnen erfassen und
