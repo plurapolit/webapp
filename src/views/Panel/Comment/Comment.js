@@ -1,18 +1,14 @@
 import React, { useState, useContext } from "react";
-import { If, Then } from "react-if";
+import { If } from "react-if";
 
-import { PlayerContext } from "../../../contexts/PlayerContext/PlayerContext";
-import LikeButton from "../../../components/LikeButton/LikeButton";
 import JwtApi from "../../../api/JwtApi";
 import Notification from "../../../helper/NotificationHelper";
-import Time from "../../../helper/TimeHelper";
 import Helper from "./CommentHelper";
 import { ModalContext } from "../../../contexts/ModalContext/ModalContext";
 import SignInComponent from "../../../components/SignInComponent/SignInComponent";
-
-import likeBadge from "../../../assets/images/like-badge.svg";
-import audioWave from "../../../assets/images/sound-wave.svg";
-import playButton from "../../../assets/images/play.svg";
+import Audio from "./Audio/Audio";
+import Statement from "./Statement/Statement";
+import Like from "./Like/Like";
 
 import styles from "./Comment.module.scss";
 
@@ -23,7 +19,6 @@ const Comment = ({
   const [liked, setLiked] = useState(commentData.likes.liked_by_current_user);
   const [likes, setLikes] = useState(commentData.likes.total_likes);
   const modal = useContext(ModalContext);
-  const { setSong } = useContext(PlayerContext);
 
   const handleLikeClick = async () => {
     const valid = await JwtApi.validate();
@@ -49,79 +44,22 @@ const Comment = ({
     setAnswered(true);
   }
 
-  const Audio = () => (
-    <div className={styles["audio"]}>
-      <div
-        className={[styles["audio-icon"], commentData.user.role === "expert" && styles["audio-icon--expert"]].join(" ")}
-        onClick={() => setSong(
-          commentData.audio_file.file_link,
-          commentData.user.full_name,
-        )}
-      >
-        <img
-          alt="icon"
-          src={playButton}
-          className={styles["audio-icon_img"]}
-        />
-      </div>
-      <div className={styles["audio-info"]}>
-        <div className={styles["audio-info_duration"]}>
-          <img
-            alt="icon"
-            src={audioWave}
-            className={styles["audio-info_duration_img"]}
-          />
-          {Time.getDurationInSeconds(commentData.audio_file.duration_seconds)}
-        </div>
-        <div className={styles["audio-info_date"]}>
-          {Time.getDateOrTime(commentData.comment.created_at)}
-        </div>
-      </div>
-    </div>
-  );
-
-  const Statement = () => (
-    <div className={styles["statement"]}>
-      <div className={styles["statement_username"]}>
-        {commentData.user.full_name}
-      </div>
-      <div className={styles["statement_comment"]}>
-        &ldquo;
-        {commentData.comment.quote}
-        &rdquo;
-      </div>
-    </div>
-  );
-
-  const Like = () => (
-    <div className={styles["like"]}>
-      <If condition={commentData.likes.most_liked_comment}>
-        <Then>
-          <img src={likeBadge} alt="am meisten gemochte Antwort" className={styles["like-batch"]} />
-        </Then>
-      </If>
-      <div className={styles["like_container"]}>
-        <div className={`${styles["like_count"]} ${liked ? styles["like_count--liked"] : null}`}>
-          {likes}
-        </div>
-        <LikeButton liked={liked} handleLikeClick={handleLikeClick} />
-      </div>
-    </div>
-  );
-
   return (
     <div className={styles["comment"]}>
       <If condition={commentData.user.role === "expert"}>
-        <Then>
-          <div className={styles["answer-mark"]}>
-            Antwort
-          </div>
-        </Then>
+        <div className={styles["answer-mark"]}>
+          Antwort
+        </div>
       </If>
       <div className={styles["card"]}>
-        {Audio()}
-        {Statement()}
-        {Like()}
+        <Audio commentData={commentData} />
+        <Statement commentData={commentData} />
+        <Like
+          commentData={commentData}
+          likes={likes}
+          liked={liked}
+          handleLikeClick={handleLikeClick}
+        />
       </div>
     </div>
   );
