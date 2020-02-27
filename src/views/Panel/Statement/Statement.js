@@ -13,6 +13,7 @@ import Time from "../../../helper/TimeHelper";
 
 const Statement = ({
   expert,
+  panelTitle,
 }) => {
   const [commentsAreOpen, setCommentsAreOpen] = useState(false);
   const { setAudio } = usePlayerContext();
@@ -128,6 +129,7 @@ const Statement = ({
                   expert.statement_audio_file.file_link,
                   expert.user.full_name,
                   expert.statement.id,
+                  panelTitle,
                 );
               }}
             >
@@ -146,6 +148,7 @@ const Statement = ({
           statementId={expert.statement.id}
           expertFullName={expert.user.full_name}
           statementDate={expert.statement.created_at}
+          panelTitle={panelTitle}
         />
       )}
     </div>

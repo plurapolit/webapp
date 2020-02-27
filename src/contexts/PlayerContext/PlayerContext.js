@@ -44,11 +44,12 @@ const Player = withTracking(({
     trackWhilePlaying(player);
   };
 
-  const setAudio = async (audioFile, newAuthor, id) => {
+  const setAudio = async (audioFile, newAuthor, newStatementId, newPanelTitle) => {
     setShowMediaPlayer(true);
     setAudioStatement(audioFile);
-    setStatementId(id);
+    setStatementId(newStatementId);
     setAuthor(newAuthor);
+    setPanelTitle(newPanelTitle);
     startPlayer();
   };
 
@@ -81,7 +82,6 @@ const Player = withTracking(({
     <Provider value={{
       stopPlayer,
       setAudio,
-      setPanelTitle,
     }}
     >
       {children}
