@@ -9,6 +9,11 @@ const PrivacyPolicy = () => (
       <h1>DATENSCHUTZERKLÄRUNG</h1>
       <br />
       <p>
+        Die Datenschutzinformation wurde von Rechtsanwältin Kathrin-E. Commandeur, Hamburg -
+        www.commandeur.org -  für die PluraPolit gUG erstellt.
+      </p>
+      <br />
+      <p>
         Nachfolgend informieren wir Sie, welche Daten wir von Ihnen erfassen und
         wie wir diese Daten weiterverarbeiten bzw. speichern. Bitte zögern Sie
         bei Fragen nicht, uns zu kontaktieren.
