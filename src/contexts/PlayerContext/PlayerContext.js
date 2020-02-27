@@ -5,6 +5,8 @@ import React, {
   useContext,
 } from "react";
 import AudioPlayer from "react-h5-audio-player";
+import { If } from "react-if";
+
 import withTracking from "../../helper/TrackingHelper";
 import { useStoreContext } from "../StoreContext/StoreContext";
 
@@ -22,7 +24,7 @@ const Player = withTracking(({
   createNewTrackingEntry,
 }) => {
   const player = useRef();
-  const [audioStatement, setAudioStatement] = useState("");
+  const [audioStatement, setAudioStatement] = useState();
   const [author, setAuthor] = useState("");
   const [panelTitle, setPanelTitle] = useState();
   const [showMediaPlayer, setShowMediaPlayer] = useState(show);
@@ -66,14 +68,14 @@ const Player = withTracking(({
 
   useEffect(() => {
     if (player.current) {
-      if (running) {
+      if (running && showMediaPlayer) {
         start();
       }
-      if (!running) {
+      if (!running || !showMediaPlayer) {
         stop();
       }
     }
-  }, [player.current, running]);
+  }, [player.current, running, showMediaPlayer]);
 
   return (
     <Provider value={{
@@ -83,7 +85,7 @@ const Player = withTracking(({
     }}
     >
       {children}
-      {showMediaPlayer && (
+      <If condition={showMediaPlayer}>
         <div className={styles["media-player-wrapper"]}>
           <p className={styles["media-player-wrapper-user"]}>{author}</p>
           <p className={styles["media-player-wrapper-statement"]}>{panelTitle}</p>
@@ -102,7 +104,7 @@ const Player = withTracking(({
             />
           </div>
         </div>
-      )}
+      </If>
     </Provider>
   );
 });
