@@ -8,7 +8,7 @@ import playButton from "../../../../assets/images/play.svg";
 
 import styles from "./Audio.module.scss";
 
-const Audio = ({ commentData }) => {
+const Audio = ({ commentData, panelTitle }) => {
   const { setAudio } = usePlayerContext();
   return (
     <div className={styles["audio"]}>
