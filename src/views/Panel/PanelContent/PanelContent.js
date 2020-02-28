@@ -19,11 +19,6 @@ const PanelContent = ({ content }) => (
         />
       ))}
     </div>
-    <div className={styles["disclaimer"]}>
-      Alle zur Hamburgischen Bürgerschaftswahl 2020 antretenden Parteien
-      wurden zur Mitwirkung auf PluraPolit angefragt. Nicht alle angefragten
-      Parteien haben jedoch bislang Statements abgegeben.
-    </div>
   </div>
 );
 
