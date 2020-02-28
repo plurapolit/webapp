@@ -8,11 +8,8 @@ const PanelWrapperHelper = () => {
     done(panel);
   };
 
-  const getSlug = (location) => location.pathname.substr(1);
-
   return {
     loadPanelById,
-    getSlug,
     ABOUT_US_SLUG,
   };
 };
