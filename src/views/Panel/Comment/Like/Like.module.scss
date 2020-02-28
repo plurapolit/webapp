@@ -18,6 +18,10 @@
     align-items: center;
   }
 
+  &-icon {
+    position: relative;
+  }
+
   &_count {
     color: $color-grey-2;
     font-size: 1.6rem;
@@ -28,5 +32,31 @@
     &--liked {
       color: $color-primary;
     }
+  }
+}
+
+.animation {
+  width: 60px;
+  height: 60px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  overflow: hidden;
+
+  background-image: url(../../../../assets/images/like-animation.png);
+  background-position: left;
+  &--active {
+    animation: test .4s steps(25) 1;
+  }
+}
+
+@keyframes test {
+  0% {
+    background-position: left;
+  }
+  100% {
+    background-position: right;
   }
 }

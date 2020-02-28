@@ -21,7 +21,10 @@ const Like = ({
       <div className={`${styles["like_count"]} ${liked ? styles["like_count--liked"] : null}`}>
         {likes}
       </div>
-      <LikeButton liked={liked} handleLikeClick={handleLikeClick} />
+      <div className={styles["like-icon"]}>
+        <LikeButton liked={liked} handleLikeClick={handleLikeClick} />
+        <div className={`${styles["animation"]} ${liked ? styles["animation--active"] : null}`} />
+      </div>
     </div>
   </div>
 );
