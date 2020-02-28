@@ -1,0 +1,70 @@
+@import "../../../../assets/styles/global.scss";
+
+$breakpoint: 410px;
+
+.controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 1.3rem;
+}
+
+.audio {
+  display: flex;
+  align-items: center;
+  color: $color-grey-2;
+  font-size: 1.3rem;
+  margin-left: 1rem;
+}
+
+.info-container {
+  display: flex;
+  justify-content: center;
+
+  & span {
+    margin-top: .15rem;
+  }
+
+  @media screen and (max-width: $breakpoint) {
+    flex-direction: column;
+    margin-right: 1rem;
+  }
+}
+
+.duration-wrapper {
+  display: flex;
+  margin-left: 1.5rem;
+
+  @media screen and (max-width: $breakpoint) {
+    margin: 0;
+  }
+}
+
+.audio-img {
+  fill: $color-grey-2;
+  height: 2rem;
+}
+
+.duration {
+  margin: 0 1rem;
+  margin-top: .15rem;
+}
+
+.play {
+  background-color: $color-primary;
+  padding: 1rem 1.8rem;
+  border-top-left-radius: 1.5rem;
+  display: flex;
+  margin-right: -3px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  &:hover {
+    opacity: 0.8;
+  }
+  
+  &-img {
+    height: 2.5rem;
+  }
+}
