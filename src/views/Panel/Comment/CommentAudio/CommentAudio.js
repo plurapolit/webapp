@@ -6,7 +6,7 @@ import Time from "../../../../helper/TimeHelper";
 import audioWave from "../../../../assets/images/sound-wave.svg";
 import playButton from "../../../../assets/images/play.svg";
 
-import styles from "./Audio.module.scss";
+import styles from "./CommentAudio.module.scss";
 
 const Audio = ({ commentData, panelTitle }) => {
   const { setAudio } = usePlayerContext();
