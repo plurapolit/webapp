@@ -16,7 +16,7 @@ const CommentModal = ({ closeModal, statementId }) => {
   const quote = useRef(undefined);
   const fileLink = useRef(undefined);
   const duration = useRef(undefined);
-  const { user } = useStoreContext;
+  const { user } = useStoreContext();
 
   const setQuote = (newQuote) => {
     quote.current = newQuote;
