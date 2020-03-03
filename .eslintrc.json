@@ -2,7 +2,8 @@
   "env": {
     "browser": true,
     "es6": true,
-    "jest": true
+    "jest": true,
+    "cypress/globals": true
   },
   "extends": ["airbnb"],
   "globals": {
@@ -16,7 +17,7 @@
     "ecmaVersion": 2018,
     "sourceType": "module"
   },
-  "plugins": ["react", "jsx-a11y", "react-hooks"],
+  "plugins": ["react", "jsx-a11y", "react-hooks", "cypress"],
   "rules": {
     "react/jsx-filename-extension": [
       1,
