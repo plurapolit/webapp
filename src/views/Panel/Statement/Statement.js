@@ -12,16 +12,16 @@ const Statement = ({
   panelTitle,
 }) => {
   const [commentsAreOpen, setCommentsAreOpen] = useState(false);
-  const { number_of_comments: commentNumber } = expert;
+  const { number_of_comments: numberOfComments } = expert;
 
   useEffect(() => {
     const openCommentsIfCommentsAreAvailable = () => {
-      if (commentNumber > 0) {
+      if (numberOfComments > 0) {
         setCommentsAreOpen(true);
       }
     };
     openCommentsIfCommentsAreAvailable();
-  }, [commentNumber]);
+  }, [numberOfComments]);
 
   const toggleComments = () => {
     setCommentsAreOpen(!commentsAreOpen);
