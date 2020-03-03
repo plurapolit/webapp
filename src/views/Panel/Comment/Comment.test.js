@@ -3,9 +3,9 @@ import { shallow } from "enzyme";
 import { If } from "react-if";
 
 import Comment from "./Comment";
-import Audio from "./Audio/Audio";
-import Statement from "./Statement/Statement";
-import Like from "./Like/Like";
+import Audio from "./CommentAudio/CommentAudio";
+import Statement from "./CommentStatement/CommentStatement";
+import Like from "./CommentLike/CommentLike";
 import { commentData } from "../../../helper/TestHelper";
 
 const setup = (propOverrides) => {
