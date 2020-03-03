@@ -1,5 +1,4 @@
 import React from "react";
-import moment from "moment-with-locales-es6";
 
 import { usePlayerContext } from "../../../../contexts/PlayerContext/PlayerContext";
 import Button, { ButtonStyle } from "../../../../components/Button/Button";
@@ -8,30 +7,12 @@ import Time from "../../../../helper/TimeHelper";
 import audioWave from "../../../../assets/images/sound-wave.svg";
 import playButton from "../../../../assets/images/play.svg";
 import styles from "./StatementControls.module.scss";
+import Helper from "./StatementControlsHelper";
 
 const StatementControls = ({ expert, panelTitle, toggleComments }) => {
   const { setAudio } = usePlayerContext();
-  const { number_of_comments: commentNumber } = expert;
+  const { number_of_comments: numberOfComments } = expert;
 
-  const numberOfComments = () => {
-    if (commentNumber === 0) {
-      return "Kommentieren";
-    }
-
-    if (commentNumber === 1) {
-      return "1 Kommentar";
-    }
-
-    return `${commentNumber} Kommentare`;
-  };
-
-  const audioDuration = () => moment
-    .utc(
-      moment
-        .duration(expert.statement_audio_file.duration_seconds, "seconds")
-        .asMilliseconds(),
-    )
-    .format("mm:ss");
 
   return (
     <div className={styles["controls"]}>
@@ -39,7 +20,7 @@ const StatementControls = ({ expert, panelTitle, toggleComments }) => {
         buttonStyle={ButtonStyle.COMMENT}
         onClick={() => toggleComments()}
       >
-        {numberOfComments(expert)}
+        {Helper.getStringForNComments(numberOfComments)}
       </Button>
       <div className={styles["audio"]}>
         <div className={styles["info-container"]}>
@@ -51,7 +32,7 @@ const StatementControls = ({ expert, panelTitle, toggleComments }) => {
               className={styles["audio-img"]}
             />
             <div className={styles["duration"]}>
-              {audioDuration(expert)}
+              {Time.getDurationInSeconds(expert.statement_audio_file.duration_seconds)}
             </div>
           </div>
         </div>
