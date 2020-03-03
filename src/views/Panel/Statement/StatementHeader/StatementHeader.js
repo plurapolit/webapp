@@ -36,7 +36,7 @@ const StatementHeader = ({ expert }) => {
         <div className={styles["organisation"]}>
           {expert.organisation.name}
         </div>
-        <div className={styles["organisation"]}>
+        <div className={styles["biography"]}>
           {expert.user.biography}
         </div>
       </div>
