@@ -46,7 +46,7 @@ const Comment = ({
   }
 
   return (
-    <div className={styles["comment"]}>
+    <div className={styles["comment"]} data-test="Comment">
       <If condition={commentData.user.role === "expert"}>
         <div className={styles["answer-mark"]}>
           Antwort

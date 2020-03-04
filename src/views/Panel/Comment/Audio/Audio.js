@@ -20,6 +20,7 @@ const Audio = ({ commentData, panelTitle }) => {
           commentData.comment.id,
           panelTitle,
         )}
+        data-test="PlayButton"
       >
         <img
           alt="icon"

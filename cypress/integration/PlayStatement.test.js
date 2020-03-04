@@ -1,10 +1,8 @@
 /* eslint-disable-next-line */
 /// <reference types="Cypress" />
-import { expectPlayingAudio } from "../Helper";
+import { expectPlayingAudio, pageUrl } from "../Helper";
 
 describe("PlayStatement", () => {
-  const pageUrl = "/2020-quasi-nulla-id-dolor";
-
   it("should find a PanelCard on Homepage", () => {
     cy.visit("/");
     cy.get("[data-test=CategoryBanner]");

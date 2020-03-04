@@ -17,4 +17,6 @@ export const newUser = {
   password: "secret",
 };
 
+export const pageUrl = "/2020-quasi-nulla-id-dolor";
+
 export default null;
