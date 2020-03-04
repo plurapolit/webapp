@@ -1,12 +1,6 @@
 /* eslint-disable-next-line */
 /// <reference types="Cypress" />
-
-const newUser = {
-  firstName: "Max",
-  lastName: "Mustermann",
-  email: `max@test${Math.random() * 10000 + 1}.de`,
-  password: "secret",
-};
+import { newUser } from "../Helper";
 
 describe("Register a new user", () => {
   it("should render registration page on button click", () => {

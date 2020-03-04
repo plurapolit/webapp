@@ -14,7 +14,7 @@ const PanelCard = ({
 
   return (
     <Link to={`${slug}`}>
-      <div className={styles["question-banner"]} style={customStyle}>
+      <div className={styles["question-banner"]} style={customStyle} data-test="PanelCard">
         <div className={styles["image-wrapper"]}>
           <div className={styles["shortTitle"]}>{shortTitle}</div>
         </div>

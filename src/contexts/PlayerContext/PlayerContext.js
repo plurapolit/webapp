@@ -90,7 +90,7 @@ const Player = withTracking(({
         <div className={styles["media-player-wrapper"]}>
           <p className={styles["media-player-wrapper-user"]}>{author}</p>
           <p className={styles["media-player-wrapper-statement"]}>{panelTitle}</p>
-          <div className={styles["media-player-wrapper-player"]}>
+          <div className={styles["media-player-wrapper-player"]} data-test="Player">
             <AudioPlayer
               src={audioStatement}
               ref={player}
