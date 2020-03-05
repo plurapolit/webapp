@@ -74,7 +74,7 @@ const Statement = ({
   };
 
   return (
-    <div className={styles["expert-wrapper"]} data-test="Statement">
+    <div className={styles["expert-wrapper"]} data-test="statement">
       <div className={styles["expert-card"]}>
         <div className={styles["expert-card-header"]}>
           <div className={styles["expert-card-header-left"]}>
@@ -132,7 +132,7 @@ const Statement = ({
                   panelTitle,
                 );
               }}
-              data-test="PlayButton"
+              data-test="play-button"
             >
               <img
                 src={playButton}
