@@ -53,6 +53,11 @@ const Player = withTracking(({
     startPlayer();
   };
 
+  const setAudios = (audioFiles) => {
+    console.log("setAudios");
+    console.log("audioFiles ", audioFiles);
+  };
+
   useEffect(() => {
     if (statementId) {
       createNewTrackingEntry(statementId, user);
@@ -83,6 +88,7 @@ const Player = withTracking(({
     <Provider value={{
       stopPlayer,
       setAudio,
+      setAudios,
     }}
     >
       {children}
