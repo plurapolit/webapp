@@ -10,7 +10,7 @@ const withTracking = (WrappedComponent) => {
     currentTime: 0,
     listenEvents: -1,
   };
-
+  // TODO: rewrite Tracking as a functional component with usage of singelton paddern.
   class PlayerWithTracking extends Component {
     constructor(props) {
       super(props);
