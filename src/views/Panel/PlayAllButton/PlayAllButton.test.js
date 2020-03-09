@@ -46,4 +46,37 @@ describe("<PlayAllButton />", () => {
     wrapper.find(Button).simulate("click");
     expect(setAudios).toBeCalledTimes(1);
   });
+
+  it("should prepare object correctly", () => {
+    const obj = {
+      audioFile: "url",
+      author: "full_name",
+      statementId: "id",
+      panelTitle: "title",
+    };
+    const newExpertStatements = [
+      {
+        ...expertStatements[0],
+        statement: {
+          ...expertStatements[0].statement,
+          id: obj.statementId,
+        },
+        statement_audio_file: {
+          file_link: obj.audioFile,
+        },
+        user: {
+          full_name: obj.author,
+        },
+      },
+    ];
+    let audios;
+    const setAudios = (array) => { audios = array; };
+    const { wrapper } = setup({
+      setAudios,
+      expertStatements: newExpertStatements,
+      panelTitle: obj.panelTitle,
+    });
+    wrapper.find(Button).simulate("click");
+    expect(audios).toEqual([obj]);
+  });
 });
