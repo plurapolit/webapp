@@ -1,15 +1,12 @@
 import React, { useRef, useEffect } from "react";
 import AudioPlayer from "react-h5-audio-player";
 
-// import withTracking from "../../../helper/TrackingHelper";
-// import { useStoreContext } from "../StoreContext/StoreContext";
+import Tracking from "../../../helper/TrackingHelper";
+import { useStoreContext } from "../../StoreContext/StoreContext";
 import styles from "./Player.module.scss";
 import "react-h5-audio-player/src/styles.scss";
 
 const Player = ({
-  // updateTracking,
-  // trackWhilePlaying,
-  // createNewTrackingEntry,
   audioStatement = {
     author: "",
     panelTitle: "",
@@ -19,11 +16,14 @@ const Player = ({
   startPlayer,
 }) => {
   const player = useRef();
-  // const { user } = useStoreContext();
+  const tracker = useRef();
+  const { user } = useStoreContext();
 
-  if (audioStatement.statementId) {
-    // createNewTrackingEntry(audioStatement.statementId, user);
-  }
+  const addTrackingToPlayer = async () => {
+    tracker.current = await Tracking.create(audioStatement.statementId, user);
+  };
+
+  if (audioStatement.statementId) addTrackingToPlayer();
 
   useEffect(() => {
     if (player.current) {
@@ -36,8 +36,17 @@ const Player = ({
   }, [running]);
 
   const onEnded = () => {
-    // updateTracking();
+    if (tracker.current) tracker.current.updateTracking();
     removeAudioFromQueue(audioStatement);
+  };
+
+  const onListen = () => {
+    const { currentTime } = player.current.audio;
+    if (tracker.current) tracker.current.trackWhilePlaying(currentTime);
+  };
+
+  const onPause = () => {
+    if (tracker.current) tracker.current.updateTracking();
   };
 
   return (
@@ -49,9 +58,9 @@ const Player = ({
           src={audioStatement.audioFile}
           ref={player}
           onPlay={startPlayer}
-          // onPause={updateTracking}
+          onPause={onPause}
           onEnded={onEnded}
-          // onListen={() => trackWhilePlaying(player.current)}
+          onListen={onListen}
           listenInterval={1000}
           progressJumpStep={10000}
           showVolumeControl={false}
@@ -62,5 +71,4 @@ const Player = ({
   );
 };
 
-// export default withTracking(Player);
 export default Player;
