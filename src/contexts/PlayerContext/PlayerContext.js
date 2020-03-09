@@ -19,7 +19,7 @@ const PlayerWrapper = ({
   const [currentStatement, setCurrentStatement] = useState();
   const [paused, setPaused] = useState(false);
 
-  const removeAudioFromQueue = (statement) => {
+  const removeAudioTrackFromQueue = (statement) => {
     const newQueue = queue.filter((element) => element !== statement);
     setCurrentStatement(undefined);
     setQueue(newQueue);
@@ -72,7 +72,7 @@ const PlayerWrapper = ({
         <Player
           audioStatement={currentStatement}
           running={currentStatement && showMediaPlayer && !paused}
-          removeAudioFromQueue={removeAudioFromQueue}
+          removeAudioTrackFromQueue={removeAudioTrackFromQueue}
           startPlayer={startPlayer}
         />
       </If>

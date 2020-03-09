@@ -12,7 +12,7 @@ const Player = ({
     panelTitle: "",
   },
   running = false,
-  removeAudioFromQueue,
+  removeAudioTrackFromQueue,
   startPlayer,
 }) => {
   const player = useRef();
@@ -28,15 +28,14 @@ const Player = ({
   useEffect(() => {
     if (player.current && running) {
       player.current.audio.play();
-    }
-    if (player.current) {
+    } else if (player.current) {
       player.current.audio.pause();
     }
   }, [running]);
 
   const onEnded = () => {
     if (tracker.current) tracker.current.updateTracking();
-    removeAudioFromQueue(audioStatement);
+    removeAudioTrackFromQueue(audioStatement);
   };
 
   const onListen = () => {
