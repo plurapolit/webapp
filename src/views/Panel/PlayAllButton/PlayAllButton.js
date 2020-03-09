@@ -8,7 +8,7 @@ const PlayAllButton = ({
   expertStatements,
   panelTitle,
 }) => {
-  const { setAudios } = usePlayerContext();
+  const { setAudioTrackList } = usePlayerContext();
   const audios = [];
   expertStatements.forEach((statement) => {
     const { intro } = statement;
@@ -31,7 +31,7 @@ const PlayAllButton = ({
   });
 
   const handleClick = () => {
-    setAudios(audios);
+    setAudioTrackList(audios);
   };
 
   return (

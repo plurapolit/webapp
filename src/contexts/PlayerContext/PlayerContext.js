@@ -44,7 +44,7 @@ const PlayerWrapper = ({
     }
   }, [queue]);
 
-  const setAudio = async (audioFile, author, statementId, panelTitle) => {
+  const setAudioTrack = async (audioFile, author, statementId, panelTitle) => {
     const audioStatement = {
       audioFile,
       author,
@@ -55,7 +55,7 @@ const PlayerWrapper = ({
     setQueue([audioStatement]);
   };
 
-  const setAudios = (audioFiles) => {
+  const setAudioTrackList = (audioFiles) => {
     showPlayer();
     setQueue([...audioFiles]);
   };
@@ -63,8 +63,8 @@ const PlayerWrapper = ({
   return (
     <Provider value={{
       pausePlayer,
-      setAudio,
-      setAudios,
+      setAudioTrack,
+      setAudioTrackList,
     }}
     >
       {children}

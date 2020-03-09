@@ -10,11 +10,11 @@ const setup = (propOverrides) => {
   const props = {
     panelTitle: "default Title",
     expertStatements,
-    setAudios: jest.fn(),
+    setAudioTrackList: jest.fn(),
     ...propOverrides,
   };
   jest.spyOn(PlayerContextModule, "usePlayerContext").mockImplementation(() => ({
-    setAudios: props.setAudios,
+    setAudioTrackList: props.setAudioTrackList,
   }));
   const wrapper = shallow(
     <PlayerContextModule.PlayerProvider>
@@ -40,11 +40,11 @@ describe("<PlayAllButton />", () => {
     expect(typeof wrapper.find(Button).props().onClick).toBe("function");
   });
 
-  it("should call setAudios on button click", () => {
-    const setAudios = jest.fn();
-    const { wrapper } = setup({ setAudios });
+  it("should call setAudioTrackList on button click", () => {
+    const setAudioTrackList = jest.fn();
+    const { wrapper } = setup({ setAudioTrackList });
     wrapper.find(Button).simulate("click");
-    expect(setAudios).toBeCalledTimes(1);
+    expect(setAudioTrackList).toBeCalledTimes(1);
   });
 
   it("should prepare object correctly", () => {
@@ -70,9 +70,9 @@ describe("<PlayAllButton />", () => {
       },
     ];
     let audios;
-    const setAudios = (array) => { audios = array; };
+    const setAudioTrackList = (array) => { audios = array; };
     const { wrapper } = setup({
-      setAudios,
+      setAudioTrackList,
       expertStatements: newExpertStatements,
       panelTitle: obj.panelTitle,
     });
