@@ -1,74 +1,49 @@
-import React, { Component } from "react";
-
 import UserAudioTrackingApi from "../api/UserAudioTrackingApi";
 
-const withTracking = (WrappedComponent) => {
+const Tracking = (function TrackingObj() {
   const TIME_BETWEEN_TRACKING_UPDATES_IN_SECONDS = 10;
+  let instance;
 
-  const initialState = {
-    trackingId: null,
-    currentTime: 0,
-    listenEvents: -1,
+  async function createTracking(statementId, user) {
+    const userId = user ? user.id : null;
+    const { id: trackingId } = await UserAudioTrackingApi.post(userId, statementId, 0, 0);
+
+    async function updateTracking(
+      trackId = this.trackingId,
+      currentTime = this.currentTime,
+      listenEvents = this.listenEvents,
+    ) {
+      await UserAudioTrackingApi.put(trackId, currentTime, listenEvents);
+    }
+
+    function trackWhilePlaying(currentTime) {
+      this.currentTime = currentTime;
+      this.listenEvents += 1;
+      if (this.listenEvents % TIME_BETWEEN_TRACKING_UPDATES_IN_SECONDS === 0) {
+        this.updateTracking(this.trackingId, this.currentTime, this.listenEvents);
+      }
+    }
+
+    return {
+      userId,
+      trackingId,
+      currentTime: 0,
+      listenEvents: -1,
+      updateTracking,
+      trackWhilePlaying,
+    };
+  }
+  const create = async (statementId, user) => {
+    if (instance) {
+      instance.updateTracking();
+    }
+    instance = await createTracking(statementId, user);
+    return instance;
   };
 
-  class PlayerWithTracking extends Component {
-    constructor(props) {
-      super(props);
-      this.state = initialState;
-      this.updateTracking = this.updateTracking.bind(this);
-      this.createNewTrackingEntry = this.createNewTrackingEntry.bind(this);
-      this.trackWhilePlaying = this.trackWhilePlaying.bind(this);
-    }
+  return {
+    create,
+  };
+});
 
-    async updateTracking() {
-      const { trackingId, currentTime, listenEvents } = this.state;
-      if (trackingId) {
-        await UserAudioTrackingApi.put(trackingId, currentTime, listenEvents);
-      }
-    }
-
-    resetTracking() {
-      const newState = initialState;
-      this.setState(newState);
-    }
-
-    async createNewTrackingEntry(statementId, user) {
-      const userId = user ? user.id : null;
-      await this.updateTracking();
-      this.resetTracking();
-      const res = await UserAudioTrackingApi.post(userId, statementId, 0, 0);
-      this.setState((prevState) => ({
-        ...prevState,
-        trackingId: res.id,
-      }));
-    }
-
-    trackWhilePlaying(player) {
-      const { listenEvents } = this.state;
-      this.setState((prevState) => ({
-        ...prevState,
-        currentTime: player.current.audio.currentTime,
-        listenEvents: prevState.listenEvents + 1,
-      }));
-      if (listenEvents % TIME_BETWEEN_TRACKING_UPDATES_IN_SECONDS === 0) {
-        this.updateTracking();
-      }
-    }
-
-    render() {
-      return (
-        <WrappedComponent
-          /* eslint-disable-next-line react/jsx-props-no-spreading */
-          {...this.props}
-          createNewTrackingEntry={this.createNewTrackingEntry}
-          trackWhilePlaying={this.trackWhilePlaying}
-          updateTracking={this.updateTracking}
-        />
-      );
-    }
-  }
-
-  return PlayerWithTracking;
-};
-
-export default withTracking;
+export default Tracking();

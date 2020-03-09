@@ -1,4 +1,4 @@
-import { fetchResponse, Parameter } from "./APIUtils";
+import { fetchBody, fetchResponse, Parameter } from "./APIUtils";
 
 const UserAudioTrackingApi = () => {
   const post = async (userId, statementId, currentPositionInSeconds, playTimeInSeconds) => {
@@ -11,13 +11,8 @@ const UserAudioTrackingApi = () => {
     };
 
     const parameters = Parameter.post(body);
-    const res = await fetchResponse(postUrl, parameters);
-    if (res.ok) {
-      const json = await res.json();
-      return json;
-    }
-    const errorObj = await res.json();
-    throw errorObj;
+    const res = await fetchBody(postUrl, parameters);
+    return res;
   };
 
   const put = async (trackingId, currentPositionInSeconds, playTimeInSeconds) => {
