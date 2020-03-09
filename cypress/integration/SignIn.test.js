@@ -1,4 +1,4 @@
-/* eslint-disable-next-line */
+/* eslint-disable-next-line spaced-comment */
 /// <reference types="Cypress" />
 import { user } from "../Helper";
 
