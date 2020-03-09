@@ -26,12 +26,11 @@ const Player = ({
   if (audioStatement.statementId) addTrackingToPlayer();
 
   useEffect(() => {
+    if (player.current && running) {
+      player.current.audio.play();
+    }
     if (player.current) {
-      if (running) {
-        player.current.audio.play();
-      } else {
-        player.current.audio.pause();
-      }
+      player.current.audio.pause();
     }
   }, [running]);
 
