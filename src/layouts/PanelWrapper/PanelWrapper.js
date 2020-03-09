@@ -7,7 +7,7 @@ import PageNotFound from "../../views/PageNotFound/PageNotFound";
 import Loader from "../../components/Loader/Loader";
 import { useStoreContext } from "../../contexts/StoreContext/StoreContext";
 
-const PanelWrapper = ({ location }) => {
+const PanelWrapper = () => {
   const [currentPanel, setCurrentPanel] = useState(undefined);
   const [isLoaded, setIsLoaded] = useState(false);
   const { slugList } = useStoreContext();
