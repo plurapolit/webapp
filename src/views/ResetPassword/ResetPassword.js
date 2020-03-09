@@ -1,6 +1,10 @@
 import React from "react";
-import { useParams } from "react-router";
-import { withRouter, Link } from "react-router-dom";
+import {
+  withRouter,
+  Link,
+  useHistory,
+  useParams,
+} from "react-router-dom";
 
 import styles from "./ResetPassword.module.scss";
 import Button from "../../components/Button/Button";
@@ -8,8 +12,9 @@ import { getDataFromEvent } from "../../helper/FormHelper";
 import Notification from "../../helper/NotificationHelper";
 import UserApi from "../../api/UserApi";
 
-const ResetPassword = ({ history }) => {
+const ResetPassword = () => {
   const { resetPasswordToken } = useParams();
+  const history = useHistory();
 
   const handleSubmit = async (event) => {
     const input = getDataFromEvent(event);
