@@ -51,7 +51,7 @@ const Player = ({
     <div className={styles["media-player-wrapper"]}>
       <p className={styles["media-player-wrapper-user"]}>{audioStatement.author}</p>
       <p className={styles["media-player-wrapper-statement"]}>{audioStatement.panelTitle}</p>
-      <div className={styles["media-player-wrapper-player"]}>
+      <div className={styles["media-player-wrapper-player"]} data-test="player">
         <AudioPlayer
           src={audioStatement.audioFile}
           ref={player}
