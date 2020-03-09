@@ -24,7 +24,7 @@ const Statement = ({
   }, [numberOfComments]);
 
   const toggleComments = () => {
-    setCommentsAreOpen(!commentsAreOpen);
+    setCommentsAreOpen((currentState) => !currentState);
   };
 
   return (
