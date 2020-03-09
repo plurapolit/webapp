@@ -28,7 +28,7 @@ const Statement = ({
   };
 
   return (
-    <div className={styles["statement-comment-container"]}>
+    <div className={styles["statement-comment-container"]} data-test="statement">
       <div className={styles["card"]}>
         <StatementHeader expert={expert} />
         <div className={styles["quote"]}>

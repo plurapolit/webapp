@@ -8,12 +8,12 @@ import Audio from "./CommentAudio";
 const setup = (propOverrides) => {
   const props = {
     commentData,
-    setAudio: jest.fn(),
+    setAudioTrack: jest.fn(),
     ...propOverrides,
   };
 
   jest.spyOn(PlayerContextModule, "usePlayerContext").mockImplementation(() => ({
-    setAudio: props.setAudio,
+    setAudioTrack: props.setAudioTrack,
   }));
 
   const wrapper = shallow(
@@ -42,11 +42,11 @@ describe("<Audio />", () => {
     expect(wrapper.find(".audio-info_date")).toHaveLength(1);
   });
 
-  it("should call setAudio on click", () => {
-    const setAudio = jest.fn();
-    const { wrapper } = setup({ setAudio });
+  it("should call setAudioTrack on click", () => {
+    const setAudioTrack = jest.fn();
+    const { wrapper } = setup({ setAudioTrack });
     wrapper.find(".audio-icon").simulate("click");
-    expect(setAudio).toHaveBeenCalled();
+    expect(setAudioTrack).toHaveBeenCalled();
   });
 
   it("should style audio-icon differently if user is a expert", () => {

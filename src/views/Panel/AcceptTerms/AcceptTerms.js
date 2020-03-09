@@ -21,7 +21,7 @@ const AcceptTerms = ({ nextPage }) => (
         </a>
       </div>
     </ol>
-    <Button onClick={() => nextPage()}>
+    <Button onClick={() => nextPage()} dataTest="accept-terms-button">
       Ich akzeptiere die Nutzungsbedingungen
     </Button>
     <div className={styles["step-index"]}>Schritt 1 von 4</div>

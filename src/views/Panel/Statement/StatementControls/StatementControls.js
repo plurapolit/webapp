@@ -10,9 +10,8 @@ import styles from "./StatementControls.module.scss";
 import Helper from "./StatementControlsHelper";
 
 const StatementControls = ({ expert, panelTitle, toggleComments }) => {
-  const { setAudio } = usePlayerContext();
+  const { setAudioTrack } = usePlayerContext();
   const { number_of_comments: numberOfComments } = expert;
-
 
   return (
     <div className={styles["controls"]}>
@@ -39,8 +38,9 @@ const StatementControls = ({ expert, panelTitle, toggleComments }) => {
         <button
           type="button"
           className={styles["play"]}
+          data-test="play-button"
           onClick={() => {
-            setAudio(
+            setAudioTrack(
               expert.statement_audio_file.file_link,
               expert.user.full_name,
               expert.statement.id,

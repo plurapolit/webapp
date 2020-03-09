@@ -9,17 +9,18 @@ import playButton from "../../../../assets/images/play.svg";
 import styles from "./CommentAudio.module.scss";
 
 const Audio = ({ commentData, panelTitle }) => {
-  const { setAudio } = usePlayerContext();
+  const { setAudioTrack } = usePlayerContext();
   return (
     <div className={styles["audio"]}>
       <div
         className={[styles["audio-icon"], commentData.user.role === "expert" && styles["audio-icon--expert"]].join(" ")}
-        onClick={() => setAudio(
+        onClick={() => setAudioTrack(
           commentData.audio_file.file_link,
           commentData.user.full_name,
           commentData.comment.id,
           panelTitle,
         )}
+        data-test="play-button"
       >
         <img
           alt="icon"

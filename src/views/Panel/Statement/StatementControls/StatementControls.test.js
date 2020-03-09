@@ -12,12 +12,12 @@ const setup = (propOverrides) => {
     expert,
     panelTitle: "default title",
     toggleComments: jest.fn(),
-    setAudio: jest.fn(),
+    setAudioTrack: jest.fn(),
     ...propOverrides,
   };
 
   jest.spyOn(PlayerContextModule, "usePlayerContext").mockImplementation(() => ({
-    setAudio: props.setAudio,
+    setAudioTrack: props.setAudioTrack,
   }));
 
   const wrapper = shallow(
@@ -46,9 +46,9 @@ describe("<StatementControls />", () => {
   });
 
   it("should render playbutton", () => {
-    const setAudio = jest.fn();
-    const { wrapper } = setup({ setAudio });
+    const setAudioTrack = jest.fn();
+    const { wrapper } = setup({ setAudioTrack });
     wrapper.find(".play").simulate("click");
-    expect(setAudio).toHaveBeenCalled();
+    expect(setAudioTrack).toHaveBeenCalled();
   });
 });

@@ -50,7 +50,7 @@ const Notification = () => {
 
   const setErrorMessages = (error) => {
     Object.entries(error).forEach(([key, value]) => {
-      Notification.warning(value[0], key);
+      warning(value[0], key);
     });
   };
 

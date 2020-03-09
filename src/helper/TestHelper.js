@@ -30,6 +30,12 @@ export const expert = {
   user_avatar_key: "7zbzfy10wphh2l26oigmhpecin9f",
 };
 
+export const expertStatements = [
+  expert,
+  expert,
+  expert,
+];
+
 export const commentData = {
   comment: {
     id: 199,
