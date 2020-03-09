@@ -2,6 +2,7 @@ import React from "react";
 
 import { usePlayerContext } from "../../../contexts/PlayerContext/PlayerContext";
 import Button from "../../../components/Button/Button";
+import styles from "./PlayAllButton.module.scss";
 
 const PlayAllButton = ({
   expertStatements,
@@ -20,11 +21,13 @@ const PlayAllButton = ({
   };
 
   return (
-    <Button
-      onClick={handleClick}
-    >
-      Alle abspielen
-    </Button>
+    <div className={styles["play-all-button"]}>
+      <Button
+        onClick={handleClick}
+      >
+        Alle abspielen
+      </Button>
+    </div>
   );
 };
 
