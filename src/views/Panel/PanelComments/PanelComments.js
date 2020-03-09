@@ -66,7 +66,7 @@ const PanelComments = ({
               panelTitle={panelTitle}
             />
           )))}
-          <Button onClick={() => openCommentModal()}>
+          <Button onClick={() => openCommentModal()} dataTest="create-comment-button">
             <img
               alt="icon"
               src={microphoneButton}

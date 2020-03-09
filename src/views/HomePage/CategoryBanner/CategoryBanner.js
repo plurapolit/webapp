@@ -15,7 +15,7 @@ const CategoryBanner = ({
   };
 
   return (
-    <section className={styles["category-banner"]} style={customStyle}>
+    <section className={styles["category-banner"]} style={customStyle} data-test="category-banner">
       <img
         src={`${ROOTIMAGEURL}/${imageUrl}`}
         alt={name}
