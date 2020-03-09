@@ -16,7 +16,6 @@ const PanelContent = ({ content }) => (
         panelTitle={content.panel.short_title}
         expertStatements={content.expert_statements}
       />
-      {console.table(content.expert_statements)}
       {content.expert_statements.map((expert) => (
         <Statement
           key={expert.statement.id}
