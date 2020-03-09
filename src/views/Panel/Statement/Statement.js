@@ -16,7 +16,7 @@ const Statement = ({
   panelTitle,
 }) => {
   const [commentsAreOpen, setCommentsAreOpen] = useState(false);
-  const { setAudio } = usePlayerContext();
+  const { setAudioTrack } = usePlayerContext();
 
   const IMAGEROOTURL = process.env.REACT_APP_BUCKET_URL;
 
@@ -125,7 +125,7 @@ const Statement = ({
               type="button"
               className={styles["expert-card-nav-play"]}
               onClick={() => {
-                setAudio(
+                setAudioTrack(
                   expert.statement_audio_file.file_link,
                   expert.user.full_name,
                   expert.statement.id,

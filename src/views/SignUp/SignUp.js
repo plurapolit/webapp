@@ -1,5 +1,5 @@
 import React from "react";
-import { withRouter, Link } from "react-router-dom";
+import { withRouter, Link, useHistory } from "react-router-dom";
 
 import styles from "./SignUp.module.scss";
 import Button from "../../components/Button/Button";
@@ -9,8 +9,10 @@ import UserApi from "../../api/UserApi";
 import JwtApi from "../../api/JwtApi";
 import { useStoreContext } from "../../contexts/StoreContext/StoreContext";
 
-const SignUp = ({ history }) => {
+const SignUp = () => {
   const { setUser } = useStoreContext();
+  const history = useHistory();
+
   const handleSubmit = async (event) => {
     const input = getDataFromEvent(event);
     try {

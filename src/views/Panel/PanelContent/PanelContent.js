@@ -2,6 +2,7 @@
 import React from "react";
 
 import Statement from "../Statement/Statement";
+import PlayAllButton from "../PlayAllButton/PlayAllButton";
 
 import styles from "./PanelContent.module.scss";
 
@@ -11,6 +12,10 @@ const PanelContent = ({ content }) => (
     <div className={styles.description}>{content.panel.description}</div>
     <div className={styles.wrapper}>
       <div className={styles["experts-headline"]}>Expert/-innen</div>
+      <PlayAllButton
+        panelTitle={content.panel.short_title}
+        expertStatements={content.expert_statements}
+      />
       {content.expert_statements.map((expert) => (
         <Statement
           key={expert.statement.id}
@@ -18,11 +23,6 @@ const PanelContent = ({ content }) => (
           panelTitle={content.panel.short_title}
         />
       ))}
-    </div>
-    <div className={styles["disclaimer"]}>
-      Alle zur Hamburgischen Bürgerschaftswahl 2020 antretenden Parteien
-      wurden zur Mitwirkung auf PluraPolit angefragt. Nicht alle angefragten
-      Parteien haben jedoch bislang Statements abgegeben.
     </div>
   </div>
 );

@@ -1,11 +1,13 @@
 import React from "react";
-import { withRouter } from "react-router-dom";
+import { withRouter, useHistory } from "react-router-dom";
 
 import SignInComponent from "../../components/SignInComponent/SignInComponent";
 
 import styles from "./SignIn.module.scss";
 
-const SignIn = ({ history }) => {
+const SignIn = () => {
+  const history = useHistory();
+
   const routeBack = () => {
     history.push("/");
   };
