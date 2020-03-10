@@ -6,9 +6,9 @@ import Notification from "../../../helper/NotificationHelper";
 import Helper from "./CommentHelper";
 import { ModalContext } from "../../../contexts/ModalContext/ModalContext";
 import SignInComponent from "../../../components/SignInComponent/SignInComponent";
-import Audio from "./Audio/Audio";
-import Statement from "./Statement/Statement";
-import Like from "./Like/Like";
+import CommentAudio from "./CommentAudio/CommentAudio";
+import CommentStatement from "./CommentStatement/CommentStatement";
+import CommentLike from "./CommentLike/CommentLike";
 
 import styles from "./Comment.module.scss";
 
@@ -53,9 +53,9 @@ const Comment = ({
         </div>
       </If>
       <div className={styles["card"]}>
-        <Audio commentData={commentData} panelTitle={panelTitle} />
-        <Statement commentData={commentData} />
-        <Like
+        <CommentAudio commentData={commentData} panelTitle={panelTitle} />
+        <CommentStatement commentData={commentData} />
+        <CommentLike
           commentData={commentData}
           likes={likes}
           liked={liked}

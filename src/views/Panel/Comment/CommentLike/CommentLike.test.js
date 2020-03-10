@@ -4,7 +4,7 @@ import { If } from "react-if";
 
 import { commentData } from "../../../../helper/TestHelper";
 import LikeButton from "../../../../components/LikeButton/LikeButton";
-import Like from "./Like";
+import Like from "./CommentLike";
 
 const setup = (propOverrides) => {
   const props = {

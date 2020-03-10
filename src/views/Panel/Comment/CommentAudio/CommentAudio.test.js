@@ -3,7 +3,7 @@ import { shallow } from "enzyme";
 import * as PlayerContextModule from "../../../../contexts/PlayerContext/PlayerContext";
 import { commentData } from "../../../../helper/TestHelper";
 
-import Audio from "./Audio";
+import Audio from "./CommentAudio";
 
 const setup = (propOverrides) => {
   const props = {

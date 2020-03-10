@@ -5,7 +5,7 @@ import LikeButton from "../../../../components/LikeButton/LikeButton";
 
 import likeBadge from "../../../../assets/images/like-badge.svg";
 
-import styles from "./Like.module.scss";
+import styles from "./CommentLike.module.scss";
 
 const Like = ({
   commentData,

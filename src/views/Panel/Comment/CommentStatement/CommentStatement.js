@@ -1,6 +1,6 @@
 import React from "react";
 
-import styles from "./Statement.module.scss";
+import styles from "./CommentStatement.module.scss";
 
 const Statement = ({ commentData }) => (
   <div className={styles["statement"]}>
