@@ -3,6 +3,7 @@ import React from "react";
 import { usePlayerContext } from "../../../contexts/PlayerContext/PlayerContext";
 import Button from "../../../components/Button/Button";
 import styles from "./PlayAllButton.module.scss";
+import playButton from "../../../assets/images/play.svg";
 
 const PlayAllButton = ({
   expertStatements,
@@ -40,7 +41,14 @@ const PlayAllButton = ({
       <Button
         onClick={handleClick}
       >
-        Alle abspielen
+        <div className={styles["button-content"]}>
+          <img
+            alt="icon"
+            src={playButton}
+            className={styles["play-icon"]}
+          />
+          Alle abspielen
+        </div>
       </Button>
     </div>
   );
