@@ -20,7 +20,8 @@ const Player = ({
   const { user } = useStoreContext();
 
   const addTrackingToPlayer = async () => {
-    tracker.current = await Tracking.create(audioStatement.statementId, user);
+    const { statementId, intro } = audioStatement;
+    tracker.current = await Tracking.create(statementId, user, intro);
   };
 
   if (audioStatement.statementId) addTrackingToPlayer();

@@ -40,12 +40,12 @@ const StatementControls = ({ expert, panelTitle, toggleComments }) => {
           className={styles["play"]}
           data-test="play-button"
           onClick={() => {
-            setAudioTrack(
-              expert.statement_audio_file.file_link,
-              expert.user.full_name,
-              expert.statement.id,
+            setAudioTrack({
+              audioFile: expert.statement_audio_file.file_link,
+              author: expert.user.full_name,
+              statementId: expert.statement.id,
               panelTitle,
-            );
+            });
           }}
         >
           <img
