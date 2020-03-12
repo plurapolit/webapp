@@ -29,8 +29,8 @@ const QueueItem = (function itemObj() {
       content,
       played: false,
       prev,
-      setPrev,
       next: false,
+      setPrev,
       setNext,
     };
   };
