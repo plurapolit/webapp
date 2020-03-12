@@ -18,7 +18,7 @@ const PlayAllButton = ({
         author: statement.user.full_name,
         statementId: statement.statement.id,
         panelTitle,
-        intro: true,
+        isIntro: true,
       };
       audios.push(introStatement);
     }
