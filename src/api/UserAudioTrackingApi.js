@@ -1,7 +1,13 @@
 import { fetchBody, fetchResponse, Parameter } from "./APIUtils";
 
 const UserAudioTrackingApi = () => {
-  const post = async (userId, statementId, isIntro, currentPositionInSeconds, playTimeInSeconds) => {
+  const post = async (
+    userId,
+    statementId,
+    isIntro,
+    currentPositionInSeconds,
+    playTimeInSeconds,
+  ) => {
     const postUrl = `${process.env.REACT_APP_ROOT_URL}/user_audio_trackings`;
     const body = {
       user_id: userId,
