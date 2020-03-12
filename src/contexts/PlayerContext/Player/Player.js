@@ -12,7 +12,7 @@ const Player = ({
     panelTitle: "",
   },
   running = false,
-  removeAudioTrackFromQueue,
+  playNextAudioTrack,
   startPlayer,
 }) => {
   const player = useRef();
@@ -36,7 +36,7 @@ const Player = ({
 
   const onEnded = () => {
     if (tracker.current) tracker.current.updateTracking();
-    removeAudioTrackFromQueue(audioStatement);
+    playNextAudioTrack(audioStatement);
   };
 
   const onListen = () => {
