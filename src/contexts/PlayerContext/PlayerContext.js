@@ -44,20 +44,14 @@ const PlayerWrapper = ({
     }
   }, [queue]);
 
-  const setAudioTrack = async (audioFile, author, statementId, panelTitle) => {
-    const audioStatement = {
-      audioFile,
-      author,
-      statementId,
-      panelTitle,
-    };
+  const setAudioTrack = async (audioTrack) => {
     showPlayer();
-    setQueue([audioStatement]);
+    setQueue([audioTrack]);
   };
 
-  const setAudioTrackList = (audioFiles) => {
+  const setAudioTrackList = (audioTrackList) => {
     showPlayer();
-    setQueue([...audioFiles]);
+    setQueue([...audioTrackList]);
   };
 
   return (
