@@ -41,14 +41,12 @@ const PlayAllButton = ({
       <Button
         onClick={handleClick}
       >
-        <div className={styles["button-content"]}>
-          <img
-            alt="icon"
-            src={playButton}
-            className={styles["play-icon"]}
-          />
-          Alle abspielen
-        </div>
+        <img
+          alt="icon"
+          src={playButton}
+          className={styles["play-icon"]}
+        />
+        <span className={styles["text"]}>Alle abspielen</span>
       </Button>
     </div>
   );
