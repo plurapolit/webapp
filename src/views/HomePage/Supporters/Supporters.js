@@ -1,4 +1,6 @@
 import React from "react";
+import LazyLoad from "react-lazyload";
+import Img from "react-image";
 
 import styles from "./Supporters.module.scss";
 import LPB from "./images/lpb-hh.jpg";
@@ -9,25 +11,27 @@ import Partner3 from "./images/sib-partner3.jpg";
 
 const Supporters = () => (
   <div className={styles["container"]}>
-    <div className={styles["image-wrapper"]}>
-      <img
-        className={styles["image"]}
-        src={StartupIncubator}
-        alt="sample-logo"
-      />
-    </div>
-    <div className={styles["image-wrapper"]}>
-      <img className={styles["image"]} src={LPB} alt="sample-logo" />
-    </div>
-    <div className={styles["image-wrapper"]}>
-      <img className={styles["image"]} src={Partner1} alt="sample-logo" />
-    </div>
-    <div className={styles["image-wrapper"]}>
-      <img className={styles["image"]} src={Partner2} alt="sample-logo" />
-    </div>
-    <div className={styles["image-wrapper"]}>
-      <img className={styles["image"]} src={Partner3} alt="sample-logo" />
-    </div>
+    <LazyLoad offset={200} once>
+      <div className={styles["image-wrapper"]}>
+        <Img
+          className={styles["image"]}
+          src={StartupIncubator}
+          alt="sample-logo"
+        />
+      </div>
+      <div className={styles["image-wrapper"]}>
+        <Img className={styles["image"]} src={LPB} alt="sample-logo" />
+      </div>
+      <div className={styles["image-wrapper"]}>
+        <Img className={styles["image"]} src={Partner1} alt="sample-logo" />
+      </div>
+      <div className={styles["image-wrapper"]}>
+        <Img className={styles["image"]} src={Partner2} alt="sample-logo" />
+      </div>
+      <div className={styles["image-wrapper"]}>
+        <Img className={styles["image"]} src={Partner3} alt="sample-logo" />
+      </div>
+    </LazyLoad>
   </div>
 );
 
