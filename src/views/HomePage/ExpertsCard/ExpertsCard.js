@@ -1,4 +1,6 @@
 import React from "react";
+import LazyLoad from "react-lazyload";
+import Img from "react-image";
 
 import styles from "./ExpertsCard.module.scss";
 
@@ -9,16 +11,20 @@ const ExpertsCard = ({ experts }) => {
 
   return (
     <div className={styles["speaker-image-wrapper"]}>
-      <img
-        src={speakerImage}
-        className={styles["speaker-image"]}
-        alt={experts.full_name}
-      />
-      <img
-        alt={experts.organisation_name}
-        src={speakerOrganisation}
-        className={styles["organisation-logo"]}
-      />
+      <LazyLoad offset={500} once>
+        <Img
+          src={speakerImage}
+          className={styles["speaker-image"]}
+          alt={experts.full_name}
+          loader={<p>Loading</p>}
+        />
+        <Img
+          alt={experts.organisation_name}
+          src={speakerOrganisation}
+          className={styles["organisation-logo"]}
+          loader={<p>Loading</p>}
+        />
+      </LazyLoad>
     </div>
   );
 };

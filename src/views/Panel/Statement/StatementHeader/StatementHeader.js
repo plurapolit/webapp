@@ -1,7 +1,8 @@
 import React from "react";
+import Img from "react-image";
+import LazyLoad from "react-lazyload";
 
 import TwitterButton from "../../../../components/TwitterButton/TwitterButton";
-
 import styles from "./StatementHeader.module.scss";
 
 const StatementHeader = ({ expert }) => {
@@ -9,11 +10,14 @@ const StatementHeader = ({ expert }) => {
 
   const avatar = () => {
     const image = (
-      <img
-        src={`${IMAGEROOTURL}/${expert.user_avatar_key}`}
-        alt={expert.user.full_name}
-        className={styles["image"]}
-      />
+      <LazyLoad offset={300} once>
+        <Img
+          src={`${IMAGEROOTURL}/${expert.user_avatar_key}`}
+          alt={expert.user.full_name}
+          className={styles["image"]}
+          loader={<p>Loading...</p>}
+        />
+      </LazyLoad>
     );
 
     if (expert.user.website_link) {
