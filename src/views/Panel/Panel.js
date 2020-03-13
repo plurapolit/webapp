@@ -1,4 +1,5 @@
 import React from "react";
+import Img from "react-image";
 
 import Hyphen from "../../helper/HyphenHelper";
 import PanelMetaTags from "./PanelMetaTags";
@@ -19,15 +20,18 @@ const Panel = ({ panel, objectPositionTop }) => {
 
   const imageUrl = `${IMAGEROOTURL}/${panel.panel_avatar_key}`;
 
+  const defaultPanelImage = <div className={[styles["image"], styles["default-image"]].join(" ")} />;
+
   return (
     <div className={styles["panel"]} style={customStylePanel}>
       <PanelMetaTags panel={panel.panel} image={imageUrl} />
       <div className={styles["header"]}>
-        <img
+        <Img
           src={imageUrl}
           alt={panel.panel.short_title}
           className={styles["image"]}
           style={customStyleImage}
+          loader={defaultPanelImage}
         />
         <div className={styles["wrapper"]}>
           <ContentWrapper>

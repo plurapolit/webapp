@@ -43,7 +43,7 @@ const Routes = () => (
         <SignUp />
       </Route>
       <Route path="/:slug">
-        <Suspense fallback={Loader}>
+        <Suspense fallback={<Loader />}>
           <PanelWrapper />
         </Suspense>
       </Route>
