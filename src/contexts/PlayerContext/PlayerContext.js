@@ -18,7 +18,8 @@ const PlayerWrapper = ({
   const [showMediaPlayer, setShowMediaPlayer] = useState(show);
   const [currentStatement, setCurrentStatement] = useState();
   const [paused, setPaused] = useState(false);
-  const { current: queue } = useRef(Queue.create());
+  const { current } = useRef(Queue.create());
+  const queue = current;
 
   const playNextAudioTrack = () => {
     setCurrentStatement(queue.nextAudioTrack().content);
