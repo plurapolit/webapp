@@ -20,16 +20,32 @@ const Supporters = () => (
         />
       </div>
       <div className={styles["image-wrapper"]}>
-        <Img className={styles["image"]} src={LPB} alt="sample-logo" />
+        <Img
+          className={styles["image"]}
+          src={LPB}
+          alt="sample-logo"
+        />
       </div>
       <div className={styles["image-wrapper"]}>
-        <Img className={styles["image"]} src={Partner1} alt="sample-logo" />
+        <Img
+          className={styles["image"]}
+          src={Partner1}
+          alt="sample-logo"
+        />
       </div>
       <div className={styles["image-wrapper"]}>
-        <Img className={styles["image"]} src={Partner2} alt="sample-logo" />
+        <Img
+          className={styles["image"]}
+          src={Partner2}
+          alt="sample-logo"
+        />
       </div>
       <div className={styles["image-wrapper"]}>
-        <Img className={styles["image"]} src={Partner3} alt="sample-logo" />
+        <Img
+          className={styles["image"]}
+          src={Partner3}
+          alt="sample-logo"
+        />
       </div>
     </LazyLoad>
   </div>
