@@ -13,6 +13,7 @@ const Player = ({
   },
   running = false,
   playNextAudioTrack,
+  // playPrevAudioTrack,
   startPlayer,
 }) => {
   const player = useRef();

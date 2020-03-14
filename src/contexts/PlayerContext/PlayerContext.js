@@ -21,9 +21,9 @@ const PlayerWrapper = ({
   const { current } = useRef(Queue.create());
   const queue = current;
 
-  const playNextAudioTrack = () => {
-    setCurrentStatement(queue.nextAudioTrack().content);
-  };
+  const playNextAudioTrack = () => setCurrentStatement(queue.nextAudioTrack().content);
+
+  const playPrevAudioTrack = () => setCurrentStatement(queue.prevAudioTrack().content);
 
   const pausePlayer = () => {
     setPaused(true);
@@ -59,6 +59,7 @@ const PlayerWrapper = ({
           audioStatement={currentStatement}
           running={currentStatement && showMediaPlayer && !paused}
           playNextAudioTrack={playNextAudioTrack}
+          playPrevAudioTrack={playPrevAudioTrack}
           startPlayer={startPlayer}
         />
       </If>
