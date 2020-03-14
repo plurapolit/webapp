@@ -5,6 +5,8 @@ import Tracking from "../../../helper/TrackingHelper";
 import { useStoreContext } from "../../StoreContext/StoreContext";
 import styles from "./Player.module.scss";
 import "react-h5-audio-player/src/styles.scss";
+import ForwardIcon from "../../../assets/images/fast-forward.svg";
+import RewindIcon from "../../../assets/images/rewind.svg";
 
 const Player = ({
   audioStatement = {
@@ -14,6 +16,7 @@ const Player = ({
   running = false,
   removeAudioTrackFromQueue,
   startPlayer,
+  multipleSongsInQueue,
 }) => {
   const player = useRef();
   const tracker = useRef();
@@ -33,8 +36,12 @@ const Player = ({
     }
   }, [running]);
 
-  const onEnded = () => {
+  const updateTracking = () => {
     if (tracker.current) tracker.current.updateTracking();
+  };
+
+  const onEnded = () => {
+    updateTracking();
     removeAudioTrackFromQueue(audioStatement);
   };
 
@@ -44,7 +51,26 @@ const Player = ({
   };
 
   const onPause = () => {
-    if (tracker.current) tracker.current.updateTracking();
+    updateTracking();
+  };
+
+  const startTrackFromBeginning = () => {
+    if (player.current) player.current.audio.currentTime = 0;
+  };
+
+  const onPrevious = () => {
+    updateTracking();
+    const { currentTime } = player.current.audio;
+    if (currentTime < 2) {
+      console.log("track before");
+    } else {
+      startTrackFromBeginning();
+    }
+  };
+
+  const customIcons = {
+    forward: <img alt="forward" src={ForwardIcon} />,
+    rewind: <img alt="rewind" src={RewindIcon} />,
   };
 
   return (
@@ -58,11 +84,15 @@ const Player = ({
           onPlay={startPlayer}
           onPause={onPause}
           onEnded={onEnded}
+          onClickNext={onEnded}
+          onClickPrevious={onPrevious}
           onListen={onListen}
+          customIcons={customIcons}
           listenInterval={1000}
           progressJumpStep={10000}
           showVolumeControl={false}
           showLoopControl={false}
+          showSkipControls={multipleSongsInQueue}
         />
       </div>
     </div>

@@ -37,6 +37,8 @@ const PlayerWrapper = ({
     setShowMediaPlayer(true);
   };
 
+  const multipleSongsInQueue = queue.length > 1;
+
   useEffect(() => {
     if (queue.length > 0) {
       setCurrentStatement(queue[0]);
@@ -74,6 +76,7 @@ const PlayerWrapper = ({
           running={currentStatement && showMediaPlayer && !paused}
           removeAudioTrackFromQueue={removeAudioTrackFromQueue}
           startPlayer={startPlayer}
+          multipleSongsInQueue={multipleSongsInQueue}
         />
       </If>
     </Provider>
