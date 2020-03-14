@@ -17,14 +17,16 @@ const Player = ({
   startPlayer,
 }) => {
   const player = useRef();
-  const tracker = useRef();
   const { user } = useStoreContext();
+  const { current } = useRef();
+  let tracker = current;
 
   useEffect(() => {
     if (audioStatement.statementId) {
       (async () => {
         const { statementId, isIntro } = audioStatement;
-        tracker.current = await Tracking.create(statementId, user, isIntro);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+        tracker = await Tracking.create(statementId, user, isIntro);
       })();
     }
   }, [audioStatement, user]);
@@ -38,17 +40,17 @@ const Player = ({
   }, [running]);
 
   const onEnded = () => {
-    if (tracker.current) tracker.current.updateTracking();
+    if (tracker) tracker.updateTracking();
     playNextAudioTrack(audioStatement);
   };
 
   const onListen = () => {
     const { currentTime } = player.current.audio;
-    if (tracker.current) tracker.current.trackWhilePlaying(currentTime);
+    if (tracker) tracker.trackWhilePlaying(currentTime);
   };
 
   const onPause = () => {
-    if (tracker.current) tracker.current.updateTracking();
+    if (tracker) tracker.updateTracking();
   };
 
   return (
