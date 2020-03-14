@@ -21,7 +21,7 @@ const SignOutButton = ({ children = "Abmelden" }) => {
 
   if (user) {
     return (
-      <div className={styles["pointer"]} onClick={() => signOutHandler()}>
+      <div className={styles["pointer"]} onClick={() => signOutHandler()} data-test="sign-out">
         {children}
       </div>
     );

@@ -40,11 +40,7 @@ const Routes = () => (
         <SignUp />
       </Route>
       <Route path="/:slug">
-        {(props) => (
-          <PanelWrapper
-            location={props.location}
-          />
-        )}
+        <PanelWrapper />
       </Route>
     </Switch>
   </>

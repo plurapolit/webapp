@@ -19,7 +19,7 @@ const Navbar = () => {
   let buttons = (
     <>
       <li className={customStyle.item}>
-        <Button buttonStyle={ButtonStyle.SECONDARY} to="/sign_in/">
+        <Button buttonStyle={ButtonStyle.SECONDARY} to="/sign_in/" dataTest="sign_in">
           Anmelden
         </Button>
       </li>

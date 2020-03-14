@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 
 import Helper from "./PanelWrapperHelper";
 import Panel from "../../views/Panel/Panel";
@@ -6,12 +7,12 @@ import PageNotFound from "../../views/PageNotFound/PageNotFound";
 import Loader from "../../components/Loader/Loader";
 import { useStoreContext } from "../../contexts/StoreContext/StoreContext";
 
-const PanelWrapper = ({ location }) => {
+const PanelWrapper = () => {
   const [currentPanel, setCurrentPanel] = useState(undefined);
   const [isLoaded, setIsLoaded] = useState(false);
   const { slugList } = useStoreContext();
+  const { slug } = useParams();
 
-  const slug = Helper.getSlug(location);
   const isAboutUsSlug = () => slug === Helper.ABOUT_US_SLUG;
 
   useEffect(() => {

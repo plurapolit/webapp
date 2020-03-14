@@ -1,7 +1,7 @@
 import React from "react";
 import { shallow } from "enzyme";
 
-import Statement from "./Statement";
+import Statement from "./CommentStatement";
 import { commentData } from "../../../../helper/TestHelper";
 
 const setup = (propOverrides) => {

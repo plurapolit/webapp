@@ -29,6 +29,6 @@ const setup = (propOverrides) => {
 describe("<Statement />", () => {
   it("should render the Statement without crashing", () => {
     const { wrapper } = setup();
-    expect(wrapper.find(".expert-wrapper")).toHaveLength(1);
+    expect(wrapper.find(".statement-comment-container")).toHaveLength(1);
   });
 });

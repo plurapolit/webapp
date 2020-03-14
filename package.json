@@ -48,6 +48,10 @@
     "build:staging": "env-cmd -f .env.staging react-scripts build",
     "build:prod": "env-cmd -f .env.production react-scripts build",
     "test": "react-scripts test",
+    "test:cypress": "start-server-and-test start http://localhost:3000 cypress:run",
+    "test:cypress:open": "start-server-and-test start http://localhost:3000 cypress:open",
+    "cypress:run": "cypress run",
+    "cypress:open": "cypress open",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -66,13 +70,16 @@
     ]
   },
   "devDependencies": {
+    "cypress": "^4.1.0",
     "eslint": "^6.8.0",
     "eslint-config-airbnb": "^18.0.1",
+    "eslint-plugin-cypress": "^2.10.3",
     "eslint-plugin-import": "^2.20.1",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.18.3",
     "eslint-plugin-react-hooks": "^2.4.0",
     "prettier": "^1.19.1",
-    "pretty-quick": "^2.0.1"
+    "pretty-quick": "^2.0.1",
+    "start-server-and-test": "^1.10.8"
   }
 }

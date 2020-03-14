@@ -77,7 +77,7 @@ const AudioRecorder = ({ setFileLink, setDuration, nextPage }) => {
           <span className={styles["effect"]} />
           <span className={styles["effect2"]} />
         </div>
-        <Button onClick={() => stopMicrophone()}>Aufname stoppen</Button>
+        <Button onClick={() => stopMicrophone()} dataTest="shop-recording-button">Aufname stoppen</Button>
         <div className={styles["step-index"]}>Schritt 2 von 4</div>
       </div>
     );
@@ -107,7 +107,7 @@ const AudioRecorder = ({ setFileLink, setDuration, nextPage }) => {
 
   return (
     <div className={styles["container"]}>
-      <Button type="button" onClick={startRecording}>
+      <Button type="button" onClick={startRecording} dataTest="start-recording-button">
         <img
           alt="icon"
           src={microphoneButton}

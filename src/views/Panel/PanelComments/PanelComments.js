@@ -22,7 +22,7 @@ const PanelComments = ({
   const [userComments, setUserComments] = useState(null);
   const [answered, setAnswered] = useState(false);
   const modal = useContext(ModalContext);
-  const { stopPlayer } = usePlayerContext();
+  const { pausePlayer } = usePlayerContext();
 
   useEffect(() => {
     const fetchUserComments = async () => {
@@ -37,7 +37,7 @@ const PanelComments = ({
   }, [statementId]);
 
   const openCommentModal = () => {
-    stopPlayer();
+    pausePlayer();
     modal.showContent(
       <CommentModal
         closeModal={modal.closeModal}
@@ -66,7 +66,7 @@ const PanelComments = ({
               panelTitle={panelTitle}
             />
           )))}
-          <Button onClick={() => openCommentModal()}>
+          <Button onClick={() => openCommentModal()} dataTest="create-comment-button">
             <img
               alt="icon"
               src={microphoneButton}

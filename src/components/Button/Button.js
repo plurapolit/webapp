@@ -18,6 +18,7 @@ const Button = ({
   type = "button",
   to = undefined,
   onClick = () => {},
+  dataTest = null,
 }) => {
   const getButtonStyle = () => {
     switch (buttonStyle) {
@@ -43,6 +44,7 @@ const Button = ({
       className={styles[`${getButtonStyle()}`]}
       style={style}
       onClick={onClick}
+      data-test={dataTest}
     >
       {children}
     </button>
