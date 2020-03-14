@@ -25,9 +25,7 @@ const PlayerWrapper = ({
 
   const playPrevAudioTrack = () => setCurrentStatement(queue.prevAudioTrack().content);
 
-  const pausePlayer = () => {
-    setPaused(true);
-  };
+  const pausePlayer = () => setPaused(true);
 
   const startPlayer = () => {
     setShowMediaPlayer(true);
