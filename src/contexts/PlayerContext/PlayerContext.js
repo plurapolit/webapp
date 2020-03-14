@@ -1,10 +1,11 @@
 import React, {
   useState,
   useContext,
-  useEffect,
+  useRef,
 } from "react";
 import { If } from "react-if";
 
+import Queue from "./Queue/Queue";
 import Player from "./Player/Player";
 
 const PlayerContext = React.createContext();
@@ -15,51 +16,31 @@ const PlayerWrapper = ({
   show = false,
 }) => {
   const [showMediaPlayer, setShowMediaPlayer] = useState(show);
-  const [queue, setQueue] = useState([]);
   const [currentStatement, setCurrentStatement] = useState();
   const [paused, setPaused] = useState(false);
+  const { current } = useRef(Queue.create());
+  const queue = current;
 
-  const removeAudioTrackFromQueue = (statement) => {
-    const newQueue = queue.filter((element) => element !== statement);
-    setCurrentStatement(undefined);
-    setQueue(newQueue);
-  };
+  const playNextAudioTrack = () => setCurrentStatement(queue.nextAudioTrack().content);
 
-  const pausePlayer = () => {
-    setPaused(true);
-  };
+  const playPrevAudioTrack = () => setCurrentStatement(queue.prevAudioTrack().content);
+
+  const pausePlayer = () => setPaused(true);
 
   const startPlayer = () => {
+    setShowMediaPlayer(true);
+    setCurrentStatement(queue.currentAudioTrack().content);
     setPaused(false);
   };
 
-  const showPlayer = () => {
-    setShowMediaPlayer(true);
+  const setAudioTrack = async (audioTrack) => {
+    queue.setAudioTrack(audioTrack);
+    startPlayer();
   };
 
-  const multipleSongsInQueue = queue.length > 1;
-
-  useEffect(() => {
-    if (queue.length > 0) {
-      setCurrentStatement(queue[0]);
-      startPlayer();
-    }
-  }, [queue]);
-
-  const setAudioTrack = async (audioFile, author, statementId, panelTitle) => {
-    const audioStatement = {
-      audioFile,
-      author,
-      statementId,
-      panelTitle,
-    };
-    showPlayer();
-    setQueue([audioStatement]);
-  };
-
-  const setAudioTrackList = (audioFiles) => {
-    showPlayer();
-    setQueue([...audioFiles]);
+  const setAudioTrackList = (audioTrackList) => {
+    queue.setAudioTrackList(audioTrackList);
+    startPlayer();
   };
 
   return (
@@ -67,6 +48,7 @@ const PlayerWrapper = ({
       pausePlayer,
       setAudioTrack,
       setAudioTrackList,
+      playedAudioTrackList: queue.playedAudioTracks(),
     }}
     >
       {children}
@@ -74,9 +56,10 @@ const PlayerWrapper = ({
         <Player
           audioStatement={currentStatement}
           running={currentStatement && showMediaPlayer && !paused}
-          removeAudioTrackFromQueue={removeAudioTrackFromQueue}
+          playNextAudioTrack={playNextAudioTrack}
+          playPrevAudioTrack={playPrevAudioTrack}
           startPlayer={startPlayer}
-          multipleSongsInQueue={multipleSongsInQueue}
+          multipleSongsInQueue
         />
       </If>
     </Provider>

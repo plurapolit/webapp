@@ -9,7 +9,6 @@ import About from "./About/About";
 import MoreSection from "./MoreSection/MoreSection";
 import CategoryList from "./CategoryList/CategoryList";
 import Feedback from "./Feedback/Feedback";
-import Supporters from "./Supporters/Supporters";
 
 import styles from "./HomePage.module.scss";
 
@@ -26,7 +25,6 @@ const HomePage = () => {
       <div className={styles["bottom-wrapper"]}>
         <MoreSection />
         <Feedback />
-        <Supporters />
       </div>
     </div>
   );

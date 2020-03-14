@@ -7,6 +7,7 @@ import { Store } from "./contexts/StoreContext/StoreContext";
 import { Player } from "./contexts/PlayerContext/PlayerContext";
 import NavBar from "./layouts/Navbar/Navbar";
 import Footer from "./layouts/Footer/Footer";
+import Supporters from "./layouts/Supporters/Supporters";
 import NavbarBuffer from "./layouts/NavbarBuffer/NavbarBuffer";
 import { Modal } from "./contexts/ModalContext/ModalContext";
 import Routes from "./Routes";
@@ -28,6 +29,7 @@ const App = () => (
           </Player>
         </NavbarBuffer>
       </Modal>
+      <Supporters />
       <Footer />
     </Router>
   </Store>
