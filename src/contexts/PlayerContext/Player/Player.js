@@ -20,12 +20,14 @@ const Player = ({
   const tracker = useRef();
   const { user } = useStoreContext();
 
-  const addTrackingToPlayer = async () => {
-    const { statementId, isIntro } = audioStatement;
-    tracker.current = await Tracking.create(statementId, user, isIntro);
-  };
-
-  if (audioStatement.statementId) addTrackingToPlayer();
+  useEffect(() => {
+    if (audioStatement.statementId) {
+      (async () => {
+        const { statementId, isIntro } = audioStatement;
+        tracker.current = await Tracking.create(statementId, user, isIntro);
+      })();
+    }
+  }, [audioStatement, user]);
 
   useEffect(() => {
     if (player.current && running) {
