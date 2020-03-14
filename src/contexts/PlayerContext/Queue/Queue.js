@@ -1,96 +1,87 @@
 import QueueItem from "../QueueItem/QueueItem";
 
-const Queue = (function queueObject() {
-  const createQueue = () => {
-    const value = [];
-    const currentAudioTrackId = 0;
-    let lastTrackId;
+const Queue = () => {
+  let queue;
+  let currentAudioTrackId = 0;
+  let lastAudioTrackId;
 
-    function addTrack(track) {
-      const item = QueueItem.create(track);
-      const lastTrack = this.findTrack(this.lastTrackId);
-      if (lastTrack) lastTrack.setNext(item.id);
-      this.value.push(item);
-      this.lastTrackId = item.id;
+  const findTrack = (id) => queue.value.find((item) => item.id === id);
+
+  const removeFollowingTracks = (removedTrackId) => {
+    const removedTrack = findTrack(removedTrackId);
+    const nextId = removedTrack.next;
+    queue.value = queue.value.filter((track) => track.id !== removedTrackId);
+    if (nextId) removeFollowingTracks(nextId);
+  };
+
+  const currentAudioTrack = (audioTrackId = currentAudioTrackId) => findTrack(audioTrackId);
+
+  const pushTrackToQueue = (track) => {
+    queue.value.push(track);
+    lastAudioTrackId = track.id;
+  };
+
+  const addAudioTrack = (track) => {
+    const newTrack = QueueItem.create(track);
+    const lastTrack = findTrack(lastAudioTrackId);
+    if (lastTrack) lastTrack.setNext(newTrack.id);
+    pushTrackToQueue(newTrack);
+  };
+
+  const nextAudioTrack = () => {
+    const currentTrack = currentAudioTrack();
+    currentTrack.played = true;
+    if (currentTrack.next === false) return false;
+    const nextId = currentTrack.next;
+    currentAudioTrackId = nextId;
+    return currentAudioTrack(nextId);
+  };
+
+  const setAudioTrack = (track) => {
+    const newTrack = QueueItem.create(track);
+    const currentTrack = currentAudioTrack();
+    if (currentTrack && currentTrack.next) {
+      removeFollowingTracks(currentTrack.next);
     }
-
-    function setAudioTrack(track) {
-      const newTrack = QueueItem.create(track);
-      const currentTrack = this.currentAudioTrack();
-      if (currentTrack && currentTrack.next) {
-        this.removeFollowingTracks(currentTrack.next);
-      }
-      if (currentTrack) {
-        currentTrack.setNext(newTrack.id);
-        newTrack.setPrev(currentTrack.id);
-      }
-      this.value.push(newTrack);
-      this.lastTrackId = newTrack.id;
-      if (currentTrack) return this.nextAudioTrack();
-      return newTrack;
+    if (currentTrack) {
+      currentTrack.setNext(newTrack.id);
+      newTrack.setPrev(currentTrack.id);
     }
+    pushTrackToQueue(newTrack);
+    if (currentTrack) return nextAudioTrack();
+    return newTrack;
+  };
 
-    function setAudioTrackList(trackList) {
-      const firstTrack = trackList.shift();
-      this.setAudioTrack(firstTrack);
-      trackList.forEach((track) => this.addTrack(track));
-    }
+  const setAudioTrackList = (trackList) => {
+    const firstTrack = trackList.shift();
+    setAudioTrack(firstTrack);
+    trackList.forEach((track) => addAudioTrack(track));
+  };
 
-    function removeFollowingTracks(removedTrackId) {
-      const removedTrack = this.findTrack(removedTrackId);
-      const nextId = removedTrack.next;
-      this.value = this.value.filter((track) => track.id !== removedTrackId);
-      if (nextId) this.removeFollowingTracks(nextId);
-    }
+  const prevAudioTrack = () => {
+    const currentTrack = currentAudioTrack();
+    if (currentTrack.prev === false) return false;
+    const prevId = currentTrack.prev;
+    currentAudioTrackId = prevId;
+    return currentTrack(prevId);
+  };
 
-    function currentAudioTrack(audioTrackId = this.currentAudioTrackId) {
-      return this.findTrack(audioTrackId);
-    }
+  const playedAudioTracks = () => queue.value.filter((track) => track.played === true);
 
-    function findTrack(id) {
-      return this.value.find((item) => item.id === id);
-    }
-
-    function nextAudioTrack() {
-      const currentTrack = this.currentAudioTrack();
-      currentTrack.played = true;
-      if (currentTrack.next === false) return false;
-      const nextId = currentTrack.next;
-      this.currentAudioTrackId = nextId;
-      return this.currentAudioTrack(nextId);
-    }
-
-    function prev() {
-      const currentTrack = this.currentTrack();
-      if (currentTrack.prev === false) return false;
-      const prevId = currentTrack.prev;
-      this.currentAudioTrackId = prevId;
-      return this.currentTrack(prevId);
-    }
-
-    function playedTracks() {
-      return this.value.filter((track) => track.played === true);
-    }
-
-    return {
-      value,
-      lastTrackId,
-      currentAudioTrackId,
-      currentAudioTrack,
-      nextAudioTrack,
-      prev,
-      playedTracks,
-      addTrack,
-      findTrack,
-      setAudioTrack,
-      removeFollowingTracks,
-      setAudioTrackList,
-    };
+  const queueObj = {
+    value: [],
+    currentAudioTrack,
+    nextAudioTrack,
+    prevAudioTrack,
+    playedAudioTracks,
+    addAudioTrack,
+    setAudioTrack,
+    setAudioTrackList,
   };
 
   return {
-    create: () => createQueue(),
+    create: () => { queue = queueObj; return queue; },
   };
-});
+};
 
 export default Queue();

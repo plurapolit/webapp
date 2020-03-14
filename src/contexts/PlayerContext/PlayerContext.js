@@ -50,7 +50,7 @@ const PlayerWrapper = ({
       pausePlayer,
       setAudioTrack,
       setAudioTrackList,
-      playedAudioTrackList: queue.playedTracks(),
+      playedAudioTrackList: queue.playedAudioTracks(),
     }}
     >
       {children}
