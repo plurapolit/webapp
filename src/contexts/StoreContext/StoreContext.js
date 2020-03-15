@@ -33,12 +33,19 @@ const Store = ({ children }) => {
     setUser(undefined);
   };
 
+  const getPanelIdBySlug = (slug) => {
+    const slugObj = slugList.find(({ panel }) => panel.slug === slug);
+    if (slugObj) return slugObj.panel.id;
+    return false;
+  };
+
   return (
     <Provider
       value={{
         user,
         categoryList,
         slugList,
+        getPanelIdBySlug,
         setUser,
         signUp,
         removeUser,
