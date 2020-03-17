@@ -12,19 +12,24 @@ const Player = ({
     panelTitle: "",
   },
   running = false,
-  removeAudioTrackFromQueue,
+  playNextAudioTrack,
+  // playPrevAudioTrack,
   startPlayer,
 }) => {
   const player = useRef();
-  const tracker = useRef();
   const { user } = useStoreContext();
+  const { current } = useRef();
+  let tracker = current;
 
-  const addTrackingToPlayer = async () => {
-    const { statementId, isIntro } = audioStatement;
-    tracker.current = await Tracking.create(statementId, user, isIntro);
-  };
-
-  if (audioStatement.statementId) addTrackingToPlayer();
+  useEffect(() => {
+    if (audioStatement.statementId) {
+      (async () => {
+        const { statementId, isIntro } = audioStatement;
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+        tracker = await Tracking.create(statementId, user, isIntro);
+      })();
+    }
+  }, [audioStatement, user]);
 
   useEffect(() => {
     if (player.current && running) {
@@ -35,17 +40,17 @@ const Player = ({
   }, [running]);
 
   const onEnded = () => {
-    if (tracker.current) tracker.current.updateTracking();
-    removeAudioTrackFromQueue(audioStatement);
+    if (tracker) tracker.updateTracking();
+    playNextAudioTrack(audioStatement);
   };
 
   const onListen = () => {
     const { currentTime } = player.current.audio;
-    if (tracker.current) tracker.current.trackWhilePlaying(currentTime);
+    if (tracker) tracker.trackWhilePlaying(currentTime);
   };
 
   const onPause = () => {
-    if (tracker.current) tracker.current.updateTracking();
+    if (tracker) tracker.updateTracking();
   };
 
   return (
