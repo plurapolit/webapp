@@ -5,6 +5,8 @@ import Tracking from "../../../helper/TrackingHelper";
 import { useStoreContext } from "../../StoreContext/StoreContext";
 import styles from "./Player.module.scss";
 import "react-h5-audio-player/src/styles.scss";
+import { useTransition } from "../../../helper/CustomHookHelper";
+import { Spinner } from "../../../components/Loader/Loader";
 
 const Player = ({
   audioStatement = {
@@ -18,6 +20,9 @@ const Player = ({
   const player = useRef();
   const tracker = useRef();
   const { user } = useStoreContext();
+  const [startTransition, isPending] = useTransition();
+  const { current } = useRef();
+  let pauseIcon = current;
 
   const addTrackingToPlayer = async () => {
     const { statementId, isIntro } = audioStatement;
@@ -28,11 +33,11 @@ const Player = ({
 
   useEffect(() => {
     if (player.current && running) {
-      player.current.audio.play();
+      startTransition(() => player.current.audio.play());
     } else if (player.current) {
       player.current.audio.pause();
     }
-  }, [running]);
+  }, [running, startTransition, audioStatement]);
 
   const onEnded = () => {
     if (tracker.current) tracker.current.updateTracking();
@@ -47,6 +52,8 @@ const Player = ({
   const onPause = () => {
     if (tracker.current) tracker.current.updateTracking();
   };
+
+  if (isPending) pauseIcon = <Spinner />;
 
   return (
     <div className={styles["media-player-wrapper"]}>
@@ -64,6 +71,7 @@ const Player = ({
           progressJumpStep={10000}
           showVolumeControl={false}
           showLoopControl={false}
+          customIcons={{ pause: pauseIcon }}
         />
       </div>
     </div>
