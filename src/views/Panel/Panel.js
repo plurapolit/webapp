@@ -20,7 +20,7 @@ const Panel = ({ panel, objectPositionTop }) => {
 
   return (
     <div className={styles["panel"]} style={customStylePanel}>
-      <PanelMetaTags panel={panel.panel} image={imageUrl} />
+      <PanelMetaTags panel={panel.panel} imageUrl={imageUrl} />
       <div className={styles["header"]}>
         <img
           src={imageUrl}
