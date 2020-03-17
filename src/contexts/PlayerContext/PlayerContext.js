@@ -24,15 +24,6 @@ const PlayerWrapper = ({
   const playNextAudioTrack = () => setCurrentStatement(queue.nextAudioTrack().content);
   const playPrevAudioTrack = () => setCurrentStatement(queue.prevAudioTrack().content);
 
-  const nextAudioTrackIsPresent = () => {
-    console.log('queue.nextAudioTrackIsPresent()', queue.nextAudioTrackIsPresent())
-    return queue.nextAudioTrackIsPresent();
-  }
-  const prevAudioTrackIsPresent = () => {
-    console.log('queue.prevAudioTrackIsPresent()', queue.prevAudioTrackIsPresent())
-    return queue.prevAudioTrackIsPresent();
-  }
-
   const pausePlayer = () => setPaused(true);
 
   const startPlayer = () => {
@@ -67,9 +58,8 @@ const PlayerWrapper = ({
           playNextAudioTrack={playNextAudioTrack}
           playPrevAudioTrack={playPrevAudioTrack}
           startPlayer={startPlayer}
-          nextAudioTrackIsPresent={nextAudioTrackIsPresent()}
-          prevAudioTrackIsPresent={prevAudioTrackIsPresent()}
-          showSkipControls
+          nextAudioTrackIsPresent={queue.nextAudioTrackIsPresent()}
+          prevAudioTrackIsPresent={queue.prevAudioTrackIsPresent()}
         />
       </If>
     </Provider>

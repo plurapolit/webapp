@@ -68,12 +68,14 @@ const Queue = () => {
 
   const nextAudioTrackIsPresent = () => {
     const currentTrack = currentAudioTrack();
-    return currentTrack && currentTrack.next;
+    if (currentTrack && currentTrack.next) return true;
+    return false;
   };
 
   const prevAudioTrackIsPresent = () => {
     const currentTrack = currentAudioTrack();
-    return currentTrack && currentTrack.prev;
+    if (currentTrack && currentTrack.prev) return true;
+    return false;
   };
 
   const playedAudioTracks = () => queue.value.filter((track) => track.played === true);
