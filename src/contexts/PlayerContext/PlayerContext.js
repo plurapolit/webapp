@@ -22,8 +22,16 @@ const PlayerWrapper = ({
   const queue = current;
 
   const playNextAudioTrack = () => setCurrentStatement(queue.nextAudioTrack().content);
-
   const playPrevAudioTrack = () => setCurrentStatement(queue.prevAudioTrack().content);
+
+  const nextSongIsPresent = () => {
+    console.log('queue.nextSongIsPresent()', queue.nextSongIsPresent())
+    return queue.nextSongIsPresent();
+  }
+  const prevSongIsPresent = () => {
+    console.log('queue.prevSongIsPresent()', queue.prevSongIsPresent())
+    return queue.prevSongIsPresent();
+  }
 
   const pausePlayer = () => setPaused(true);
 
@@ -59,7 +67,9 @@ const PlayerWrapper = ({
           playNextAudioTrack={playNextAudioTrack}
           playPrevAudioTrack={playPrevAudioTrack}
           startPlayer={startPlayer}
-          multipleSongsInQueue
+          nextSongIsPresent={nextSongIsPresent()}
+          prevSongIsPresent={prevSongIsPresent()}
+          showSkipControls
         />
       </If>
     </Provider>

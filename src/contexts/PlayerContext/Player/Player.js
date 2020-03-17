@@ -17,7 +17,8 @@ const Player = ({
   playNextAudioTrack,
   playPrevAudioTrack,
   startPlayer,
-  multipleSongsInQueue,
+  nextSongIsPresent,
+  prevSongIsPresent,
 }) => {
   const player = useRef();
   const { user } = useStoreContext();
@@ -70,9 +71,35 @@ const Player = ({
     }
   };
 
+  const previous = () => {
+    console.log("prev")
+    if (prevSongIsPresent) {
+      console.log("show prev")
+      return (
+        <img alt="rewind" src={RewindIcon} />
+      );
+    }
+    console.log("null");
+    return null;
+  };
+
+  const next = () => {
+    console.log("next")
+    if (nextSongIsPresent) {
+      console.log("show next")
+      return (
+        <img alt="forward" src={ForwardIcon} />
+      );
+    }
+    console.log("null");
+    return null;
+  };
+
   const customIcons = {
     forward: <img alt="forward" src={ForwardIcon} />,
     rewind: <img alt="rewind" src={RewindIcon} />,
+    previous: previous(),
+    next: next(),
   };
 
   return (
@@ -94,7 +121,7 @@ const Player = ({
           progressJumpStep={10000}
           showVolumeControl={false}
           showLoopControl={false}
-          showSkipControls={multipleSongsInQueue}
+          showSkipControls
         />
       </div>
     </div>

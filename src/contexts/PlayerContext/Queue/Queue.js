@@ -66,6 +66,16 @@ const Queue = () => {
     return currentAudioTrack(prevId);
   };
 
+  const nextSongIsPresent = () => {
+    const currentTrack = currentAudioTrack();
+    return currentTrack && currentTrack.next;
+  };
+
+  const prevSongIsPresent = () => {
+    const currentTrack = currentAudioTrack();
+    return currentTrack && currentTrack.prev;
+  };
+
   const playedAudioTracks = () => queue.value.filter((track) => track.played === true);
 
   const queueObj = {
@@ -77,6 +87,8 @@ const Queue = () => {
     addAudioTrack,
     setAudioTrack,
     setAudioTrackList,
+    nextSongIsPresent,
+    prevSongIsPresent,
   };
 
   return {
