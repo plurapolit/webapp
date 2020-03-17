@@ -5,15 +5,14 @@ import Button from "../../../components/Button/Button";
 import styles from "./PlayAllButton.module.scss";
 import playButton from "../../../assets/images/play.svg";
 import { createAudioTrackListFromExpertStatements } from "../../../helper/AudioTrackHelper";
+import { usePanelContext } from "../../../contexts/PanelStoreContext/PanelStoreContext";
 
-const PlayAllButton = ({
-  expertStatements,
-  panelTitle,
-}) => {
+const PlayAllButton = () => {
   const { queue, startPlayer } = usePlayerContext();
+  const { shortTitle, expertStatements } = usePanelContext();
 
   const handleClick = () => {
-    const audios = createAudioTrackListFromExpertStatements(expertStatements, panelTitle);
+    const audios = createAudioTrackListFromExpertStatements(expertStatements, shortTitle);
     if (!queue.hasAudioTrack(audios[0])) queue.setAudioTrackList(audios);
     queue.setCurrentAudioTrack({ track: audios[0], isStart: true });
     startPlayer();
