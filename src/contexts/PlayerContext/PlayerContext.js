@@ -21,32 +21,21 @@ const PlayerWrapper = ({
   const { current } = useRef(Queue.create());
   const queue = current;
 
-  const playNextAudioTrack = () => setCurrentStatement(queue.nextAudioTrack().content);
-  const playPrevAudioTrack = () => setCurrentStatement(queue.prevAudioTrack().content);
-
+  const playNextAudioTrack = () => setCurrentStatement(queue.nextAudioTrack());
+  const playPrevAudioTrack = () => setCurrentStatement(queue.prevAudioTrack());
   const pausePlayer = () => setPaused(true);
 
   const startPlayer = () => {
     setShowMediaPlayer(true);
-    setCurrentStatement(queue.currentAudioTrack().content);
+    setCurrentStatement(queue.currentAudioTrack());
     setPaused(false);
-  };
-
-  const setAudioTrack = async (audioTrack) => {
-    queue.setAudioTrack(audioTrack);
-    startPlayer();
-  };
-
-  const setAudioTrackList = (audioTrackList) => {
-    queue.setAudioTrackList(audioTrackList);
-    startPlayer();
   };
 
   return (
     <Provider value={{
+      queue,
+      startPlayer,
       pausePlayer,
-      setAudioTrack,
-      setAudioTrackList,
       playedAudioTrackList: queue.playedAudioTracks(),
     }}
     >
@@ -58,8 +47,6 @@ const PlayerWrapper = ({
           playNextAudioTrack={playNextAudioTrack}
           playPrevAudioTrack={playPrevAudioTrack}
           startPlayer={startPlayer}
-          nextAudioTrackIsPresent={queue.nextAudioTrackIsPresent()}
-          prevAudioTrackIsPresent={queue.prevAudioTrackIsPresent()}
         />
       </If>
     </Provider>

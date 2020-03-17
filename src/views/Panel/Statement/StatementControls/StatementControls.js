@@ -10,8 +10,18 @@ import styles from "./StatementControls.module.scss";
 import Helper from "./StatementControlsHelper";
 
 const StatementControls = ({ expert, panelTitle, toggleComments }) => {
-  const { setAudioTrack } = usePlayerContext();
+  const { queue } = usePlayerContext();
   const { number_of_comments: numberOfComments } = expert;
+
+  const handleClick = () => {
+    const audioTrack = {
+      audioFile: expert.statement_audio_file.file_link,
+      author: expert.user.full_name,
+      statementId: expert.statement.id,
+      panelTitle,
+    };
+    if (!queue.hasAudioTrack(audioTrack)) console.log("nicht vorhanden");
+  };
 
   return (
     <div className={styles["controls"]}>
@@ -39,14 +49,7 @@ const StatementControls = ({ expert, panelTitle, toggleComments }) => {
           type="button"
           className={styles["play"]}
           data-test="play-button"
-          onClick={() => {
-            setAudioTrack({
-              audioFile: expert.statement_audio_file.file_link,
-              author: expert.user.full_name,
-              statementId: expert.statement.id,
-              panelTitle,
-            });
-          }}
+          onClick={() => handleClick()}
         >
           <img
             src={playButton}

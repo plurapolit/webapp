@@ -18,6 +18,7 @@
     "moment": "^2.24.0",
     "moment-with-locales-es6": "^1.0.1",
     "node-sass": "^4.13.1",
+    "object-hash": "^2.0.3",
     "outdated-browser-rework": "^2.10.0",
     "piwik-react-router": "^0.12.1",
     "prop-types": "^15.7.2",

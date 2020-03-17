@@ -1,37 +1,54 @@
+import hash from "object-hash";
+
 const QueueItem = (function itemObj() {
-  let counter = 0;
-
-  const getId = () => {
-    const id = counter;
-    counter += 1;
-    return id;
-  };
-
-  const getPrevId = (id) => {
-    if (id > 0) return id - 1;
-    return false;
-  };
+  const getId = (content) => hash(content);
 
   const createQueueItem = (content) => {
-    const id = getId();
-    const prev = getPrevId(id);
+    const id = getId(content);
 
-    function setNext(itemId) {
-      this.next = itemId;
+    function setNext(item) {
+      this.next = item.id;
+      // eslint-disable-next-line no-param-reassign
+      item.prev = this.id;
     }
 
-    function setPrev(itemId) {
-      this.prev = itemId;
+    function setPrev(item) {
+      this.prev = item.id;
+      // eslint-disable-next-line no-param-reassign
+      item.next = this.id;
+    }
+
+    function disconectPrevItem(item) {
+      this.prev = false;
+      // eslint-disable-next-line no-param-reassign
+      item.next = false;
+    }
+
+    function disconectNextItem(item) {
+      this.next = false;
+      // eslint-disable-next-line no-param-reassign
+      item.prev = false;
+    }
+
+    function hasNext() {
+      return !!this.next;
+    }
+
+    function hasPrev() {
+      return !!this.prev;
     }
 
     return {
       id,
       content,
       played: false,
-      prev,
       next: false,
       setPrev,
       setNext,
+      hasNext,
+      hasPrev,
+      disconectNextItem,
+      disconectPrevItem,
     };
   };
 

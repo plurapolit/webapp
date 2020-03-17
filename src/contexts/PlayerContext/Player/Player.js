@@ -10,14 +10,16 @@ import RewindIcon from "../../../assets/images/rewind.svg";
 
 const Player = ({
   audioStatement = {
-    author: "",
-    panelTitle: "",
+    content: {
+      author: "",
+      panelTitle: "",
+    },
+    hasPrev: () => false,
   },
   running = false,
   playNextAudioTrack,
   playPrevAudioTrack,
   startPlayer,
-  prevAudioTrackIsPresent,
 }) => {
   const player = useRef();
   const { user } = useStoreContext();
@@ -25,9 +27,9 @@ const Player = ({
   let tracker = current;
 
   useEffect(() => {
-    if (audioStatement.statementId) {
+    if (audioStatement.content.statementId) {
       (async () => {
-        const { statementId, isIntro } = audioStatement;
+        const { statementId, isIntro } = audioStatement.content;
         // eslint-disable-next-line react-hooks/exhaustive-deps
         tracker = await Tracking.create(statementId, user, isIntro);
       })();
@@ -63,7 +65,7 @@ const Player = ({
   const onPrevious = () => {
     if (tracker) tracker.updateTracking();
     const { currentTime } = player.current.audio;
-    if (currentTime < 2 && prevAudioTrackIsPresent) {
+    if (currentTime < 2 && audioStatement.hasPrev()) {
       playPrevAudioTrack();
     } else {
       startTrackFromBeginning();
@@ -77,11 +79,11 @@ const Player = ({
 
   return (
     <div className={styles["media-player-wrapper"]}>
-      <p className={styles["media-player-wrapper-user"]}>{audioStatement.author}</p>
-      <p className={styles["media-player-wrapper-statement"]}>{audioStatement.panelTitle}</p>
+      <p className={styles["media-player-wrapper-user"]}>{audioStatement.content.author}</p>
+      <p className={styles["media-player-wrapper-statement"]}>{audioStatement.content.panelTitle}</p>
       <div className={styles["media-player-wrapper-player"]} data-test="player">
         <AudioPlayer
-          src={audioStatement.audioFile}
+          src={audioStatement.content.audioFile}
           ref={player}
           onPlay={startPlayer}
           onPause={onPause}

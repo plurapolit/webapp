@@ -4,36 +4,19 @@ import { usePlayerContext } from "../../../contexts/PlayerContext/PlayerContext"
 import Button from "../../../components/Button/Button";
 import styles from "./PlayAllButton.module.scss";
 import playButton from "../../../assets/images/play.svg";
+import { createAudioTrackListFromExpertStatements } from "../../../helper/AudioTrackHelper";
 
 const PlayAllButton = ({
   expertStatements,
   panelTitle,
 }) => {
-  const { setAudioTrackList } = usePlayerContext();
-  const audios = [];
-  expertStatements.forEach((statement) => {
-    const { intro } = statement;
-    if (intro) {
-      const introStatement = {
-        audioFile: intro.audio_file_link,
-        author: statement.user.full_name,
-        statementId: statement.statement.id,
-        panelTitle,
-        isIntro: true,
-      };
-      audios.push(introStatement);
-    }
-    const audioStatement = {
-      audioFile: statement.statement_audio_file.file_link,
-      author: statement.user.full_name,
-      statementId: statement.statement.id,
-      panelTitle,
-    };
-    audios.push(audioStatement);
-  });
+  const { queue, startPlayer } = usePlayerContext();
 
   const handleClick = () => {
-    setAudioTrackList(audios);
+    const audios = createAudioTrackListFromExpertStatements(expertStatements, panelTitle);
+    if (!queue.hasAudioTrack(audios[0])) queue.setAudioTrackList(audios);
+    queue.setCurrentAudioTrack({ track: audios[0], isStart: true });
+    startPlayer();
   };
 
   return (
