@@ -8,12 +8,12 @@ import * as PlayerContextModule from "../../../contexts/PlayerContext/PlayerCont
 const setup = (propOverrides) => {
   const props = {
     expert,
-    setSong: jest.fn(),
+    setAudioTrack: jest.fn(),
     ...propOverrides,
   };
 
   jest.spyOn(PlayerContextModule, "usePlayerContext").mockImplementation(() => ({
-    setSong: props.setSong,
+    setAudioTrack: props.setAudioTrack,
   }));
 
   const wrapper = shallow(

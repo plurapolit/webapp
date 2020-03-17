@@ -17,8 +17,8 @@ const Player = ({
   playNextAudioTrack,
   playPrevAudioTrack,
   startPlayer,
-  nextSongIsPresent,
-  prevSongIsPresent,
+  nextAudioTrackIsPresent,
+  prevAudioTrackIsPresent,
 }) => {
   const player = useRef();
   const { user } = useStoreContext();
@@ -73,7 +73,7 @@ const Player = ({
 
   const previous = () => {
     console.log("prev")
-    if (prevSongIsPresent) {
+    if (prevAudioTrackIsPresent) {
       console.log("show prev")
       return (
         <img alt="rewind" src={RewindIcon} />
@@ -85,7 +85,7 @@ const Player = ({
 
   const next = () => {
     console.log("next")
-    if (nextSongIsPresent) {
+    if (nextAudioTrackIsPresent) {
       console.log("show next")
       return (
         <img alt="forward" src={ForwardIcon} />

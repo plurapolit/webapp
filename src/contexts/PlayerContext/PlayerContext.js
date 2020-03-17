@@ -24,13 +24,13 @@ const PlayerWrapper = ({
   const playNextAudioTrack = () => setCurrentStatement(queue.nextAudioTrack().content);
   const playPrevAudioTrack = () => setCurrentStatement(queue.prevAudioTrack().content);
 
-  const nextSongIsPresent = () => {
-    console.log('queue.nextSongIsPresent()', queue.nextSongIsPresent())
-    return queue.nextSongIsPresent();
+  const nextAudioTrackIsPresent = () => {
+    console.log('queue.nextAudioTrackIsPresent()', queue.nextAudioTrackIsPresent())
+    return queue.nextAudioTrackIsPresent();
   }
-  const prevSongIsPresent = () => {
-    console.log('queue.prevSongIsPresent()', queue.prevSongIsPresent())
-    return queue.prevSongIsPresent();
+  const prevAudioTrackIsPresent = () => {
+    console.log('queue.prevAudioTrackIsPresent()', queue.prevAudioTrackIsPresent())
+    return queue.prevAudioTrackIsPresent();
   }
 
   const pausePlayer = () => setPaused(true);
@@ -67,8 +67,8 @@ const PlayerWrapper = ({
           playNextAudioTrack={playNextAudioTrack}
           playPrevAudioTrack={playPrevAudioTrack}
           startPlayer={startPlayer}
-          nextSongIsPresent={nextSongIsPresent()}
-          prevSongIsPresent={prevSongIsPresent()}
+          nextAudioTrackIsPresent={nextAudioTrackIsPresent()}
+          prevAudioTrackIsPresent={prevAudioTrackIsPresent()}
           showSkipControls
         />
       </If>
