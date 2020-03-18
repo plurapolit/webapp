@@ -26,6 +26,8 @@ const Player = ({
   const { current } = useRef();
   let tracker = current;
 
+  // TODO: handle intro and noIntro
+
   useEffect(() => {
     if (audioStatement.content.statementId) {
       (async () => {
