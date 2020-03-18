@@ -5,13 +5,15 @@ import Button, { ButtonStyle } from "../../../../components/Button/Button";
 import Time from "../../../../helper/TimeHelper";
 
 import audioWave from "../../../../assets/images/sound-wave.svg";
-import playButton from "../../../../assets/images/play.svg";
 import styles from "./StatementControls.module.scss";
 import Helper from "./StatementControlsHelper";
 
-const StatementControls = ({ expert, panelTitle, toggleComments }) => {
-  const { setAudioTrack } = usePlayerContext();
+const StatementControls = ({
+  expert, panelTitle, toggleComments, statementId,
+}) => {
+  const { setAudioTrack, currentStatement, paused } = usePlayerContext();
   const { number_of_comments: numberOfComments } = expert;
+  const thisStatementIsSelected = currentStatement && currentStatement.statementId === statementId;
 
   return (
     <div className={styles["controls"]}>
@@ -49,7 +51,7 @@ const StatementControls = ({ expert, panelTitle, toggleComments }) => {
           }}
         >
           <img
-            src={playButton}
+            src={Helper.playButtonImage(thisStatementIsSelected, paused)}
             alt={expert.user.full_name}
             className={styles["play-img"]}
           />

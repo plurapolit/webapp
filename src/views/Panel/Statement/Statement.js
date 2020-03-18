@@ -38,6 +38,7 @@ const Statement = ({
           expert={expert}
           panelTitle={panelTitle}
           toggleComments={toggleComments}
+          statementId={expert.statement.id}
         />
       </div>
       <If condition={commentsAreOpen}>

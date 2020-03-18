@@ -48,6 +48,8 @@ const PlayerWrapper = ({
       pausePlayer,
       setAudioTrack,
       setAudioTrackList,
+      paused,
+      currentStatement,
       playedAudioTrackList: queue.playedAudioTracks(),
     }}
     >
@@ -59,6 +61,7 @@ const PlayerWrapper = ({
           playNextAudioTrack={playNextAudioTrack}
           playPrevAudioTrack={playPrevAudioTrack}
           startPlayer={startPlayer}
+          setPaused={setPaused}
         />
       </If>
     </Provider>
