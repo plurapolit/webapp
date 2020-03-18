@@ -18,24 +18,16 @@ const QueueItem = (function itemObj() {
       item.next = this.id;
     }
 
-    function disconectPrevItem(item) {
-      this.prev = false;
-      // eslint-disable-next-line no-param-reassign
-      item.next = false;
-    }
-
-    function disconectNextItem(item) {
-      this.next = false;
-      // eslint-disable-next-line no-param-reassign
-      item.prev = false;
-    }
-
     function hasNext() {
       return !!this.next;
     }
 
     function hasPrev() {
       return !!this.prev;
+    }
+
+    function isFirstInQueue() {
+      return this.firstInQueue;
     }
 
     return {
@@ -47,8 +39,7 @@ const QueueItem = (function itemObj() {
       setNext,
       hasNext,
       hasPrev,
-      disconectNextItem,
-      disconectPrevItem,
+      isFirstInQueue,
     };
   };
 

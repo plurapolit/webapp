@@ -30,14 +30,21 @@ const Queue = () => {
     return newTrack;
   };
 
-  const setCurrentAudioTrack = ({ track, id, isStart = false }) => {
+  const resetStartAndNotIntroFlag = () => {
+    const prevStartTrackList = queue.value.filter((t) => t.firstInQueue === true);
+    // eslint-disable-next-line no-param-reassign
+    if (prevStartTrackList) prevStartTrackList.forEach((t) => { t.firstInQueue = false; });
+    const prevNotIntroTrackList = queue.value.filter((t) => t.notIntro === true);
+    // eslint-disable-next-line no-param-reassign
+    if (prevNotIntroTrackList) prevNotIntroTrackList.forEach((t) => { t.notIntro = false; });
+  };
+
+  const setStartAudioTrack = (track, { notIntro = false } = {}) => {
+    resetStartAndNotIntroFlag();
     if (track) currentAudioTrackId = hash(track);
-    if (id) currentAudioTrackId = id;
-    if (isStart) {
-      const currentTrack = currentAudioTrack();
-      const prevTrack = findTrack(currentTrack.prev);
-      currentTrack.disconectPrevItem(prevTrack);
-    }
+    const startAudioTrack = findTrack(currentAudioTrackId);
+    startAudioTrack.firstInQueue = true;
+    if (notIntro) startAudioTrack.notIntro = true;
   };
 
   const nextAudioTrack = () => {
@@ -45,13 +52,15 @@ const Queue = () => {
     currentTrack.played = true;
     if (!currentTrack.hasNext()) return undefined;
     const nextTrack = findTrack(currentTrack.next);
-    setCurrentAudioTrack({ id: nextTrack.id });
+    if (nextTrack.isFirstInQueue()) return undefined;
+    currentAudioTrackId = nextTrack.id;
     return nextTrack;
   };
 
   const prevAudioTrack = () => {
     const currentTrack = currentAudioTrack();
     if (!currentTrack.hasPrev()) return undefined;
+    if (currentTrack.isFirstInQueue()) return undefined;
     const prevId = currentTrack.prev;
     currentAudioTrackId = prevId;
     return currentAudioTrack({ id: prevId });
@@ -69,7 +78,7 @@ const Queue = () => {
   const queueObj = {
     value: [],
     currentAudioTrack,
-    setCurrentAudioTrack,
+    setStartAudioTrack,
     nextAudioTrack,
     prevAudioTrack,
     playedAudioTracks,

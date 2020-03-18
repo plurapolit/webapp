@@ -9,7 +9,6 @@ import StatementControls from "./StatementControls/StatementControls";
 
 const Statement = ({
   expert,
-  panelTitle,
 }) => {
   const [commentsAreOpen, setCommentsAreOpen] = useState(false);
   const { number_of_comments: numberOfComments } = expert;
@@ -36,7 +35,6 @@ const Statement = ({
         </div>
         <StatementControls
           expert={expert}
-          panelTitle={panelTitle}
           toggleComments={toggleComments}
         />
       </div>
@@ -46,7 +44,6 @@ const Statement = ({
           statementId={expert.statement.id}
           expertFullName={expert.user.full_name}
           statementDate={expert.statement.created_at}
-          panelTitle={panelTitle}
         />
       </If>
     </div>

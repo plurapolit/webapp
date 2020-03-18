@@ -11,7 +11,6 @@ const PanelContent = () => {
   const {
     title,
     description,
-    shortTitle,
     expertStatements,
   } = usePanelContext();
 
@@ -26,7 +25,6 @@ const PanelContent = () => {
           <Statement
             key={expert.statement.id}
             expert={expert}
-            panelTitle={shortTitle}
           />
         ))}
       </div>

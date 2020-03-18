@@ -3,24 +3,33 @@ import React from "react";
 import { usePlayerContext } from "../../../../contexts/PlayerContext/PlayerContext";
 import Button, { ButtonStyle } from "../../../../components/Button/Button";
 import Time from "../../../../helper/TimeHelper";
+import { usePanelContext } from "../../../../contexts/PanelStoreContext/PanelStoreContext";
+import { createAudioTrackListFromExpertStatements } from "../../../../helper/AudioTrackHelper";
 
 import audioWave from "../../../../assets/images/sound-wave.svg";
 import playButton from "../../../../assets/images/play.svg";
 import styles from "./StatementControls.module.scss";
 import Helper from "./StatementControlsHelper";
 
-const StatementControls = ({ expert, panelTitle, toggleComments }) => {
-  const { queue } = usePlayerContext();
+const StatementControls = ({ expert, toggleComments }) => {
+  const { queue, startPlayer } = usePlayerContext();
   const { number_of_comments: numberOfComments } = expert;
+  const { shortTitle, expertStatements } = usePanelContext();
 
   const handleClick = () => {
     const audioTrack = {
       audioFile: expert.statement_audio_file.file_link,
       author: expert.user.full_name,
       statementId: expert.statement.id,
-      panelTitle,
+      intro: expert.intro.audio_file_link,
+      panelTitle: shortTitle,
     };
-    if (!queue.hasAudioTrack(audioTrack)) console.log("nicht vorhanden");
+    if (!queue.hasAudioTrack(audioTrack)) {
+      const playlist = createAudioTrackListFromExpertStatements(expertStatements, shortTitle);
+      queue.setAudioTrackList(playlist);
+    }
+    queue.setStartAudioTrack(audioTrack, { notIntro: true });
+    startPlayer();
   };
 
   return (

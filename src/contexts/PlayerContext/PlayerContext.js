@@ -31,6 +31,8 @@ const PlayerWrapper = ({
     setPaused(false);
   };
 
+  console.log("queue.value ", queue.value);
+
   return (
     <Provider value={{
       queue,

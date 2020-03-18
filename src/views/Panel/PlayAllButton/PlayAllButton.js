@@ -14,7 +14,7 @@ const PlayAllButton = () => {
   const handleClick = () => {
     const audios = createAudioTrackListFromExpertStatements(expertStatements, shortTitle);
     if (!queue.hasAudioTrack(audios[0])) queue.setAudioTrackList(audios);
-    queue.setCurrentAudioTrack({ track: audios[0], isStart: true });
+    queue.setStartAudioTrack(audios[0]);
     startPlayer();
   };
 

@@ -65,7 +65,7 @@ const Player = ({
   const onPrevious = () => {
     if (tracker) tracker.updateTracking();
     const { currentTime } = player.current.audio;
-    if (currentTime < 2 && audioStatement.hasPrev()) {
+    if (currentTime < 2 && audioStatement.hasPrev() && !audioStatement.isFirstInQueue()) {
       playPrevAudioTrack();
     } else {
       startTrackFromBeginning();

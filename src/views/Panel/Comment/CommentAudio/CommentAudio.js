@@ -18,7 +18,7 @@ const Audio = ({ commentData, panelTitle }) => {
       panelTitle,
     };
     if (!queue.hasAudioTrack(audioTrack)) queue.setAudioTrackList([audioTrack]);
-    queue.setCurrentAudioTrack({ track: audioTrack, isStart: true });
+    queue.setStartAudioTrack(audioTrack);
     startPlayer();
   };
 
