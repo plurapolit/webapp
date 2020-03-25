@@ -20,7 +20,7 @@ const HomePageMetaTags = () => (
     />
     <meta
       property="og:image"
-      content="https://plurapolit-webapi-prod-media.s3.eu-central-1.amazonaws.com/i61j2i6hnix6dnkneo3oywv81fnu"
+      content="https://plurapolit-webapi-prod-media.s3.eu-central-1.amazonaws.com/social/meta-logo.png"
     />
     <meta property="og:url" content="https://plurapolit.de" />
     <meta
@@ -33,7 +33,7 @@ const HomePageMetaTags = () => (
     />
     <meta
       name="twitter:image"
-      content=" https://plurapolit-webapi-prod-media.s3.eu-central-1.amazonaws.com/i61j2i6hnix6dnkneo3oywv81fnu"
+      content=" https://plurapolit-webapi-prod-media.s3.eu-central-1.amazonaws.com/social/meta-logo.png"
     />
   </MetaTags>
 );
