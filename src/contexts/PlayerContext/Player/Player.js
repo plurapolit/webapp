@@ -15,6 +15,7 @@ const Player = ({
   playNextAudioTrack,
   // playPrevAudioTrack,
   startPlayer,
+  pausePlayer,
 }) => {
   const player = useRef();
   const { user } = useStoreContext();
@@ -51,6 +52,7 @@ const Player = ({
 
   const onPause = () => {
     if (tracker) tracker.updateTracking();
+    pausePlayer();
   };
 
   return (
