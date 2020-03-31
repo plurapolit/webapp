@@ -22,7 +22,7 @@ const Panel = ({ objectPositionTop }) => {
 
   return (
     <div className={styles["panel"]} style={customStylePanel}>
-      <PanelMetaTags image={imageUrl} />
+      <PanelMetaTags imageUrl={imageUrl} />
       <div className={styles["header"]}>
         <img
           src={imageUrl}

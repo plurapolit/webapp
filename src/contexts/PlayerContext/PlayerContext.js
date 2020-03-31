@@ -31,13 +31,13 @@ const PlayerWrapper = ({
     setPaused(false);
   };
 
-  console.log("queue.value ", queue.value);
-
   return (
     <Provider value={{
       queue,
       startPlayer,
       pausePlayer,
+      paused,
+      currentStatement,
       playedAudioTrackList: queue.playedAudioTracks(),
     }}
     >
@@ -49,6 +49,7 @@ const PlayerWrapper = ({
           playNextAudioTrack={playNextAudioTrack}
           playPrevAudioTrack={playPrevAudioTrack}
           startPlayer={startPlayer}
+          pausePlayer={pausePlayer}
         />
       </If>
     </Provider>

@@ -7,14 +7,23 @@ import { usePanelContext } from "../../../../contexts/PanelStoreContext/PanelSto
 import { createAudioTrackListFromExpertStatements } from "../../../../helper/AudioTrackHelper";
 
 import audioWave from "../../../../assets/images/sound-wave.svg";
-import playButton from "../../../../assets/images/play.svg";
 import styles from "./StatementControls.module.scss";
 import Helper from "./StatementControlsHelper";
 
 const StatementControls = ({ expert, toggleComments }) => {
-  const { queue, startPlayer } = usePlayerContext();
   const { number_of_comments: numberOfComments } = expert;
+  const {
+    queue,
+    startPlayer,
+    paused,
+    currentStatement,
+  } = usePlayerContext();
   const { shortTitle, expertStatements } = usePanelContext();
+
+  const thisStatementIsPlaying = () => {
+    if (currentStatement) return currentStatement.content.statementId === expert.statement.id;
+    return false;
+  };
 
   const handleClick = () => {
     const audioTrack = {
@@ -61,7 +70,7 @@ const StatementControls = ({ expert, toggleComments }) => {
           onClick={() => handleClick()}
         >
           <img
-            src={playButton}
+            src={Helper.playButtonImage(thisStatementIsPlaying(), paused)}
             alt={expert.user.full_name}
             className={styles["play-img"]}
           />
