@@ -9,11 +9,14 @@ import styles from "./StatementControls.module.scss";
 import Helper from "./StatementControlsHelper";
 
 const StatementControls = ({
-  expert, panelTitle, toggleComments, statementId,
+  expert, panelTitle, toggleComments,
 }) => {
   const { setAudioTrack, currentStatement, paused } = usePlayerContext();
-  const { number_of_comments: numberOfComments } = expert;
-  const thisStatementIsSelected = currentStatement && currentStatement.statementId === statementId;
+  const {
+    number_of_comments: numberOfComments,
+    statement,
+  } = expert;
+  const thisStatementIsSelected = currentStatement && currentStatement.statementId === statement.id;
 
   return (
     <div className={styles["controls"]}>

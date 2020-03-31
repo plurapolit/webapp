@@ -61,7 +61,7 @@ const PlayerWrapper = ({
           playNextAudioTrack={playNextAudioTrack}
           playPrevAudioTrack={playPrevAudioTrack}
           startPlayer={startPlayer}
-          setPaused={setPaused}
+          pausePlayer={pausePlayer}
         />
       </If>
     </Provider>
