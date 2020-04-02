@@ -19,15 +19,12 @@ const Player = ({
   running = false,
   playNextAudioTrack,
   playPrevAudioTrack,
-  startPlayer,
-  pausePlayer,
+  setPaused,
 }) => {
   const player = useRef();
   const { user } = useStoreContext();
   const { current } = useRef();
   let tracker = current;
-
-  // TODO: handle intro and noIntro
 
   useEffect(() => {
     if (audioStatement.content.statementId) {
@@ -59,7 +56,7 @@ const Player = ({
 
   const onPause = () => {
     if (tracker) tracker.updateTracking();
-    pausePlayer();
+    setPaused(true);
   };
 
   const startTrackFromBeginning = () => {
@@ -89,7 +86,7 @@ const Player = ({
         <AudioPlayer
           src={audioStatement.content.audioFile}
           ref={player}
-          onPlay={startPlayer}
+          onPlay={() => setPaused(false)}
           onPause={onPause}
           onEnded={onEnded}
           onClickNext={onEnded}
