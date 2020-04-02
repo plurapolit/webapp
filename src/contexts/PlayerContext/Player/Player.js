@@ -15,6 +15,7 @@ const Player = ({
       panelTitle: "",
     },
     hasPrev: () => false,
+    hasNext: () => false,
   },
   running = false,
   playNextAudioTrack,
@@ -46,7 +47,7 @@ const Player = ({
 
   const onEnded = () => {
     if (tracker) tracker.updateTracking();
-    playNextAudioTrack();
+    if (audioStatement.hasNext()) playNextAudioTrack();
   };
 
   const onListen = () => {

@@ -31,31 +31,41 @@ const PlayerWrapper = ({
     },
   });
 
-  const setAudioTrackToCurrentStatements = (statement) => {
+  const getCurrentStatementsFromAudioTrack = (statement) => {
+    const { content, notIntro } = statement;
+    if (!statement) return undefined;
     const statementList = [];
-    if (statement.content.intro) statementList.push(createIntroStatement(statement));
+    if (content.intro && !notIntro) statementList.push(createIntroStatement(statement));
     statementList.push(statement);
-    setCurrentStatements(statementList);
+    return statementList;
   };
 
   const playNextAudioTrack = () => {
     const restStatements = currentStatements.slice(1);
-    if (restStatements.length <= 0) setAudioTrackToCurrentStatements(queue.nextAudioTrack());
+    if (restStatements.length <= 0) {
+      const introAndStatement = getCurrentStatementsFromAudioTrack(queue.nextAudioTrack());
+      setCurrentStatements(introAndStatement);
+    }
     if (restStatements.length > 0) setCurrentStatements(restStatements);
   };
 
-  const playPrevAudioTrack = () => setAudioTrackToCurrentStatements(queue.prevAudioTrack());
+  const playPrevAudioTrack = () => {
+    setCurrentStatements(getCurrentStatementsFromAudioTrack(queue.prevAudioTrack()));
+  };
   const pausePlayer = () => setPaused(true);
 
   const startPlayer = () => {
     setShowMediaPlayer(true);
-    setAudioTrackToCurrentStatements(queue.currentAudioTrack());
+    const introAndStatement = getCurrentStatementsFromAudioTrack(queue.currentAudioTrack());
+    setCurrentStatements(introAndStatement);
     setPaused(false);
   };
 
   useEffect(() => {
     if (currentStatements && currentStatements.length > 0) {
       setCurrentStatement(currentStatements[0]);
+    } else {
+      setCurrentStatement(undefined);
     }
   }, [currentStatements]);
 
