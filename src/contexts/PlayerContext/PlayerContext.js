@@ -8,6 +8,7 @@ import { If } from "react-if";
 
 import Queue from "./Queue/Queue";
 import Player from "./Player/Player";
+import { getCurrentStatementsFromAudioTrack } from "../../helper/AudioTrackHelper";
 
 const PlayerContext = React.createContext();
 const { Provider } = PlayerContext;
@@ -22,23 +23,6 @@ const PlayerWrapper = ({
   const [paused, setPaused] = useState(false);
   const { current } = useRef(Queue.create());
   const queue = current;
-
-  const createIntroStatement = (statement) => ({
-    ...statement,
-    content: {
-      ...statement.content,
-      audioFile: statement.content.intro,
-    },
-  });
-
-  const getCurrentStatementsFromAudioTrack = (statement) => {
-    const { content, notIntro } = statement;
-    if (!statement) return undefined;
-    const statementList = [];
-    if (content.intro && !notIntro) statementList.push(createIntroStatement(statement));
-    statementList.push(statement);
-    return statementList;
-  };
 
   const playNextAudioTrack = () => {
     const restStatements = currentStatements.slice(1);
