@@ -6,7 +6,7 @@ import { useStoreContext } from "../../StoreContext/StoreContext";
 import styles from "./Player.module.scss";
 import "react-h5-audio-player/src/styles.scss";
 import { useTransition } from "../../../helper/CustomHookHelper";
-import { Spinner } from "../../../components/Loader/Loader";
+import Loader from "../../../components/Loader/Loader";
 
 const Player = ({
   audioStatement = {
@@ -53,7 +53,7 @@ const Player = ({
     if (tracker.current) tracker.current.updateTracking();
   };
 
-  if (isPending) pauseIcon = <Spinner />;
+  if (isPending) pauseIcon = <Loader size={35} borderWidth="0.3rem" />;
 
   return (
     <div className={styles["media-player-wrapper"]}>

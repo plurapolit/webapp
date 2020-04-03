@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { If, Then, Else } from "react-if";
 
 import { useTransition } from "../../../helper/CustomHookHelper";
-import { Spinner } from "../../../components/Loader/Loader";
+import Loader from "../../../components/Loader/Loader";
 import PanelApi from "../../../api/PanelApi";
 import ExpertsList from "../ExpertsList/ExpertsList";
 import playerImage from "../../../assets/images/play.svg";
@@ -35,7 +35,7 @@ const PanelCard = ({
       <div className={styles["playAllButton"]} onClick={playAllAudioTracks}>
         <If condition={isPending}>
           <Then>
-            <Spinner />
+            <Loader size={35} borderWidth="0.3rem" color="#fff" />
           </Then>
           <Else>
             <img src={playerImage} alt="play" />
