@@ -5,6 +5,8 @@ import Tracking from "../../../helper/TrackingHelper";
 import { useStoreContext } from "../../StoreContext/StoreContext";
 import styles from "./Player.module.scss";
 import "react-h5-audio-player/src/styles.scss";
+import { useTransition } from "../../../helper/CustomHookHelper";
+import Loader from "../../../components/Loader/Loader";
 import ForwardIcon from "../../../assets/images/fast-forward.svg";
 import RewindIcon from "../../../assets/images/rewind.svg";
 
@@ -24,8 +26,9 @@ const Player = ({
 }) => {
   const player = useRef();
   const { user } = useStoreContext();
-  const { current } = useRef();
-  let tracker = current;
+  const [startTransition, isPending] = useTransition();
+  let { current: pauseIcon } = useRef();
+  let { current: tracker } = useRef();
 
   useEffect(() => {
     if (audioStatement.content.statementId) {
@@ -39,11 +42,11 @@ const Player = ({
 
   useEffect(() => {
     if (player.current && running) {
-      player.current.audio.play();
+      startTransition(() => player.current.audio.play());
     } else if (player.current) {
       player.current.audio.pause();
     }
-  }, [running]);
+  }, [running, startTransition]);
 
   const onEnded = () => {
     if (tracker) tracker.updateTracking();
@@ -74,9 +77,12 @@ const Player = ({
     }
   };
 
+  if (isPending) pauseIcon = <Loader size={35} borderWidth="0.3rem" />;
+
   const customIcons = {
     forward: <img alt="forward" src={ForwardIcon} className={styles["media-player-time-change-button"]} />,
     rewind: <img alt="rewind" src={RewindIcon} className={styles["media-player-time-change-button"]} />,
+    pause: pauseIcon,
   };
 
   return (

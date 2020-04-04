@@ -9,9 +9,9 @@ import NavBar from "./layouts/Navbar/Navbar";
 import Footer from "./layouts/Footer/Footer";
 import NavbarBuffer from "./layouts/NavbarBuffer/NavbarBuffer";
 import { Modal } from "./contexts/ModalContext/ModalContext";
-import Routes from "./Routes";
 import ScrollToTop from "./helper/ScrollToTopHelper";
 import Piwik from "./helper/PiwikHelper";
+import Routes from "./Routes";
 
 const history = createBrowserHistory();
 

@@ -3,9 +3,13 @@ import { ClipLoader } from "react-spinners";
 
 import styles from "./Loader.module.scss";
 
-const Loader = () => (
+const Loader = ({
+  size = 110,
+  borderWidth = "1rem",
+  color = "#123ABC",
+}) => (
   <div className={styles["container"]}>
-    <ClipLoader size={110} css={{ borderWidth: "1rem" }} color="#123abc" loading />
+    <ClipLoader size={size} css={{ borderWidth }} color={color} loading />
   </div>
 );
 

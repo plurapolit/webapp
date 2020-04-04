@@ -1,8 +1,10 @@
 import React from "react";
+import Img from "react-image";
+
+import Hyphen from "../../helper/HyphenHelper";
 import PanelMetaTags from "./PanelMetaTags";
 import styles from "./Panel.module.scss";
 import ContentWrapper from "../../layouts/ContentWrapper/ContentWrapper";
-import Hyphen from "../../helper/HyphenHelper";
 import PanelContent from "./PanelContent/PanelContent";
 import { usePanelContext } from "../../contexts/PanelStoreContext/PanelStoreContext";
 
@@ -20,15 +22,18 @@ const Panel = ({ objectPositionTop }) => {
 
   const imageUrl = `${IMAGEROOTURL}/${avatarKey}`;
 
+  const defaultPanelImage = <div className={[styles["image"], styles["default-image"]].join(" ")} />;
+
   return (
     <div className={styles["panel"]} style={customStylePanel}>
       <PanelMetaTags imageUrl={imageUrl} />
       <div className={styles["header"]}>
-        <img
+        <Img
           src={imageUrl}
           alt={shortTitle}
           className={styles["image"]}
           style={customStyleImage}
+          loader={defaultPanelImage}
         />
         <div className={styles["wrapper"]}>
           <ContentWrapper>

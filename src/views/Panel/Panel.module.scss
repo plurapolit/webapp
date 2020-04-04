@@ -4,6 +4,10 @@
   position: relative;
 }
 
+.default-image {
+  background-color: $color-grey;
+}
+
 .image {
   height: 40vh;
   max-height: 35rem;
