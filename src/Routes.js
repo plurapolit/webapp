@@ -1,4 +1,4 @@
-import React, { Suspense, lazy } from "react";
+import React from "react";
 import { Route, Switch } from "react-router-dom";
 import "react-notifications-component/dist/theme.css";
 
@@ -11,9 +11,7 @@ import SignUp from "./views/SignUp/SignUp";
 import ResetPassword from "./views/ResetPassword/ResetPassword";
 import RequestNewPassword from "./views/RequestNewPassword/RequestNewPassword";
 import Loader from "./components/Loader/Loader";
-
-const PanelWrapperPromise = import("./layouts/PanelWrapper/PanelWrapper");
-const PanelWrapper = lazy(() => PanelWrapperPromise);
+import PanelWrapper from "./layouts/PanelWrapper/PanelWrapper";
 
 const Routes = () => (
   <>
@@ -43,12 +41,10 @@ const Routes = () => (
         <SignUp />
       </Route>
       <Route exact path="/spinner">
-        <Loader size={35} borderWidth={"0.3rem"} />
+        <Loader size={35} borderWidth="0.3rem" />
       </Route>
       <Route path="/:slug">
-        <Suspense fallback={<Loader />}>
-          <PanelWrapper />
-        </Suspense>
+        <PanelWrapper />
       </Route>
     </Switch>
   </>

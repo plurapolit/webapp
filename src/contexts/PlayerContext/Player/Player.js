@@ -27,8 +27,8 @@ const Player = ({
   const player = useRef();
   const { user } = useStoreContext();
   const [startTransition, isPending] = useTransition();
-  const { current: pauseIcon } = useRef();
-  const { current: tracker } = useRef();
+  let { current: pauseIcon } = useRef();
+  let { current: tracker } = useRef();
 
   useEffect(() => {
     if (audioStatement.content.statementId) {
@@ -77,12 +77,13 @@ const Player = ({
     }
   };
 
+  if (isPending) pauseIcon = <Loader size={35} borderWidth="0.3rem" />;
+
   const customIcons = {
     forward: <img alt="forward" src={ForwardIcon} className={styles["media-player-time-change-button"]} />,
     rewind: <img alt="rewind" src={RewindIcon} className={styles["media-player-time-change-button"]} />,
+    pause: pauseIcon,
   };
-
-  if (isPending) customIcons.pauseIcon = <Loader size={35} borderWidth="0.3rem" />;
 
   return (
     <div className={styles["media-player-wrapper"]}>

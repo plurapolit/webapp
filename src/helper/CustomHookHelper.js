@@ -13,7 +13,7 @@ export const useTransition = ({ delay = 0 } = {}) => {
       setPending(false);
       return result;
     },
-    [],
+    [delay],
   );
 
   return [startTransition, isPending];
