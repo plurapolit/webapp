@@ -46,7 +46,7 @@ const Player = ({
     } else if (player.current) {
       player.current.audio.pause();
     }
-  }, [running, startTransition, audioStatement]);
+  }, [running, startTransition]);
 
   const onEnded = () => {
     if (tracker) tracker.updateTracking();

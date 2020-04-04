@@ -20,14 +20,16 @@ const PanelCard = ({
     "--color": `${color}`,
   };
   const { getPanelIdBySlug } = useStoreContext();
-  const { setAudioTrackList } = usePlayerContext();
+  const { queue, startPlayer } = usePlayerContext();
   const [startTransition, isPending] = useTransition();
 
   const playAllAudioTracks = async () => {
     const panelId = getPanelIdBySlug(slug);
     const panel = await startTransition(() => PanelApi.fetchPanelById(panelId));
     const audios = createAudioTrackListFromExpertStatements(panel.expert_statements, shortTitle);
-    setAudioTrackList(audios);
+    if (!queue.hasAudioTrack(audios[0])) queue.setAudioTrackList(audios);
+    queue.setStartAudioTrack(audios[0]);
+    startPlayer();
   };
 
   return (

@@ -40,9 +40,6 @@ const Routes = () => (
       <Route exact path="/sign_up/">
         <SignUp />
       </Route>
-      <Route exact path="/spinner">
-        <Loader size={35} borderWidth="0.3rem" />
-      </Route>
       <Route path="/:slug">
         <PanelWrapper />
       </Route>
