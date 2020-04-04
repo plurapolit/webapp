@@ -2,28 +2,33 @@ import React from "react";
 import { shallow } from "enzyme";
 
 import * as PlayerContextModule from "../../../contexts/PlayerContext/PlayerContext";
+import * as PanelStoreContextModule from "../../../contexts/PanelStoreContext/PanelStoreContext";
 import PlayAllButton from "./PlayAllButton";
 import Button from "../../../components/Button/Button";
-import { expertStatements } from "../../../helper/TestHelper";
+import { expertStatements, queue } from "../../../helper/TestHelper";
 
 const setup = (propOverrides) => {
   const props = {
-    panelTitle: "default Title",
+    shortTitle: "default Title",
     expertStatements,
-    setAudioTrackList: jest.fn(),
+    queue,
     ...propOverrides,
   };
   jest.spyOn(PlayerContextModule, "usePlayerContext").mockImplementation(() => ({
-    setAudioTrackList: props.setAudioTrackList,
+    queue: props.queue,
+    startPlayer: jest.fn(),
+  }));
+  jest.spyOn(PanelStoreContextModule, "usePanelContext").mockImplementation(() => ({
+    shortTitle: props.shortTitle,
+    expertStatements: props.expertStatements,
   }));
   const wrapper = shallow(
     <PlayerContextModule.PlayerProvider>
-      <PlayAllButton
-        panelTitle={props.panelTitle}
-        expertStatements={props.expertStatements}
-      />
+      <PanelStoreContextModule.PanelProvider>
+        <PlayAllButton />
+      </PanelStoreContextModule.PanelProvider>
     </PlayerContextModule.PlayerProvider>,
-  ).dive();
+  ).dive().dive();
   return {
     wrapper,
   };
@@ -42,7 +47,8 @@ describe("<PlayAllButton />", () => {
 
   it("should call setAudioTrackList on button click", () => {
     const setAudioTrackList = jest.fn();
-    const { wrapper } = setup({ setAudioTrackList });
+    const customQueue = { ...queue, setAudioTrackList };
+    const { wrapper } = setup({ queue: customQueue });
     wrapper.find(Button).simulate("click");
     expect(setAudioTrackList).toBeCalledTimes(1);
   });
@@ -52,6 +58,7 @@ describe("<PlayAllButton />", () => {
       audioFile: "url",
       author: "full_name",
       statementId: "id",
+      intro: "intro_url",
       panelTitle: "title",
     };
     const newExpertStatements = [
@@ -61,20 +68,18 @@ describe("<PlayAllButton />", () => {
           ...expertStatements[0].statement,
           id: obj.statementId,
         },
-        statement_audio_file: {
-          file_link: obj.audioFile,
-        },
-        user: {
-          full_name: obj.author,
-        },
+        statement_audio_file: { file_link: obj.audioFile },
+        intro: { audio_file_link: obj.intro },
+        user: { full_name: obj.author },
       },
     ];
     let audios;
     const setAudioTrackList = (array) => { audios = array; };
+    const customQueue = { ...queue, setAudioTrackList };
     const { wrapper } = setup({
-      setAudioTrackList,
+      queue: customQueue,
       expertStatements: newExpertStatements,
-      panelTitle: obj.panelTitle,
+      shortTitle: obj.panelTitle,
     });
     wrapper.find(Button).simulate("click");
     expect(audios).toEqual([obj]);

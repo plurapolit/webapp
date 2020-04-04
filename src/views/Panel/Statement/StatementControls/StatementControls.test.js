@@ -2,33 +2,45 @@ import React from "react";
 import { shallow } from "enzyme";
 
 import Button from "../../../../components/Button/Button";
-import { expert } from "../../../../helper/TestHelper";
+import { expert, expertStatements, queue } from "../../../../helper/TestHelper";
 import * as PlayerContextModule from "../../../../contexts/PlayerContext/PlayerContext";
+import * as PanelStoreContextModule from "../../../../contexts/PanelStoreContext/PanelStoreContext";
 
 import StatementControls from "./StatementControls";
 
 const setup = (propOverrides) => {
   const props = {
     expert,
-    panelTitle: "default title",
+    expertStatements,
+    shortTitle: "default title",
     toggleComments: jest.fn(),
-    setAudioTrack: jest.fn(),
+    queue,
+    startPlayer: jest.fn(),
+    paused: false,
     ...propOverrides,
   };
 
   jest.spyOn(PlayerContextModule, "usePlayerContext").mockImplementation(() => ({
-    setAudioTrack: props.setAudioTrack,
+    queue: props.queue,
+    startPlayer: props.startPlayer,
+    paused: props.paused,
+  }));
+
+  jest.spyOn(PanelStoreContextModule, "usePanelContext").mockImplementation(() => ({
+    shortTitle: props.shortTitle,
+    expertStatements: props.expertStatements,
   }));
 
   const wrapper = shallow(
     <PlayerContextModule.PlayerProvider>
-      <StatementControls
-        expert={props.expert}
-        panelTitle={props.panelTitle}
-        toggleComments={props.toggleComments}
-      />
+      <PanelStoreContextModule.PanelProvider>
+        <StatementControls
+          expert={props.expert}
+          toggleComments={props.toggleComments}
+        />
+      </PanelStoreContextModule.PanelProvider>
     </PlayerContextModule.PlayerProvider>,
-  ).dive();
+  ).dive().dive();
   return {
     wrapper,
   };
@@ -45,10 +57,11 @@ describe("<StatementControls />", () => {
     expect(wrapper.find(".duration").text()).toEqual("01:23");
   });
 
-  it("should render playbutton", () => {
-    const setAudioTrack = jest.fn();
-    const { wrapper } = setup({ setAudioTrack });
+  it("should render play button", () => {
+    const setAudioTrackList = jest.fn();
+    const customQueue = { ...queue, setAudioTrackList };
+    const { wrapper } = setup({ queue: customQueue });
     wrapper.find(".play").simulate("click");
-    expect(setAudioTrack).toHaveBeenCalled();
+    expect(setAudioTrackList).toHaveBeenCalled();
   });
 });

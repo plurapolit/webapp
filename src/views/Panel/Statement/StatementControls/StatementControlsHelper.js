@@ -1,3 +1,6 @@
+import playButton from "../../../../assets/images/play.svg";
+import currentlyPlayingButton from "../../../../assets/images/speaker.svg";
+import currentlyStoppedButton from "../../../../assets/images/speaker-stopped.svg";
 
 const StatementControlsHelper = () => {
   const getStringForNComments = (numberOfComments) => {
@@ -12,8 +15,19 @@ const StatementControlsHelper = () => {
     return `${numberOfComments} Kommentare`;
   };
 
+  const playButtonImage = (thisStatementIsSelected, paused) => {
+    if (thisStatementIsSelected && paused) {
+      return currentlyStoppedButton;
+    }
+    if (thisStatementIsSelected) {
+      return currentlyPlayingButton;
+    }
+    return playButton;
+  };
+
   return {
     getStringForNComments,
+    playButtonImage,
   };
 };
 

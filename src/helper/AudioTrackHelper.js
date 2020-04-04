@@ -1,24 +1,31 @@
 export const createAudioTrackListFromExpertStatements = (expertStatements, panelTitle) => {
-  const audios = [];
-  expertStatements.forEach((statement) => {
-    const { intro } = statement;
-    if (intro) {
-      const introStatement = {
-        audioFile: intro.audio_file_link,
-        author: statement.user.full_name,
-        statementId: statement.statement.id,
-        panelTitle,
-        isIntro: true,
-      };
-      audios.push(introStatement);
-    }
-    const audioStatement = {
+  const audioTrackList = expertStatements.map((statement) => {
+    let intro;
+    if (statement.intro) intro = statement.intro.audio_file_link;
+    return {
       audioFile: statement.statement_audio_file.file_link,
       author: statement.user.full_name,
       statementId: statement.statement.id,
+      intro,
       panelTitle,
     };
-    audios.push(audioStatement);
   });
-  return audios;
+  return audioTrackList;
+};
+
+export const createIntroStatement = (statement) => ({
+  ...statement,
+  content: {
+    ...statement.content,
+    audioFile: statement.content.intro,
+  },
+});
+
+export const getCurrentStatementsFromAudioTrack = (statement) => {
+  if (!statement) return undefined;
+  const { content, notIntro } = statement;
+  const statementList = [];
+  if (content.intro && !notIntro) statementList.push(createIntroStatement(statement));
+  statementList.push(statement);
+  return statementList;
 };

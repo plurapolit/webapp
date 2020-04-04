@@ -14,6 +14,10 @@ export const expert = {
     file_link: "http://www.hochmuth.com/mp3/Vivaldi_Sonata_eminor_.mp3",
     duration_seconds: 83,
   },
+  intro: {
+    audio_file_link: "http://www.hochmuth.com/mp3/Boccherini_Concerto_478-1.mp3",
+    file_name: "some file name",
+  },
   user: {
     full_name: "Darby Ritchie",
     role: "expert",
@@ -56,6 +60,16 @@ export const commentData = {
     role: "default",
   },
   user_avatar: "dtr9pw2th4pf8i9xjxq0r703v9ie",
+};
+
+export const queue = {
+  currentAudioTrack: jest.fn(),
+  setStartAudioTrack: jest.fn(),
+  nextAudioTrack: jest.fn(),
+  prevAudioTrack: jest.fn(),
+  playedAudioTrackList: jest.fn(),
+  setAudioTrackList: jest.fn(),
+  hasAudioTrack: jest.fn(),
 };
 
 export default { helper: expert };

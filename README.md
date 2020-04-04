@@ -20,6 +20,8 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
 
+For the backend to work, you should run the webapi parallel on port 3004. The command to do this is `rails s -p 3004`
+
 #### `yarn test`
 
 Launches the test runner in the interactive watch mode.<br />
