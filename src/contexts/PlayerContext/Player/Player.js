@@ -5,17 +5,22 @@ import Tracking from "../../../helper/TrackingHelper";
 import { useStoreContext } from "../../StoreContext/StoreContext";
 import styles from "./Player.module.scss";
 import "react-h5-audio-player/src/styles.scss";
+import ForwardIcon from "../../../assets/images/fast-forward.svg";
+import RewindIcon from "../../../assets/images/rewind.svg";
 
 const Player = ({
   audioStatement = {
-    author: "",
-    panelTitle: "",
+    content: {
+      author: "",
+      panelTitle: "",
+    },
+    hasPrev: () => false,
+    hasNext: () => false,
   },
   running = false,
   playNextAudioTrack,
-  // playPrevAudioTrack,
-  startPlayer,
-  pausePlayer,
+  playPrevAudioTrack,
+  setPaused,
 }) => {
   const player = useRef();
   const { user } = useStoreContext();
@@ -23,9 +28,9 @@ const Player = ({
   let tracker = current;
 
   useEffect(() => {
-    if (audioStatement.statementId) {
+    if (audioStatement.content.statementId) {
       (async () => {
-        const { statementId, isIntro } = audioStatement;
+        const { statementId, isIntro } = audioStatement.content;
         // eslint-disable-next-line react-hooks/exhaustive-deps
         tracker = await Tracking.create(statementId, user, isIntro);
       })();
@@ -42,7 +47,7 @@ const Player = ({
 
   const onEnded = () => {
     if (tracker) tracker.updateTracking();
-    playNextAudioTrack(audioStatement);
+    if (audioStatement.hasNext()) playNextAudioTrack();
   };
 
   const onListen = () => {
@@ -52,25 +57,48 @@ const Player = ({
 
   const onPause = () => {
     if (tracker) tracker.updateTracking();
-    pausePlayer();
+    setPaused(true);
+  };
+
+  const startTrackFromBeginning = () => {
+    if (player.current) player.current.audio.currentTime = 0;
+  };
+
+  const onPrevious = () => {
+    if (tracker) tracker.updateTracking();
+    const { currentTime } = player.current.audio;
+    if (currentTime < 2 && audioStatement.hasPrev() && !audioStatement.isFirstInQueue()) {
+      playPrevAudioTrack();
+    } else {
+      startTrackFromBeginning();
+    }
+  };
+
+  const customIcons = {
+    forward: <img alt="forward" src={ForwardIcon} className={styles["media-player-time-change-button"]} />,
+    rewind: <img alt="rewind" src={RewindIcon} className={styles["media-player-time-change-button"]} />,
   };
 
   return (
     <div className={styles["media-player-wrapper"]}>
-      <p className={styles["media-player-wrapper-user"]}>{audioStatement.author}</p>
-      <p className={styles["media-player-wrapper-statement"]}>{audioStatement.panelTitle}</p>
+      <p className={styles["media-player-wrapper-user"]}>{audioStatement.content.author}</p>
+      <p className={styles["media-player-wrapper-statement"]}>{audioStatement.content.panelTitle}</p>
       <div className={styles["media-player-wrapper-player"]} data-test="player">
         <AudioPlayer
-          src={audioStatement.audioFile}
+          src={audioStatement.content.audioFile}
           ref={player}
-          onPlay={startPlayer}
+          onPlay={() => setPaused(false)}
           onPause={onPause}
           onEnded={onEnded}
+          onClickNext={onEnded}
+          onClickPrevious={onPrevious}
           onListen={onListen}
+          customIcons={customIcons}
           listenInterval={1000}
           progressJumpStep={10000}
           showVolumeControl={false}
           showLoopControl={false}
+          showSkipControls
         />
       </div>
     </div>

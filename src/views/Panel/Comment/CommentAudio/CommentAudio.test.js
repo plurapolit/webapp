@@ -1,19 +1,21 @@
 import React from "react";
 import { shallow } from "enzyme";
 import * as PlayerContextModule from "../../../../contexts/PlayerContext/PlayerContext";
-import { commentData } from "../../../../helper/TestHelper";
+import { commentData, queue } from "../../../../helper/TestHelper";
 
 import Audio from "./CommentAudio";
 
 const setup = (propOverrides) => {
   const props = {
     commentData,
-    setAudioTrack: jest.fn(),
+    queue,
+    startPlayer: jest.fn(),
     ...propOverrides,
   };
 
   jest.spyOn(PlayerContextModule, "usePlayerContext").mockImplementation(() => ({
-    setAudioTrack: props.setAudioTrack,
+    queue: props.queue,
+    startPlayer: props.startPlayer,
   }));
 
   const wrapper = shallow(
@@ -43,10 +45,11 @@ describe("<Audio />", () => {
   });
 
   it("should call setAudioTrack on click", () => {
-    const setAudioTrack = jest.fn();
-    const { wrapper } = setup({ setAudioTrack });
+    const setAudioTrackList = jest.fn();
+    const customQueue = { ...queue, setAudioTrackList };
+    const { wrapper } = setup({ queue: customQueue });
     wrapper.find(".audio-icon").simulate("click");
-    expect(setAudioTrack).toHaveBeenCalled();
+    expect(setAudioTrackList).toHaveBeenCalled();
   });
 
   it("should style audio-icon differently if user is a expert", () => {

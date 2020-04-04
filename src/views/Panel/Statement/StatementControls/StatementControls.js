@@ -3,20 +3,43 @@ import React from "react";
 import { usePlayerContext } from "../../../../contexts/PlayerContext/PlayerContext";
 import Button, { ButtonStyle } from "../../../../components/Button/Button";
 import Time from "../../../../helper/TimeHelper";
+import { usePanelContext } from "../../../../contexts/PanelStoreContext/PanelStoreContext";
+import { createAudioTrackListFromExpertStatements } from "../../../../helper/AudioTrackHelper";
 
 import audioWave from "../../../../assets/images/sound-wave.svg";
 import styles from "./StatementControls.module.scss";
 import Helper from "./StatementControlsHelper";
 
-const StatementControls = ({
-  expert, panelTitle, toggleComments,
-}) => {
-  const { setAudioTrack, currentStatement, paused } = usePlayerContext();
+const StatementControls = ({ expert, toggleComments }) => {
+  const { number_of_comments: numberOfComments } = expert;
   const {
-    number_of_comments: numberOfComments,
-    statement,
-  } = expert;
-  const thisStatementIsSelected = currentStatement && currentStatement.statementId === statement.id;
+    queue,
+    startPlayer,
+    paused,
+    currentStatement,
+  } = usePlayerContext();
+  const { shortTitle, expertStatements } = usePanelContext();
+
+  const thisStatementIsPlaying = () => {
+    if (currentStatement) return currentStatement.content.statementId === expert.statement.id;
+    return false;
+  };
+
+  const handleClick = () => {
+    const audioTrack = {
+      audioFile: expert.statement_audio_file.file_link,
+      author: expert.user.full_name,
+      statementId: expert.statement.id,
+      intro: expert.intro.audio_file_link,
+      panelTitle: shortTitle,
+    };
+    if (!queue.hasAudioTrack(audioTrack)) {
+      const playlist = createAudioTrackListFromExpertStatements(expertStatements, shortTitle);
+      queue.setAudioTrackList(playlist);
+    }
+    queue.setStartAudioTrack(audioTrack, { notIntro: true });
+    startPlayer();
+  };
 
   return (
     <div className={styles["controls"]}>
@@ -44,17 +67,10 @@ const StatementControls = ({
           type="button"
           className={styles["play"]}
           data-test="play-button"
-          onClick={() => {
-            setAudioTrack({
-              audioFile: expert.statement_audio_file.file_link,
-              author: expert.user.full_name,
-              statementId: expert.statement.id,
-              panelTitle,
-            });
-          }}
+          onClick={() => handleClick()}
         >
           <img
-            src={Helper.playButtonImage(thisStatementIsSelected, paused)}
+            src={Helper.playButtonImage(thisStatementIsPlaying(), paused)}
             alt={expert.user.full_name}
             className={styles["play-img"]}
           />

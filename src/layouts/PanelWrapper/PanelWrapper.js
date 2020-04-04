@@ -6,6 +6,7 @@ import Panel from "../../views/Panel/Panel";
 import PageNotFound from "../../views/PageNotFound/PageNotFound";
 import Loader from "../../components/Loader/Loader";
 import { useStoreContext } from "../../contexts/StoreContext/StoreContext";
+import { PanelStore } from "../../contexts/PanelStoreContext/PanelStoreContext";
 
 const PanelWrapper = () => {
   const [currentPanel, setCurrentPanel] = useState(undefined);
@@ -32,7 +33,9 @@ const PanelWrapper = () => {
 
   if (currentPanel) {
     return (
-      <Panel objectPositionTop={isAboutUsSlug()} panel={currentPanel} />
+      <PanelStore panel={currentPanel}>
+        <Panel objectPositionTop={isAboutUsSlug()} panel={currentPanel} />
+      </PanelStore>
     );
   }
 
