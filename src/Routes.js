@@ -10,7 +10,6 @@ import SignIn from "./views/SignIn/SignIn";
 import SignUp from "./views/SignUp/SignUp";
 import ResetPassword from "./views/ResetPassword/ResetPassword";
 import RequestNewPassword from "./views/RequestNewPassword/RequestNewPassword";
-import Loader from "./components/Loader/Loader";
 import PanelWrapper from "./layouts/PanelWrapper/PanelWrapper";
 
 const Routes = () => (
