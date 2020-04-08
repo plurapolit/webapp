@@ -41,8 +41,10 @@ const Modal = ({
         style={style.current ? style.current : defaultStyle}
         ariaHideApp={false}
       >
-        <CloseButton onClick={closeModal} />
-        {content.current}
+        <div>
+          <CloseButton onClick={closeModal} />
+          {content.current}
+        </div>
       </ReactModal>
       <Provider value={{
         setLabel,

@@ -1,12 +1,12 @@
 const CommentModalHelper = () => {
   const modalStyle = {
     content: {
-      position: "absolute",
+      position: "fixed",
       left: "50%",
       top: "50%",
       transform: "translate(-50%, -50%)",
       marginTop: "3rem",
-      height: "80vh",
+      minHeight: "2rem",
       maxHeight: "70rem",
       width: "90vw",
       maxWidth: "50rem",

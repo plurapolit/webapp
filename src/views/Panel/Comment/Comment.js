@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { If } from "react-if";
+import { If, Else, Then } from "react-if";
 
 import JwtApi from "../../../api/JwtApi";
 import Notification from "../../../helper/NotificationHelper";
@@ -7,6 +7,7 @@ import Helper from "./CommentHelper";
 import { ModalContext } from "../../../contexts/ModalContext/ModalContext";
 import SignInComponent from "../../../components/SignInComponent/SignInComponent";
 import CommentAudio from "./CommentAudio/CommentAudio";
+import CommentText from "./CommentText/CommentText";
 import CommentStatement from "./CommentStatement/CommentStatement";
 import CommentLike from "./CommentLike/CommentLike";
 
@@ -53,7 +54,14 @@ const Comment = ({
         </div>
       </If>
       <div className={styles["card"]}>
-        <CommentAudio commentData={commentData} panelTitle={panelTitle} />
+        <If condition={!!commentData.audio_file}>
+          <Then>
+            <CommentAudio commentData={commentData} panelTitle={panelTitle} />
+          </Then>
+          <Else>
+            <CommentText commentData={commentData} />
+          </Else>
+        </If>
         <CommentStatement commentData={commentData} />
         <CommentLike
           commentData={commentData}

@@ -2,9 +2,9 @@ import React, { useState, useEffect, useContext } from "react";
 
 import { usePlayerContext } from "../../../contexts/PlayerContext/PlayerContext";
 import Button from "../../../components/Button/Button";
-import CommentModal from "../CommentModal/CommentModal";
+import TextCommentModal from "../TextCommentModal/TextCommentModal";
 import closeButton from "../../../assets/images/close.svg";
-import microphoneButton from "../../../assets/images/microphone.svg";
+import commentIcon from "../../../assets/images/speech-bubble-outline.svg";
 import CommentApi from "../../../api/CommentApi";
 import Comment from "../Comment/Comment";
 import AnswerDisclaimer from "../AnswerDisclaimer/AnswerDisclaimer";
@@ -39,7 +39,7 @@ const PanelComments = ({
   const openCommentModal = () => {
     pausePlayer();
     modal.showContent(
-      <CommentModal
+      <TextCommentModal
         closeModal={modal.closeModal}
         statementId={statementId}
       />,
@@ -69,8 +69,8 @@ const PanelComments = ({
           <Button onClick={() => openCommentModal()} dataTest="create-comment-button">
             <img
               alt="icon"
-              src={microphoneButton}
-              className={styles["comments-microphone-img"]}
+              src={commentIcon}
+              className={styles["comments-icon-img"]}
             />
             <div className={styles["comments-comment-text"]}>
               Beitrag kommentieren

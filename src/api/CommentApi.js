@@ -13,7 +13,7 @@ const CommentApi = () => {
     );
   };
 
-  const post = async (statementId, quote, fileLink, duration) => {
+  const postAudio = async (statementId, quote, fileLink, duration) => {
     const body = {
       comment: {
         quote,
@@ -30,8 +30,24 @@ const CommentApi = () => {
     }
     return false;
   };
+
+  const postText = async (statementId, textRecord) => {
+    const body = {
+      text_record: {
+        content: textRecord,
+      },
+    };
+    const parameters = Parameter.post(body, JwtApi.get());
+    const res = await fetchResponse(getUrl(statementId), parameters);
+    if (res.ok) {
+      return true;
+    }
+    return false;
+  };
+
   return {
-    post,
+    postAudio,
+    postText,
     getComments,
   };
 };
