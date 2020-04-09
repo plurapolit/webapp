@@ -52,6 +52,6 @@ describe("<Comment />", () => {
       },
     };
     const { wrapper } = setup({ commentData: customCommentData });
-    expect(wrapper.find(If).props().condition).toEqual(true);
+    expect(wrapper.find(If).first().props().condition).toEqual(true);
   });
 });
