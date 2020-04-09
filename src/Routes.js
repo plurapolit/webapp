@@ -11,7 +11,6 @@ import SignUp from "./views/SignUp/SignUp";
 import ResetPassword from "./views/ResetPassword/ResetPassword";
 import RequestNewPassword from "./views/RequestNewPassword/RequestNewPassword";
 import PanelWrapper from "./layouts/PanelWrapper/PanelWrapper";
-import TextRecord from "./views/Panel/TextRecord/TextRecord";
 
 const Routes = () => (
   <>
@@ -39,9 +38,6 @@ const Routes = () => (
       </Route>
       <Route exact path="/sign_up/">
         <SignUp />
-      </Route>
-      <Route exact path="/text-record/">
-        <TextRecord sendToRails={(data) => console.log(data)} />
       </Route>
       <Route path="/:slug">
         <PanelWrapper />

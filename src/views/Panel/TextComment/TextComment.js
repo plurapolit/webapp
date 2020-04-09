@@ -14,6 +14,7 @@ const TextComment = ({
 
   useEffect(() => {
     const elements = document.getElementsByClassName("public-DraftEditor-content");
+    // eslint-disable-next-line no-plusplus
     for (let i = 0; i < elements.length; i++) {
       const { style } = elements[i];
       style.minHeight = 0;
