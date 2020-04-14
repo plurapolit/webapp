@@ -20,17 +20,4 @@ describe("<Statement />", () => {
     const { wrapper } = setup();
     expect(wrapper.find(".statement_username")).toHaveLength(1);
   });
-
-  it("should render a description", () => {
-    const quote = "a nice description";
-    const customCommentData = {
-      ...commentData,
-      comment: {
-        ...commentData.comment,
-        quote,
-      },
-    };
-    const { wrapper } = setup({ commentData: customCommentData });
-    expect(wrapper.find(".statement_comment").text()).toEqual(`“${quote}”`);
-  });
 });
