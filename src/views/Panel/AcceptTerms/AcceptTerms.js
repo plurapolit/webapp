@@ -7,14 +7,9 @@ const AcceptTerms = ({ nextPage }) => (
   <div className={styles["container"]}>
     <div className={styles["headline"]}>Nutzungsbedingungen</div>
     <ol className={styles["terms"]}>
-      <li>
-        Beiträge müssen
-        <span className={styles["terms-emphasis"]}> unter 90 Sekunden </span>
-        lang sein
-      </li>
-      <li>Beiträge dürfen nicht beleidigen</li>
-      <li>Beiträge dürfen keine rassistischen Äußerungen beinhalten</li>
-      <li>Beiträge dürfen nicht zur Gewalt aufrufen</li>
+      <li>Kommentare dürfen nicht beleidigen</li>
+      <li>Kommentare dürfen keine rassistischen Äußerungen beinhalten</li>
+      <li>Kommentare dürfen nicht zu Gewalt aufrufen</li>
       <div className={styles["terms-link"]}>
         <a href="/terms/" target="_blank">
           Mehr dazu

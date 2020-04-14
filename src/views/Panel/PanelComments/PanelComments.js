@@ -4,7 +4,6 @@ import { usePlayerContext } from "../../../contexts/PlayerContext/PlayerContext"
 import Button from "../../../components/Button/Button";
 import TextCommentModal from "../TextCommentModal/TextCommentModal";
 import closeButton from "../../../assets/images/close.svg";
-import commentIcon from "../../../assets/images/speech-bubble-outline.svg";
 import CommentApi from "../../../api/CommentApi";
 import Comment from "../Comment/Comment";
 import AnswerDisclaimer from "../AnswerDisclaimer/AnswerDisclaimer";
@@ -67,11 +66,6 @@ const PanelComments = ({
             />
           )))}
           <Button onClick={() => openCommentModal()} dataTest="create-comment-button">
-            <img
-              alt="icon"
-              src={commentIcon}
-              className={styles["comments-icon-img"]}
-            />
             <div className={styles["comments-comment-text"]}>
               Beitrag kommentieren
             </div>

@@ -19,7 +19,7 @@ const TextComment = ({
       const { style } = elements[i];
       style.minHeight = 0;
       style.marginTop = ".5rem";
-      style.marginLeft = ".5rem";
+      style.marginLeft = "1rem";
     }
   }, []);
 
