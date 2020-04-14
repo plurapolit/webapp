@@ -19,4 +19,4 @@ export const modalStyle = {
   },
 };
 
-export default null;
+export { modalStyle as default };
