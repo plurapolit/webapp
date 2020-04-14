@@ -13,13 +13,13 @@ const TextCommentModal = ({ closeModal, statementId }) => {
   const [page, setPage] = useState(1);
   const { user } = useStoreContext();
 
-  const sendToRails = (textRecord) => {
+  const sendToApi = (textRecord) => {
     CommentApi.postText(
       statementId,
       textRecord,
     ).then(() => {
       Notification.success(
-        "Danke für deine Einsendung. Wir überprüfen, ob das Statement unseren Nutzungsbedingungen entspricht, und schalten es dann frei.",
+        "Danke für deine Einsendung. Wir überprüfen, ob das Statement unseren Nutzungsbedingungen entspricht, und schalten es in den nächsten 24 Stunden frei.",
       );
       closeModal();
     });
@@ -40,7 +40,7 @@ const TextCommentModal = ({ closeModal, statementId }) => {
     case 1:
       return <AcceptTerms nextPage={nextPage} />;
     case 2:
-      return <TextRecord sendToRails={sendToRails} />;
+      return <TextRecord sendToApi={sendToApi} />;
     default:
       // TODO: Error handling
       break;

@@ -6,13 +6,13 @@ import MarkdownEditor from "../../../components/MarkdownEditor/MarkdownEditor";
 
 import styles from "./TextRecord.module.scss";
 
-const TextRecord = ({ sendToRails }) => {
+const TextRecord = ({ sendToApi }) => {
   const [inputLength, setInputLength] = useState(0);
   const [input, setInput] = useState();
 
   const sendTextRecord = () => {
     const textRecordAsJson = JSON.stringify(convertToRaw(input.getCurrentContent()));
-    sendToRails(textRecordAsJson);
+    sendToApi(textRecordAsJson);
   };
 
   const onChange = (value) => {
