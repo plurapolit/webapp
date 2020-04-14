@@ -25,12 +25,7 @@ const MarkdownEditor = ({
 
   const handleKeyCommand = (command) => {
     const newState = RichUtils.handleKeyCommand(editorState, command);
-
-    if (newState) {
-      onInputChange(newState);
-      return "handled";
-    }
-    return "not-handled";
+    if (newState) onInputChange(newState);
   };
 
   const toggleInlineStyle = (style) => {
