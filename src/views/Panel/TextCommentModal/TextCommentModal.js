@@ -33,7 +33,7 @@ const TextCommentModal = ({ closeModal, statementId }) => {
     Notification.warning(
       "Um diesen Service zu nutzen, musst du dich anmelden.",
     );
-    return <SignInComponent />;
+    return <SignInComponent onLinkClick={closeModal} />;
   }
 
   switch (page) {
