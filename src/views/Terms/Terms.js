@@ -1,12 +1,15 @@
 import React from "react";
 import styles from "./Terms.module.scss";
 
+import Hyphen from "../../helper/HyphenHelper";
 import ContentWrapper from "../../layouts/ContentWrapper/ContentWrapper";
 
 const Terms = () => (
   <div className={styles["wrapper"]}>
     <ContentWrapper>
-      <h1>NUTZUNGSBEDINGUNGEN</h1>
+      <Hyphen>
+        <h1>NUTZUNGSBEDINGUNGEN</h1>
+      </Hyphen>
       <br />
       <p>
         Der PluraPolit gUG (in Gründung), Paul-Nevermann-Platz 5, 22765 Hamburg

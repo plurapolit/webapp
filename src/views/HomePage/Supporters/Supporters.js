@@ -1,4 +1,6 @@
 import React from "react";
+import LazyLoad from "react-lazyload";
+import Img from "react-image";
 
 import styles from "./Supporters.module.scss";
 import LPB from "./images/logo-lzpb-hamburg.png";
@@ -10,28 +12,50 @@ import Partner3 from "./images/5_EU_Sozialfonds_R_Logo.png";
 
 const Supporters = () => (
   <div className={styles["container"]}>
-    <div className={styles["image-wrapper"]}>
-      <img className={styles["image"]} src={LPB} alt="sample-logo" />
-    </div>
-    <a href="https://www.startup-incubator.berlin/">
+    <LazyLoad offset={200} once>
       <div className={styles["image-wrapper"]}>
-        <img className={styles["image"]} src={SIBLogo} alt="sample-logo" />
+        <Img
+          className={styles["image"]}
+          src={StartupIncubator}
+          alt="sample-logo"
+        />
       </div>
-    </a>
-    <a href="http://www.hwr-berlin.de/">
       <div className={styles["image-wrapper"]}>
-        <img className={styles["image"]} src={StartupIncubator} alt="sample-logo" />
+        <Img
+          className={styles["image"]}
+          src={LPB}
+          alt="sample-logo"
+        />
       </div>
-    </a>
-    <div className={styles["image-wrapper"]}>
-      <img className={styles["image"]} src={Partner1} alt="sample-logo" />
-    </div>
-    <div className={styles["image-wrapper"]}>
-      <img className={styles["image"]} src={Partner2} alt="sample-logo" />
-    </div>
-    <div className={styles["image-wrapper"]}>
-      <img className={styles["image"]} src={Partner3} alt="sample-logo" />
-    </div>
+      <div className={styles["image-wrapper"]}>
+        <Img
+          className={styles["image"]}
+          src={Partner1}
+          alt="sample-logo"
+        />
+      </div>
+      <div className={styles["image-wrapper"]}>
+        <Img
+          className={styles["image"]}
+          src={Partner2}
+          alt="sample-logo"
+        />
+      </div>
+      <div className={styles["image-wrapper"]}>
+        <Img
+          className={styles["image"]}
+          src={Partner3}
+          alt="sample-logo"
+        />
+      </div>
+      <div className={styles["image-wrapper"]}>
+        <Img
+          className={styles["image"]}
+          src={SIBLogo}
+          alt="sample-logo"
+        />
+      </div>
+    </LazyLoad>
   </div>
 );
 

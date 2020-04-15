@@ -10,7 +10,6 @@ import MoreSection from "./MoreSection/MoreSection";
 import CategoryList from "./CategoryList/CategoryList";
 import Feedback from "./Feedback/Feedback";
 import Supporters from "./Supporters/Supporters";
-
 import styles from "./HomePage.module.scss";
 
 const HomePage = () => {

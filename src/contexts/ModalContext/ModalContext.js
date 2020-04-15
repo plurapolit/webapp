@@ -2,12 +2,10 @@ import React, { useState, useRef } from "react";
 import ReactModal from "react-modal";
 
 import CloseButton from "../../components/CloseButton/CloseButton";
-import Helper from "../../views/Panel/CommentModal/CommentModalHelper";
+import { modalStyle } from "../../views/Panel/CommentModal/CommentModalHelper";
 
 const ModalContext = React.createContext();
 const { Provider } = ModalContext;
-
-const defaultStyle = Helper.modalStyle;
 
 const Modal = ({
   show = false,
@@ -31,6 +29,8 @@ const Modal = ({
   const setLabel = (newLabel) => {
     label.current = newLabel;
   };
+
+  const defaultStyle = modalStyle;
 
   return (
     <>

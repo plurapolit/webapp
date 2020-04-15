@@ -31,7 +31,7 @@ const CommentModal = ({ closeModal, statementId }) => {
   };
 
   const sendToRails = () => {
-    CommentApi.post(
+    CommentApi.postAudio(
       statementId,
       quote.current,
       fileLink.current,
