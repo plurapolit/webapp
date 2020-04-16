@@ -5,7 +5,6 @@ import { If } from "react-if";
 import { useStoreContext } from "../../contexts/StoreContext/StoreContext";
 import HomePageMetaTags from "./HomePageMetaTag";
 import HomeHeader from "./HomeHeader/HomeHeader";
-import About from "./About/About";
 import MoreSection from "./MoreSection/MoreSection";
 import CategoryList from "./CategoryList/CategoryList";
 import Feedback from "./Feedback/Feedback";
@@ -18,7 +17,6 @@ const HomePage = () => {
     <div>
       <HomePageMetaTags />
       <HomeHeader />
-      <About />
       <If condition={!!categoryList}>
         <CategoryList />
       </If>
