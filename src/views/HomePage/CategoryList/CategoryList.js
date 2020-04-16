@@ -6,11 +6,10 @@ import { useStoreContext } from "../../../contexts/StoreContext/StoreContext";
 /* eslint-disable camelcase */
 const CategoryList = () => {
   const { categoryList } = useStoreContext();
-  const list = categoryList.map(({ category, category_avatar, panels }) => (
+  const list = categoryList.map(({ category, panels }) => (
     <CategoryBanner
       key={category.id}
       name={category.name}
-      imageUrl={category_avatar}
       panels={panels}
       color={category.background_color}
     />
