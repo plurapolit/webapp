@@ -34,22 +34,24 @@ const PanelList = ({ data }) => {
   return (
     <>
       <div className={styles["panel-list"]}>{list}</div>
-      <If condition={!showAll && data.length > MAX_PANELCARDS}>
-        <Button
-          onClick={() => setShowAll(true)}
-          buttonStyle={ButtonStyle.NONE}
-        >
-          alle Anzeigen
-        </Button>
-      </If>
-      <If condition={showAll}>
-        <Button
-          onClick={() => setShowAll(false)}
-          buttonStyle={ButtonStyle.NONE}
-        >
-          weniger Anzeigen
-        </Button>
-      </If>
+      <div className={styles["button-wrapper"]}>
+        <If condition={!showAll && data.length > MAX_PANELCARDS}>
+          <Button
+            onClick={() => setShowAll(true)}
+            buttonStyle={ButtonStyle.COMMENT}
+          >
+            alle Anzeigen
+          </Button>
+        </If>
+        <If condition={showAll}>
+          <Button
+            onClick={() => setShowAll(false)}
+            buttonStyle={ButtonStyle.COMMENT}
+          >
+            weniger Anzeigen
+          </Button>
+        </If>
+      </div>
     </>
   );
 };
