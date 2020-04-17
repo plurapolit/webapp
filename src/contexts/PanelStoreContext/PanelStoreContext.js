@@ -9,7 +9,7 @@ const PanelStore = ({
 }) => (
   <Provider value={{
     fontColor: panel.panel.font_color,
-    avatarKey: panel.panel_avatar_key,
+    avatar: panel.panel_avatar,
     shortTitle: panel.panel.short_title,
     slug: panel.slug,
     title: panel.title,
