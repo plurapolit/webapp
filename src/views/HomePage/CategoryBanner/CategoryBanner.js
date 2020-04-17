@@ -8,8 +8,6 @@ import styles from "./CategoryBanner.module.scss";
 const CategoryBanner = ({
   name, imageUrl, color, panels,
 }) => {
-  const ROOTIMAGEURL = process.env.REACT_APP_BUCKET_URL;
-
   const customStyle = {
     "--bg": `${color}`,
   };
@@ -17,7 +15,7 @@ const CategoryBanner = ({
   return (
     <section className={styles["category-banner"]} style={customStyle} data-test="category-banner">
       <img
-        src={`${ROOTIMAGEURL}/${imageUrl}`}
+        src={imageUrl}
         alt={name}
         className={styles["image"]}
       />
