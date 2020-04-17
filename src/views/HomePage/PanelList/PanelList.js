@@ -21,7 +21,7 @@ const getPanelCardFromArray = (array) => {
   return list;
 };
 
-const MAX_PANELCARDS = 3;
+const MAX_PANELCARDS = 2;
 
 const PanelList = ({ data }) => {
   const [showAll, setShowAll] = useState(false);
