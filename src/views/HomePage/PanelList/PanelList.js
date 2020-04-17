@@ -7,13 +7,12 @@ import styles from "./PanelList.module.scss";
 import PanelCard from "../PanelCard/PanelCard";
 
 const getPanelCardFromArray = (array) => {
-  const URL = process.env.REACT_APP_BUCKET_URL;
   const list = array.map(({ panel, experts, panel_avatar }) => (
     <PanelCard
       key={panel.id}
       title={panel.title}
       shortTitle={panel.short_title}
-      imageUrl={`${URL}/${panel_avatar}`}
+      imageUrl={panel_avatar}
       color={panel.font_color}
       slug={panel.slug}
       experts={experts}

@@ -7,8 +7,6 @@ import defaultProfileImageUrl from "../../../../assets/images/default-profile.sv
 import styles from "./StatementHeader.module.scss";
 
 const StatementHeader = ({ expert }) => {
-  const IMAGEROOTURL = process.env.REACT_APP_BUCKET_URL;
-
   const defaultProfileImage = (
     <img
       src={defaultProfileImageUrl}
@@ -21,7 +19,7 @@ const StatementHeader = ({ expert }) => {
     const image = (
       <LazyLoad offset={300} once>
         <Img
-          src={`${IMAGEROOTURL}/${expert.user_avatar_key}`}
+          src={expert.user_avatar}
           alt={expert.user.full_name}
           className={styles["image"]}
           loader={defaultProfileImage}

@@ -29,9 +29,9 @@ export const expert = {
   },
   organisation: {
     name: "Cummings-Abshire",
-    avatar_key: "5lhg2147ak6pt62jxg7dxixj5cjy",
+    avatar: "http://localhost:3000/5lhg2147ak6pt62jxg7dxixj5cjy",
   },
-  user_avatar_key: "7zbzfy10wphh2l26oigmhpecin9f",
+  user_avatar: "http://localhost:3000/5lhg2147ak6pt62jxg7dxixj5cjy",
 };
 
 export const expertStatements = [
