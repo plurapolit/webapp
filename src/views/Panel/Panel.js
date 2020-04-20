@@ -7,6 +7,7 @@ import styles from "./Panel.module.scss";
 import ContentWrapper from "../../layouts/ContentWrapper/ContentWrapper";
 import PanelContent from "./PanelContent/PanelContent";
 import { usePanelContext } from "../../contexts/PanelStoreContext/PanelStoreContext";
+import { ImgixApiUrlParameters } from "../../helper/ImageDeliveryHelper";
 
 const Panel = ({ objectPositionTop }) => {
   const { fontColor, avatar, shortTitle } = usePanelContext();
@@ -26,7 +27,7 @@ const Panel = ({ objectPositionTop }) => {
       <PanelMetaTags imageUrl={avatar} />
       <div className={styles["header"]}>
         <Img
-          src={avatar}
+          src={`${avatar}${ImgixApiUrlParameters()}`}
           alt={shortTitle}
           className={styles["image"]}
           style={customStyleImage}
