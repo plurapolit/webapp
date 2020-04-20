@@ -31,12 +31,6 @@ describe("<CategoryBanner />", () => {
     expect(wrapper.find(".category-banner")).toHaveLength(1);
   });
 
-  it("should set image old tag depending on prop name", () => {
-    const name = "custom name";
-    const { wrapper } = setup({ name });
-    expect(wrapper.find("img").props().alt).toMatch(name);
-  });
-
   it("should set background color of section depending on prop color", () => {
     const customColor = "custom color";
     const { wrapper } = setup({ color: customColor });

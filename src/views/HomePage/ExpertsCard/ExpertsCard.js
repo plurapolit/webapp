@@ -17,7 +17,7 @@ const ExpertsCard = ({ experts }) => {
 
   return (
     <div className={styles["speaker-image-wrapper"]}>
-      <LazyLoad offset={500} once>
+      <LazyLoad offset={800} once>
         <Img
           src={experts.avatar}
           className={styles["speaker-image"]}
