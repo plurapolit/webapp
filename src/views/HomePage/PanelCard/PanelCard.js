@@ -11,12 +11,13 @@ import styles from "./PanelCard.module.scss";
 import { useStoreContext } from "../../../contexts/StoreContext/StoreContext";
 import { usePlayerContext } from "../../../contexts/PlayerContext/PlayerContext";
 import { createAudioTrackListFromExpertStatements } from "../../../helper/AudioTrackHelper";
+import { ImgixApiUrlParameters } from "../../../helper/ImageDeliveryHelper";
 
 const PanelCard = ({
   title, imageUrl, color, shortTitle, slug, experts,
 }) => {
   const customStyle = {
-    "--url": `url(${imageUrl})`,
+    "--url": `url(${imageUrl}${ImgixApiUrlParameters(400)}`,
     "--color": `${color}`,
   };
   const { getPanelIdBySlug } = useStoreContext();
