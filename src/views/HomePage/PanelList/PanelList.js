@@ -37,17 +37,17 @@ const PanelList = ({ data }) => {
         <If condition={!showAll && data.length > MAX_PANELCARDS}>
           <Button
             onClick={() => setShowAll(true)}
-            buttonStyle={ButtonStyle.COMMENT}
+            buttonStyle={ButtonStyle.PRIMARY}
           >
-            alle Anzeigen
+            Alle anzeigen
           </Button>
         </If>
         <If condition={showAll}>
           <Button
             onClick={() => setShowAll(false)}
-            buttonStyle={ButtonStyle.COMMENT}
+            buttonStyle={ButtonStyle.PRIMARY}
           >
-            weniger Anzeigen
+            Weniger anzeigen
           </Button>
         </If>
       </div>
