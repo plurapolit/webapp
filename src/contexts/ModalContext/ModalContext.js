@@ -2,7 +2,27 @@ import React, { useState, useRef, useContext } from "react";
 import ReactModal from "react-modal";
 
 import CloseButton from "../../components/CloseButton/CloseButton";
-import { modalStyle } from "../../views/Panel/CommentModal/CommentModalHelper";
+
+const defaultStyle = {
+  content: {
+    position: "fixed",
+    left: "50%",
+    top: "50%",
+    transform: "translate(-50%, -50%)",
+    marginTop: "3rem",
+    height: "80vh",
+    maxHeight: "60rem",
+    width: "90vw",
+    maxWidth: "50rem",
+    overflowY: "auto",
+    padding: "2rem",
+    borderRadius: "1rem",
+    border: "2px solid #4E0CED",
+  },
+  overlay: {
+    backgroundColor: "#000000cc",
+  },
+};
 
 const ModalContext = React.createContext();
 const { Provider } = ModalContext;
@@ -29,8 +49,6 @@ const Modal = ({
   const setLabel = (newLabel) => {
     label.current = newLabel;
   };
-
-  const defaultStyle = modalStyle;
 
   return (
     <>
