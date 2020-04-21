@@ -5,10 +5,10 @@ import LazyLoad from "react-lazyload";
 import TwitterButton from "../../../../components/TwitterButton/TwitterButton";
 import defaultProfileImageUrl from "../../../../assets/images/default-profile.svg";
 import styles from "./StatementHeader.module.scss";
+import { ImgixApiUrlParameters } from "../../../../helper/ImageDeliveryHelper";
+
 
 const StatementHeader = ({ expert }) => {
-  const IMAGEROOTURL = process.env.REACT_APP_BUCKET_URL;
-
   const defaultProfileImage = (
     <img
       src={defaultProfileImageUrl}
@@ -21,7 +21,7 @@ const StatementHeader = ({ expert }) => {
     const image = (
       <LazyLoad offset={300} once>
         <Img
-          src={`${IMAGEROOTURL}/${expert.user_avatar_key}`}
+          src={`${expert.user_avatar}${ImgixApiUrlParameters(80)}`}
           alt={expert.user.full_name}
           className={styles["image"]}
           loader={defaultProfileImage}

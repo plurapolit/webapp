@@ -7,10 +7,10 @@ import styles from "./Panel.module.scss";
 import ContentWrapper from "../../layouts/ContentWrapper/ContentWrapper";
 import PanelContent from "./PanelContent/PanelContent";
 import { usePanelContext } from "../../contexts/PanelStoreContext/PanelStoreContext";
+import { ImgixApiUrlParameters } from "../../helper/ImageDeliveryHelper";
 
 const Panel = ({ objectPositionTop }) => {
-  const IMAGEROOTURL = process.env.REACT_APP_BUCKET_URL;
-  const { fontColor, avatarKey, shortTitle } = usePanelContext();
+  const { fontColor, avatar, shortTitle } = usePanelContext();
 
   const customStylePanel = {
     "--color": `${fontColor}`,
@@ -20,16 +20,14 @@ const Panel = ({ objectPositionTop }) => {
     "--objectPosition": `${objectPositionTop ? "top" : "center"}`,
   };
 
-  const imageUrl = `${IMAGEROOTURL}/${avatarKey}`;
-
   const defaultPanelImage = <div className={[styles["image"], styles["default-image"]].join(" ")} />;
 
   return (
     <div className={styles["panel"]} style={customStylePanel}>
-      <PanelMetaTags imageUrl={imageUrl} />
+      <PanelMetaTags imageUrl={avatar} />
       <div className={styles["header"]}>
         <Img
-          src={imageUrl}
+          src={`${avatar}${ImgixApiUrlParameters()}`}
           alt={shortTitle}
           className={styles["image"]}
           style={customStyleImage}

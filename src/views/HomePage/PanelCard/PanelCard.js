@@ -11,12 +11,13 @@ import styles from "./PanelCard.module.scss";
 import { useStoreContext } from "../../../contexts/StoreContext/StoreContext";
 import { usePlayerContext } from "../../../contexts/PlayerContext/PlayerContext";
 import { createAudioTrackListFromExpertStatements } from "../../../helper/AudioTrackHelper";
+import { ImgixApiUrlParameters } from "../../../helper/ImageDeliveryHelper";
 
 const PanelCard = ({
   title, imageUrl, color, shortTitle, slug, experts,
 }) => {
   const customStyle = {
-    "--url": `url(${imageUrl})`,
+    "--url": `url(${imageUrl}${ImgixApiUrlParameters(400)}`,
     "--color": `${color}`,
   };
   const { getPanelIdBySlug } = useStoreContext();
@@ -47,10 +48,9 @@ const PanelCard = ({
       <Link to={`${slug}`}>
         <div className={styles["question-banner"]} style={customStyle} data-test="panel-card">
           <div className={styles["image-wrapper"]}>
-            <div className={styles["shortTitle"]}>{shortTitle}</div>
+            <div className={styles["title"]}>{title}</div>
           </div>
           <div className={styles["detail-wrapper"]}>
-            <div className={styles["title"]}>{title}</div>
             <div className={styles["experts-wrapper"]}>
               <ExpertsList experts={experts} />
             </div>
