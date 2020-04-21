@@ -1,0 +1,17 @@
+@import "../../../../assets/styles/global.scss";
+
+.comment {
+  grid-area: comment;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+.button--comment {
+  color: $color-grey-2;
+  font-size: 1.3rem;
+  font-weight: 500;
+  text-align: right;
+  margin-bottom: .4rem;
+  margin-right: 1rem;
+}

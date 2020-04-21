@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useContext } from "react";
 import ReactModal from "react-modal";
 
 import CloseButton from "../../components/CloseButton/CloseButton";
@@ -58,4 +58,6 @@ const Modal = ({
   );
 };
 
-export { Modal, ModalContext };
+const useModalContext = () => useContext(ModalContext);
+
+export { Modal, ModalContext, useModalContext };

@@ -1,15 +1,18 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
+import { If } from "react-if";
 
-import { usePlayerContext } from "../../../contexts/PlayerContext/PlayerContext";
+import { useStoreContext } from "../../../contexts/StoreContext/StoreContext";
+import { useModalContext } from "../../../contexts/ModalContext/ModalContext";
 import Button from "../../../components/Button/Button";
-import TextCommentModal from "../TextCommentModal/TextCommentModal";
 import closeButton from "../../../assets/images/close.svg";
 import CommentApi from "../../../api/CommentApi";
 import Comment from "../Comment/Comment";
 import AnswerDisclaimer from "../AnswerDisclaimer/AnswerDisclaimer";
+import SignInComponent from "../../../components/SignInComponent/SignInComponent";
+import CommentEditor from "../CommentEditor/CommentEditor";
+import Notification from "../../../helper/NotificationHelper";
 
 import styles from "./PanelComments.module.scss";
-import { ModalContext } from "../../../contexts/ModalContext/ModalContext";
 
 const PanelComments = ({
   toggleComments,
@@ -18,10 +21,11 @@ const PanelComments = ({
   statementDate,
   panelTitle,
 }) => {
+  const [commenting, setCommenting] = useState(false);
   const [userComments, setUserComments] = useState(null);
   const [answered, setAnswered] = useState(false);
-  const modal = useContext(ModalContext);
-  const { pausePlayer } = usePlayerContext();
+  const { user } = useStoreContext();
+  const modal = useModalContext();
 
   useEffect(() => {
     const fetchUserComments = async () => {
@@ -35,14 +39,30 @@ const PanelComments = ({
     fetchUserComments();
   }, [statementId]);
 
-  const openCommentModal = () => {
-    pausePlayer();
-    modal.showContent(
-      <TextCommentModal
-        closeModal={modal.closeModal}
-        statementId={statementId}
-      />,
-    );
+  const handleCommenting = () => {
+    if (!user) {
+      modal.showContent(
+        <SignInComponent routeBack={
+          () => {
+            modal.closeModal();
+            setCommenting(true);
+          }
+        }
+        />,
+      );
+    }
+    if (user) setCommenting(true);
+  };
+
+  const saveComment = (textRecord) => {
+    CommentApi.postText(
+      statementId,
+      textRecord,
+    ).then(() => {
+      Notification.success(
+        "Danke für deine Einsendung. Wir überprüfen, ob das Statement unseren Nutzungsbedingungen entspricht, und schalten es in den nächsten 24 Stunden frei.",
+      );
+    });
   };
 
   return (
@@ -63,13 +83,19 @@ const PanelComments = ({
               commentData={commentData}
               setAnswered={setAnswered}
               panelTitle={panelTitle}
+              statementId={statementId}
             />
           )))}
-          <Button onClick={() => openCommentModal()} dataTest="create-comment-button">
-            <div className={styles["comments-comment-text"]}>
-              Beitrag kommentieren
-            </div>
-          </Button>
+          <If condition={!commenting}>
+            <Button onClick={handleCommenting} dataTest="create-comment-button">
+              <div className={styles["comments-comment-text"]}>
+                Beitrag kommentieren
+              </div>
+            </Button>
+          </If>
+          <If condition={commenting}>
+            <CommentEditor setCommenting={setCommenting} onSend={saveComment} />
+          </If>
         </div>
         <img
           alt="icon"

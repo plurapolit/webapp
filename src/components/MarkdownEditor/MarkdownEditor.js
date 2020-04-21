@@ -3,24 +3,37 @@ import {
   Editor,
   EditorState,
   RichUtils,
+  ContentState,
+  convertFromHTML,
 } from "draft-js";
 
 import InlineStyleControls from "./InlineStyleControls/InlineStyleControls";
 import styles from "./MarkdownEditor.module.scss";
 import "./EditorOverwrite.css";
 
+const createEditorState = (initialContent) => {
+  if (initialContent) {
+    const blockFromHTML = convertFromHTML(initialContent);
+    const initialContentState = ContentState.createFromBlockArray(
+      blockFromHTML.contentBlocks,
+      blockFromHTML.entityMap,
+    );
+    const editorStateWithContent = EditorState.createWithContent(initialContentState);
+    return EditorState.moveFocusToEnd(editorStateWithContent);
+  }
+  return EditorState.createEmpty();
+};
+
 const MarkdownEditor = ({
-  onChange,
-  maxLength,
+  onChange = () => {},
+  initialContent,
 }) => {
-  const [editorState, setEditorState] = React.useState(EditorState.createEmpty());
+  const [editorState, setEditorState] = React.useState(createEditorState(initialContent));
   const editorRef = useRef();
 
   const onInputChange = (state) => {
-    if (state.getCurrentContent().getPlainText().length <= parseInt(maxLength, 10)) {
-      setEditorState(state);
-      onChange(state);
-    }
+    setEditorState(state);
+    onChange(state);
   };
 
   const handleKeyCommand = (command) => {
@@ -38,7 +51,7 @@ const MarkdownEditor = ({
   }, []);
 
   return (
-    <div>
+    <div className={styles["markdown"]}>
       <div className={styles["button-container"]}>
         <InlineStyleControls
           editorState={editorState}
