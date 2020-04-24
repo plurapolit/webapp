@@ -36,7 +36,7 @@ const CommentEditor = ({
       {isReplyToComment
       && (
         <MarkdownEditor
-          initialContent={`<strong>@${userFullName}</strong><br>...`}
+          userFullName={userFullName}
           onChange={onChange}
         />
       )}

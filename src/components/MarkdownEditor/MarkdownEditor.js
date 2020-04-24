@@ -3,21 +3,46 @@ import {
   Editor,
   EditorState,
   RichUtils,
-  ContentState,
-  convertFromHTML,
+  convertFromRaw,
 } from "draft-js";
 
 import InlineStyleControls from "./InlineStyleControls/InlineStyleControls";
 import styles from "./MarkdownEditor.module.scss";
 import "./EditorOverwrite.css";
 
-const createEditorState = (initialContent) => {
-  if (initialContent) {
-    const blockFromHTML = convertFromHTML(initialContent);
-    const initialContentState = ContentState.createFromBlockArray(
-      blockFromHTML.contentBlocks,
-      blockFromHTML.entityMap,
-    );
+const emptyBlockJson = {
+  text: " ",
+  type: "unstyled",
+  depth: 0,
+  inlineStyleRanges: [],
+  entityRanges: [],
+  data: {},
+};
+
+const createEditorState = (userFullName) => {
+  if (userFullName) {
+    const json = {
+      blocks: [
+        {
+          ...emptyBlockJson,
+          key: "5kq46",
+          text: `@${userFullName}`,
+          inlineStyleRanges: [
+            {
+              offset: 0,
+              length: userFullName.length + 2,
+              style: "BOLD",
+            },
+          ],
+        },
+        {
+          ...emptyBlockJson,
+          key: "74fr4",
+        },
+      ],
+      entityMap: {},
+    };
+    const initialContentState = convertFromRaw(json);
     const editorStateWithContent = EditorState.createWithContent(initialContentState);
     return EditorState.moveFocusToEnd(editorStateWithContent);
   }
@@ -26,9 +51,9 @@ const createEditorState = (initialContent) => {
 
 const MarkdownEditor = ({
   onChange = () => {},
-  initialContent,
+  userFullName,
 }) => {
-  const [editorState, setEditorState] = React.useState(createEditorState(initialContent));
+  const [editorState, setEditorState] = React.useState(createEditorState(userFullName));
   const editorRef = useRef();
 
   const onInputChange = (state) => {
