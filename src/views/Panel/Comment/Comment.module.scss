@@ -9,15 +9,16 @@ $breakpoint: 450px;
 .card {
   position: relative;
   display: grid;
-  grid-template-columns: auto 1fr auto;
-  grid-template-areas: 
-    "audio statement like";
+  grid-template-columns: auto 1fr;
+  grid-template-areas:
+    "audio statement like"
+    "audio comment like";
 
   @media screen and (max-width: $breakpoint) {
-    grid-template-columns: 1fr auto;
+    grid-template-columns: 1fr auto auto;
     grid-template-areas: 
-      "statement like"
-      "audio like";
+      "statement statement statement"
+      "audio comment like";
   }
 }
 

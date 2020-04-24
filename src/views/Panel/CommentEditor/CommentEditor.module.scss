@@ -1,0 +1,7 @@
+.button-container {
+  float: right;
+
+  & button {
+    margin-right: 2rem;
+  }
+}
