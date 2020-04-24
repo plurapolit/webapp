@@ -10,9 +10,9 @@ $breakpoint: 450px;
   position: relative;
   display: grid;
   grid-template-columns: auto 1fr;
-  grid-template-areas: 
-    "audio statement statement" 
-     "audio comment like";
+  grid-template-areas:
+    "audio statement like"
+    "audio comment like";
 
   @media screen and (max-width: $breakpoint) {
     grid-template-columns: 1fr auto auto;
