@@ -1,13 +1,33 @@
-import React from "react";
+import React, { useCallback } from "react";
 import LazyLoad from "react-lazyload";
+import { If } from "react-if";
 import Img from "react-image";
+
 import { ImgixApiUrlParameters } from "../../../helper/ImageDeliveryHelper";
+import { useTransition } from "../../../helper/CustomHookHelper";
+import { useStoreContext } from "../../../contexts/StoreContext/StoreContext";
+import { usePlayerContext } from "../../../contexts/PlayerContext/PlayerContext";
+import { createAudioTrackListFromExpertStatements } from "../../../helper/AudioTrackHelper";
+import PanelApi from "../../../api/PanelApi";
 
 import defaultProfileImageUrl from "../../../assets/images/default-profile.svg";
 import styles from "./ExpertsCard.module.scss";
 
+const getAudioByAuthorFromArray = (array, author) => {
+  const foundAudio = array.find((audio) => audio.author === author);
+  if (foundAudio) return foundAudio;
+  return array[0];
+};
 
-const ExpertsCard = ({ experts }) => {
+const ExpertsCard = ({
+  experts,
+  slug,
+  panelTitle,
+}) => {
+  const { getPanelIdBySlug } = useStoreContext();
+  const { queue, startPlayer, currentStatement } = usePlayerContext();
+  const [startTransition, isPending] = useTransition();
+
   const defaultProfileImage = (
     <img
       src={defaultProfileImageUrl}
@@ -16,8 +36,29 @@ const ExpertsCard = ({ experts }) => {
     />
   );
 
+  const thisStatementIsPlaying = useCallback(() => {
+    if (currentStatement) {
+      const isAuthor = currentStatement.content.author === experts.full_name;
+      const isPanel = currentStatement.content.panelTitle === panelTitle;
+      return isAuthor && isPanel;
+    }
+    return false;
+  }, [currentStatement, experts, panelTitle]);
+
+  const playAllAudioTracks = async (event) => {
+    event.preventDefault();
+    const panelId = getPanelIdBySlug(slug);
+    const panel = await startTransition(() => PanelApi.fetchPanelById(panelId));
+    const audios = createAudioTrackListFromExpertStatements(panel.expert_statements, panelTitle);
+    const startAudio = getAudioByAuthorFromArray(audios, experts.full_name);
+    if (!queue.hasAudioTrack(startAudio)) queue.setAudioTrackList(audios);
+    queue.setStartAudioTrack(startAudio);
+    startPlayer();
+  };
+
   return (
-    <div className={styles["speaker-image-wrapper"]}>
+    // <div className={styles["speaker-image-wrapper"]} onClick={() => console.log("child")}>
+    <div className={styles["speaker-image-wrapper"]} onClick={playAllAudioTracks}>
       <LazyLoad offset={800} once>
         <Img
           src={`${experts.avatar}${ImgixApiUrlParameters(70)}`}
@@ -31,6 +72,11 @@ const ExpertsCard = ({ experts }) => {
           className={styles["organisation-logo"]}
         />
       </LazyLoad>
+      <If condition={thisStatementIsPlaying()}>
+        <div>
+          .
+        </div>
+      </If>
     </div>
   );
 };
