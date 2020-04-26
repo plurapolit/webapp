@@ -45,24 +45,26 @@ const ExpertsCard = ({
     return false;
   }, [currentStatement, experts, panelTitle]);
 
-  const playAllAudioTracks = async (event) => {
+  const playAudioTracks = async (event) => {
     event.preventDefault();
     const panelId = getPanelIdBySlug(slug);
     const panel = await startTransition(() => PanelApi.fetchPanelById(panelId));
     const audios = createAudioTrackListFromExpertStatements(panel.expert_statements, panelTitle);
     const startAudio = getAudioByAuthorFromArray(audios, experts.full_name);
     if (!queue.hasAudioTrack(startAudio)) queue.setAudioTrackList(audios);
-    queue.setStartAudioTrack(startAudio);
+    queue.setStartAudioTrack(startAudio, { notIntro: true });
     startPlayer();
   };
 
+  let imgStyle = `${styles["speaker-image"]}`;
+  if (thisStatementIsPlaying()) imgStyle += ` ${styles["speaker-image--border"]}`;
+
   return (
-    // <div className={styles["speaker-image-wrapper"]} onClick={() => console.log("child")}>
-    <div className={styles["speaker-image-wrapper"]} onClick={playAllAudioTracks}>
+    <div className={styles["speaker-image-wrapper"]} onClick={playAudioTracks}>
       <LazyLoad offset={800} once>
         <Img
           src={`${experts.avatar}${ImgixApiUrlParameters(70)}`}
-          className={styles["speaker-image"]}
+          className={imgStyle}
           alt={experts.full_name}
           loader={defaultProfileImage}
         />
@@ -72,11 +74,6 @@ const ExpertsCard = ({
           className={styles["organisation-logo"]}
         />
       </LazyLoad>
-      <If condition={thisStatementIsPlaying()}>
-        <div>
-          .
-        </div>
-      </If>
     </div>
   );
 };
