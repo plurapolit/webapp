@@ -1,10 +1,8 @@
 import React, { useCallback } from "react";
 import LazyLoad from "react-lazyload";
-import { If } from "react-if";
 import Img from "react-image";
 
 import { ImgixApiUrlParameters } from "../../../helper/ImageDeliveryHelper";
-import { useTransition } from "../../../helper/CustomHookHelper";
 import { useStoreContext } from "../../../contexts/StoreContext/StoreContext";
 import { usePlayerContext } from "../../../contexts/PlayerContext/PlayerContext";
 import { createAudioTrackListFromExpertStatements } from "../../../helper/AudioTrackHelper";
@@ -26,7 +24,6 @@ const ExpertsCard = ({
 }) => {
   const { getPanelIdBySlug } = useStoreContext();
   const { queue, startPlayer, currentStatement } = usePlayerContext();
-  const [startTransition, isPending] = useTransition();
 
   const defaultProfileImage = (
     <img
@@ -48,7 +45,7 @@ const ExpertsCard = ({
   const playAudioTracks = async (event) => {
     event.preventDefault();
     const panelId = getPanelIdBySlug(slug);
-    const panel = await startTransition(() => PanelApi.fetchPanelById(panelId));
+    const panel = await PanelApi.fetchPanelById(panelId);
     const audios = createAudioTrackListFromExpertStatements(panel.expert_statements, panelTitle);
     const startAudio = getAudioByAuthorFromArray(audios, experts.full_name);
     if (!queue.hasAudioTrack(startAudio)) queue.setAudioTrackList(audios);

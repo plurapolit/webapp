@@ -46,7 +46,6 @@ const PanelCard = ({
         </If>
       </div>
       <Link to={`${slug}`}>
-      {/* <div onClick={() => console.log("parend")}> */}
         <div className={styles["question-banner"]} style={customStyle} data-test="panel-card">
           <div className={styles["image-wrapper"]}>
             <div className={styles["title"]}>{title}</div>
@@ -57,7 +56,6 @@ const PanelCard = ({
             </div>
           </div>
         </div>
-      {/* </div> */}
       </Link>
     </div>
   );
