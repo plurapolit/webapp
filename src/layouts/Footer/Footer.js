@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import Instagram from "../../assets/images/instagram-icon.svg";
 import Facebook from "../../assets/images/facebook-icon.svg";
 import Twitter from "../../assets/images/twitter-icon.svg";
-import ContentWrapper from "../../layouts/ContentWrapper/ContentWrapper";
+import ContentWrapper from "../ContentWrapper/ContentWrapper";
 
 import styles from "./Footer.module.scss";
 
