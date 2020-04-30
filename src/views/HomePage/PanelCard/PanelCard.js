@@ -48,7 +48,7 @@ const PanelCard = ({
       <Link to={`${slug}`}>
         <div className={styles["question-banner"]} style={customStyle} data-test="panel-card">
           <div className={styles["image-wrapper"]}>
-            <div className={styles["title"]}>{title}</div>
+            <h3 className={styles["title"]}>{title}</h3>
           </div>
           <div className={styles["detail-wrapper"]}>
             <div className={styles["experts-wrapper"]}>

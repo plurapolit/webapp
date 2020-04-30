@@ -36,7 +36,7 @@ const Panel = ({ objectPositionTop }) => {
         <div className={styles["wrapper"]}>
           <ContentWrapper>
             <Hyphen>
-              <div className={styles["headline"]}>{shortTitle}</div>
+              <h2 className={styles["headline"]}>{shortTitle}</h2>
             </Hyphen>
           </ContentWrapper>
           <div className={styles["rounder"]} />

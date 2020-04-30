@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import { useStoreContext } from "../../contexts/StoreContext/StoreContext";
-import LogoBlack from "./images/PluraPolitLogoblack.png";
 import BurgerMenu from "../BurgerMenu/BurgerMenu";
 import styles from "./Navbar.module.scss";
 import SignOutButton from "../../components/SignOutButton/SignOutButton";
@@ -13,7 +12,6 @@ const Navbar = () => {
   const customStyle = {
     nav: styles["navbar"],
     item: styles["item"],
-    logo: LogoBlack,
   };
 
   let buttons = (
@@ -43,7 +41,7 @@ const Navbar = () => {
     <nav className={customStyle.nav}>
       <ul className={styles["container"]}>
         <Link to="/">
-          <img src={customStyle.logo} className={styles["logo"]} alt="Logo" />
+          <h1 className={styles["logo-text"]}>PluraPolit</h1>
         </Link>
         <div className={styles["container_items"]}>
           <li className={customStyle.item}>

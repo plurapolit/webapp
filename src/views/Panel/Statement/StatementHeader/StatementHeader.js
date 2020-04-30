@@ -43,9 +43,9 @@ const StatementHeader = ({ expert }) => {
     <div className={styles["header"]}>
       {avatar()}
       <div className={styles["user-info"]}>
-        <div className={styles["name"]}>
+        <h3 className={styles["name"]}>
           {expert.user.full_name}
-        </div>
+        </h3>
         <div className={styles["organisation"]}>
           {expert.organisation.name}
         </div>
