@@ -1,8 +1,9 @@
 @import "../../assets/styles/global.scss";
 
-.container {
+.sign-up {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .form {
@@ -30,4 +31,8 @@
     color: $color-primary;
     cursor: pointer;
   }
+}
+
+.age-range-selector {
+  width: 100%;
 }

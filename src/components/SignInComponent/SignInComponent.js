@@ -11,7 +11,8 @@ import { useStoreContext } from "../../contexts/StoreContext/StoreContext";
 
 const SignInComponent = ({
   routeBack = () => {},
-  onLinkClick = () => {},
+  onSignUp = () => {},
+  onResetPassword = () => {},
 }) => {
   const { setUser } = useStoreContext();
 
@@ -47,11 +48,11 @@ const SignInComponent = ({
         </form>
         <div className={styles["text"]}>
           <span>Du besitzt keinen Account? </span>
-          <Link to="/sign_up/" onClick={onLinkClick}>Registrieren</Link>
+          <div onClick={onSignUp}>Registrieren</div>
         </div>
         <div className={styles["text"]}>
           <span>Passwort vergessen? </span>
-          <Link to="/request_new_password/" onClick={onLinkClick}>Neues Passwort</Link>
+          <div onClick={onResetPassword}>Neues Passwort</div>
         </div>
       </div>
     </div>
