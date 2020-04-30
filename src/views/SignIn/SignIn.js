@@ -10,7 +10,7 @@ const SignIn = () => {
 
   const routeBack = () => history.push("/");
   const onSignUp = () => history.push("/sign_up/");
-  const onResetPassword = () => history.push("/request_new_password/");
+  const onRequestNewPassword = () => history.push("/request_new_password/");
 
 
   return (
@@ -18,7 +18,7 @@ const SignIn = () => {
       <SignInComponent
         routeBack={routeBack}
         onSignUp={onSignUp}
-        onResetPassword={onResetPassword}
+        onRequestNewPassword={onRequestNewPassword}
       />
     </div>
   );

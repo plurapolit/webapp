@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 import styles from "./SignInComponent.module.scss";
 import Button from "../Button/Button";
@@ -12,7 +11,7 @@ import { useStoreContext } from "../../contexts/StoreContext/StoreContext";
 const SignInComponent = ({
   routeBack = () => {},
   onSignUp = () => {},
-  onResetPassword = () => {},
+  onRequestNewPassword = () => {},
 }) => {
   const { setUser } = useStoreContext();
 
@@ -52,7 +51,7 @@ const SignInComponent = ({
         </div>
         <div className={styles["text"]}>
           <span>Passwort vergessen? </span>
-          <div onClick={onResetPassword}>Neues Passwort</div>
+          <div onClick={onRequestNewPassword}>Neues Passwort</div>
         </div>
       </div>
     </div>

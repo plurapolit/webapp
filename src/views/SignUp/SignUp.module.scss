@@ -1,12 +1,8 @@
 @import '../../assets/styles/global.scss';
 
-.parent {
-  height: 100vh;
-}
-
 .container {
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   min-height: calc(100vh - #{$navbar-height});
-  padding: 4rem;
 }
