@@ -1,18 +1,17 @@
 @import "../../../assets/styles/global.scss";
 
-.headline {
-  color: $headline-blue;
-  font-size: 2.2rem;
-  line-height: 2.4rem;
-  font-weight: bold;
-  padding-top: 1rem;
-  margin-bottom: 1rem;
-}
-
 .description {
   color: $text-dark-1;
   font-size: 1.8rem;
   line-height: 1.5;
+}
+
+.date {
+  color: $color-grey;
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+  font-weight: 300;
+  text-align: right;
 }
 
 .experts-headline {

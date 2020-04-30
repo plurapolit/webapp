@@ -19,10 +19,15 @@ const Time = () => {
     return getCalendar(timeStemp);
   };
 
+
   const isDaysAway = (stringOfDate, numberOfDays) => moment(stringOfDate).add(numberOfDays, "days") <= moment();
 
   const getDate = (date = moment()) => date.format("ll");
 
+  const getDateFromString = (string) => {
+    const timeStemp = moment(string);
+    return getDate(timeStemp);
+  };
   const getDateInDays = (stringOfDate, numberOfDays) => {
     const timeStemp = moment(stringOfDate).add(numberOfDays, "days");
     return getDate(timeStemp);
@@ -42,6 +47,7 @@ const Time = () => {
     getDateInDays,
     isDaysAway,
     getDurationInSeconds,
+    getDateFromString,
   };
 };
 

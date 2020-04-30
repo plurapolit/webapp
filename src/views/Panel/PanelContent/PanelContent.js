@@ -9,14 +9,14 @@ import styles from "./PanelContent.module.scss";
 
 const PanelContent = () => {
   const {
-    title,
     description,
     expertStatements,
+    panelDate,
   } = usePanelContext();
 
   return (
     <div>
-      <div className={styles.headline}>{title}</div>
+      <div className={styles.date}>{panelDate}</div>
       <div className={styles.description}>{description}</div>
       <div className={styles.wrapper}>
         <div className={styles["experts-headline"]}>Expert/-innen</div>
