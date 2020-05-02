@@ -53,7 +53,7 @@ const CommentEditor = ({
           buttonStyle={ButtonStyle.COMMENT}
           onClick={handleSend}
         >
-          Abschicken
+          Senden
         </Button>
       </div>
     </div>

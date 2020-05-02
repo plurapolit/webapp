@@ -8,9 +8,9 @@ import closeButton from "../../../assets/images/close.svg";
 import CommentApi from "../../../api/CommentApi";
 import Comment from "../Comment/Comment";
 import AnswerDisclaimer from "../AnswerDisclaimer/AnswerDisclaimer";
-import SignInComponent from "../../../components/SignInComponent/SignInComponent";
 import CommentEditor from "../CommentEditor/CommentEditor";
 import Notification from "../../../helper/NotificationHelper";
+import SignInWrapper from "../SignInWrapper/SignInWrapper";
 
 import styles from "./PanelComments.module.scss";
 
@@ -42,7 +42,7 @@ const PanelComments = ({
   const handleCommenting = () => {
     if (!user) {
       modal.showContent(
-        <SignInComponent routeBack={
+        <SignInWrapper closeModal={
           () => {
             modal.closeModal();
             setCommenting(true);
