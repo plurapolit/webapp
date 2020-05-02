@@ -2,12 +2,12 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { If, Then, Else } from "react-if";
 
-import { useTransition } from "../../../helper/CustomHookHelper";
 import Loader from "../../../components/Loader/Loader";
 import PanelApi from "../../../api/PanelApi";
 import ExpertsList from "../ExpertsList/ExpertsList";
 import playerImage from "../../../assets/images/play.svg";
 import styles from "./PanelCard.module.scss";
+import { useTransition } from "../../../helper/CustomHookHelper";
 import { useStoreContext } from "../../../contexts/StoreContext/StoreContext";
 import { usePlayerContext } from "../../../contexts/PlayerContext/PlayerContext";
 import { createAudioTrackListFromExpertStatements } from "../../../helper/AudioTrackHelper";
@@ -48,11 +48,11 @@ const PanelCard = ({
       <Link to={`${slug}`}>
         <div className={styles["question-banner"]} style={customStyle} data-test="panel-card">
           <div className={styles["image-wrapper"]}>
-            <div className={styles["title"]}>{title}</div>
+            <h3 className={styles["title"]}>{title}</h3>
           </div>
           <div className={styles["detail-wrapper"]}>
             <div className={styles["experts-wrapper"]}>
-              <ExpertsList experts={experts} />
+              <ExpertsList experts={experts} panelShortTitle={shortTitle} slug={slug} />
             </div>
           </div>
         </div>

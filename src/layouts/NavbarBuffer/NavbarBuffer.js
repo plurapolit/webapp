@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./Navbar.module.scss";
+import styles from "./NavbarBuffer.module.scss";
 
 const NavbarBuffer = ({ children }) => (
   <div className={styles["buffer"]}>{children}</div>
