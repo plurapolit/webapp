@@ -28,14 +28,15 @@ const Player = ({
   const { user } = useStoreContext();
   const [startTransition, isPending] = useTransition();
   let { current: pauseIcon } = useRef();
-  let { current: tracker } = useRef();
+  const tracker = useRef();
 
   useEffect(() => {
     if (audioStatement.content.statementId) {
       (async () => {
         const { statementId, isIntro } = audioStatement.content;
+        console.log('audioStatement', audioStatement);
         // eslint-disable-next-line react-hooks/exhaustive-deps
-        tracker = await Tracking.create(statementId, user, isIntro);
+        tracker.current = await Tracking.create(statementId, user, isIntro);
       })();
     }
   }, [audioStatement, user]);
@@ -49,17 +50,19 @@ const Player = ({
   }, [running, startTransition]);
 
   const onEnded = () => {
-    if (tracker) tracker.updateTracking();
+    if (tracker.current) tracker.current.updateTracking();
     if (audioStatement.hasNext()) playNextAudioTrack();
   };
 
   const onListen = () => {
     const { currentTime } = player.current.audio;
-    if (tracker) tracker.trackWhilePlaying(currentTime);
+    if (tracker.current) tracker.current.trackWhilePlaying(currentTime);
   };
 
   const onPause = () => {
-    if (tracker) tracker.updateTracking();
+    if (tracker.current) {
+      tracker.current.updateTracking();
+    }
     setPaused(true);
   };
 
@@ -68,7 +71,7 @@ const Player = ({
   };
 
   const onPrevious = () => {
-    if (tracker) tracker.updateTracking();
+    if (tracker.current) tracker.updateTracking();
     const { currentTime } = player.current.audio;
     if (currentTime < 2 && audioStatement.hasPrev() && !audioStatement.isFirstInQueue()) {
       playPrevAudioTrack();
