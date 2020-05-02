@@ -34,7 +34,6 @@ const Player = ({
     if (audioStatement.content.statementId) {
       (async () => {
         const { statementId, isIntro } = audioStatement.content;
-        console.log('audioStatement', audioStatement);
         // eslint-disable-next-line react-hooks/exhaustive-deps
         tracker.current = await Tracking.create(statementId, user, isIntro);
       })();
@@ -71,7 +70,7 @@ const Player = ({
   };
 
   const onPrevious = () => {
-    if (tracker.current) tracker.updateTracking();
+    if (tracker.current) tracker.current.updateTracking();
     const { currentTime } = player.current.audio;
     if (currentTime < 2 && audioStatement.hasPrev() && !audioStatement.isFirstInQueue()) {
       playPrevAudioTrack();
