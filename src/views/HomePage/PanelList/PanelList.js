@@ -7,7 +7,7 @@ import styles from "./PanelList.module.scss";
 import PanelCard from "../PanelCard/PanelCard";
 
 const getPanelCardFromArray = (array) => {
-  const list = array.map(({ panel, experts, panel_avatar, is_battle }) => (
+  const list = array.map(({ panel, experts, panel_avatar }) => (
     <PanelCard
       key={panel.id}
       title={panel.title}
