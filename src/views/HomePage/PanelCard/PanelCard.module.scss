@@ -17,9 +17,10 @@ $border-radius: 2rem;
 .question-banner {
   --url: "";
   --color: "";
+  --panelHeight:"55rem";
   font-weight: 600;
   width: 40rem;
-  height: 55rem;
+  height: var(--panelHeight);
   border-radius: $border-radius;
   overflow: hidden;
   box-shadow: 1px 3px 16px -1px rgba(0, 0, 0, 0.4);
@@ -28,7 +29,7 @@ $border-radius: 2rem;
   background-color: $color-white;
   
   @media screen and (max-width: $breakpoint) {
-    width: 95%;
+    width: 92vw;
   }
 }
 
