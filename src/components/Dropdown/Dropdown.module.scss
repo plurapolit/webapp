@@ -1,0 +1,44 @@
+@import "../../../src/assets/styles/global.scss";
+
+.dropdown {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background-color: transparent;
+  transition: all .2s;
+  user-select: none;
+
+  &.active {
+    background-color: rgba(grey, .3);
+  }
+}
+
+.icon {
+  width: 75%;
+  cursor: pointer;
+}
+
+.item-container {
+  position: absolute;
+  top: calc(100% + 1rem);
+  right: 0;
+  display: inline-block;
+  background-color: $color-white;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.6);
+  border-radius: .5rem;
+  z-index: 30000;
+}
+
+.item {
+  padding: 1rem;
+  min-width: 20rem;
+  border-bottom: solid 1px rgba($color-primary, .3);
+
+  &:hover {
+    background-color: rgba( 0,0,0, .1);
+  }
+}
