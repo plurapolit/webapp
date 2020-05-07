@@ -1,4 +1,5 @@
 import React from "react";
+import { If } from "react-if";
 import Img from "react-image";
 
 import Hyphen from "../../helper/HyphenHelper";
@@ -8,9 +9,15 @@ import ContentWrapper from "../../layouts/ContentWrapper/ContentWrapper";
 import PanelContent from "./PanelContent/PanelContent";
 import { usePanelContext } from "../../contexts/PanelStoreContext/PanelStoreContext";
 import { ImgixApiUrlParameters } from "../../helper/ImageDeliveryHelper";
+import BattleImg from "../../assets/images/battle-image.png";
 
 const Panel = ({ objectPositionTop }) => {
-  const { fontColor, avatar, shortTitle } = usePanelContext();
+  const {
+    fontColor,
+    avatar,
+    shortTitle,
+    isBattle,
+  } = usePanelContext();
 
   const customStylePanel = {
     "--color": `${fontColor}`,
@@ -26,13 +33,24 @@ const Panel = ({ objectPositionTop }) => {
     <div className={styles["panel"]} style={customStylePanel}>
       <PanelMetaTags imageUrl={avatar} />
       <div className={styles["header"]}>
-        <Img
-          src={`${avatar}${ImgixApiUrlParameters()}`}
-          alt={shortTitle}
-          className={styles["image"]}
-          style={customStyleImage}
-          loader={defaultPanelImage}
-        />
+        <If condition={!isBattle}>
+          <Img
+            src={`${avatar}${ImgixApiUrlParameters()}`}
+            alt={shortTitle}
+            className={styles["image"]}
+            style={customStyleImage}
+            loader={defaultPanelImage}
+          />
+        </If>
+        <If condition={isBattle}>
+          <Img
+            src={BattleImg}
+            alt={shortTitle}
+            className={styles["image"]}
+            style={customStyleImage}
+            loader={defaultPanelImage}
+          />
+        </If>
         <div className={styles["wrapper"]}>
           <ContentWrapper>
             <Hyphen>
