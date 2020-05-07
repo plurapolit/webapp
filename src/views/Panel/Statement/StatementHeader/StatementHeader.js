@@ -3,7 +3,6 @@ import { If } from "react-if";
 import Img from "react-image";
 import LazyLoad from "react-lazyload";
 
-import TwitterButton from "../../../../components/TwitterButton/TwitterButton";
 import defaultProfileImageUrl from "../../../../assets/images/default-profile.svg";
 import styles from "./StatementHeader.module.scss";
 import { ImgixApiUrlParameters } from "../../../../helper/ImageDeliveryHelper";
