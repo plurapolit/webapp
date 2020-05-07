@@ -1,0 +1,73 @@
+@import "../../../src/assets/styles/global.scss";
+
+
+.dropdown {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background-color: transparent;
+  transition: all .2s;
+  user-select: none;
+
+  &.active {
+    background-color: rgba(grey, .2);
+  }
+}
+
+.icon {
+  width: 75%;
+  cursor: pointer;
+  transform: rotate(90deg);
+}
+
+.item-container {
+  position: absolute;
+  top: calc(100% + 1rem);
+  right: 0;
+  display: inline-block;
+  background-color: $color-white;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.6);
+  border-radius: .5rem;
+  z-index: 30000;
+  overflow: hidden;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  min-width: 20rem;
+  border-bottom: solid 1px rgba($color-grey, .1);
+  border-left: solid .3rem transparent;
+  transition: all .1s;
+  cursor: pointer;
+  
+  &:hover {
+    background-color: rgba( 0,0,0, .08);
+    border-left: solid .3rem $color-primary;
+    color: $color-primary;
+
+    & g {
+      fill: $color-primary; 
+    }
+    & path {
+      fill: $color-primary;
+    }
+  }
+  
+  &-icon {
+    height: 2.5rem;
+    width: 2.5rem;
+    margin-right: 1rem;
+    & g {
+      fill: $color-grey;
+    }
+    & path {
+      fill: $color-grey;
+    }
+  }
+}

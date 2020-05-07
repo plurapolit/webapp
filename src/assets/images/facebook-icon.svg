@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg width="100%" height="100%" viewBox="0 0 512 512" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
-    <path d="M437,0L75,0C33.648,0 0,33.648 0,75L0,437C0,478.352 33.648,512 75,512L226,512L226,331L166,331L166,241L226,241L226,180C226,130.371 266.371,90 316,90L407,90L407,180L316,180L316,241L407,241L392,331L316,331L316,512L437,512C478.352,512 512,478.352 512,437L512,75C512,33.648 478.352,0 437,0Z" style="fill:white;fill-rule:nonzero;"/>
+<svg width="100%" height="100%" viewBox="0 0 512 512" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+<defs><style>.facebook-cls-1{fill:white;}</style></defs>
+    <path d="M437,0L75,0C33.648,0 0,33.648 0,75L0,437C0,478.352 33.648,512 75,512L226,512L226,331L166,331L166,241L226,241L226,180C226,130.371 266.371,90 316,90L407,90L407,180L316,180L316,241L407,241L392,331L316,331L316,512L437,512C478.352,512 512,478.352 512,437L512,75C512,33.648 478.352,0 437,0Z" class="facebook-cls-1"/>
 </svg>
