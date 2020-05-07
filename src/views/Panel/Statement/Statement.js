@@ -11,6 +11,7 @@ const Statement = ({
   expert,
 }) => {
   const [commentsAreOpen, setCommentsAreOpen] = useState(false);
+  const [showTranscription, setShowTranscription] = useState(false);
   const { number_of_comments: numberOfComments } = expert;
 
   useEffect(() => {
@@ -29,7 +30,11 @@ const Statement = ({
   return (
     <div id={expert.full_name} className={styles["statement-comment-container"]} data-test="statement">
       <div className={styles["card"]}>
-        <StatementHeader expert={expert} />
+        <StatementHeader
+          expert={expert}
+          showTranscription={showTranscription}
+          setShowTranscription={setShowTranscription}
+        />
         <div className={styles["quote"]}>
           {`"${expert.statement.quote}"`}
         </div>
@@ -38,7 +43,12 @@ const Statement = ({
           toggleComments={toggleComments}
         />
       </div>
-      {/* Transcription */}
+      {showTranscription && !!expert.transcription
+        && (
+          <div className={styles["transcription"]}>
+            {expert.transcription.content}
+          </div>
+        )}
       <If condition={commentsAreOpen}>
         <PanelComments
           toggleComments={toggleComments}

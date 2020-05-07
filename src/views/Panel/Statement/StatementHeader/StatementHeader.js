@@ -37,7 +37,11 @@ const getPossibleWeblinks = (user) => [
 ];
 
 
-const StatementHeader = ({ expert }) => {
+const StatementHeader = ({
+  expert,
+  setShowTranscription,
+  showTranscription,
+}) => {
   const defaultProfileImage = (
     <img
       src={defaultProfileImageUrl}
@@ -83,9 +87,9 @@ const StatementHeader = ({ expert }) => {
   if (expert.transcription) {
     dropdownItems.push(
       {
-        text: "Transkript",
+        text: showTranscription ? "Transkript schließen" : "Transkript",
         icon: Website,
-        onClick: () => console.log("Hello there"),
+        onClick: () => setShowTranscription((prevToggle) => !prevToggle),
       },
     );
   }

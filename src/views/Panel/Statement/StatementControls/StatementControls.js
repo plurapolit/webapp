@@ -36,7 +36,6 @@ const StatementControls = ({ expert, toggleComments }) => {
     };
     if (!queue.hasAudioTrack(audioTrack)) {
       const playlist = createAudioTrackListFromExpertStatements(expertStatements, shortTitle);
-      console.log("playlist ", playlist);
       queue.setAudioTrackList(playlist);
     }
     queue.setStartAudioTrack(audioTrack, { notIntro: true });
