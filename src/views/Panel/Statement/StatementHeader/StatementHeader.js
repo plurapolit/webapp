@@ -7,6 +7,36 @@ import defaultProfileImageUrl from "../../../../assets/images/default-profile.sv
 import styles from "./StatementHeader.module.scss";
 import { ImgixApiUrlParameters } from "../../../../helper/ImageDeliveryHelper";
 
+import Dropdown from "../../../../components/Dropdown/Dropdown";
+import { ReactComponent as Twitter } from "../../../../assets/images/Twitter_Logo.svg";
+import { ReactComponent as Facebook } from "../../../../assets/images/facebook-icon.svg";
+import { ReactComponent as LinkedIn } from "../../../../assets/images/linkedin-icon.svg";
+import { ReactComponent as Website } from "../../../../assets/images/website-icon.svg";
+import { If } from "react-if";
+
+const getPossibleDropdownItems = (user) => [
+  {
+    text: "Twitter",
+    icon: Twitter,
+    link: user.twitter_handle,
+  },
+  {
+    text: "Facebook",
+    icon: Facebook,
+    link: user.facebook_handle,
+  },
+  {
+    text: "LinkedIn",
+    icon: LinkedIn,
+    link: user.linkedin_handle,
+  },
+  {
+    text: "Webseite",
+    icon: Website,
+    link: user.website_link,
+  },
+];
+
 
 const StatementHeader = ({ expert }) => {
   const defaultProfileImage = (
@@ -39,6 +69,19 @@ const StatementHeader = ({ expert }) => {
     return image;
   };
 
+  const dropdownItems = [];
+  getPossibleDropdownItems(expert.user).forEach(((socialMedia) => {
+    if (socialMedia.link) {
+      dropdownItems.push(
+        {
+          text: socialMedia.text,
+          icon: socialMedia.icon,
+          onClick: () => { window.location.href = socialMedia.link; },
+        },
+      );
+    }
+  }));
+
   return (
     <div className={styles["header"]}>
       {avatar()}
@@ -53,6 +96,9 @@ const StatementHeader = ({ expert }) => {
           {expert.user.biography}
         </div>
       </div>
+      <If condition={dropdownItems.length > 0}>
+        <Dropdown items={dropdownItems} style={{ marginRight: ".5rem", marginTop: ".5rem" }} />
+      </If>
       <TwitterButton handle={expert.user.twitter_handle} />
     </div>
   );
