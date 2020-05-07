@@ -36,7 +36,7 @@ const Dropdown = ({ items, style }) => {
         <If condition={isOpen}>
           <div className={styles["item-container"]}>
             {items.map((item) => (
-              <div className={styles["item"]} onClick={item.onClick}>
+              <div key={item.text} className={styles["item"]} onClick={item.onClick}>
                 <item.icon className={styles["item-icon"]} />
                 {item.text}
               </div>

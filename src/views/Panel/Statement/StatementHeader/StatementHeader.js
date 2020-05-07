@@ -76,7 +76,7 @@ const StatementHeader = ({ expert }) => {
         {
           text: socialMedia.text,
           icon: socialMedia.icon,
-          onClick: () => { window.location.href = socialMedia.link; },
+          onClick: () => window.open(socialMedia.link),
         },
       );
     }
@@ -99,7 +99,6 @@ const StatementHeader = ({ expert }) => {
       <If condition={dropdownItems.length > 0}>
         <Dropdown items={dropdownItems} style={{ marginRight: ".5rem", marginTop: ".5rem" }} />
       </If>
-      <TwitterButton handle={expert.user.twitter_handle} />
     </div>
   );
 };
