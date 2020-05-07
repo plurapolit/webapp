@@ -1,4 +1,5 @@
 import React from "react";
+import { If } from "react-if";
 import Img from "react-image";
 import LazyLoad from "react-lazyload";
 
@@ -12,7 +13,6 @@ import { ReactComponent as Twitter } from "../../../../assets/images/Twitter_Log
 import { ReactComponent as Facebook } from "../../../../assets/images/facebook-icon.svg";
 import { ReactComponent as LinkedIn } from "../../../../assets/images/linkedin-icon.svg";
 import { ReactComponent as Website } from "../../../../assets/images/website-icon.svg";
-import { If } from "react-if";
 
 const getPossibleDropdownItems = (user) => [
   {
