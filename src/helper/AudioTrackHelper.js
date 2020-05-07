@@ -18,6 +18,7 @@ export const createIntroStatement = (statement) => ({
   content: {
     ...statement.content,
     audioFile: statement.content.intro,
+    isIntro: true,
   },
 });
 
