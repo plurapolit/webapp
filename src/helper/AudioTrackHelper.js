@@ -7,6 +7,7 @@ export const createAudioTrackListFromExpertStatements = (expertStatements, panel
       author: statement.user.full_name,
       statementId: statement.statement.id,
       intro,
+      transcription: statement.transcription,
       panelTitle,
     };
   });

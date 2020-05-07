@@ -15,6 +15,7 @@ const Player = ({
     content: {
       author: "",
       panelTitle: "",
+      transcription: "",
     },
     hasPrev: () => false,
     hasNext: () => false,
@@ -107,7 +108,11 @@ const Player = ({
           showVolumeControl={false}
           showLoopControl={false}
           showSkipControls
-        />
+        >
+          {audioStatement.content.transcription
+            ? audioStatement.content.transcription.content
+            : "Ihr Browser unterstütz leider kein Audio, bitte versuchen sie es mit einem anderen."}
+        </AudioPlayer>
       </div>
     </div>
   );

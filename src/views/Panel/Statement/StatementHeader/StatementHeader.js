@@ -13,7 +13,7 @@ import { ReactComponent as Facebook } from "../../../../assets/images/facebook-i
 import { ReactComponent as LinkedIn } from "../../../../assets/images/linkedin-icon.svg";
 import { ReactComponent as Website } from "../../../../assets/images/website-icon.svg";
 
-const getPossibleDropdownItems = (user) => [
+const getPossibleWeblinks = (user) => [
   {
     text: "Twitter",
     icon: Twitter,
@@ -69,7 +69,7 @@ const StatementHeader = ({ expert }) => {
   };
 
   const dropdownItems = [];
-  getPossibleDropdownItems(expert.user).forEach(((socialMedia) => {
+  getPossibleWeblinks(expert.user).forEach(((socialMedia) => {
     if (socialMedia.link) {
       dropdownItems.push(
         {
@@ -80,6 +80,15 @@ const StatementHeader = ({ expert }) => {
       );
     }
   }));
+  if (expert.transcription) {
+    dropdownItems.push(
+      {
+        text: "Transkript",
+        icon: Website,
+        onClick: () => console.log("Hello there"),
+      },
+    );
+  }
 
   return (
     <div className={styles["header"]}>

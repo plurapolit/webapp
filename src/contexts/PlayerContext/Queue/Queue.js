@@ -42,6 +42,7 @@ const Queue = () => {
   const setStartAudioTrack = (track, { notIntro = false } = {}) => {
     resetStartAndNotIntroFlag();
     if (track) currentAudioTrackId = hash(track);
+    console.log("queue ", queue, "track ", track);
     const startAudioTrack = findTrack(currentAudioTrackId);
     startAudioTrack.firstInQueue = true;
     if (notIntro) startAudioTrack.notIntro = true;

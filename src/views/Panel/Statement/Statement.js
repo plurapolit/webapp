@@ -38,6 +38,7 @@ const Statement = ({
           toggleComments={toggleComments}
         />
       </div>
+      {/* Transcription */}
       <If condition={commentsAreOpen}>
         <PanelComments
           toggleComments={toggleComments}
