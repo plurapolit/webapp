@@ -12,6 +12,7 @@ import { ReactComponent as Twitter } from "../../../../assets/images/Twitter_Log
 import { ReactComponent as Facebook } from "../../../../assets/images/facebook-icon.svg";
 import { ReactComponent as LinkedIn } from "../../../../assets/images/linkedin-icon.svg";
 import { ReactComponent as Website } from "../../../../assets/images/website-icon.svg";
+import { ReactComponent as Transcript } from "../../../../assets/images/transcript-image.svg";
 
 const getPossibleWeblinks = (user) => [
   {
@@ -88,7 +89,7 @@ const StatementHeader = ({
     dropdownItems.push(
       {
         text: showTranscription ? "Transkript schließen" : "Transkript",
-        icon: Website,
+        icon: Transcript,
         onClick: () => setShowTranscription((prevToggle) => !prevToggle),
       },
     );
