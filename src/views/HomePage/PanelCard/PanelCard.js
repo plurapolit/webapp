@@ -14,11 +14,12 @@ import { createAudioTrackListFromExpertStatements } from "../../../helper/AudioT
 import { ImgixApiUrlParameters } from "../../../helper/ImageDeliveryHelper";
 
 const PanelCard = ({
-  title, imageUrl, color, shortTitle, slug, experts,
+  title, imageUrl, color, shortTitle, slug, experts, isBattle,
 }) => {
   const customStyle = {
     "--url": `url(${imageUrl}${ImgixApiUrlParameters(400)}`,
     "--color": `${color}`,
+    "--panelHeight": isBattle ? "27rem" : "55rem",
   };
   const { getPanelIdBySlug } = useStoreContext();
   const { queue, startPlayer } = usePlayerContext();
@@ -48,13 +49,17 @@ const PanelCard = ({
       <Link to={`${slug}`}>
         <div className={styles["question-banner"]} style={customStyle} data-test="panel-card">
           <div className={styles["image-wrapper"]}>
-            <h3 className={styles["title"]}>{title}</h3>
+            <If condition={!isBattle}>
+              <h3 className={styles["title"]}>{title}</h3>
+            </If>
           </div>
-          <div className={styles["detail-wrapper"]}>
-            <div className={styles["experts-wrapper"]}>
-              <ExpertsList experts={experts} panelShortTitle={shortTitle} slug={slug} />
+          <If condition={!isBattle}>
+            <div className={styles["detail-wrapper"]}>
+              <div className={styles["experts-wrapper"]}>
+                <ExpertsList experts={experts} panelShortTitle={shortTitle} slug={slug} />
+              </div>
             </div>
-          </div>
+          </If>
         </div>
       </Link>
     </div>

@@ -18,6 +18,7 @@ const PanelStore = ({
     title: panel.title,
     description: panel.panel.description,
     expertStatements: panel.expert_statements,
+    isBattle: panel.panel["is_battle?"],
   }}
   >
     {children}
