@@ -31,6 +31,7 @@ const StatementControls = ({ expert, toggleComments }) => {
       author: expert.user.full_name,
       statementId: expert.statement.id,
       intro: expert.intro.audio_file_link,
+      transcription: expert.transcription,
       panelTitle: shortTitle,
     };
     if (!queue.hasAudioTrack(audioTrack)) {

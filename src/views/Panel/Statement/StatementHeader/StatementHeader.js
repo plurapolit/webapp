@@ -12,8 +12,9 @@ import { ReactComponent as Twitter } from "../../../../assets/images/Twitter_Log
 import { ReactComponent as Facebook } from "../../../../assets/images/facebook-icon.svg";
 import { ReactComponent as LinkedIn } from "../../../../assets/images/linkedin-icon.svg";
 import { ReactComponent as Website } from "../../../../assets/images/website-icon.svg";
+import { ReactComponent as Transcript } from "../../../../assets/images/transcript-image.svg";
 
-const getPossibleDropdownItems = (user) => [
+const getPossibleWeblinks = (user) => [
   {
     text: "Twitter",
     icon: Twitter,
@@ -37,7 +38,11 @@ const getPossibleDropdownItems = (user) => [
 ];
 
 
-const StatementHeader = ({ expert }) => {
+const StatementHeader = ({
+  expert,
+  setShowTranscription,
+  showTranscription,
+}) => {
   const defaultProfileImage = (
     <img
       src={defaultProfileImageUrl}
@@ -69,7 +74,7 @@ const StatementHeader = ({ expert }) => {
   };
 
   const dropdownItems = [];
-  getPossibleDropdownItems(expert.user).forEach(((socialMedia) => {
+  getPossibleWeblinks(expert.user).forEach(((socialMedia) => {
     if (socialMedia.link) {
       dropdownItems.push(
         {
@@ -80,6 +85,15 @@ const StatementHeader = ({ expert }) => {
       );
     }
   }));
+  if (expert.transcription) {
+    dropdownItems.push(
+      {
+        text: showTranscription ? "Transkript schließen" : "Transkript",
+        icon: Transcript,
+        onClick: () => setShowTranscription((prevToggle) => !prevToggle),
+      },
+    );
+  }
 
   return (
     <div className={styles["header"]}>
