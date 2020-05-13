@@ -3,7 +3,7 @@ import Button from "../../../components/Button/Button";
 
 import styles from "./AcceptTerms.module.scss";
 
-const AcceptTerms = ({ nextPage }) => (
+const AcceptTerms = ({ onClick }) => (
   <div className={styles["container"]}>
     <div className={styles["headline"]}>Nutzungsbedingungen</div>
     <ol className={styles["terms"]}>
@@ -16,10 +16,9 @@ const AcceptTerms = ({ nextPage }) => (
         </a>
       </div>
     </ol>
-    <Button onClick={() => nextPage()} dataTest="accept-terms-button">
+    <Button onClick={() => onClick()} dataTest="accept-terms-button">
       Ich akzeptiere die Nutzungsbedingungen
     </Button>
-    <div className={styles["step-index"]}>Schritt 1 von 2</div>
   </div>
 );
 

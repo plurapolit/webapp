@@ -7,6 +7,7 @@ export const createAudioTrackListFromExpertStatements = (expertStatements, panel
       author: statement.user.full_name,
       statementId: statement.statement.id,
       intro,
+      transcription: statement.transcription,
       panelTitle,
     };
   });
@@ -18,6 +19,7 @@ export const createIntroStatement = (statement) => ({
   content: {
     ...statement.content,
     audioFile: statement.content.intro,
+    isIntro: true,
   },
 });
 

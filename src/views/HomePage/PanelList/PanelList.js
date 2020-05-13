@@ -16,6 +16,7 @@ const getPanelCardFromArray = (array) => {
       color={panel.font_color}
       slug={panel.slug}
       experts={experts}
+      isBattle={panel["is_battle?"]}
     />
   ));
   return list;

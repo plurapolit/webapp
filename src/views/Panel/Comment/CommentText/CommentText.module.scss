@@ -9,7 +9,8 @@ $breakpoint: 450px;
   align-items: center;
 
   @media screen and (max-width: $breakpoint) {
-    flex-direction: row;
+    flex-direction: column;
+    align-items: baseline;
     margin-top: 1rem;
   }
 

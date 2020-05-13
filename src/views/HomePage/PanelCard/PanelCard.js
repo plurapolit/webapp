@@ -2,23 +2,24 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { If, Then, Else } from "react-if";
 
-import { useTransition } from "../../../helper/CustomHookHelper";
 import Loader from "../../../components/Loader/Loader";
 import PanelApi from "../../../api/PanelApi";
 import ExpertsList from "../ExpertsList/ExpertsList";
 import playerImage from "../../../assets/images/play.svg";
 import styles from "./PanelCard.module.scss";
+import { useTransition } from "../../../helper/CustomHookHelper";
 import { useStoreContext } from "../../../contexts/StoreContext/StoreContext";
 import { usePlayerContext } from "../../../contexts/PlayerContext/PlayerContext";
 import { createAudioTrackListFromExpertStatements } from "../../../helper/AudioTrackHelper";
 import { ImgixApiUrlParameters } from "../../../helper/ImageDeliveryHelper";
 
 const PanelCard = ({
-  title, imageUrl, color, shortTitle, slug, experts,
+  title, imageUrl, color, shortTitle, slug, experts, isBattle,
 }) => {
   const customStyle = {
     "--url": `url(${imageUrl}${ImgixApiUrlParameters(400)}`,
     "--color": `${color}`,
+    "--panelHeight": isBattle ? "27rem" : "55rem",
   };
   const { getPanelIdBySlug } = useStoreContext();
   const { queue, startPlayer } = usePlayerContext();
@@ -48,13 +49,17 @@ const PanelCard = ({
       <Link to={`${slug}`}>
         <div className={styles["question-banner"]} style={customStyle} data-test="panel-card">
           <div className={styles["image-wrapper"]}>
-            <div className={styles["title"]}>{title}</div>
+            <If condition={!isBattle}>
+              <h3 className={styles["title"]}>{title}</h3>
+            </If>
           </div>
-          <div className={styles["detail-wrapper"]}>
-            <div className={styles["experts-wrapper"]}>
-              <ExpertsList experts={experts} />
+          <If condition={!isBattle}>
+            <div className={styles["detail-wrapper"]}>
+              <div className={styles["experts-wrapper"]}>
+                <ExpertsList experts={experts} panelShortTitle={shortTitle} slug={slug} />
+              </div>
             </div>
-          </div>
+          </If>
         </div>
       </Link>
     </div>

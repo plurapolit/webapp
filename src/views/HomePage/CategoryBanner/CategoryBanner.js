@@ -15,7 +15,7 @@ const CategoryBanner = ({
   return (
     <section className={styles["category-banner"]} style={customStyle} data-test="category-banner">
       <ContentWrapper>
-        <div className={styles["name"]}>{name}</div>
+        <h2 className={styles["name"]}>{name}</h2>
         <PanelList data={panels} />
       </ContentWrapper>
     </section>

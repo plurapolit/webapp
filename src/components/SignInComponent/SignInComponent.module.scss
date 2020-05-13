@@ -1,5 +1,10 @@
 @import "../../assets/styles/global.scss";
 
+.sign_in {
+  display: flex;
+  justify-content: center;
+}
+
 .container {
   display: flex;
   flex-direction: column;
@@ -25,7 +30,9 @@
 .text {
   font-size: 1.6rem;
   margin-top: 2rem;
-  & a {
+  & div {
+    display: inline;
     color: $color-primary;
+    cursor: pointer;
   }
 }

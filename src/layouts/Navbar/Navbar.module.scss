@@ -21,10 +21,11 @@
   }
 }
 
-.logo {
-  height: 2.5rem;
-  object-fit: cover;
-  margin-right: 4rem;
+.logo-text {
+  font-size: 3.3rem;
+  font-weight: 700;
+  cursor: pointer;
+  user-select: none;
 }
 
 .container {
