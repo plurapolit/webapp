@@ -6,6 +6,8 @@ import styles from "./Statement.module.scss";
 import PanelComments from "../PanelComments/PanelComments";
 import StatementHeader from "./StatementHeader/StatementHeader";
 import StatementControls from "./StatementControls/StatementControls";
+import { pipe } from "../../../helper/FunctionalProgrammingHelper";
+import { toLowerCase, replaceWhiteSpace } from "../../../helper/StringHelper";
 
 const Statement = ({
   expert,
@@ -27,8 +29,13 @@ const Statement = ({
     setCommentsAreOpen((currentState) => !currentState);
   };
 
+  const anchorText = pipe(
+    toLowerCase,
+    replaceWhiteSpace,
+  )(expert.user.full_name);
+
   return (
-    <div id={expert.full_name} className={styles["statement-comment-container"]} data-test="statement">
+    <div id={anchorText} className={styles["statement-comment-container"]} data-test="statement">
       <div className={styles["card"]}>
         <StatementHeader
           expert={expert}
