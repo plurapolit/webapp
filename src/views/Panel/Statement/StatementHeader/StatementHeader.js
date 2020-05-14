@@ -6,6 +6,7 @@ import LazyLoad from "react-lazyload";
 import defaultProfileImageUrl from "../../../../assets/images/default-profile.svg";
 import styles from "./StatementHeader.module.scss";
 import { ImgixApiUrlParameters } from "../../../../helper/ImageDeliveryHelper";
+import NotificationHelper from "../../../../helper/NotificationHelper";
 
 import Dropdown from "../../../../components/Dropdown/Dropdown";
 import { ReactComponent as Twitter } from "../../../../assets/images/Twitter_Logo.svg";
@@ -13,6 +14,8 @@ import { ReactComponent as Facebook } from "../../../../assets/images/facebook-i
 import { ReactComponent as LinkedIn } from "../../../../assets/images/linkedin-icon.svg";
 import { ReactComponent as Website } from "../../../../assets/images/website-icon.svg";
 import { ReactComponent as Transcript } from "../../../../assets/images/transcript-image.svg";
+import { getAnchorFromName } from "../../../../helper/StringHelper";
+import { createFunction, pipe } from "../../../../helper/FunctionalProgrammingHelper";
 
 const getPossibleWeblinks = (user) => [
   {
@@ -37,6 +40,21 @@ const getPossibleWeblinks = (user) => [
   },
 ];
 
+const getShareLink = (expert) => {
+  const addPath = createFunction((baseUrl) => `${baseUrl}${window.location.pathname}`);
+  const addAnchor = createFunction((url) => `${url}#${getAnchorFromName(expert.user.full_name)}`);
+  const shareLink = pipe(
+    addPath,
+    addAnchor,
+  )("localhost:3000");
+  return shareLink;
+};
+
+const saveShareLinkInClipBoard = (expert) => {
+  navigator.clipboard.writeText(getShareLink(expert)).then(
+    () => NotificationHelper.success("Der Link wurde in der Zwischenablage gespeichert.")
+  );
+};
 
 const StatementHeader = ({
   expert,
@@ -91,6 +109,16 @@ const StatementHeader = ({
         text: showTranscription ? "Transkript schließen" : "Transkript",
         icon: Transcript,
         onClick: () => setShowTranscription((prevToggle) => !prevToggle),
+      },
+    );
+  }
+
+  if (expert.user) {
+    dropdownItems.push(
+      {
+        text: "Kopiere Link",
+        icon: Transcript,
+        onClick: () => saveShareLinkInClipBoard(expert),
       },
     );
   }
