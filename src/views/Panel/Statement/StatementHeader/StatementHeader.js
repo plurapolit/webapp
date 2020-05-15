@@ -47,6 +47,7 @@ const getShareLink = (expert) => {
     addPath,
     addAnchor,
   )("localhost:3000");
+  // Todo change baseurl to process.env
   return shareLink;
 };
 
