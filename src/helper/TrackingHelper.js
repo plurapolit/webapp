@@ -1,4 +1,4 @@
-import UserAudioTrackingApi from "../api/UserAudioTrackingApi";
+import { UserAudioTrackingApi } from "../api/TrackingApi";
 
 const Tracking = (function TrackingObj() {
   const TIME_BETWEEN_TRACKING_UPDATES_IN_SECONDS = 10;
