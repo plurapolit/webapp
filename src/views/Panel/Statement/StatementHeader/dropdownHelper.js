@@ -4,6 +4,7 @@ import { ReactComponent as Facebook } from "../../../../assets/images/facebook-i
 import { ReactComponent as LinkedIn } from "../../../../assets/images/linkedin-icon.svg";
 import { ReactComponent as Website } from "../../../../assets/images/website-icon.svg";
 import { ReactComponent as Transcript } from "../../../../assets/images/transcript-image.svg";
+import { ReactComponent as ShareIcon } from "../../../../assets/images/share-icon.svg";
 import { createFunction, pipe } from "../../../../helper/FunctionalProgrammingHelper";
 import { getAnchorFromName } from "../../../../helper/StringHelper";
 import NotificationHelper from "../../../../helper/NotificationHelper";
@@ -53,7 +54,7 @@ const createDropdownHelper = (expert, createTrackableFunc) => {
   const addShareLink = (dropdownItems = []) => {
     const shareLinkObj = {
       text: "Kopiere Link",
-      icon: Transcript,
+      icon: ShareIcon,
       onClick: createTrackableFunc(
         () => saveShareLinkInClipBoard(expert), "dropdown click on share link", undefined,
       ),
