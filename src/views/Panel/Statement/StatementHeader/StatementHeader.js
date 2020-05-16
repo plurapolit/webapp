@@ -41,13 +41,14 @@ const getPossibleWeblinks = (user) => [
 ];
 
 const getShareLink = (expert) => {
+  const addHost = createFunction((string) => `${string}${window.location.host}`);
   const addPath = createFunction((baseUrl) => `${baseUrl}${window.location.pathname}`);
   const addAnchor = createFunction((url) => `${url}#${getAnchorFromName(expert.user.full_name)}`);
   const shareLink = pipe(
+    addHost,
     addPath,
     addAnchor,
-  )("localhost:3000");
-  // Todo change baseurl to process.env
+  )(" ");
   return shareLink;
 };
 
