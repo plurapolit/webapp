@@ -8,41 +8,25 @@ import styles from "./StatementHeader.module.scss";
 import { ImgixApiUrlParameters } from "../../../../helper/ImageDeliveryHelper";
 
 import Dropdown from "../../../../components/Dropdown/Dropdown";
-import { ReactComponent as Twitter } from "../../../../assets/images/Twitter_Logo.svg";
-import { ReactComponent as Facebook } from "../../../../assets/images/facebook-icon.svg";
-import { ReactComponent as LinkedIn } from "../../../../assets/images/linkedin-icon.svg";
-import { ReactComponent as Website } from "../../../../assets/images/website-icon.svg";
-import { ReactComponent as Transcript } from "../../../../assets/images/transcript-image.svg";
-
-const getPossibleWeblinks = (user) => [
-  {
-    text: "Twitter",
-    icon: Twitter,
-    link: user.twitter_handle,
-  },
-  {
-    text: "Facebook",
-    icon: Facebook,
-    link: user.facebook_handle,
-  },
-  {
-    text: "LinkedIn",
-    icon: LinkedIn,
-    link: user.linkedin_handle,
-  },
-  {
-    text: "Webseite",
-    icon: Website,
-    link: user.website_link,
-  },
-];
-
+import createDropdownHelper from "./dropdownHelper";
+import { useStoreContext } from "../../../../contexts/StoreContext/StoreContext";
+import { ClickTracking } from "../../../../api/TrackingApi";
 
 const StatementHeader = ({
   expert,
   setShowTranscription,
   showTranscription,
 }) => {
+  const { getUserId } = useStoreContext();
+  const createTrackableFunc = (func, event, information) => {
+    const trackableFunc = () => {
+      ClickTracking.post(getUserId(), expert.statement.id, event, information);
+      func();
+    };
+    return trackableFunc;
+  };
+  const DropdownHelper = createDropdownHelper(expert, createTrackableFunc);
+
   const defaultProfileImage = (
     <img
       src={defaultProfileImageUrl}
@@ -73,27 +57,10 @@ const StatementHeader = ({
     return image;
   };
 
-  const dropdownItems = [];
-  getPossibleWeblinks(expert.user).forEach(((socialMedia) => {
-    if (socialMedia.link) {
-      dropdownItems.push(
-        {
-          text: socialMedia.text,
-          icon: socialMedia.icon,
-          onClick: () => window.open(socialMedia.link),
-        },
-      );
-    }
-  }));
-  if (expert.transcription) {
-    dropdownItems.push(
-      {
-        text: showTranscription ? "Transkript schließen" : "Transkript",
-        icon: Transcript,
-        onClick: () => setShowTranscription((prevToggle) => !prevToggle),
-      },
-    );
-  }
+  const weblinks = DropdownHelper.getWeblinks();
+  const dropdownItems = DropdownHelper.addTranscription(
+    weblinks, showTranscription, setShowTranscription,
+  );
 
   return (
     <div className={styles["header"]}>

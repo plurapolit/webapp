@@ -39,10 +39,16 @@ const Store = ({ children }) => {
     return false;
   };
 
+  const getUserId = () => {
+    if (user) return user.id;
+    return undefined;
+  };
+
   return (
     <Provider
       value={{
         user,
+        getUserId,
         categoryList,
         slugList,
         getPanelIdBySlug,

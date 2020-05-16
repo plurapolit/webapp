@@ -3,17 +3,25 @@ import { shallow } from "enzyme";
 import { expert } from "../../../../helper/TestHelper";
 
 import StatementHeader from "./StatementHeader";
+import * as StoreContextModule from "../../../../contexts/StoreContext/StoreContext";
 
 const setup = (propOverrides) => {
   const props = {
     expert,
     ...propOverrides,
   };
+
+  jest.spyOn(StoreContextModule, "useStoreContext").mockImplementation(() => ({
+    user: props.user,
+  }));
+
   const wrapper = shallow(
-    <StatementHeader
-      expert={props.expert}
-    />,
-  );
+    <StoreContextModule.StoreProvider>
+      <StatementHeader
+        expert={props.expert}
+      />
+    </StoreContextModule.StoreProvider>,
+  ).dive();
   return {
     wrapper,
   };

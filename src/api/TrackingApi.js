@@ -1,6 +1,6 @@
 import { fetchBody, fetchResponse, Parameter } from "./APIUtils";
 
-const UserAudioTrackingApi = () => {
+const UserAudioTrackingApi = (() => {
   const post = async (
     userId,
     statementId,
@@ -42,6 +42,35 @@ const UserAudioTrackingApi = () => {
     post,
     put,
   };
-};
+})();
 
-export default UserAudioTrackingApi();
+const ClickTracking = (() => {
+  const post = async (
+    userId,
+    statementId,
+    event,
+    information,
+  ) => {
+    const postUrl = `${process.env.REACT_APP_ROOT_URL}/click_trackings`;
+    const body = {
+      click_tracking: {
+        user_id: userId,
+        statement_id: statementId,
+        event,
+        information,
+      },
+    };
+
+    const parameters = Parameter.post(body);
+    const res = await fetchBody(postUrl, parameters);
+    return res;
+  };
+
+  return {
+    post,
+  };
+})();
+
+export { UserAudioTrackingApi, ClickTracking };
+
+export default UserAudioTrackingApi;
