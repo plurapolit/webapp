@@ -9,7 +9,8 @@ const possibleWeblinks = (user) => [
   {
     text: "Twitter",
     icon: Twitter,
-    link: user.twitter_handle,
+    path: user.twitter_handle,
+    domain: "https://www.twitter.com/",
   },
   {
     text: "Facebook",
@@ -39,6 +40,16 @@ const createDropdownHelper = (expert, createTrackableFunc) => {
             icon: socialMedia.icon,
             onClick: createTrackableFunc(
               () => window.open(socialMedia.link), `dropdown click on ${socialMedia.text}`, undefined,
+            ),
+          },
+        );
+      } else if (socialMedia.path && socialMedia.domain) {
+        dropdownItems.push(
+          {
+            text: socialMedia.text,
+            icon: socialMedia.icon,
+            onClick: createTrackableFunc(
+              () => window.open(`${socialMedia.domain}${socialMedia.path}`), `dropdown click on ${socialMedia.text}`, undefined,
             ),
           },
         );
