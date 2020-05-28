@@ -6,7 +6,6 @@ import LazyLoad from "react-lazyload";
 import defaultProfileImageUrl from "../../../../assets/images/default-profile.svg";
 import styles from "./StatementHeader.module.scss";
 import { ImgixApiUrlParameters } from "../../../../helper/ImageDeliveryHelper";
-
 import Dropdown from "../../../../components/Dropdown/Dropdown";
 import createDropdownHelper from "./dropdownHelper";
 import { useStoreContext } from "../../../../contexts/StoreContext/StoreContext";
@@ -58,9 +57,10 @@ const StatementHeader = ({
   };
 
   const weblinks = DropdownHelper.getWeblinks();
-  const dropdownItems = DropdownHelper.addTranscription(
+  const weblinkAndTranscription = DropdownHelper.addTranscription(
     weblinks, showTranscription, setShowTranscription,
   );
+  const dropdownItems = DropdownHelper.addShareLink(weblinkAndTranscription);
 
   return (
     <div className={styles["header"]}>
