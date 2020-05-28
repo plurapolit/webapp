@@ -24,7 +24,11 @@ const PanelContent = () => {
         </Hyphen>
         <div className={styles.date}>{panelDate}</div>
       </div>
-      <div className={styles.description}>{description}</div>
+      <div className={styles.description}>
+        <ReadMore
+          text={description}
+        />
+      </div>
       <div className={styles.wrapper}>
         <div className={styles["experts-headline"]}>Expert/-innen</div>
         <PlayAllButton />

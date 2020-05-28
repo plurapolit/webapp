@@ -6,6 +6,7 @@ import styles from "./Statement.module.scss";
 import PanelComments from "../PanelComments/PanelComments";
 import StatementHeader from "./StatementHeader/StatementHeader";
 import StatementControls from "./StatementControls/StatementControls";
+import { getAnchorFromName } from "../../../helper/StringHelper";
 
 const Statement = ({
   expert,
@@ -28,7 +29,7 @@ const Statement = ({
   };
 
   return (
-    <div id={expert.full_name} className={styles["statement-comment-container"]} data-test="statement">
+    <div id={getAnchorFromName(expert.user.full_name)} className={styles["statement-comment-container"]} data-test="statement">
       <div className={styles["card"]}>
         <StatementHeader
           expert={expert}
