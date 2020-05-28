@@ -37,6 +37,11 @@ const PlayerWrapper = ({
     setCurrentStatements(getCurrentStatementsFromAudioTrack(queue.prevAudioTrack()));
   };
   const pausePlayer = () => setPaused(true);
+  const stopPlayer = () => {
+    setPaused(true);
+    setShowMediaPlayer(false);
+    setCurrentStatements(null);
+  };
 
   const startPlayer = () => {
     setShowMediaPlayer(true);
@@ -65,13 +70,16 @@ const PlayerWrapper = ({
     >
       {children}
       <If condition={showMediaPlayer}>
-        <Player
-          audioStatement={currentStatement}
-          running={currentStatement && showMediaPlayer && !paused}
-          playNextAudioTrack={playNextAudioTrack}
-          playPrevAudioTrack={playPrevAudioTrack}
-          setPaused={setPaused}
-        />
+        <>
+          <Player
+            audioStatement={currentStatement}
+            running={currentStatement && showMediaPlayer && !paused}
+            playNextAudioTrack={playNextAudioTrack}
+            playPrevAudioTrack={playPrevAudioTrack}
+            setPaused={setPaused}
+            stopPlayer={stopPlayer}
+          />
+        </>
       </If>
     </Provider>
   );
