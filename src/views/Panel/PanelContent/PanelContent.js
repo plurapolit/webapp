@@ -5,6 +5,7 @@ import Statement from "../Statement/Statement";
 import PlayAllButton from "../PlayAllButton/PlayAllButton";
 import { usePanelContext } from "../../../contexts/PanelStoreContext/PanelStoreContext";
 import Hyphen from "../../../helper/HyphenHelper";
+import ReadMore from "../../../components/ReadMore/ReadMore";
 
 import styles from "./PanelContent.module.scss";
 
