@@ -7,7 +7,6 @@ import Button from "../../../components/Button/Button";
 import closeButton from "../../../assets/images/close.svg";
 import CommentApi from "../../../api/CommentApi";
 import Comment from "../Comment/Comment";
-import AnswerDisclaimer from "../AnswerDisclaimer/AnswerDisclaimer";
 import CommentEditor from "../CommentEditor/CommentEditor";
 import Notification from "../../../helper/NotificationHelper";
 import SignInWrapper from "../SignInWrapper/SignInWrapper";
@@ -17,13 +16,10 @@ import styles from "./PanelComments.module.scss";
 const PanelComments = ({
   toggleComments,
   statementId,
-  expertFullName,
-  statementDate,
   panelTitle,
 }) => {
   const [commenting, setCommenting] = useState(false);
   const [userComments, setUserComments] = useState(null);
-  const [answered, setAnswered] = useState(false);
   const { user } = useStoreContext();
   const modal = useModalContext();
 
@@ -69,19 +65,11 @@ const PanelComments = ({
     <div>
       <div className={styles["comments-wrapper"]}>
         <div className={styles["comments-card-wrapper"]}>
-          {userComments && !answered && (
-            <AnswerDisclaimer
-              expertFullName={expertFullName}
-              statementDate={statementDate}
-              commentLength={userComments.comments.length}
-            />
-          )}
           {userComments
           && (userComments.comments.map((commentData) => (
             <Comment
               key={commentData.comment.id}
               commentData={commentData}
-              setAnswered={setAnswered}
               panelTitle={panelTitle}
               statementId={statementId}
             />

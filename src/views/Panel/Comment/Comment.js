@@ -18,7 +18,6 @@ import styles from "./Comment.module.scss";
 
 const Comment = ({
   commentData,
-  setAnswered,
   panelTitle,
   statementId,
 }) => {
@@ -57,10 +56,6 @@ const Comment = ({
       );
     });
   };
-
-  if (commentData.user.role === "expert") {
-    setAnswered(true);
-  }
 
   return (
     <div className={styles["comment"]} data-test="comment">
