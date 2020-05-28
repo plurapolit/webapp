@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from "react";
 import AudioPlayer from "react-h5-audio-player";
 
+import CloseButton from "../../../components/CloseButton/CloseButton";
 import Tracking from "../../../helper/TrackingHelper";
 import { useStoreContext } from "../../StoreContext/StoreContext";
 import styles from "./Player.module.scss";
@@ -24,6 +25,7 @@ const Player = ({
   playNextAudioTrack,
   playPrevAudioTrack,
   setPaused,
+  stopPlayer,
 }) => {
   const player = useRef();
   const { user } = useStoreContext();
@@ -90,6 +92,7 @@ const Player = ({
 
   return (
     <div className={styles["media-player-wrapper"]}>
+      <CloseButton onClick={stopPlayer} />
       <p className={styles["media-player-wrapper-user"]}>{audioStatement.content.author}</p>
       <p className={styles["media-player-wrapper-statement"]}>{audioStatement.content.panelTitle}</p>
       <div className={styles["media-player-wrapper-player"]} data-test="player">
