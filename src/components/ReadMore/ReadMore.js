@@ -15,7 +15,7 @@ const isTextMoreThanCharLimit = (text, charLimit) => {
   return textIsMoreThanCharLimit;
 };
 
-const getShortTextAndReadMoreButton = (text, charLimit, button) => {
+const shortTextAndMoreButton = (text, charLimit, button) => {
   const getSubstringByCharLimit = (string) => string.substring(0, charLimit);
   const addMoreButton = (elements) => (
     <>
@@ -32,7 +32,7 @@ const getShortTextAndReadMoreButton = (text, charLimit, button) => {
   return elements;
 };
 
-const getReadMoreButton = (onClick, text) => (
+const createReadMoreButton = ({ onClick, text }) => (
   <Button buttonStyle={ButtonStyle.COMMENT} onClick={onClick} style={{ marginLeft: ".4rem" }}>
     {text}
   </Button>
@@ -46,8 +46,8 @@ export default function ReadMore({
   const [readMore, setReadMore] = useState();
 
   if (isTextMoreThanCharLimit(text, charLimit) && !readMore) {
-    const button = getReadMoreButton(() => setReadMore(true), readMoreText);
-    return getShortTextAndReadMoreButton(text, charLimit, button);
+    const button = createReadMoreButton({ onClick: () => setReadMore(true), text: readMoreText });
+    return shortTextAndMoreButton(text, charLimit, button);
   }
 
   return text;
