@@ -4,7 +4,7 @@ import React from "react";
 import Statement from "../Statement/Statement";
 import PlayAllButton from "../PlayAllButton/PlayAllButton";
 import { usePanelContext } from "../../../contexts/PanelStoreContext/PanelStoreContext";
-import ReadMoreAndLess from "../../../components/ReadMoreAndLess/ReadMoreAndLess";
+import ReadMore from "../../../components/ReadMore/ReadMore";
 
 import styles from "./PanelContent.module.scss";
 
@@ -19,7 +19,7 @@ const PanelContent = () => {
     <div>
       <div className={styles.date}>{panelDate}</div>
       <div className={styles.description}>
-        <ReadMoreAndLess
+        <ReadMore
           text={description}
         />
       </div>
