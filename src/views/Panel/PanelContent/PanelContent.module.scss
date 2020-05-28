@@ -1,5 +1,17 @@
 @import "../../../assets/styles/global.scss";
 
+.title-date-wrapper{
+  display: flex;
+}
+
+.title {
+  color: $text-dark-1;
+  font-weight: 400;
+  font-size: 2.6rem;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+}
+
 .description {
   color: $text-dark-1;
   font-size: 1.8rem;
