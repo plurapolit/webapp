@@ -40,7 +40,7 @@ const createReadMoreButton = ({ onClick, text }) => (
 
 export default function ReadMore({
   readMoreText = "mehr lesen",
-  charLimit = 5,
+  charLimit = 250,
   text,
 }) {
   const [readMore, setReadMore] = useState();
