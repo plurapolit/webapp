@@ -22,11 +22,11 @@ const HomePage = () => {
         <CategoryList />
       </If>
       <div className={styles["bottom-wrapper"]}>
-        <PvtLanding />
         <MoreSection />
         <Feedback />
-        <Supporters />
       </div>
+      <PvtLanding />
+      <Supporters />
     </div>
   );
 };

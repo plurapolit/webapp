@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, Fragment } from "react";
 
 import { If } from "react-if";
 import Button, {ButtonStyle} from "../../../components/Button/Button";
@@ -18,7 +18,7 @@ const PvtLanding = () => {
   };
   const createRoom = (event) => {
     Notification.success(
-        "Raum " + nameInput.current.value + " wird angelegt.",
+      "Raum " + nameInput.current.value + " wird angelegt.",
     );
     nameInput.current.value = "";
     setShowNamePrompt(false);
@@ -27,24 +27,40 @@ const PvtLanding = () => {
   return (
     <section className={styles["pvtlanding"]}>
       <ContentWrapper>
-        <img src={icon} alt="" />
-        <div className={`${styles["heading"]} u-margin-bottom--medium`}>
-          Private Diskussionsräume
+        <div className={styles["flex-wrapper"]}>
+          <img src={icon} alt="Plurapolit" />
+          <div>
+            <div className={`${styles["heading"]} u-margin-bottom--medium`}>
+              Private Diskussionsräume
+            </div>
+            <Text>
+              <ul className={styles["checkul"]}>
+                <li>Diskussionen in einer sicheren Umgebung in geschlossenen Räumen</li>
+                <li>Geeignet vor allem für Schulklassen und Jugendgruppen</li>
+                <li>Ein Moderator – viele Teilnehmer</li>
+                <li>Förderung des politischen Diskurses und der persönlichen Meinungsbildung</li>
+                <li>Ein Raum – eine Gruppe – mehrere Themen</li>
+              </ul>
+            </Text>
+          </div>
         </div>
-        <Text>
-          <ul className={styles["checkul"]}>
-            <li>Diskussionen in einer sicheren Umgebung in geschlossenen Räumen</li>
-            <li>Geeignet vor allem für Schulklassen und Jugendgruppen</li>
-            <li>Ein Moderator – viele Teilnehmer</li>
-            <li>Förderung des politischen Diskurses und der persönlichen Meinungsbildung</li>
-            <li>Ein Raum – eine Gruppe – mehrere Themen</li>
-          </ul>
-        </Text>
-        <form onSubmit={(event) => event.preventDefault()} >
-          <If condition={showNamePrompt}>
-            <div className={styles["name"]}
-                 style={{display: showNamePrompt ? "block" : "none"}}>
-              Gib den Namen Deines Raumes ein:
+        <If condition={!showNamePrompt}>
+          <div>
+            <Button
+              type="submit"
+              buttonStyle={ButtonStyle.CTA}
+              onClick={(event) => handleClick(event)}
+            >
+              Privaten Raum erstellen
+            </Button>
+          </div>
+        </If>
+      </ContentWrapper>
+      <form onSubmit={(event) => event.preventDefault()}>
+        <If condition={showNamePrompt}>
+          <div className={styles["name"]}>
+            <ContentWrapper>
+              <p>Gib den Namen Deines Raumes ein:</p>
               <input
                 className={styles["nameinput"]}
                 type="text"
@@ -53,18 +69,11 @@ const PvtLanding = () => {
                 ref={nameInput}
                 required
               />
-              <Button type="submit" onClick={(event) => createRoom(event)}>Fertig</Button>
-            </div>
-          </If>
-          <If condition={!showNamePrompt}>
-            <Button type="submit" buttonStyle={ButtonStyle.CTA}
-                    onClick={(event) => handleClick(event)}
-                    >
-              Privaten Raum erstellen
-            </Button>
-          </If>
-        </form>
-      </ContentWrapper>
+              <Button type="submit" onClick={(event) => createRoom(event)}>Raum erstellen</Button>
+            </ContentWrapper>
+          </div>
+        </If>
+      </form>
     </section>
   );
 };

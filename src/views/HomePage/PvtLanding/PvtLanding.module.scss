@@ -2,21 +2,25 @@
 
 .pvtlanding {
   padding: $spacing-section 0;
+}
+
+.flex-wrapper {
   display: flex;
-  flex-direction: column;
-  max-width: 48rem;
+  margin-bottom: 3rem;
+
+  & img {
+    width: 42px;
+    height: 42px;
+    margin-right: 2rem;
+  }
 }
 
 .checkul {
-  margin-bottom: 30px;
   list-style-image: url(../../../assets/images/checkmark.png);
-}
 
-.pvtlanding img {
-  position: absolute;
-  left: -48px;
-  width: 42px;
-  height: 42px;
+  & li {
+    padding: .5rem 0;
+  }
 }
 
 .heading {
@@ -28,14 +32,16 @@
 }
 
 .name {
-  margin-top: 20px;
-  padding-top: 50px;
-  padding-bottom: 50px;
   width: 100%;
-  padding-left: 10px;
+  padding: 5rem 0;
   color: white;
-  font-size: 1.5rem;
+  font-size: 2rem;
   background-color: #4787ff;
+
+   & input {
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+   }
 }
 
 .nameinput {
@@ -43,14 +49,7 @@
   padding: 1rem;
   border-bottom: solid 2px $color-primary;
   border: solid 1px rgba($color-grey, 0.3);
-  margin: 1rem 0;
   border-radius: 5px;
   border: 1px solid $color-grey-2;
   outline: none;
-}
-
-.name > button {
-  background: none;
-  box-shadow: none;
-  border: solid 2px white;
 }
