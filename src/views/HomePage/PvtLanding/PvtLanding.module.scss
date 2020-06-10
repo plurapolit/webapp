@@ -1,0 +1,56 @@
+@import "../../../assets/styles/global.scss";
+
+.pvtlanding {
+  padding: $spacing-section 0;
+  display: flex;
+  flex-direction: column;
+  max-width: 48rem;
+}
+
+.checkul {
+  margin-bottom: 30px;
+  list-style-image: url(../../../assets/images/checkmark.png);
+}
+
+.pvtlanding img {
+  position: absolute;
+  left: -48px;
+  width: 42px;
+  height: 42px;
+}
+
+.heading {
+  position: relative;
+  display: inline-block;
+  font-size: 2.4rem;
+  font-weight: bold;
+  border-bottom: solid 0.3rem $color-primary;
+}
+
+.name {
+  margin-top: 20px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  width: 100%;
+  padding-left: 10px;
+  color: white;
+  font-size: 1.5rem;
+  background-color: #4787ff;
+}
+
+.nameinput {
+  font-size: 1.8rem;
+  padding: 1rem;
+  border-bottom: solid 2px $color-primary;
+  border: solid 1px rgba($color-grey, 0.3);
+  margin: 1rem 0;
+  border-radius: 5px;
+  border: 1px solid $color-grey-2;
+  outline: none;
+}
+
+.name > button {
+  background: none;
+  box-shadow: none;
+  border: solid 2px white;
+}

@@ -8,6 +8,7 @@ import HomeHeader from "./HomeHeader/HomeHeader";
 import MoreSection from "./MoreSection/MoreSection";
 import CategoryList from "./CategoryList/CategoryList";
 import Feedback from "./Feedback/Feedback";
+import PvtLanding from "./PvtLanding/PvtLanding";
 import Supporters from "./Supporters/Supporters";
 import styles from "./HomePage.module.scss";
 
@@ -21,6 +22,7 @@ const HomePage = () => {
         <CategoryList />
       </If>
       <div className={styles["bottom-wrapper"]}>
+        <PvtLanding />
         <MoreSection />
         <Feedback />
         <Supporters />
