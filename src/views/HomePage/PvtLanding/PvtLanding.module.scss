@@ -16,10 +16,21 @@
 }
 
 .checkul {
-  list-style-image: url(../../../assets/images/checkmark.svg);
+  list-style: none;
 
   & li {
-    padding: .5rem 0;
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 1rem 0;
+
+    & .checkmark {
+      position: absolute;
+      left: -2.5rem;
+      width: 2.5rem;
+      height: 2.5rem;
+      transform: translateX(-50%);
+    }
   }
 }
 

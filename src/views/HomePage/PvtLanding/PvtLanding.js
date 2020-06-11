@@ -11,6 +11,7 @@ import icon from "../../../assets/images/p-lock.svg";
 import PvtPopup from "../PvtPopup/PvtPopup";
 import { useModalContext } from "../../../contexts/ModalContext/ModalContext";
 
+import Checkmark from "../../../assets/images/checkmark.svg";
 import styles from "./PvtLanding.module.scss";
 
 const PvtLanding = () => {
@@ -37,6 +38,16 @@ const PvtLanding = () => {
       );
     }
   };
+
+  const ListElement = ({ children }) => (
+    <li>
+      <img className={styles["checkmark"]} src={Checkmark} alt="" />
+      <div>
+        {children}
+      </div>
+    </li>
+  );
+
   return (
     <section className={styles["pvtlanding"]}>
       <ContentWrapper>
@@ -48,11 +59,11 @@ const PvtLanding = () => {
             </div>
             <Text>
               <ul className={styles["checkul"]}>
-                <li>Diskussionen in einer sicheren Umgebung in geschlossenen Räumen</li>
-                <li>Geeignet vor allem für Schulklassen und Jugendgruppen</li>
-                <li>Ein Moderator – viele Teilnehmer</li>
-                <li>Förderung des politischen Diskurses und der persönlichen Meinungsbildung</li>
-                <li>Ein Raum – eine Gruppe – mehrere Themen</li>
+                <ListElement>Diskussionen in einer sicheren Umgebung in geschlossenen Räumen</ListElement>
+                <ListElement>Geeignet vor allem für Schulklassen und Jugendgruppen</ListElement>
+                <ListElement>Ein Moderator – viele Teilnehmer</ListElement>
+                <ListElement>Förderung des politischen Diskurses und der persönlichen Meinungsbildung</ListElement>
+                <ListElement>Ein Raum – eine Gruppe – mehrere Themen</ListElement>
               </ul>
             </Text>
           </div>
