@@ -18,10 +18,10 @@ const history = createBrowserHistory();
 const App = () => (
   <Store>
     <Router history={Piwik.connectToHistory(history)}>
-      <ScrollToTop />
-      <NavBar />
-      <Notification />
       <Modal>
+        <ScrollToTop />
+        <NavBar />
+        <Notification />
         <NavbarBuffer>
           <Player>
             <Routes />
