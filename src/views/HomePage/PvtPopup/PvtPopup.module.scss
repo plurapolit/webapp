@@ -1,0 +1,36 @@
+@import "../../../assets/styles/global.scss";
+ 
+.pvtpopup {
+  padding: 2rem;
+  padding-bottom: 4rem;
+  display: flex;
+  height: 100%;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.checkmark {
+  margin-bottom: 2rem;
+  width: 6.4rem;
+  height: 6.4rem;
+}
+
+.heading {
+  font-size: 2.2rem;
+  font-weight: 300;
+  color: $color-primary;
+
+  &--orange {
+    font-size: 2.8rem;
+    font-weight: 900;
+    color: $orange;
+  }
+}
+
+.link {
+  display: inline;
+  color: $color-primary !important;
+  font-weight: bold;
+}

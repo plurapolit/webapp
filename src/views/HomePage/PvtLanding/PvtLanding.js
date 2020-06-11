@@ -6,20 +6,21 @@ import Notification from "../../../helper/NotificationHelper";
 import ContentWrapper from "../../../layouts/ContentWrapper/ContentWrapper";
 import Text from "../../../components/Text/Text";
 import icon from "../../../assets/images/p-lock.svg";
+import PvtPopup from "../PvtPopup/PvtPopup";
+import { useModalContext } from "../../../contexts/ModalContext/ModalContext";
 
 import styles from "./PvtLanding.module.scss";
 
 const PvtLanding = () => {
   const nameInput = useRef(undefined);
+  const modal = useModalContext()
   const [showNamePrompt, setShowNamePrompt] = useState(false);
   const handleClick = (event) => {
     setShowNamePrompt(true);
     event.preventDefault();
   };
   const createRoom = (event) => {
-    Notification.success(
-      "Raum " + nameInput.current.value + " wird angelegt.",
-    );
+    modal.showContent(<PvtPopup inviteCode={"1337"} />);
     nameInput.current.value = "";
     setShowNamePrompt(false);
     event.preventDefault();
