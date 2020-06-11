@@ -9,7 +9,7 @@ const { Provider } = StoreContext;
 
 const FakeRoomFacade = (() => {
   const FAKE_ROOMS = [
-    { id: 1, invideCode: 123456, name: "Klassroom der 9b" },
+    { id: 1, invideCode: 123456, name: "Klassenraum der 9b" },
     { id: 2, invideCode: 654321, name: "10c" },
     { id: 3, invideCode: 234561, name: "Informatik mit Simon" },
   ];
