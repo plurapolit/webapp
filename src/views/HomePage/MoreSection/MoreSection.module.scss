@@ -4,16 +4,14 @@
   padding: $spacing-section 0;
 }
 
+.button-wrapper {
+  margin-top: 2rem;
+}
+
 .heading {
   position: relative;
   display: inline-block;
   font-size: 2.4rem;
   font-weight: bold;
   border-bottom: solid 0.3rem $color-primary;
-}
-
-.line {
-  width: 100%;
-  border-top: solid 0.3rem $color-primary;
-  margin-bottom: 2rem;
 }

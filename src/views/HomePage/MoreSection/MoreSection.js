@@ -13,9 +13,11 @@ const MoreSection = () => (
         Werde Teil von PluraPolit
       </div>
       <Text>Diskutier bei uns mit und gib deiner Meinung eine Stimme!</Text>
-      <Button customClass="u-margin-top--medium" to="/sign_up/">
-        Jetzt kostenlos anmelden
-      </Button>
+      <div className={styles["button-wrapper"]}>
+        <Button to="/sign_up/">
+          Jetzt kostenlos anmelden
+        </Button>
+      </div>
     </ContentWrapper>
   </section>
 );
