@@ -1,6 +1,8 @@
 import React, { useRef, useState, Fragment } from "react";
-
 import { If } from "react-if";
+
+import JwtApi from "../../../api/JwtApi";
+import SignInComponent from "../../../components/SignInComponent/SignInComponent";
 import Button, {ButtonStyle} from "../../../components/Button/Button";
 import Notification from "../../../helper/NotificationHelper";
 import ContentWrapper from "../../../layouts/ContentWrapper/ContentWrapper";
@@ -19,11 +21,21 @@ const PvtLanding = () => {
     setShowNamePrompt(true);
     event.preventDefault();
   };
-  const createRoom = (event) => {
-    modal.showContent(<PvtPopup inviteCode={"1337"} />);
-    nameInput.current.value = "";
-    setShowNamePrompt(false);
+  const createRoom = async (event) => {
     event.preventDefault();
+    const valid = await JwtApi.validate();
+    if (valid) {
+      modal.showContent(<PvtPopup inviteCode={"1337"} />);
+      nameInput.current.value = "";
+      setShowNamePrompt(false);
+    } else {
+      modal.showContent(
+        <SignInComponent routeBack={modal.closeModal} onLinkClick={modal.closeModal} />,
+      );
+      return Notification.warning(
+        "Um einen Raum erstellen zu können, muss man sich vorher anmelden",
+      );
+    }
   };
   return (
     <section className={styles["pvtlanding"]}>
