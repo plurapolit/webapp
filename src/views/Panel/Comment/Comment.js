@@ -15,6 +15,7 @@ import Commenting from "./Commenting/Commenting";
 import CommentEditor from "../CommentEditor/CommentEditor";
 
 import styles from "./Comment.module.scss";
+import { useStoreContext } from "../../../contexts/StoreContext/StoreContext";
 
 const Comment = ({
   commentData,
@@ -25,6 +26,7 @@ const Comment = ({
   const [liked, setLiked] = useState(commentData.likes.liked_by_current_user);
   const [likes, setLikes] = useState(commentData.likes.total_likes);
   const modal = useModalContext();
+  const { getClassRoomInviteCode } = useStoreContext();
 
   const handleLikeClick = async () => {
     const valid = await JwtApi.validate();
@@ -47,9 +49,11 @@ const Comment = ({
   };
 
   const saveComment = (textRecord) => {
+    const inviteCode = getClassRoomInviteCode();
     CommentApi.postText(
       statementId,
       textRecord,
+      inviteCode,
     ).then(() => {
       Notification.success(
         "Danke für deine Einsendung. Wir überprüfen, ob das Statement unseren Nutzungsbedingungen entspricht, und schalten es in den nächsten 24 Stunden frei.",

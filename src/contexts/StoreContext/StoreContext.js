@@ -9,9 +9,9 @@ const { Provider } = StoreContext;
 
 const FakeRoomFacade = (() => {
   const FAKE_ROOMS = [
-    { id: 1, invideCode: 123456, name: "Klassenraum der 9b" },
-    { id: 2, invideCode: 654321, name: "10c" },
-    { id: 3, invideCode: 234561, name: "Informatik mit Simon" },
+    { id: 1, inviteCode: 123456, name: "Klassenraum der 9b" },
+    { id: 2, inviteCode: 654321, name: "10c" },
+    { id: 3, inviteCode: 234561, name: "Informatik mit Simon" },
   ];
   let counter = 0;
 
@@ -21,8 +21,8 @@ const FakeRoomFacade = (() => {
     return undefined;
   };
 
-  const get = ({ invideCode }) => {
-    const foundRoom = FAKE_ROOMS.find((room) => room.invideCode === convertToNumber(invideCode));
+  const get = ({ inviteCode }) => {
+    const foundRoom = FAKE_ROOMS.find((room) => room.inviteCode === convertToNumber(inviteCode));
     if (foundRoom) return foundRoom;
     return undefined;
   };
@@ -54,29 +54,29 @@ const addRoomToListOfRooms = (rooms, newRoom) => {
   return roomsWithNewRoom;
 };
 
-const saveJoinedRooms = (user, rooms) => {
-  const value = { user: { ...user }, rooms };
-  renewLocalStorage("joinedRooms", value);
+const saveJoinedRooms = (userId, rooms) => {
+  const value = { rooms };
+  renewLocalStorage(`${userId}-rooms`, value);
 };
 
-const saveActiveRoom = (room) => {
+const saveActiveRoom = (userId, room) => {
   const value = { room };
-  renewLocalStorage("activeRoom", value);
+  renewLocalStorage(`${userId}-active-room`, value);
 };
 
-const checkIfAlreadyInRoom = (rooms, invideCode) => {
-  const foundRoom = rooms.find((room) => room.invideCode === invideCode);
+const checkIfAlreadyInRoom = (rooms, inviteCode) => {
+  const foundRoom = rooms.find((room) => room.inviteCode === inviteCode);
   return !!foundRoom;
 };
 
-const loadJoinedRooms = () => {
-  const loadedContent = Cookie.getJSON("joinedRooms");
+const loadJoinedRooms = (userId) => {
+  const loadedContent = Cookie.getJSON(`${userId}-rooms`);
   if (loadedContent) return loadedContent.rooms;
   return [];
 };
 
-const loadActiveRoom = () => {
-  const activeRoom = Cookie.getJSON("activeRoom");
+const loadActiveRoom = (userId) => {
+  const activeRoom = Cookie.getJSON(`${userId}-active-room`);
   if (activeRoom) return activeRoom.room;
   return undefined;
 };
@@ -88,9 +88,9 @@ const Store = ({ children }) => {
   const [classRoom, setClassRoom] = useState(undefined);
   const [assignedRooms, setAssignedRooms] = useState([]);
 
-  const setActiveRoom = (newRoom) => {
+  const setActiveRoom = (userId, newRoom) => {
     setClassRoom(newRoom);
-    saveActiveRoom(newRoom);
+    saveActiveRoom(userId, newRoom);
   };
 
   useEffect(() => {
@@ -99,9 +99,18 @@ const Store = ({ children }) => {
       setSlugList(newSlugList);
       setUser(recognisedUser);
     });
-    setAssignedRooms(loadJoinedRooms());
-    setActiveRoom(loadActiveRoom());
   }, []);
+
+  useEffect(() => {
+    if (user) {
+      const { id } = user;
+      console.log("user ", user);
+      const loadedRoomFromCookie = loadJoinedRooms(id);
+      const loadedActiveRoomFromCookie = loadActiveRoom(id);
+      setAssignedRooms(loadedRoomFromCookie);
+      setActiveRoom(id, loadedActiveRoomFromCookie);
+    }
+  }, [user]);
 
   useEffect(() => {
     console.log("assignedRooms ", assignedRooms, "classRoom ", classRoom);
@@ -132,9 +141,9 @@ const Store = ({ children }) => {
     return undefined;
   };
 
-  const getClassRoomId = () => {
-    if (classRoom) return classRoom.id;
-    return undefined;
+  const getClassRoomInviteCode = () => {
+    if (classRoom) return classRoom.inviteCode;
+    return null;
   };
 
   const getAssignedRooms = () => assignedRooms;
@@ -145,25 +154,34 @@ const Store = ({ children }) => {
   };
 
 
-  const setActiveRoomByInvideCode = (invideCode) => {
-    const activeRoom = FakeRoomFacade.get({ invideCode });
-    setActiveRoom(activeRoom);
+  const setActiveRoomByInviteCode = (userId, inviteCode) => {
+    const activeRoom = FakeRoomFacade.get({ inviteCode });
+    setActiveRoom(userId, activeRoom);
   };
 
-  const joinRoom = (registeredUser, invideCode) => {
+  const joinRoom = (userId, inviteCode) => {
     const response = new Promise((resolve) => {
       setTimeout(() => {
-        if (!checkIfAlreadyInRoom(assignedRooms, invideCode)) {
-          const newRoom = FakeRoomFacade.get(invideCode);
+        if (!checkIfAlreadyInRoom(assignedRooms, inviteCode)) {
+          const newRoom = FakeRoomFacade.get(inviteCode);
           const newListOfAllRooms = addRoomToListOfRooms(assignedRooms, newRoom);
-          saveJoinedRooms(registeredUser, newListOfAllRooms);
+          saveJoinedRooms(userId, newListOfAllRooms);
           setAssignedRooms(newListOfAllRooms);
-          setActiveRoom(newRoom);
+          setActiveRoom(userId, newRoom);
         }
         resolve();
       }, 600);
     });
     return response;
+  };
+
+  const createPrivateRoom = (userId) => {
+    const newRoom = FakeRoomFacade.create();
+    const newListOfAllRooms = addRoomToListOfRooms(assignedRooms, newRoom);
+    saveJoinedRooms(userId, newListOfAllRooms);
+    setAssignedRooms(newListOfAllRooms);
+    setActiveRoom(userId, newRoom);
+    return newRoom.inviteCode;
   };
 
   return (
@@ -177,11 +195,12 @@ const Store = ({ children }) => {
         setUser,
         signUp,
         removeUser,
-        getClassRoomId,
+        getClassRoomInviteCode,
         getClassRoomName,
         getAssignedRooms,
-        setActiveRoomByInvideCode,
+        setActiveRoomByInviteCode,
         joinRoom,
+        createPrivateRoom,
       }}
     >
       {children}

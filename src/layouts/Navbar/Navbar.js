@@ -32,7 +32,7 @@ const createAddRoom = (onClick) => ({
 const createDropdownItems = (list, onClick, onAddRoomClick) => {
   if (list) {
     const privateRoomItems = list.map(({ room }) => {
-      const dropdownItem = createItem({ text: room.name, onClick: () => onClick(room.invideCode) });
+      const dropdownItem = createItem({ text: room.name, onClick: () => onClick(room.inviteCode) });
       return dropdownItem;
     });
     const publicRoomItem = createPublicRoom(onClick);
@@ -87,7 +87,7 @@ const createAddRoomModal = (onSubmit, closeModal, user) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = getDataFromEvent(event);
-    onSubmit(user, data).then(() => {
+    onSubmit(user.id, data).then(() => {
       Notification.success(
         "Du wurdest erfolgreich in den privaten Raum eingetragen",
       );
@@ -97,15 +97,15 @@ const createAddRoomModal = (onSubmit, closeModal, user) => {
   return (
     <div className={styles["join-room"]}>
       <div className={styles["heading"]}>
-        Gib den Invide-Code für den Raum ein:
+        Gib den Code für die Einladung ein:
       </div>
       <form
         onSubmit={handleSubmit}
       >
         <input
           type="text"
-          name="invideCode"
-          placeholder="Invide-Code"
+          name="inviteCode"
+          placeholder="Code für die Einladung"
           required
         />
         <div>
@@ -122,9 +122,10 @@ export default function Navbar() {
   const {
     user,
     getAssignedRooms,
-    setActiveRoomByInvideCode,
+    setActiveRoomByInviteCode,
     joinRoom,
     getClassRoomName,
+    getUserId,
   } = useStoreContext();
   const { showContent, closeModal } = useModalContext();
   const addRoomModal = createAddRoomModal(joinRoom, closeModal, user);
@@ -136,7 +137,9 @@ export default function Navbar() {
 
   // openModal();
   const assignedRooms = getAssignedRooms();
-  const dropdownItems = createDropdownItems(assignedRooms, setActiveRoomByInvideCode, openModal);
+  const userId = getUserId();
+  const setActiveRoom = (inviteCode) => setActiveRoomByInviteCode(userId, inviteCode);
+  const dropdownItems = createDropdownItems(assignedRooms, setActiveRoom, openModal);
   const closedRoomIcon = createClosedRoomIcon(dropdownItems);
   const buttons = createAccountActions(user, customStyle);
   const activeRoomName = createRoomElement(getClassRoomName());

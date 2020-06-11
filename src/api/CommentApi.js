@@ -31,11 +31,12 @@ const CommentApi = () => {
     return false;
   };
 
-  const postText = async (statementId, textRecord) => {
+  const postText = async (statementId, textRecord, inviteCode = 123456) => {
     const body = {
       text_record: {
         content: textRecord,
       },
+      room_id: inviteCode,
     };
     const parameters = Parameter.post(body, JwtApi.get());
     const res = await fetchResponse(getUrl(statementId), parameters);

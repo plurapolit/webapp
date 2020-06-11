@@ -13,16 +13,6 @@ const Statement = ({
 }) => {
   const [commentsAreOpen, setCommentsAreOpen] = useState(false);
   const [showTranscription, setShowTranscription] = useState(false);
-  const { number_of_comments: numberOfComments } = expert;
-
-  useEffect(() => {
-    const openCommentsIfCommentsAreAvailable = () => {
-      if (numberOfComments > 0) {
-        setCommentsAreOpen(true);
-      }
-    };
-    openCommentsIfCommentsAreAvailable();
-  }, [numberOfComments]);
 
   const toggleComments = () => {
     setCommentsAreOpen((currentState) => !currentState);

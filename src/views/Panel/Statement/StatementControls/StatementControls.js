@@ -11,7 +11,6 @@ import styles from "./StatementControls.module.scss";
 import Helper from "./StatementControlsHelper";
 
 const StatementControls = ({ expert, toggleComments }) => {
-  const { number_of_comments: numberOfComments } = expert;
   const {
     queue,
     startPlayer,
@@ -48,7 +47,7 @@ const StatementControls = ({ expert, toggleComments }) => {
         buttonStyle={ButtonStyle.COMMENT}
         onClick={() => toggleComments()}
       >
-        {Helper.getStringForNComments(numberOfComments)}
+        {Helper.getStringForNComments()}
       </Button>
       <div className={styles["audio"]}>
         <div className={styles["info-container"]}>

@@ -1,9 +1,9 @@
-import React, { useRef, useState, Fragment } from "react";
+import React, { useRef, useState } from "react";
 import { If } from "react-if";
 
 import JwtApi from "../../../api/JwtApi";
 import SignInComponent from "../../../components/SignInComponent/SignInComponent";
-import Button, {ButtonStyle} from "../../../components/Button/Button";
+import Button, { ButtonStyle } from "../../../components/Button/Button";
 import Notification from "../../../helper/NotificationHelper";
 import ContentWrapper from "../../../layouts/ContentWrapper/ContentWrapper";
 import Text from "../../../components/Text/Text";
@@ -12,28 +12,33 @@ import PvtPopup from "../PvtPopup/PvtPopup";
 import { useModalContext } from "../../../contexts/ModalContext/ModalContext";
 
 import styles from "./PvtLanding.module.scss";
+import { useStoreContext } from "../../../contexts/StoreContext/StoreContext";
 
 const PvtLanding = () => {
   const nameInput = useRef(undefined);
-  const modal = useModalContext()
+  const modal = useModalContext();
   const [showNamePrompt, setShowNamePrompt] = useState(false);
+  const { createPrivateRoom, getUserId } = useStoreContext();
+
   const handleClick = async (event) => {
     event.preventDefault();
     const valid = await JwtApi.validate();
     if (valid) {
       setShowNamePrompt(true);
-    } else {
-      modal.showContent(
-        <SignInComponent routeBack={modal.closeModal} onLinkClick={modal.closeModal} />,
-      );
-      return Notification.warning(
-        "Um einen Raum erstellen zu können, muss man sich vorher anmelden",
-      );
+      return undefined;
     }
+    modal.showContent(
+      <SignInComponent routeBack={modal.closeModal} onLinkClick={modal.closeModal} />,
+    );
+    return Notification.warning(
+      "Um einen Raum erstellen zu können, muss man sich vorher anmelden",
+    );
   };
   const createRoom = (event) => {
     event.preventDefault();
-    modal.showContent(<PvtPopup inviteCode={"1337"} />);
+    const userId = getUserId();
+    const inviteCode = createPrivateRoom(userId);
+    modal.showContent(<PvtPopup inviteCode={inviteCode} />);
     nameInput.current.value = "";
     setShowNamePrompt(false);
   };
