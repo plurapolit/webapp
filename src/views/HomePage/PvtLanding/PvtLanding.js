@@ -17,17 +17,11 @@ const PvtLanding = () => {
   const nameInput = useRef(undefined);
   const modal = useModalContext()
   const [showNamePrompt, setShowNamePrompt] = useState(false);
-  const handleClick = (event) => {
-    setShowNamePrompt(true);
-    event.preventDefault();
-  };
-  const createRoom = async (event) => {
+  const handleClick = async (event) => {
     event.preventDefault();
     const valid = await JwtApi.validate();
     if (valid) {
-      modal.showContent(<PvtPopup inviteCode={"1337"} />);
-      nameInput.current.value = "";
-      setShowNamePrompt(false);
+      setShowNamePrompt(true);
     } else {
       modal.showContent(
         <SignInComponent routeBack={modal.closeModal} onLinkClick={modal.closeModal} />,
@@ -36,6 +30,12 @@ const PvtLanding = () => {
         "Um einen Raum erstellen zu können, muss man sich vorher anmelden",
       );
     }
+  };
+  const createRoom = (event) => {
+    event.preventDefault();
+    modal.showContent(<PvtPopup inviteCode={"1337"} />);
+    nameInput.current.value = "";
+    setShowNamePrompt(false);
   };
   return (
     <section className={styles["pvtlanding"]}>
