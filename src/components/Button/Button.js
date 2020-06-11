@@ -9,6 +9,7 @@ export const ButtonStyle = {
   SECONDARY: "secondary",
   NONE: "none",
   COMMENT: "comment",
+  OUTLINED: "outlined",
 };
 
 const Button = ({
@@ -28,6 +29,8 @@ const Button = ({
         return "button--primary";
       case ButtonStyle.SECONDARY:
         return "button--secondary";
+      case ButtonStyle.OUTLINED:
+        return "button--outlined";
       case ButtonStyle.NONE:
         return null;
       case ButtonStyle.COMMENT:
