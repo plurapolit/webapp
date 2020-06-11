@@ -6,7 +6,7 @@ import BurgerMenu from "../BurgerMenu/BurgerMenu";
 import Notification from "../../helper/NotificationHelper";
 import styles from "./Navbar.module.scss";
 import SignOutButton from "../../components/SignOutButton/SignOutButton";
-import lockImage from "../../assets/images/p-lock-outlined.svg";
+import lockImage from "../../assets/images/p-lock.svg";
 import Button, { ButtonStyle } from "../../components/Button/Button";
 import Dropdown from "../../components/Dropdown/Dropdown";
 import { useModalContext } from "../../contexts/ModalContext/ModalContext";
