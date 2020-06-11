@@ -1,9 +1,9 @@
-import React, { useRef, useState, Fragment } from "react";
+import React, { useRef, useState } from "react";
 import { If } from "react-if";
 
 import JwtApi from "../../../api/JwtApi";
 import SignInComponent from "../../../components/SignInComponent/SignInComponent";
-import Button, {ButtonStyle} from "../../../components/Button/Button";
+import Button, { ButtonStyle } from "../../../components/Button/Button";
 import Notification from "../../../helper/NotificationHelper";
 import ContentWrapper from "../../../layouts/ContentWrapper/ContentWrapper";
 import Text from "../../../components/Text/Text";
