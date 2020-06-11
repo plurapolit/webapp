@@ -9,9 +9,9 @@ $border-radius: 2rem;
   cursor: pointer;
   transition: all 0.3s;
 
-  &:hover {
-    transform: translateY(-0.4rem);
-  }
+  // &:hover {
+  //   transform: translateY(-0.4rem);
+  // }
 }
 
 .question-banner {
@@ -68,7 +68,7 @@ $border-radius: 2rem;
   background-color: $color-primary;
   height: 5rem;
   width: 5rem;
-  z-index: 2;
+  z-index: 1;
 
   & img {
     width: 2.3rem;

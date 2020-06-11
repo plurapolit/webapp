@@ -21,6 +21,7 @@ const defaultStyle = {
   },
   overlay: {
     backgroundColor: "#000000cc",
+    zIndex: "19",
   },
 };
 
@@ -32,7 +33,7 @@ const Modal = ({
   children,
 }) => {
   const [open, setOpen] = useState(show);
-  const style = useRef();
+  const style = useRef(defaultStyle);
   const label = useRef("PluraPolit");
   const content = useRef(null);
   const closeModal = () => setOpen(false);
@@ -56,7 +57,7 @@ const Modal = ({
         isOpen={open}
         onRequestClose={closeModal}
         contentLabel={label.current}
-        style={style.current ? style.current : defaultStyle}
+        style={style.current}
         ariaHideApp={false}
       >
         <CloseButton onClick={closeModal} />
