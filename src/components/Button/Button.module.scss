@@ -25,6 +25,12 @@
     background-color: $orange;
   }
 
+  &--outlined {
+    composes: button;
+    box-shadow: none;
+    border: solid 2px $color-white;
+  }
+
   &--secondary {
     color: $color-grey;
     font-size: 1.4rem;

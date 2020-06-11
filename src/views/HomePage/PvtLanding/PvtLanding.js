@@ -69,7 +69,13 @@ const PvtLanding = () => {
                 ref={nameInput}
                 required
               />
-              <Button type="submit" onClick={(event) => createRoom(event)}>Raum erstellen</Button>
+              <Button
+                type="submit"
+                buttonStyle={ButtonStyle.OUTLINED}
+                onClick={(event) => createRoom(event)}
+              >
+                Raum erstellen
+              </Button>
             </ContentWrapper>
           </div>
         </If>
