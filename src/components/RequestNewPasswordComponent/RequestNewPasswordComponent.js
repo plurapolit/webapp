@@ -2,6 +2,7 @@ import React from "react";
 
 import styles from "./RequestNewPasswordComponent.module.scss";
 import Button from "../Button/Button";
+import H1 from "../H1/H1";
 import { getDataFromEvent } from "../../helper/FormHelper";
 import Notification from "../../helper/NotificationHelper";
 import UserApi from "../../api/UserApi";
@@ -32,7 +33,7 @@ const RequestNewPasswordComponent = ({
   return (
     <div className={styles["request-new-password"]}>
       <div className={styles["container"]}>
-        <h1>Passwort ändern</h1>
+        <H1>Passwort ändern</H1>
         <p className={styles["instructions"]}>
           Wir senden dir eine E-Mail mit einem Link, um dein Passwort zurückzusetzen.
         </p>
