@@ -8,6 +8,7 @@ import {
 
 import styles from "./ResetPassword.module.scss";
 import Button from "../../components/Button/Button";
+import H1 from "../../components/H1/H1";
 import { getDataFromEvent } from "../../helper/FormHelper";
 import Notification from "../../helper/NotificationHelper";
 import UserApi from "../../api/UserApi";
@@ -38,7 +39,7 @@ const ResetPassword = () => {
   return (
     <div className={styles["reset-password"]}>
       <div className={styles["container"]}>
-        <h1>Neues Passwort festlegen</h1>
+        <H1>Neues Passwort festlegen</H1>
         <form
           className={styles["form"]}
           onSubmit={(event) => handleSubmit(event)}

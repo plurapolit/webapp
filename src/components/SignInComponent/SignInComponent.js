@@ -2,6 +2,7 @@ import React from "react";
 
 import styles from "./SignInComponent.module.scss";
 import Button from "../Button/Button";
+import H1 from "../H1/H1";
 import UserApi from "../../api/UserApi";
 import { getDataFromEvent } from "../../helper/FormHelper";
 import Notification from "../../helper/NotificationHelper";
@@ -31,7 +32,7 @@ const SignInComponent = ({
   return (
     <div className={styles["sign_in"]}>
       <div className={styles["container"]}>
-        <h1>Anmeldung</h1>
+        <H1>Anmeldung</H1>
         <form
           className={styles["form"]}
           onSubmit={(event) => handleSubmit(event)}
