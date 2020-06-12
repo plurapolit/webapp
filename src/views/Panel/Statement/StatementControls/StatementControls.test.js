@@ -1,7 +1,7 @@
 import React from "react";
 import { shallow } from "enzyme";
 
-import Button from "../../../../components/Button/Button";
+// import Button from "../../../../components/Button/Button";
 import { expert, expertStatements, queue } from "../../../../helper/TestHelper";
 import * as PlayerContextModule from "../../../../contexts/PlayerContext/PlayerContext";
 import * as PanelStoreContextModule from "../../../../contexts/PanelStoreContext/PanelStoreContext";
@@ -47,10 +47,10 @@ const setup = (propOverrides) => {
 };
 
 describe("<StatementControls />", () => {
-  it("should render comment button with count", () => {
-    const { wrapper } = setup();
-    expect(wrapper.find(Button).prop("children")).toEqual("5 Kommentare");
-  });
+  // it("should render comment button with count", () => {
+  //   const { wrapper } = setup();
+  //   expect(wrapper.find(Button).prop("children")).toEqual("5 Kommentare");
+  // });
 
   it("should render the duration of the statement", () => {
     const { wrapper } = setup();

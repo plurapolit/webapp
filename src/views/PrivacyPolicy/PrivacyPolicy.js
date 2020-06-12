@@ -1,12 +1,13 @@
 import React from "react";
-import styles from "./PrivacyPolicy.module.scss";
-
 import ContentWrapper from "../../layouts/ContentWrapper/ContentWrapper";
+import H1 from "../../components/H1/H1";
+
+import styles from "./PrivacyPolicy.module.scss";
 
 const PrivacyPolicy = () => (
   <div className={styles["wrapper"]}>
     <ContentWrapper>
-      <h1>DATENSCHUTZERKLÄRUNG</h1>
+      <H1>DATENSCHUTZERKLÄRUNG</H1>
       <br />
       <p>
         Die Datenschutzinformation wurde von Rechtsanwältin Kathrin-E. Commandeur, Hamburg -

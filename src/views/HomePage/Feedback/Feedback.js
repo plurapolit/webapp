@@ -14,6 +14,7 @@ const Feedback = () => {
   const feedbackInput = useRef(undefined);
 
   const handleSubmit = (event) => {
+    event.preventDefault();
     const data = getDataFromEvent(event);
     FeedbackApi.send(data.email, data.text).then(() => {
       Notification.success(

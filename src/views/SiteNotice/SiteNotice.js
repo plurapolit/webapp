@@ -1,15 +1,15 @@
 import React from "react";
-import styles from "./SiteNotice.module.scss";
 
+import H1 from "../../components/H1/H1";
 import ContentWrapper from "../../layouts/ContentWrapper/ContentWrapper";
+
+import styles from "./SiteNotice.module.scss";
 
 const SiteNotice = () => (
   <div className={styles["wrapper"]}>
     <ContentWrapper>
       <br />
-      <h1>
-        <strong>Impressum</strong>
-      </h1>
+      <H1>Impressum</H1>
       <br />
       <p>Angaben gemäß §5 TMG:</p>
       <br />

@@ -20,7 +20,7 @@ const PanelComments = ({
 }) => {
   const [commenting, setCommenting] = useState(false);
   const [userComments, setUserComments] = useState(null);
-  const { user } = useStoreContext();
+  const { user, getClassRoomInviteCode } = useStoreContext();
   const modal = useModalContext();
 
   useEffect(() => {
@@ -49,11 +49,13 @@ const PanelComments = ({
     }
     if (user) setCommenting(true);
   };
+  const inviteCode = getClassRoomInviteCode();
 
   const saveComment = (textRecord) => {
     CommentApi.postText(
       statementId,
       textRecord,
+      inviteCode,
     ).then(() => {
       Notification.success(
         "Danke für deine Einsendung. Wir überprüfen, ob das Statement unseren Nutzungsbedingungen entspricht, und schalten es in den nächsten 24 Stunden frei.",
@@ -66,14 +68,19 @@ const PanelComments = ({
       <div className={styles["comments-wrapper"]}>
         <div className={styles["comments-card-wrapper"]}>
           {userComments
-          && (userComments.comments.map((commentData) => (
-            <Comment
-              key={commentData.comment.id}
-              commentData={commentData}
-              panelTitle={panelTitle}
-              statementId={statementId}
-            />
-          )))}
+          && (userComments.comments.map((commentData) => {
+            if (commentData.text_record.room_id === inviteCode) {
+              return (
+                <Comment
+                  key={commentData.comment.id}
+                  commentData={commentData}
+                  panelTitle={panelTitle}
+                  statementId={statementId}
+                />
+              );
+            }
+            return null;
+          }))}
           <If condition={!commenting}>
             <Button onClick={handleCommenting} dataTest="create-comment-button">
               <div className={styles["comments-comment-text"]}>

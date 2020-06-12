@@ -36,7 +36,7 @@ const SignUpComponent = ({
   return (
     <div className={styles["sign-up"]}>
       <div className={styles["container"]}>
-        <h1>Registrierung</h1>
+        <h1 className={styles["heading"]}>Registrierung</h1>
         <form
           className={styles["form"]}
           onSubmit={(event) => handleSubmit(event)}
