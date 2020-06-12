@@ -64,10 +64,14 @@ const PvtLanding = () => {
             </div>
             <Text>
               <ul className={styles["checkul"]}>
-                <ListElement>Diskussionen in einer sicheren Umgebung in geschlossenen Räumen</ListElement>
+                <ListElement>
+                  Diskussionen in einer sicheren Umgebung in geschlossenen Räumen
+                </ListElement>
                 <ListElement>Geeignet vor allem für Schulklassen und Jugendgruppen</ListElement>
                 <ListElement>Ein Moderator – viele Teilnehmer</ListElement>
-                <ListElement>Förderung des politischen Diskurses und der persönlichen Meinungsbildung</ListElement>
+                <ListElement>
+                  Förderung des politischen Diskurses und der persönlichen Meinungsbildung
+                </ListElement>
                 <ListElement>Ein Raum – eine Gruppe – mehrere Themen</ListElement>
               </ul>
             </Text>

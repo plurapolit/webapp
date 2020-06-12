@@ -12,7 +12,7 @@ const StatementControlsHelper = () => {
       return "1 Kommentar";
     }
 
-    return `Kommentare`;
+    return "Kommentare";
   };
 
   const playButtonImage = (thisStatementIsSelected, paused) => {

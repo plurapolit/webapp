@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { If } from "react-if";
 
 import styles from "./Statement.module.scss";

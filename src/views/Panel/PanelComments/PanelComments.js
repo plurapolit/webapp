@@ -17,7 +17,6 @@ const PanelComments = ({
   toggleComments,
   statementId,
   panelTitle,
-  setNumberOfComments,
 }) => {
   const [commenting, setCommenting] = useState(false);
   const [userComments, setUserComments] = useState(null);

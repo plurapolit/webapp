@@ -9,7 +9,7 @@ const { Provider } = StoreContext;
 
 const FakeRoomFacade = (() => {
   const FAKE_ROOMS = [
-    { id: 1, inviteCode: 123456, name: "Klassenraum der 9b" },
+    { id: 1, inviteCode: 446832, name: "Klassenraum der 9b" },
     { id: 2, inviteCode: 654321, name: "10c" },
     { id: 3, inviteCode: 234561, name: "Informatik mit Simon" },
   ];
@@ -104,17 +104,12 @@ const Store = ({ children }) => {
   useEffect(() => {
     if (user) {
       const { id } = user;
-      console.log("user ", user);
       const loadedRoomFromCookie = loadJoinedRooms(id);
       const loadedActiveRoomFromCookie = loadActiveRoom(id);
       setAssignedRooms(loadedRoomFromCookie);
       setActiveRoom(id, loadedActiveRoomFromCookie);
     }
   }, [user]);
-
-  useEffect(() => {
-    console.log("assignedRooms ", assignedRooms, "classRoom ", classRoom);
-  }, [classRoom, assignedRooms]);
 
   const signUp = async (
     email,

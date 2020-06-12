@@ -18,7 +18,7 @@ const PvtPopup = ({ inviteCode }) => (
     </div>
     <Text>
       Wie Leute den Raum betreten können und weitere Informationen findest Du
-      <div className={styles["link"]}><Link> hier</Link></div>
+      <div className={styles["link"]}><Link to="/"> hier</Link></div>
     </Text>
   </div>
 );
