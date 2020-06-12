@@ -5,7 +5,7 @@ import styles from "./Text.module.scss";
 
 const Text = ({ headline, children }) => (
   <div className={styles["text"]}>
-    <If condition={headline}>
+    <If condition={!!headline}>
       <div className={styles["headline"]}>{headline}</div>
     </If>
     <div>{children}</div>

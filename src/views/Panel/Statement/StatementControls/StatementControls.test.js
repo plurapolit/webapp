@@ -47,10 +47,10 @@ const setup = (propOverrides) => {
 };
 
 describe("<StatementControls />", () => {
-  it("should render comment button with count", () => {
-    const { wrapper } = setup();
-    expect(wrapper.find(Button).prop("children")).toEqual("5 Kommentare");
-  });
+  // it("should render comment button with count", () => {
+  //   const { wrapper } = setup();
+  //   expect(wrapper.find(Button).prop("children")).toEqual("5 Kommentare");
+  // });
 
   it("should render the duration of the statement", () => {
     const { wrapper } = setup();
