@@ -1,4 +1,5 @@
 export const getDataFromEvent = (event) => {
+  // TODO: remove preventDefault
   event.preventDefault();
   const data = {};
   const formElements = Array.from(event.target);

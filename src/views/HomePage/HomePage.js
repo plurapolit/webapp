@@ -5,12 +5,11 @@ import { If } from "react-if";
 import { useStoreContext } from "../../contexts/StoreContext/StoreContext";
 import HomePageMetaTags from "./HomePageMetaTag";
 import HomeHeader from "./HomeHeader/HomeHeader";
-import MoreSection from "./MoreSection/MoreSection";
 import CategoryList from "./CategoryList/CategoryList";
-import Feedback from "./Feedback/Feedback";
 import PvtLanding from "./PvtLanding/PvtLanding";
 import Supporters from "./Supporters/Supporters";
-import styles from "./HomePage.module.scss";
+import About from "./About/About";
+import SubscribeToPrivateRoomUpdates from "./SubscribeToPrivateRoomUpdates/SubscribeToPrivateRoomUpdates";
 
 const HomePage = () => {
   const { categoryList } = useStoreContext();
@@ -18,14 +17,12 @@ const HomePage = () => {
     <div>
       <HomePageMetaTags />
       <HomeHeader />
+      <About />
       <If condition={!!categoryList}>
         <CategoryList />
       </If>
-      <div className={styles["bottom-wrapper"]}>
-        <MoreSection />
-        <Feedback />
-      </div>
       <PvtLanding />
+      <SubscribeToPrivateRoomUpdates />
       <Supporters />
     </div>
   );
