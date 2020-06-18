@@ -1,6 +1,6 @@
 import React from "react";
 import { shallow } from "enzyme";
-import Button from "../../../components/Button/Button";
+import { getInput, getForm, getButton } from "../../../helper/TestHelper";
 
 import SubscribeToPrivateRoomUpdates from "./SubscribeToPrivateRoomUpdates";
 
@@ -10,10 +10,6 @@ const setup = () => {
     wrapper,
   };
 };
-
-const getInput = (wrapper) => wrapper.find("input");
-const getForm = (wrapper) => wrapper.find("form");
-const getButton = (wrapper) => wrapper.find(Button);
 
 describe("<SubscribeToPrivateRoomUpdates />", () => {
   it("should render a input field", () => {

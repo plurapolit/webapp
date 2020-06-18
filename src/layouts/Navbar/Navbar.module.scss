@@ -66,25 +66,8 @@
   height: 4rem;
 }
 
-.join-room {
-  display: flex;
-  height: 100%;
-  width: 100%;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
 .room-name {
   color: $color-grey-2;
-}
-
-.heading {
-  position: relative;
-  display: inline-block;
-  font-size: 2.4rem;
-  font-weight: bold;
-  border-bottom: solid 0.3rem $color-primary;
 }
 
 form {
