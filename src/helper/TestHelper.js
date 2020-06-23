@@ -1,3 +1,5 @@
+import Button from "../components/Button/Button";
+
 export const expert = {
   index: 1,
   statement: {
@@ -62,6 +64,10 @@ export const commentData = {
   user_avatar: "dtr9pw2th4pf8i9xjxq0r703v9ie",
 };
 
+export const user = {
+  id: 1,
+};
+
 export const queue = {
   currentAudioTrack: jest.fn(),
   setStartAudioTrack: jest.fn(),
@@ -71,5 +77,9 @@ export const queue = {
   setAudioTrackList: jest.fn(),
   hasAudioTrack: jest.fn(),
 };
+
+export const getInput = (wrapper) => wrapper.find("input");
+export const getForm = (wrapper) => wrapper.find("form");
+export const getButton = (wrapper) => wrapper.find(Button);
 
 export default { helper: expert };
