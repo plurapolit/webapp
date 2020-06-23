@@ -19,7 +19,7 @@ const PvtLanding = () => {
   const nameInput = useRef(undefined);
   const modal = useModalContext();
   const [showNamePrompt, setShowNamePrompt] = useState(false);
-  const { createPrivateRoom, getUserId } = useStoreContext();
+  const { createPrivateRoom, getUserId, tutorialStepIndex } = useStoreContext();
 
   const handleClick = async (event) => {
     event.preventDefault();
@@ -82,6 +82,7 @@ const PvtLanding = () => {
             <Button
               type="submit"
               buttonStyle={ButtonStyle.CTA}
+              style={tutorialStepIndex === 1 ? { border: "solid 3px red" } : null}
               onClick={(event) => handleClick(event)}
             >
               Privaten Raum erstellen
