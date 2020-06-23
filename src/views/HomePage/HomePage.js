@@ -8,20 +8,21 @@ import HomeHeader from "./HomeHeader/HomeHeader";
 import CategoryList from "./CategoryList/CategoryList";
 import PvtLanding from "./PvtLanding/PvtLanding";
 import Supporters from "./Supporters/Supporters";
-import About from "./About/About";
 import SubscribeToPrivateRoomUpdates from "./SubscribeToPrivateRoomUpdates/SubscribeToPrivateRoomUpdates";
+import TutorialTasks from "../../components/TutorialTasks/TutorialTasks";
+
 
 const HomePage = () => {
   const { categoryList } = useStoreContext();
   return (
     <div>
       <HomePageMetaTags />
+      <TutorialTasks />
       <HomeHeader />
-      <About />
+      <PvtLanding />
       <If condition={!!categoryList}>
         <CategoryList />
       </If>
-      <PvtLanding />
       <SubscribeToPrivateRoomUpdates />
       <Supporters />
     </div>

@@ -1,0 +1,27 @@
+@import "../../assets/styles/global.scss";
+
+.tutorial-tasks {
+  position: fixed;
+  top: 8rem;
+  left: 0;
+  min-width: 20rem;
+  padding: 2rem 3rem;
+  background-color: rgb(204, 255, 223);
+  border-bottom-right-radius: 5px;
+  border-top-right-radius: 5px;
+  opacity: 0.97;
+  z-index: 99999;
+ 
+  & ul {
+    font-size: 1.6rem;
+    margin-left: 2rem;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+  }
+}
+
+.headline {
+  display: inline-block;
+  font-size: 2.2rem;
+  font-weight: 600;
+}
