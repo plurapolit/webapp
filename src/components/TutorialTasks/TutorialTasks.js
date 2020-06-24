@@ -12,8 +12,8 @@ const getCustomButtonStyle = () => {
     fontSize: "1.4rem",
     fontWeight: "600",
     transform: "none",
-    color: "rgb(0, 133, 49)",
-    borderColor: "rgb(0, 133, 49)",
+    color: "rgb(0, 220, 49)",
+    borderColor: "rgb(0, 220, 49)",
     padding: ".5rem 2rem",
   };
   return buttonStyle;
@@ -36,7 +36,7 @@ const TutorialTasks = () => {
   return (
     <div className={styles["tutorial-tasks"]}>
       <p className={styles["headline"]}>
-        Checklist:
+        Checklist
       </p>
       <ul>
         <li>{checklistContent[tutorialStepIndex]}</li>
