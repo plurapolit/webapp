@@ -9,6 +9,7 @@ import ContentWrapper from "../../../layouts/ContentWrapper/ContentWrapper";
 import Text from "../../../components/Text/Text";
 import icon from "../../../assets/images/p-lock.svg";
 import PvtPopup from "../PvtPopup/PvtPopup";
+import Highlight from "../../../components/HIghlight/Highlight";
 import { useModalContext } from "../../../contexts/ModalContext/ModalContext";
 
 import Checkmark from "../../../assets/images/checkmark.svg";
@@ -79,14 +80,15 @@ const PvtLanding = () => {
         </div>
         <If condition={!showNamePrompt}>
           <div>
-            <Button
-              type="submit"
-              buttonStyle={ButtonStyle.CTA}
-              style={tutorialStepIndex === 1 ? { border: "solid 3px red" } : null}
-              onClick={(event) => handleClick(event)}
-            >
-              Privaten Raum erstellen
-            </Button>
+            <Highlight renderCondition={1}>
+              <Button
+                type="submit"
+                buttonStyle={ButtonStyle.CTA}
+                onClick={(event) => handleClick(event)}
+              >
+                Privaten Raum erstellen
+              </Button>
+            </Highlight>
           </div>
         </If>
       </ContentWrapper>

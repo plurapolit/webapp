@@ -7,8 +7,8 @@ import styles from "./Navbar.module.scss";
 import lockImage from "../../assets/images/p-lock.svg";
 import Dropdown from "../../components/Dropdown/Dropdown";
 import { useModalContext } from "../../contexts/ModalContext/ModalContext";
-import AccountActions from "./AccountActions/AccountActions";
 import AddRoomModal from "./AddRoomModal/AddRoomModal";
+import Highlight from "../../components/HIghlight/Highlight";
 
 const createItem = ({ text, onClick }) => (
   {
@@ -43,7 +43,9 @@ const createDropdownItems = (list, onClick, onAddRoomClick) => {
 
 const createClosedRoomIcon = (dropdownItems) => (
   <Dropdown items={dropdownItems}>
-    <img src={lockImage} alt="geschlossener Raum" className={styles["lock-icon"]} />
+    <Highlight renderCondition={2}>
+      <img src={lockImage} alt="geschlossener Raum" className={styles["lock-icon"]} />
+    </Highlight>
   </Dropdown>
 );
 

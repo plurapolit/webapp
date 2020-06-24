@@ -19,6 +19,10 @@
     margin-left: 2rem;
     margin-top: 2rem;
     margin-bottom: 2rem;
+
+    & li {
+      animation: flyIn 1s;
+    }
   }
 }
 
@@ -27,4 +31,13 @@
   font-size: 2.4rem;
   font-weight: 600;
   border-bottom: solid 1px rgba($color-white, .8);
+}
+
+@keyframes flyIn {
+  0% {
+    transform: translateX(50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
 }

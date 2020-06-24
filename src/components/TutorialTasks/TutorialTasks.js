@@ -1,5 +1,4 @@
 import React from "react";
-import If from "react-if";
 
 import Button, { ButtonStyle } from "../Button/Button";
 import { useStoreContext } from "../../contexts/StoreContext/StoreContext";
