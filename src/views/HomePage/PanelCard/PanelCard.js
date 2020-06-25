@@ -13,6 +13,8 @@ import { usePlayerContext } from "../../../contexts/PlayerContext/PlayerContext"
 import { createAudioTrackListFromExpertStatements } from "../../../helper/AudioTrackHelper";
 import { ImgixApiUrlParameters } from "../../../helper/ImageDeliveryHelper";
 
+import Highlight from "../../../components/HIghlight/Highlight";
+
 const PanelCard = ({
   title, imageUrl, color, shortTitle, slug, experts, isBattle,
 }) => {
@@ -35,34 +37,36 @@ const PanelCard = ({
   };
 
   return (
-    <div className={styles["panel-card"]}>
-      <div className={styles["playAllButton"]} onClick={playAllAudioTracks}>
-        <If condition={isPending}>
-          <Then>
-            <Loader size={35} borderWidth="0.3rem" color="#fff" />
-          </Then>
-          <Else>
-            <img src={playerImage} alt="play" />
-          </Else>
-        </If>
-      </div>
-      <Link to={`${slug}`}>
-        <div className={styles["question-banner"]} style={customStyle} data-test="panel-card">
-          <div className={styles["image-wrapper"]}>
-            <If condition={!isBattle}>
-              <h3 className={styles["title"]}>{title}</h3>
-            </If>
-          </div>
-          <If condition={!isBattle}>
-            <div className={styles["detail-wrapper"]}>
-              <div className={styles["experts-wrapper"]}>
-                <ExpertsList experts={experts} panelShortTitle={shortTitle} slug={slug} />
-              </div>
-            </div>
+    <Highlight renderCondition={3}>
+      <div className={styles["panel-card"]}>
+        <div className={styles["playAllButton"]} onClick={playAllAudioTracks}>
+          <If condition={isPending}>
+            <Then>
+              <Loader size={35} borderWidth="0.3rem" color="#fff" />
+            </Then>
+            <Else>
+              <img src={playerImage} alt="play" />
+            </Else>
           </If>
         </div>
-      </Link>
-    </div>
+        <Link to={`${slug}`}>
+          <div className={styles["question-banner"]} style={customStyle} data-test="panel-card">
+            <div className={styles["image-wrapper"]}>
+              <If condition={!isBattle}>
+                <h3 className={styles["title"]}>{title}</h3>
+              </If>
+            </div>
+            <If condition={!isBattle}>
+              <div className={styles["detail-wrapper"]}>
+                <div className={styles["experts-wrapper"]}>
+                  <ExpertsList experts={experts} panelShortTitle={shortTitle} slug={slug} />
+                </div>
+              </div>
+            </If>
+          </div>
+        </Link>
+      </div>
+    </Highlight>
   );
 };
 
