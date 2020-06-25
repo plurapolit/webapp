@@ -17,7 +17,7 @@ const PvtLanding = () => {
   const nameInput = useRef(undefined);
   const modal = useModalContext();
   const [showNamePrompt, setShowNamePrompt] = useState(false);
-  const { createPrivateRoom, getUserId, tutorialStepIndex } = useStoreContext();
+  const { createPrivateRoom, getUserId } = useStoreContext();
 
   const handleClick = async (event) => {
     event.preventDefault();
