@@ -1,10 +1,7 @@
 import React, { useRef, useState } from "react";
 import { If } from "react-if";
 
-import JwtApi from "../../../api/JwtApi";
-import SignInComponent from "../../../components/SignInComponent/SignInComponent";
 import Button, { ButtonStyle } from "../../../components/Button/Button";
-import Notification from "../../../helper/NotificationHelper";
 import ContentWrapper from "../../../layouts/ContentWrapper/ContentWrapper";
 import Text from "../../../components/Text/Text";
 import icon from "../../../assets/images/p-lock.svg";
@@ -24,17 +21,7 @@ const PvtLanding = () => {
 
   const handleClick = async (event) => {
     event.preventDefault();
-    const valid = await JwtApi.validate();
-    if (valid) {
-      setShowNamePrompt(true);
-      return undefined;
-    }
-    modal.showContent(
-      <SignInComponent routeBack={modal.closeModal} onLinkClick={modal.closeModal} />,
-    );
-    return Notification.warning(
-      "Um einen Raum erstellen zu können, muss man sich vorher anmelden",
-    );
+    setShowNamePrompt(true);
   };
   const createRoom = (event) => {
     event.preventDefault();
