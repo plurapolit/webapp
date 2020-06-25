@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import Button, { ButtonStyle } from "../Button/Button";
+import IntroModalText from "./Content/IntroModalText/IntroModalText";
 import { useStoreContext } from "../../contexts/StoreContext/StoreContext";
+import { useModalContext } from "../../contexts/ModalContext/ModalContext";
 
 import styles from "./TutorialTasks.module.scss";
+
 
 const getCustomButtonStyle = () => {
   const buttonStyle = {
@@ -26,11 +29,17 @@ const checklistContent = {
 
 const TutorialTasks = () => {
   const { tutorialStepIndex, TutorialHandler } = useStoreContext();
+  const { showContent, setStyle } = useModalContext();
+
+  useEffect(() => {
+    showContent(<IntroModalText />);
+  }, []);
 
   const handleClick = () => {
     TutorialHandler.increment();
     console.log(tutorialStepIndex);
   };
+
 
   return (
     <div className={styles["tutorial-tasks"]}>
