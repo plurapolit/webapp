@@ -87,6 +87,17 @@ const Store = ({ children }) => {
   const [slugList, setSlugList] = useState(undefined);
   const [classRoom, setClassRoom] = useState(undefined);
   const [assignedRooms, setAssignedRooms] = useState([]);
+  const [tutorialStepIndex, setTutorialStepIndex] = useState(0);
+
+  const TutorialHandler = (() => {
+    const increment = () => {
+      setTutorialStepIndex(tutorialStepIndex + 1);
+    };
+
+    return {
+      increment,
+    };
+  })();
 
   const setActiveRoom = (userId, newRoom) => {
     setClassRoom(newRoom);
@@ -196,6 +207,8 @@ const Store = ({ children }) => {
         setActiveRoomByInviteCode,
         joinRoom,
         createPrivateRoom,
+        tutorialStepIndex,
+        TutorialHandler,
       }}
     >
       {children}

@@ -8,8 +8,8 @@ import HomeHeader from "./HomeHeader/HomeHeader";
 import CategoryList from "./CategoryList/CategoryList";
 import PvtLanding from "./PvtLanding/PvtLanding";
 import Supporters from "./Supporters/Supporters";
-import About from "./About/About";
 import SubscribeToPrivateRoomUpdates from "./SubscribeToPrivateRoomUpdates/SubscribeToPrivateRoomUpdates";
+
 
 const HomePage = () => {
   const { categoryList } = useStoreContext();
@@ -17,11 +17,10 @@ const HomePage = () => {
     <div>
       <HomePageMetaTags />
       <HomeHeader />
-      <About />
+      <PvtLanding />
       <If condition={!!categoryList}>
         <CategoryList />
       </If>
-      <PvtLanding />
       <SubscribeToPrivateRoomUpdates />
       <Supporters />
     </div>

@@ -1,0 +1,16 @@
+@import "../../../../assets/styles/global.scss";
+
+.intro {
+
+  & h1 {
+    display: inline-block;
+    border-bottom: solid 3px $color-primary;
+    margin-bottom: 2rem;
+  }
+
+  & p {
+    font-size: 1.6rem;
+    margin: 2rem 0;
+  }
+}
+

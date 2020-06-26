@@ -2,7 +2,9 @@ import React from "react";
 import { shallow, mount } from "enzyme";
 
 import AddRoomModal from "./AddRoomModal";
-import { getForm, getInput, getButton, user } from "../../../helper/TestHelper";
+import {
+  getForm, getInput, getButton, user,
+} from "../../../helper/TestHelper";
 
 const setup = (propOverrides) => {
   const props = {

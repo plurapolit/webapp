@@ -1,0 +1,6 @@
+.highlight {
+  --color: rgb(255, 0, 106);
+  display: inline-block;
+  border: solid 4px transparent;
+  outline: 4px solid var(--color);
+}
