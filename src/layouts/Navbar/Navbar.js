@@ -6,8 +6,6 @@ import BurgerMenu from "../BurgerMenu/BurgerMenu";
 import styles from "./Navbar.module.scss";
 import lockImage from "../../assets/images/p-lock.svg";
 import Dropdown from "../../components/Dropdown/Dropdown";
-import { useModalContext } from "../../contexts/ModalContext/ModalContext";
-import AddRoomModal from "./AddRoomModal/AddRoomModal";
 import Highlight from "../../components/Highlight/Highlight";
 
 const createItem = ({ text, onClick }) => (
@@ -22,20 +20,14 @@ const createPublicRoom = (onClick) => ({
   onClick: () => onClick(undefined),
 });
 
-const createAddRoom = (onClick) => ({
-  text: "Raum beitreten",
-  onClick: () => onClick("beigetreten"),
-});
-
-const createDropdownItems = (list, onClick, onAddRoomClick) => {
+const createDropdownItems = (list, onClick) => {
   if (list) {
     const privateRoomItems = list.map(({ room }) => {
       const dropdownItem = createItem({ text: room.name, onClick: () => onClick(room.inviteCode) });
       return dropdownItem;
     });
     const publicRoomItem = createPublicRoom(onClick);
-    const addRoomItem = createAddRoom(onAddRoomClick);
-    const dropdownItems = [publicRoomItem, ...privateRoomItems, addRoomItem];
+    const dropdownItems = [publicRoomItem, ...privateRoomItems];
     return dropdownItems;
   }
   return undefined;
@@ -55,16 +47,11 @@ const createRoomElement = (name) => <div className={styles["room-name"]}>{name}<
 
 export default function Navbar() {
   const {
-    user,
     getAssignedRooms,
     setActiveRoomByInviteCode,
-    joinRoom,
     getClassRoomName,
     getUserId,
   } = useStoreContext();
-  const { showContent, closeModal } = useModalContext();
-  const addRoomModal = <AddRoomModal onSubmit={joinRoom} closeModal={closeModal} user={user} />;
-  const openModal = () => showContent(addRoomModal);
   const customStyle = {
     nav: styles["navbar"],
     item: styles["item"],
@@ -74,7 +61,7 @@ export default function Navbar() {
   const assignedRooms = getAssignedRooms();
   const userId = getUserId();
   const setActiveRoom = (inviteCode) => setActiveRoomByInviteCode(userId, inviteCode);
-  const dropdownItems = createDropdownItems(assignedRooms, setActiveRoom, openModal);
+  const dropdownItems = createDropdownItems(assignedRooms, setActiveRoom);
   const closedRoomIcon = createClosedRoomIcon(dropdownItems);
   const activeRoomName = createRoomElement(getClassRoomName());
 
