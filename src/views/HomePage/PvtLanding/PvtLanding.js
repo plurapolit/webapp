@@ -12,21 +12,29 @@ import { useModalContext } from "../../../contexts/ModalContext/ModalContext";
 import Checkmark from "../../../assets/images/checkmark.svg";
 import styles from "./PvtLanding.module.scss";
 import { useStoreContext } from "../../../contexts/StoreContext/StoreContext";
+import { getDataFromEvent } from "../../../helper/FormHelper";
+
+const shouldBeAbleCreateARoom = (
+  showNamePrompt,
+  numberOfAssingedRooms,
+) => showNamePrompt && numberOfAssingedRooms === 0;
 
 const PvtLanding = () => {
   const nameInput = useRef(undefined);
   const modal = useModalContext();
   const [showNamePrompt, setShowNamePrompt] = useState(false);
-  const { createPrivateRoom, getUserId } = useStoreContext();
+  const { createPrivateRoom, getUserId, getAssignedRooms } = useStoreContext();
+  const assignedRooms = getAssignedRooms();
+  const allowedToCreateARoom = shouldBeAbleCreateARoom(showNamePrompt, assignedRooms.length);
 
   const handleClick = async (event) => {
     event.preventDefault();
     setShowNamePrompt(true);
   };
   const createRoom = (event) => {
-    event.preventDefault();
+    const { nameinput } = getDataFromEvent(event);
     const userId = getUserId();
-    const inviteCode = createPrivateRoom(userId);
+    const inviteCode = createPrivateRoom(userId, nameinput);
     modal.showContent(<PvtPopup inviteCode={inviteCode} />);
     nameInput.current.value = "";
     setShowNamePrompt(false);
@@ -79,30 +87,30 @@ const PvtLanding = () => {
           </div>
         </If>
       </ContentWrapper>
-      <form onSubmit={(event) => event.preventDefault()}>
-        <If condition={showNamePrompt}>
-          <div className={styles["name"]}>
-            <ContentWrapper>
-              <p>Gib den Namen Deines Raumes ein:</p>
-              <input
-                className={styles["nameinput"]}
-                type="text"
-                name="nameinput"
-                placeholder="Raumname"
-                ref={nameInput}
-                required
-              />
-              <Button
-                type="submit"
-                buttonStyle={ButtonStyle.OUTLINED}
-                onClick={(event) => createRoom(event)}
-              >
-                Raum erstellen
-              </Button>
-            </ContentWrapper>
-          </div>
-        </If>
-      </form>
+      { allowedToCreateARoom
+        && (
+          <form onSubmit={(event) => createRoom(event)}>
+            <div className={styles["name"]}>
+              <ContentWrapper>
+                <p>Gib den Namen Deines Raumes ein:</p>
+                <input
+                  className={styles["nameinput"]}
+                  type="text"
+                  name="nameinput"
+                  placeholder="Raumname"
+                  ref={nameInput}
+                  required
+                />
+                <Button
+                  type="submit"
+                  buttonStyle={ButtonStyle.OUTLINED}
+                >
+                  Raum erstellen
+                </Button>
+              </ContentWrapper>
+            </div>
+          </form>
+        )}
     </section>
   );
 };

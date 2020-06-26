@@ -10,10 +10,7 @@ const { Provider } = StoreContext;
 const FakeRoomFacade = (() => {
   const FAKE_ROOMS = [
     { id: 1, inviteCode: 446832, name: "Klassenraum der 9b" },
-    { id: 2, inviteCode: 654321, name: "10c" },
-    { id: 3, inviteCode: 234561, name: "Informatik mit Simon" },
   ];
-  let counter = 0;
 
   const convertToNumber = (input) => {
     if (typeof input === "string") return parseInt(input, 10);
@@ -27,9 +24,9 @@ const FakeRoomFacade = (() => {
     return undefined;
   };
 
-  const create = () => {
-    const createdRoom = FAKE_ROOMS[counter];
-    counter += 1;
+  const create = (name) => {
+    const createdRoom = FAKE_ROOMS[0];
+    createdRoom.name = name;
     return createdRoom;
   };
 
@@ -181,8 +178,8 @@ const Store = ({ children }) => {
     return response;
   };
 
-  const createPrivateRoom = (userId) => {
-    const newRoom = FakeRoomFacade.create();
+  const createPrivateRoom = (userId, roomName) => {
+    const newRoom = FakeRoomFacade.create(roomName);
     const newListOfAllRooms = addRoomToListOfRooms(assignedRooms, newRoom);
     saveJoinedRooms(userId, newListOfAllRooms);
     setAssignedRooms(newListOfAllRooms);
