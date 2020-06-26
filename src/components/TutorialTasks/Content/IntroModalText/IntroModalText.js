@@ -15,8 +15,10 @@ export default function IntroModalText() {
         Willkommen bei der Plurapolit Feature-Demo für private Disskussionsräume
       </p>
       <p>
-        Um Plurapolit und das neue Feature kennen zu lernen wird auf der linken Seite eine Anleitung angezeigt.
-        Befolgen Sie diese bitte und drücken sie "erledigt", um zum nächsten Schritt zu gelangen.
+        Um Plurapolit und das neue Feature kennen zu lernen
+        wird auf der linken Seite eine Anleitung angezeigt.
+        Befolgen Sie diese bitte und drücken sie &quot erledigt &quot,
+        um zum nächsten Schritt zu gelangen.
       </p>
     </div>
   );
