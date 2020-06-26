@@ -22,14 +22,18 @@ const getCustomButtonStyle = () => {
 };
 
 const checklistContent = {
-  0: "Ich leite dich an",
+  0: "Hier wirst du angeleitet",
   1: "Raum erstellen",
-  2: "Ein Panel öffnen",
+  2: "Hier wird angezeigt in welchen Raum Sie sich aktuell befnden",
+  3: "Öffnen Sie ein ein Themen-Panel",
+  4: "Kommentare öffnen",
+  5: "Wechseln Sie in den öffentlichen Raum",
+  6: "Jetzt werden Ihnen nur öffentliche KOmmentare angezeigt",
 };
 
 const TutorialTasks = () => {
   const { tutorialStepIndex, TutorialHandler } = useStoreContext();
-  const { showContent, setStyle } = useModalContext();
+  const { showContent } = useModalContext();
 
   useEffect(() => {
     showContent(<IntroModalText />);

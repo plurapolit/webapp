@@ -12,6 +12,7 @@ import { Modal } from "./contexts/ModalContext/ModalContext";
 import ScrollToTop from "./helper/ScrollToTopHelper";
 import Piwik from "./helper/PiwikHelper";
 import Routes from "./Routes";
+import TutorialTasks from "./components/TutorialTasks/TutorialTasks";
 
 const history = createBrowserHistory();
 
@@ -21,6 +22,7 @@ const App = () => (
       <Modal>
         <ScrollToTop />
         <NavBar />
+        <TutorialTasks />
         <Notification />
         <NavbarBuffer>
           <Player>

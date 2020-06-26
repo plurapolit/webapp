@@ -9,7 +9,6 @@ import CategoryList from "./CategoryList/CategoryList";
 import PvtLanding from "./PvtLanding/PvtLanding";
 import Supporters from "./Supporters/Supporters";
 import SubscribeToPrivateRoomUpdates from "./SubscribeToPrivateRoomUpdates/SubscribeToPrivateRoomUpdates";
-import TutorialTasks from "../../components/TutorialTasks/TutorialTasks";
 
 
 const HomePage = () => {
@@ -17,7 +16,6 @@ const HomePage = () => {
   return (
     <div>
       <HomePageMetaTags />
-      <TutorialTasks />
       <HomeHeader />
       <PvtLanding />
       <If condition={!!categoryList}>

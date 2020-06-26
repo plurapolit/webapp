@@ -13,7 +13,7 @@ import { usePlayerContext } from "../../../contexts/PlayerContext/PlayerContext"
 import { createAudioTrackListFromExpertStatements } from "../../../helper/AudioTrackHelper";
 import { ImgixApiUrlParameters } from "../../../helper/ImageDeliveryHelper";
 
-import Highlight from "../../../components/HIghlight/Highlight";
+import Highlight from "../../../components/Highlight/Highlight";
 
 const PanelCard = ({
   title, imageUrl, color, shortTitle, slug, experts, isBattle,

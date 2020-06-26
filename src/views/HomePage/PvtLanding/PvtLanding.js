@@ -6,7 +6,7 @@ import ContentWrapper from "../../../layouts/ContentWrapper/ContentWrapper";
 import Text from "../../../components/Text/Text";
 import icon from "../../../assets/images/p-lock.svg";
 import PvtPopup from "../PvtPopup/PvtPopup";
-import Highlight from "../../../components/HIghlight/Highlight";
+import Highlight from "../../../components/Highlight/Highlight";
 import { useModalContext } from "../../../contexts/ModalContext/ModalContext";
 
 import Checkmark from "../../../assets/images/checkmark.svg";

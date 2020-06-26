@@ -8,7 +8,7 @@ import lockImage from "../../assets/images/p-lock.svg";
 import Dropdown from "../../components/Dropdown/Dropdown";
 import { useModalContext } from "../../contexts/ModalContext/ModalContext";
 import AddRoomModal from "./AddRoomModal/AddRoomModal";
-import Highlight from "../../components/HIghlight/Highlight";
+import Highlight from "../../components/Highlight/Highlight";
 
 const createItem = ({ text, onClick }) => (
   {
@@ -43,7 +43,7 @@ const createDropdownItems = (list, onClick, onAddRoomClick) => {
 
 const createClosedRoomIcon = (dropdownItems) => (
   <Dropdown items={dropdownItems}>
-    <Highlight renderCondition={2}>
+    <Highlight renderCondition={5}>
       <div className={styles["lock-icon"]}>
         <img src={lockImage} alt="geschlossener Raum" />
       </div>
@@ -91,7 +91,9 @@ export default function Navbar() {
           {/* <AccountActions user={user} customStyle={customStyle} /> */}
           <>
             <li className={customStyle.item}>
-              {activeRoomName}
+              <Highlight renderCondition={2}>
+                {activeRoomName}
+              </Highlight>
             </li>
             <li className={customStyle.item}>
               {closedRoomIcon}
