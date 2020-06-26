@@ -54,4 +54,4 @@ export default function SubscribeToPrivateRoomUpdates() {
       </ContentWrapper>
     </section>
   );
-};
+}

@@ -29,7 +29,7 @@ const checklistContent = {
 
 const TutorialTasks = () => {
   const { tutorialStepIndex, TutorialHandler } = useStoreContext();
-  const { showContent, setStyle } = useModalContext();
+  const { showContent } = useModalContext();
 
   useEffect(() => {
     showContent(<IntroModalText />);

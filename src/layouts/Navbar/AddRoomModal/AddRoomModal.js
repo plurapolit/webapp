@@ -38,4 +38,4 @@ export default function createAddRoomModal(onSubmit, closeModal, user) {
       </form>
     </div>
   );
-};
+}

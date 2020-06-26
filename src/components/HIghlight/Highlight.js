@@ -1,5 +1,4 @@
 import React from "react";
-import If, { Else } from "react-if";
 import { useStoreContext } from "../../contexts/StoreContext/StoreContext";
 
 import styles from "./Highlight.module.scss";
