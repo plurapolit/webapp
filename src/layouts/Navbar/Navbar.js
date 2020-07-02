@@ -16,7 +16,7 @@ const createItem = ({ text, onClick }) => (
 );
 
 const createPublicRoom = (onClick) => ({
-  text: "öffentlich",
+  text: "Öffentlich",
   onClick: () => onClick(undefined),
 });
 

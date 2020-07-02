@@ -153,7 +153,7 @@ const Store = ({ children }) => {
 
   const getClassRoomName = () => {
     if (classRoom) return classRoom.name;
-    return undefined;
+    return "Öffentlich";
   };
 
 
