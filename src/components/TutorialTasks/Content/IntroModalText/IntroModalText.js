@@ -1,11 +1,12 @@
 import React from "react";
 
 import H1 from "../../../H1/H1";
+import Button from "../../../Button/Button";
 
 import styles from "./IntroModalText.module.scss";
 
 
-export default function IntroModalText() {
+export default function IntroModalText({ close }) {
   return (
     <div className={styles["intro"]}>
       <H1>
@@ -17,9 +18,16 @@ export default function IntroModalText() {
       <p>
         Um Plurapolit und das neue Feature kennen zu lernen
         wird auf der linken Seite eine Anleitung angezeigt.
-        Befolgen Sie diese bitte und drücken sie &quot erledigt &quot,
-        um zum nächsten Schritt zu gelangen.
+        Befolgen Sie diese bitte und drücken sie
+        <span style={{ color: "green" }}> &quot;Erledigt&quot; </span>
+        , um zum nächsten Schritt zu gelangen.
       </p>
+      <Button
+        style={{ marginTop: "4rem", width: "15rem" }}
+        onClick={close}
+      >
+        Starten
+      </Button>
     </div>
   );
 }

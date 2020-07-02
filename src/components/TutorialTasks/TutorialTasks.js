@@ -28,15 +28,15 @@ const checklistContent = {
   3: "Öffnen Sie ein ein Themen-Panel",
   4: "Kommentare öffnen",
   5: "Wechseln Sie in den öffentlichen Raum",
-  6: "Jetzt werden Ihnen nur öffentliche KOmmentare angezeigt",
+  6: "Jetzt werden Ihnen nur öffentliche Kommentare angezeigt",
 };
 
 const TutorialTasks = () => {
   const { tutorialStepIndex, TutorialHandler } = useStoreContext();
-  const { showContent } = useModalContext();
+  const { showContent, closeModal } = useModalContext();
 
   useEffect(() => {
-    showContent(<IntroModalText />);
+    showContent(<IntroModalText close={closeModal} />);
   }, []);
 
   const handleClick = () => {
