@@ -22,7 +22,7 @@ const getCustomButtonStyle = () => {
 };
 
 const checklistContent = {
-  0: "Hier wirst du angeleitet",
+  0: "Hier findest du die Schritte",
   1: "Raum erstellen",
   2: "Hier wird angezeigt in welchen Raum Sie sich aktuell befnden",
   3: "Öffnen Sie ein ein Themen-Panel",
