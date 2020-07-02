@@ -1,8 +1,15 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, {
+  useState,
+  useEffect,
+  useContext,
+  useRef,
+} from "react";
 import Cookie from "js-cookie";
+import uid from "uid";
 
 import UserApi from "../../api/UserApi";
 import StoreHelper from "./StoreHelper";
+import { ClickTracking } from "../../api/TrackingApi";
 
 const StoreContext = React.createContext();
 const { Provider } = StoreContext;
@@ -78,6 +85,8 @@ const loadActiveRoom = (userId) => {
   return undefined;
 };
 
+const createRandomNumber = () => uid(8);
+
 const Store = ({ children }) => {
   const [user, setUser] = useState(undefined);
   const [categoryList, setCategoryList] = useState(undefined);
@@ -85,6 +94,7 @@ const Store = ({ children }) => {
   const [classRoom, setClassRoom] = useState(undefined);
   const [assignedRooms, setAssignedRooms] = useState([]);
   const [tutorialStepIndex, setTutorialStepIndex] = useState(0);
+  const identifier = useRef(createRandomNumber());
 
   const TutorialHandler = (() => {
     const increment = () => {
@@ -187,6 +197,18 @@ const Store = ({ children }) => {
     return newRoom.inviteCode;
   };
 
+  const createTrackableFunc = (func, { statementId = null, event, information = null }) => {
+    let userId = getUserId();
+    if (!userId) userId = null;
+    const trackableFunc = (input) => {
+      ClickTracking.post(userId, statementId, event, information);
+      func(input);
+    };
+    return trackableFunc;
+  };
+
+  const getIdentifier = () => identifier.current;
+
   return (
     <Provider
       value={{
@@ -206,6 +228,8 @@ const Store = ({ children }) => {
         createPrivateRoom,
         tutorialStepIndex,
         TutorialHandler,
+        createTrackableFunc,
+        getIdentifier,
       }}
     >
       {children}

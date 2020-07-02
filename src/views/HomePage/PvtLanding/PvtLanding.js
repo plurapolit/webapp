@@ -23,14 +23,22 @@ const PvtLanding = () => {
   const nameInput = useRef(undefined);
   const modal = useModalContext();
   const [showNamePrompt, setShowNamePrompt] = useState(false);
-  const { createPrivateRoom, getUserId, getAssignedRooms } = useStoreContext();
+  const {
+    createPrivateRoom,
+    getUserId,
+    getAssignedRooms,
+    createTrackableFunc,
+    getIdentifier,
+  } = useStoreContext();
   const assignedRooms = getAssignedRooms();
   const allowedToCreateARoom = shouldBeAbleCreateARoom(showNamePrompt, assignedRooms.length);
+  const identifier = getIdentifier();
 
-  const handleClick = async (event) => {
+  const handleClickOnRoom = async (event) => {
     event.preventDefault();
     setShowNamePrompt(true);
   };
+
   const createRoom = (event) => {
     const { nameinput } = getDataFromEvent(event);
     const userId = getUserId();
@@ -39,6 +47,9 @@ const PvtLanding = () => {
     nameInput.current.value = "";
     setShowNamePrompt(false);
   };
+
+  const trackableClickOnRoom = createTrackableFunc(handleClickOnRoom, { event: "clicked on Room", information: identifier });
+  const trackableCreateRoom = createTrackableFunc(createRoom, { event: "created Room", information: identifier });
 
   const ListElement = ({ children }) => (
     <li>
@@ -79,7 +90,7 @@ const PvtLanding = () => {
               <Button
                 type="submit"
                 buttonStyle={ButtonStyle.CTA}
-                onClick={(event) => handleClick(event)}
+                onClick={(event) => trackableClickOnRoom(event)}
               >
                 Erstelle einen privaten Raum
               </Button>
@@ -89,7 +100,7 @@ const PvtLanding = () => {
       </ContentWrapper>
       { allowedToCreateARoom
         && (
-          <form onSubmit={(event) => createRoom(event)}>
+          <form onSubmit={(event) => trackableCreateRoom(event)}>
             <div className={styles["name"]}>
               <ContentWrapper>
                 <p>Gib den Namen Deines Raumes ein:</p>

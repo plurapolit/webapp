@@ -32,18 +32,26 @@ const checklistContent = {
 };
 
 const TutorialTasks = () => {
-  const { tutorialStepIndex, TutorialHandler } = useStoreContext();
+  const {
+    tutorialStepIndex,
+    TutorialHandler,
+    createTrackableFunc,
+    getIdentifier,
+  } = useStoreContext();
   const { showContent, closeModal } = useModalContext();
+  const identifier = getIdentifier();
+
+  const trackTutorialStart = createTrackableFunc(() => {}, { event: "Tutorial starts", information: identifier });
 
   useEffect(() => {
     showContent(<IntroModalText close={closeModal} />);
+    trackTutorialStart();
   }, []);
 
   const handleClick = () => {
     TutorialHandler.increment();
-    console.log(tutorialStepIndex);
   };
-
+  const trackableClickHandler = createTrackableFunc(handleClick, { event: `toogle task ${tutorialStepIndex}`, information: identifier });
 
   return (
     <div className={styles["tutorial-tasks"]}>
@@ -56,7 +64,7 @@ const TutorialTasks = () => {
       <Button
         buttonStyle={ButtonStyle.OUTLINED}
         style={getCustomButtonStyle()}
-        onClick={handleClick}
+        onClick={trackableClickHandler}
       >
         Erledigt
       </Button>

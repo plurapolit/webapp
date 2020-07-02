@@ -4,9 +4,14 @@ import H1 from "../../../H1/H1";
 import Button from "../../../Button/Button";
 
 import styles from "./IntroModalText.module.scss";
+import { useStoreContext } from "../../../../contexts/StoreContext/StoreContext";
 
 
 export default function IntroModalText({ close }) {
+  const { createTrackableFunc, getIdentifier } = useStoreContext();
+  const identifier = getIdentifier();
+  const tackableCloseAction = createTrackableFunc(close, { event: "start Tutorial", information: identifier });
+
   return (
     <div className={styles["intro"]}>
       <H1>
@@ -24,7 +29,7 @@ export default function IntroModalText({ close }) {
       </p>
       <Button
         style={{ marginTop: "4rem", width: "15rem" }}
-        onClick={close}
+        onClick={tackableCloseAction}
       >
         Starten
       </Button>
