@@ -81,7 +81,7 @@ const PvtLanding = () => {
                 buttonStyle={ButtonStyle.CTA}
                 onClick={(event) => handleClick(event)}
               >
-                Privaten Raum erstellen
+                Erstelle einen privaten Raum
               </Button>
             </Highlight>
           </div>
