@@ -16,10 +16,10 @@ const PvtPopup = ({ inviteCode }) => (
       <Text headline="Der Code für die Einladung lautet:" />
       <div className={styles["heading--orange"]}>{inviteCode}</div>
     </div>
-    <Text>
+    {/* <Text>
       Wie Leute den Raum betreten können und weitere Informationen findest Du
       <div className={styles["link"]}><Link to="/"> hier</Link></div>
-    </Text>
+    </Text> */}
   </div>
 );
 
