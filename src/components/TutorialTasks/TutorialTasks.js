@@ -1,4 +1,5 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 
 import Button, { ButtonStyle } from "../Button/Button";
 import IntroModalText from "./Content/IntroModalText/IntroModalText";
@@ -22,24 +23,31 @@ const getCustomButtonStyle = () => {
 };
 
 const checklistContent = {
-  0: "Hier findest du die Schritte",
-  1: "Raum erstellen",
-  2: "Hier wird angezeigt in welchen Raum Sie sich aktuell befnden",
-  3: "Öffnen Sie ein ein Themen-Panel",
-  4: "Kommentare öffnen",
+  0: "Hier finden Sie die Schritte",
+  1: "Erstellen Sie nun einen privaten Raum",
+  2: "Hier wird Ihnen angezeigt in welchen Raum Sie sich aktuell befinden",
+  3: "Öffnen Sie eine PluraPolit Diskussionsfrage",
+  4: "Öffnen Sie die Kommentare",
   5: "Wechseln Sie in den öffentlichen Raum",
   6: "Jetzt werden Ihnen nur öffentliche Kommentare angezeigt",
 };
 
 const TutorialTasks = () => {
+  const [show, setShow] = useState(true);
   const {
     tutorialStepIndex,
     TutorialHandler,
     createTrackableFunc,
     getIdentifier,
   } = useStoreContext();
+  const history = useHistory();
   const { showContent, closeModal } = useModalContext();
   const identifier = getIdentifier();
+
+  const openAssignmentAndCloseTutorial = () => {
+    history.push("/assignment");
+    setShow(false);
+  };
 
   const trackTutorialStart = createTrackableFunc(() => {}, { event: "Tutorial starts", information: identifier });
 
@@ -48,12 +56,13 @@ const TutorialTasks = () => {
     trackTutorialStart();
   }, []);
 
-  const handleClick = () => {
+  let handleClick = () => {
     TutorialHandler.increment();
   };
+  if (tutorialStepIndex === 6) handleClick = openAssignmentAndCloseTutorial;
   const trackableClickHandler = createTrackableFunc(handleClick, { event: `toogle task ${tutorialStepIndex}`, information: identifier });
 
-  return (
+  return show && (
     <div className={styles["tutorial-tasks"]}>
       <p className={styles["headline"]}>
         Checklist
