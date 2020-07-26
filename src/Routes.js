@@ -11,6 +11,7 @@ import SignUp from "./views/SignUp/SignUp";
 import ResetPassword from "./views/ResetPassword/ResetPassword";
 import RequestNewPassword from "./views/RequestNewPassword/RequestNewPassword";
 import PanelWrapper from "./layouts/PanelWrapper/PanelWrapper";
+import Assignment from "./components/Assignment/Assignment";
 
 const Routes = () => (
   <>
@@ -38,6 +39,9 @@ const Routes = () => (
       </Route>
       <Route exact path="/sign_up/">
         <SignUp />
+      </Route>
+      <Route exact path="/assignment/">
+        <Assignment />
       </Route>
       <Route path="/:slug">
         <PanelWrapper />
