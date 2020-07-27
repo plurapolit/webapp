@@ -11,7 +11,7 @@ const Assignment = () => (
     <HomeHeader />
     <div className={styles["wrapper"]}>
       <ContentWrapper>
-        <Text headline="Danke für die Zeit">
+        <Text headline="Danke für Ihre Zeit">
           <p>
             Die geschlossenen Klassenräume sind ein Feature, das sich noch in der Planung befindet.
             Wir möchten die Umsetzung nicht abhängig von Geld und eigenen Ressourcen machen,
