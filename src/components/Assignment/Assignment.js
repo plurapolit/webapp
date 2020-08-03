@@ -5,6 +5,7 @@ import ContentWrapper from "../../layouts/ContentWrapper/ContentWrapper";
 import styles from "./Assignment.module.scss";
 import HomeHeader from "../../views/HomePage/HomeHeader/HomeHeader";
 import SubscribeToPrivateRoomUpdates from "../../views/HomePage/SubscribeToPrivateRoomUpdates/SubscribeToPrivateRoomUpdates";
+import Feedback from "../../views/HomePage/Feedback/Feedback";
 
 const Assignment = () => (
   <>
@@ -40,6 +41,7 @@ const Assignment = () => (
       </ContentWrapper>
     </div>
     <SubscribeToPrivateRoomUpdates />
+    <Feedback />
   </>
 );
 
