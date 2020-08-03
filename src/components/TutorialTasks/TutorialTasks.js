@@ -27,9 +27,8 @@ const checklistContent = {
   1: "Erstellen Sie nun einen privaten Raum",
   2: "Hier wird Ihnen angezeigt in welchen Raum Sie sich aktuell befinden",
   3: "Öffnen Sie eine PluraPolit Diskussionsfrage",
-  4: "Öffnen Sie die Kommentare",
-  5: "Wechseln Sie in den öffentlichen Raum",
-  6: "Jetzt werden Ihnen nur öffentliche Kommentare angezeigt",
+  4: "Wechseln Sie in den öffentlichen Raum",
+  5: "Jetzt werden Ihnen nur öffentliche Kommentare angezeigt",
 };
 
 const TutorialTasks = () => {
@@ -59,7 +58,7 @@ const TutorialTasks = () => {
   let handleClick = () => {
     TutorialHandler.increment();
   };
-  if (tutorialStepIndex === 6) handleClick = openAssignmentAndCloseTutorial;
+  if (tutorialStepIndex === 5) handleClick = openAssignmentAndCloseTutorial;
   const trackableClickHandler = createTrackableFunc(handleClick, { event: `toogle task ${tutorialStepIndex}`, information: identifier });
 
   return show && (

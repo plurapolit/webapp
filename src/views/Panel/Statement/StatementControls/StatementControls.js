@@ -5,7 +5,6 @@ import Button, { ButtonStyle } from "../../../../components/Button/Button";
 import Time from "../../../../helper/TimeHelper";
 import { usePanelContext } from "../../../../contexts/PanelStoreContext/PanelStoreContext";
 import { createAudioTrackListFromExpertStatements } from "../../../../helper/AudioTrackHelper";
-import Highlight from "../../../../components/Highlight/Highlight";
 
 import audioWave from "../../../../assets/images/sound-wave.svg";
 import styles from "./StatementControls.module.scss";
@@ -44,14 +43,12 @@ const StatementControls = ({ expert, toggleComments }) => {
 
   return (
     <div className={styles["controls"]}>
-      <Highlight renderCondition={4}>
-        <Button
-          buttonStyle={ButtonStyle.COMMENT}
-          onClick={() => toggleComments()}
-        >
-          {Helper.getStringForNComments()}
-        </Button>
-      </Highlight>
+      <Button
+        buttonStyle={ButtonStyle.COMMENT}
+        onClick={() => toggleComments()}
+      >
+        {Helper.getStringForNComments()}
+      </Button>
       <div className={styles["audio"]}>
         <div className={styles["info-container"]}>
           <span>{Time.getDateOrTime(expert.statement.created_at)}</span>

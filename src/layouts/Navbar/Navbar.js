@@ -35,7 +35,7 @@ const createDropdownItems = (list, onClick) => {
 
 const createClosedRoomIcon = (dropdownItems) => (
   <Dropdown items={dropdownItems}>
-    <Highlight renderCondition={5}>
+    <Highlight renderCondition={4}>
       <div className={styles["lock-icon"]}>
         <img src={lockImage} alt="geschlossener Raum" />
       </div>
