@@ -25,6 +25,7 @@ const PanelComments = ({
 
   useEffect(() => {
     const fetchUserComments = async () => {
+      console.log("statementId ", statementId);
       const res = await CommentApi.getComments(statementId);
       if (res.status === 204) {
         return;
@@ -69,7 +70,7 @@ const PanelComments = ({
         <div className={styles["comments-card-wrapper"]}>
           {userComments
           && (userComments.comments.map((commentData) => {
-            if (commentData.text_record.room_id === inviteCode) {
+            if (commentData.text_record && commentData.text_record.room_id === inviteCode) {
               return (
                 <Comment
                   key={commentData.comment.id}
