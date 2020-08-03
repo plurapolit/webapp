@@ -11,7 +11,7 @@ import { getAnchorFromName } from "../../../helper/StringHelper";
 const Statement = ({
   expert,
 }) => {
-  const [commentsAreOpen, setCommentsAreOpen] = useState(false);
+  const [commentsAreOpen, setCommentsAreOpen] = useState(true);
   const [showTranscription, setShowTranscription] = useState(false);
 
   const toggleComments = () => {

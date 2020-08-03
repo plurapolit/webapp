@@ -25,7 +25,6 @@ const PanelComments = ({
 
   useEffect(() => {
     const fetchUserComments = async () => {
-      console.log("statementId ", statementId);
       const res = await CommentApi.getComments(statementId);
       if (res.status === 204) {
         return;
