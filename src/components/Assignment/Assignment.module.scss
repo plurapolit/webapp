@@ -1,3 +1,5 @@
+@import "../../assets/styles/global.scss";
+
 .wrapper {
   margin-top: 3rem;
   margin-bottom: 4rem;
@@ -5,4 +7,36 @@
 
 p {
   margin: 1rem 0;
+}
+
+a {
+  font-weight: bold;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  max-width: 32rem;
+}
+
+.heading {
+  position: relative;
+  display: inline-block;
+  color: $text-dark-1;
+  font-size: 2.4rem;
+  font-weight: bold;
+}
+
+.textarea {
+  font-size: 1.8rem;
+  height: 10rem;
+  padding: 0.5rem;
+  resize: none;
+  border: solid 1px rgba($color-grey, 0.3);
+  margin-bottom: 1rem;
+  border-radius: 5px;
+  border: 1px solid $color-grey-2;
+  outline: none;
+  font-family: inherit;
+  width: 100%;
 }

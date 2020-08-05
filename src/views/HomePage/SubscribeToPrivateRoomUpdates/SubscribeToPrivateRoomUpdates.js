@@ -36,8 +36,8 @@ const createFormWithInput = (button, handleSubmit) => {
 };
 
 const createHeadline = () => (
-  <Text headline="Beleib auf dem neusten Stand">
-    Gibt deine E-Mail an und wir kontaktieren dich, sobald es Neuigkeiten gibt.
+  <Text headline="Bleiben Sie auf dem neusten Stand">
+    Geben Sie Ihre E-Mail an und wir kontaktieren Sie, sobald es Neuigkeiten gibt.
   </Text>
 );
 

@@ -18,13 +18,13 @@ export default function IntroModalText({ close }) {
         Private Diskussionsräume
       </H1>
       <p>
-        Willkommen bei der Plurapolit Feature-Demo für private Disskussionsräume
+        Willkommen bei der Plurapolit Feature-Demo für private Disskussionsräume!
       </p>
       <p>
-        Um Plurapolit und das neue Feature kennen zu lernen
+        Um Plurapolit und das neue Feature kennen zu lernen,
         wird auf der linken Seite eine Anleitung angezeigt.
         Befolgen Sie diese bitte und drücken sie
-        <span style={{ color: "green" }}> &quot;Erledigt&quot; </span>
+        <span style={{ color: "green" }}> &quot;Erledigt&quot;</span>
         , um zum nächsten Schritt zu gelangen.
       </p>
       <Button
