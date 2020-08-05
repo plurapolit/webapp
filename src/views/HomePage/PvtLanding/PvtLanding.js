@@ -75,7 +75,7 @@ const PvtLanding = () => {
                   Diskussionen in einer sicheren Umgebung in geschlossenen Räumen
                 </ListElement>
                 <ListElement>Geeignet vor allem für Schulklassen und Jugendgruppen</ListElement>
-                <ListElement>Ein Moderator – viele Teilnehmer</ListElement>
+                <ListElement>Ein/-e Moderator/-in – viele Teilnehmer/-innen</ListElement>
                 <ListElement>
                   Förderung des politischen Diskurses und der persönlichen Meinungsbildung
                 </ListElement>
