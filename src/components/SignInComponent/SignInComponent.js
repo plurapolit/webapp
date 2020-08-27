@@ -6,14 +6,14 @@ import UserApi from "../../api/UserApi";
 import { getDataFromEvent } from "../../helper/FormHelper";
 import Notification from "../../helper/NotificationHelper";
 import JwtApi from "../../api/JwtApi";
-import { useStoreContext } from "../../contexts/StoreContext/StoreContext";
+import { useUserContext } from "../../contexts/UserContext/UserContext";
 
 const SignInComponent = ({
   routeBack = () => {},
   onSignUp = () => {},
   onRequestNewPassword = () => {},
 }) => {
-  const { setUser } = useStoreContext();
+  const { setUser } = useUserContext();
 
   const handleSubmit = async (event) => {
     const inputData = getDataFromEvent(event);

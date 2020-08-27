@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { If } from "react-if";
 
-import { useStoreContext } from "../../../contexts/StoreContext/StoreContext";
+import { useUserContext } from "../../../contexts/UserContext/UserContext";
 import { useModalContext } from "../../../contexts/ModalContext/ModalContext";
 import Button from "../../../components/Button/Button";
 import closeButton from "../../../assets/images/close.svg";
@@ -20,7 +20,7 @@ const PanelComments = ({
 }) => {
   const [commenting, setCommenting] = useState(false);
   const [userComments, setUserComments] = useState(null);
-  const { user } = useStoreContext();
+  const { user } = useUserContext();
   const modal = useModalContext();
 
   useEffect(() => {

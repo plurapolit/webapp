@@ -1,37 +1,21 @@
 import React, { useState, useEffect, useContext } from "react";
 
-import UserApi from "../../api/UserApi";
-import StoreHelper from "./StoreHelper";
+import SlugApi from "../../api/SlugApi";
 
 const StoreContext = React.createContext();
 const { Provider } = StoreContext;
 
 const Store = ({ children }) => {
-  const [user, setUser] = useState(undefined);
   const [categoryList, setCategoryList] = useState(undefined);
   const [slugList, setSlugList] = useState(undefined);
 
   useEffect(() => {
-    StoreHelper.loadContent((newCategoryList, newSlugList, recognisedUser) => {
-      setCategoryList(newCategoryList);
-      setSlugList(newSlugList);
-      setUser(recognisedUser);
-    });
+    const loadSlugList = async () => {
+      const loadedSlugList = await SlugApi.fetchSlugList();
+      setSlugList(loadedSlugList);
+    };
+    loadSlugList();
   }, []);
-
-  const signUp = async (
-    email,
-    password,
-    firstName,
-    lastName,
-  ) => {
-    const newUser = await UserApi.signUp(email, password, firstName, lastName);
-    setUser(newUser);
-  };
-
-  const removeUser = () => {
-    setUser(undefined);
-  };
 
   const getPanelIdBySlug = (slug) => {
     const slugObj = slugList.find(({ panel }) => panel.slug === slug);
@@ -39,22 +23,13 @@ const Store = ({ children }) => {
     return false;
   };
 
-  const getUserId = () => {
-    if (user) return user.id;
-    return undefined;
-  };
-
   return (
     <Provider
       value={{
-        user,
-        getUserId,
         categoryList,
+        setCategoryList,
         slugList,
         getPanelIdBySlug,
-        setUser,
-        signUp,
-        removeUser,
       }}
     >
       {children}

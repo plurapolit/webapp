@@ -3,13 +3,13 @@ import { Link } from "react-router-dom";
 
 import SignOutButton from "../../components/SignOutButton/SignOutButton";
 import Button, { ButtonStyle } from "../../components/Button/Button";
-import { useStoreContext } from "../../contexts/StoreContext/StoreContext";
+import { useUserContext } from "../../contexts/UserContext/UserContext";
 
 import styles from "./BurgerMenu.module.scss";
 
 const BurgerMenu = () => {
   const [show, setShow] = useState(false);
-  const { user } = useStoreContext();
+  const { user } = useUserContext();
 
   const handleClick = () => {
     setShow(!show);

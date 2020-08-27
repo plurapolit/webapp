@@ -1,14 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import { useStoreContext } from "../../contexts/StoreContext/StoreContext";
+import { useUserContext } from "../../contexts/UserContext/UserContext";
 import BurgerMenu from "../BurgerMenu/BurgerMenu";
 import styles from "./Navbar.module.scss";
 import SignOutButton from "../../components/SignOutButton/SignOutButton";
 import Button, { ButtonStyle } from "../../components/Button/Button";
 
 const Navbar = () => {
-  const { user } = useStoreContext();
+  const { user } = useUserContext();
   const customStyle = {
     nav: styles["navbar"],
     item: styles["item"],

@@ -2,7 +2,7 @@ import React from "react";
 import { If } from "react-if";
 
 import Button, { ButtonStyle } from "../../../../components/Button/Button";
-import { useStoreContext } from "../../../../contexts/StoreContext/StoreContext";
+import { useUserContext } from "../../../../contexts/UserContext/UserContext";
 import { useModalContext } from "../../../../contexts/ModalContext/ModalContext";
 import SignInComponent from "../../../../components/SignInComponent/SignInComponent";
 
@@ -12,7 +12,7 @@ const Commenting = ({
   commenting,
   setCommenting,
 }) => {
-  const { user } = useStoreContext();
+  const { user } = useUserContext();
   const modal = useModalContext();
 
   const handleCommenting = () => {
