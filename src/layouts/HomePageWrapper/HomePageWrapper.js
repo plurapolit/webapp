@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 
-import CategoryApi from "../../api/CategoryApi";
 import { useStoreContext } from "../../contexts/StoreContext/StoreContext";
 import Loader from "../../components/Loader/Loader";
 import HomePage from "../../views/HomePage/HomePage";
+import RegionApi from "../../api/RegionApi";
 
 const HomePageWrapper = () => {
   const { setCategoryList } = useStoreContext();
@@ -11,7 +11,7 @@ const HomePageWrapper = () => {
 
   useEffect(() => {
     const loadCategoryList = async () => {
-      const { categories } = await CategoryApi.fetchAllCategories();
+      const { categories } = await RegionApi.loadRegion(2);
       setCategoryList(categories);
       setLoaded(true);
     };

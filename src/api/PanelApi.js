@@ -4,8 +4,8 @@ const PanelApi = () => {
   const URL = process.env.REACT_APP_ROOT_URL;
 
   const fetchAllPanels = () => {
-    const panals = fetchBody(`${URL}/panels`);
-    return panals;
+    const panels = fetchBody(`${URL}/panels`);
+    return panels;
   };
 
   const fetchPanelById = (id) => {

@@ -12,6 +12,8 @@ export const fetchResponse = async (url, params = null) => {
   return res;
 };
 
+export const BASE_URL = process.env.REACT_APP_ROOT_URL;
+
 const getParameter = () => {
   const bearerToken = (jwt) => `Bearer ${jwt}`;
 
