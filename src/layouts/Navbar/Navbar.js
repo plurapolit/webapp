@@ -1,14 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { kebabCase } from "lodash";
 
 import { useUserContext } from "../../contexts/UserContext/UserContext";
 import BurgerMenu from "../BurgerMenu/BurgerMenu";
 import styles from "./Navbar.module.scss";
 import SignOutButton from "../../components/SignOutButton/SignOutButton";
 import Button, { ButtonStyle } from "../../components/Button/Button";
+import { useStoreContext } from "../../contexts/StoreContext/StoreContext";
 
 const Navbar = () => {
   const { user } = useUserContext();
+  const { getRegionNames } = useStoreContext();
   const customStyle = {
     nav: styles["navbar"],
     item: styles["item"],
@@ -47,9 +50,11 @@ const Navbar = () => {
           <li className={customStyle.item}>
             <Link to="/2020-wir-uber-uns">Über uns</Link>
           </li>
-          <li className={customStyle.item}>
-            <Link to="/terms/">Nutzungsbedingungen</Link>
-          </li>
+          {getRegionNames().map((name, index) => (
+            <li key={index} className={customStyle.item}>
+              <Link to={`/${kebabCase(name)}/`}>{name}</Link>
+            </li>
+          ))}
           {buttons}
         </div>
       </ul>

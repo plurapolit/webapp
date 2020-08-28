@@ -46,7 +46,7 @@ const PanelCard = ({
           </Else>
         </If>
       </div>
-      <Link to={`${slug}`}>
+      <Link to={`/${slug}/`}>
         <div className={styles["question-banner"]} style={customStyle} data-test="panel-card">
           <div className={styles["image-wrapper"]}>
             <If condition={!isBattle}>

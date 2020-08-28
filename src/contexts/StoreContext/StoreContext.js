@@ -17,7 +17,7 @@ const Store = ({ children }) => {
       const slugListPromise = SlugApi.fetchSlugList();
       const regionPromise = RegionApi.loadAllRegions();
       const [loadedSlugList, loadedRegions] = await Promise.all([slugListPromise, regionPromise]);
-      setSlugList(loadedSlugList);
+      setSlugList(loadedSlugList.panels);
       setRegions(loadedRegions.regions);
     };
     loadContent();
@@ -35,6 +35,12 @@ const Store = ({ children }) => {
     return arrayOfRegionNames;
   };
 
+  const getRegionRoutes = () => {
+    if (!regions) return [];
+    const arrayOfRegionRoutes = regions.map(({ region }) => region);
+    return arrayOfRegionRoutes;
+  };
+
   return (
     <Provider
       value={{
@@ -43,6 +49,7 @@ const Store = ({ children }) => {
         slugList,
         getPanelIdBySlug,
         getRegionNames,
+        getRegionRoutes,
       }}
     >
       {children}

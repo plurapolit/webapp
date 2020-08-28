@@ -5,13 +5,15 @@ import Loader from "../../components/Loader/Loader";
 import HomePage from "../../views/HomePage/HomePage";
 import RegionApi from "../../api/RegionApi";
 
-const HomePageWrapper = () => {
+const HomePageWrapper = ({
+  id,
+}) => {
   const { setCategoryList } = useStoreContext();
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
     const loadCategoryList = async () => {
-      const { categories } = await RegionApi.loadRegion(2);
+      const { categories } = await RegionApi.loadRegion(id);
       setCategoryList(categories);
       setLoaded(true);
     };
