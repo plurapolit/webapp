@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { HashLink } from "react-router-hash-link";
 import { kebabCase } from "lodash";
 
 import { useUserContext } from "../../contexts/UserContext/UserContext";
@@ -49,6 +50,9 @@ const Navbar = () => {
         <div className={styles["container_items"]}>
           <li className={customStyle.item}>
             <Link to="/2020-wir-uber-uns">Über uns</Link>
+          </li>
+          <li className={customStyle.item}>
+            <HashLink smooth to="/earlfurt#fjc-grill">Hello</HashLink>
           </li>
           {getRegionNames().map((name, index) => (
             <li key={index} className={customStyle.item}>

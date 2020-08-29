@@ -23,6 +23,9 @@ const HomePage = () => {
       <div className={styles["bottom-wrapper"]}>
         <MoreSection />
         <Feedback />
+        <div id="hello">
+          <p>Hello there</p>
+        </div>
         <Supporters />
       </div>
     </div>
