@@ -3,7 +3,7 @@ import AudioPlayer from "react-h5-audio-player";
 
 import CloseButton from "../../../components/CloseButton/CloseButton";
 import Tracking from "../../../helper/TrackingHelper";
-import { useStoreContext } from "../../StoreContext/StoreContext";
+import { useUserContext } from "../../UserContext/UserContext";
 import styles from "./Player.module.scss";
 import "react-h5-audio-player/src/styles.scss";
 import { useTransition } from "../../../helper/CustomHookHelper";
@@ -28,7 +28,7 @@ const Player = ({
   stopPlayer,
 }) => {
   const player = useRef();
-  const { user } = useStoreContext();
+  const { user } = useUserContext();
   const [startTransition, isPending] = useTransition();
   let { current: pauseIcon } = useRef();
   const tracker = useRef();

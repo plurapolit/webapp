@@ -1,37 +1,27 @@
 import React, { useState, useEffect, useContext } from "react";
 
-import UserApi from "../../api/UserApi";
-import StoreHelper from "./StoreHelper";
+import SlugApi from "../../api/SlugApi";
+import RegionApi from "../../api/RegionApi";
 
 const StoreContext = React.createContext();
 const { Provider } = StoreContext;
 
 const Store = ({ children }) => {
-  const [user, setUser] = useState(undefined);
-  const [categoryList, setCategoryList] = useState(undefined);
-  const [slugList, setSlugList] = useState(undefined);
+  // TODO: category should be in a separate context lower in tree to prevent rendering;
+  const [categoryList, setCategoryList] = useState();
+  const [regions, setRegions] = useState();
+  const [slugList, setSlugList] = useState();
 
   useEffect(() => {
-    StoreHelper.loadContent((newCategoryList, newSlugList, recognisedUser) => {
-      setCategoryList(newCategoryList);
-      setSlugList(newSlugList);
-      setUser(recognisedUser);
-    });
+    const loadContent = async () => {
+      const slugListPromise = SlugApi.fetchSlugList();
+      const regionPromise = RegionApi.loadAllRegions();
+      const [loadedSlugList, loadedRegions] = await Promise.all([slugListPromise, regionPromise]);
+      setSlugList(loadedSlugList.panels);
+      setRegions(loadedRegions.regions);
+    };
+    loadContent();
   }, []);
-
-  const signUp = async (
-    email,
-    password,
-    firstName,
-    lastName,
-  ) => {
-    const newUser = await UserApi.signUp(email, password, firstName, lastName);
-    setUser(newUser);
-  };
-
-  const removeUser = () => {
-    setUser(undefined);
-  };
 
   const getPanelIdBySlug = (slug) => {
     const slugObj = slugList.find(({ panel }) => panel.slug === slug);
@@ -39,22 +29,27 @@ const Store = ({ children }) => {
     return false;
   };
 
-  const getUserId = () => {
-    if (user) return user.id;
-    return undefined;
+  const getRegionNames = () => {
+    if (!regions) return [];
+    const arrayOfRegionNames = regions.map(({ region }) => region.name);
+    return arrayOfRegionNames;
+  };
+
+  const getRegionRoutes = () => {
+    if (!regions) return [];
+    const arrayOfRegionRoutes = regions.map(({ region }) => region);
+    return arrayOfRegionRoutes;
   };
 
   return (
     <Provider
       value={{
-        user,
-        getUserId,
         categoryList,
+        setCategoryList,
         slugList,
         getPanelIdBySlug,
-        setUser,
-        signUp,
-        removeUser,
+        getRegionNames,
+        getRegionRoutes,
       }}
     >
       {children}

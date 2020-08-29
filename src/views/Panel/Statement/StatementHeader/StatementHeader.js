@@ -8,7 +8,7 @@ import styles from "./StatementHeader.module.scss";
 import { ImgixApiUrlParameters } from "../../../../helper/ImageDeliveryHelper";
 import Dropdown from "../../../../components/Dropdown/Dropdown";
 import createDropdownHelper from "./dropdownHelper";
-import { useStoreContext } from "../../../../contexts/StoreContext/StoreContext";
+import { useUserContext } from "../../../../contexts/UserContext/UserContext";
 import { ClickTracking } from "../../../../api/TrackingApi";
 
 const StatementHeader = ({
@@ -16,7 +16,7 @@ const StatementHeader = ({
   setShowTranscription,
   showTranscription,
 }) => {
-  const { getUserId } = useStoreContext();
+  const { getUserId } = useUserContext();
   const createTrackableFunc = (func, event, information) => {
     const trackableFunc = () => {
       ClickTracking.post(getUserId(), expert.statement.id, event, information);
