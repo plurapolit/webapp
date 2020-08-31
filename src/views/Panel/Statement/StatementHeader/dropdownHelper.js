@@ -1,10 +1,4 @@
 
-import { ReactComponent as Twitter } from "../../../../assets/images/Twitter_Logo.svg";
-import { ReactComponent as Facebook } from "../../../../assets/images/facebook-icon.svg";
-import { ReactComponent as LinkedIn } from "../../../../assets/images/linkedin-icon.svg";
-import { ReactComponent as Website } from "../../../../assets/images/website-icon.svg";
-import { ReactComponent as Transcript } from "../../../../assets/images/transcript-image.svg";
-import { ReactComponent as ShareIcon } from "../../../../assets/images/share-icon.svg";
 import { createFunction, pipe } from "../../../../helper/FunctionalProgrammingHelper";
 import { getAnchorFromName } from "../../../../helper/StringHelper";
 import NotificationHelper from "../../../../helper/NotificationHelper";
@@ -12,23 +6,19 @@ import NotificationHelper from "../../../../helper/NotificationHelper";
 const possibleWeblinks = (user) => [
   {
     text: "Twitter",
-    icon: Twitter,
     path: user.twitter_handle,
     domain: "https://www.twitter.com/",
   },
   {
     text: "Facebook",
-    icon: Facebook,
     link: user.facebook_handle,
   },
   {
     text: "LinkedIn",
-    icon: LinkedIn,
     link: user.linkedin_handle,
   },
   {
     text: "Webseite",
-    icon: Website,
     link: user.website_link,
   },
 ];
@@ -55,7 +45,6 @@ const createDropdownHelper = (expert, createTrackableFunc) => {
   const addShareLink = (dropdownItems = []) => {
     const shareLinkObj = {
       text: "Kopiere Link",
-      icon: ShareIcon,
       onClick: createTrackableFunc(
         () => saveShareLinkInClipBoard(expert), "dropdown click on share link", undefined,
       ),
@@ -71,7 +60,6 @@ const createDropdownHelper = (expert, createTrackableFunc) => {
         dropdownItems.push(
           {
             text: socialMedia.text,
-            icon: socialMedia.icon,
             onClick: createTrackableFunc(
               () => window.open(socialMedia.link), `dropdown click on ${socialMedia.text}`, undefined,
             ),
@@ -81,7 +69,6 @@ const createDropdownHelper = (expert, createTrackableFunc) => {
         dropdownItems.push(
           {
             text: socialMedia.text,
-            icon: socialMedia.icon,
             onClick: createTrackableFunc(
               () => window.open(`${socialMedia.domain}${socialMedia.path}`), `dropdown click on ${socialMedia.text}`, undefined,
             ),
@@ -96,7 +83,6 @@ const createDropdownHelper = (expert, createTrackableFunc) => {
     if (expert.transcription) {
       const transcript = {
         text: showTranscription ? "Transkript schließen" : "Transkript",
-        icon: Transcript,
         onClick: createTrackableFunc(() => setShowTranscription((prevToggle) => !prevToggle)),
       };
       return [...items, transcript];

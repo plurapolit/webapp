@@ -9,10 +9,22 @@ import styles from "./Navbar.module.scss";
 import SignOutButton from "../../components/SignOutButton/SignOutButton";
 import Button, { ButtonStyle } from "../../components/Button/Button";
 import { useStoreContext } from "../../contexts/StoreContext/StoreContext";
+import Dropdown from "../../components/Dropdown/Dropdown";
+
+const DropdownHashItem = ({
+  children,
+  to,
+}) => (
+  <HashLink to={to} smooth>
+    <Dropdown.Item>
+      {children}
+    </Dropdown.Item>
+  </HashLink>
+);
 
 const Navbar = () => {
   const { user } = useUserContext();
-  const { getRegionNames } = useStoreContext();
+  const { regionsAndCategories } = useStoreContext();
   const customStyle = {
     nav: styles["navbar"],
     item: styles["item"],
@@ -51,12 +63,18 @@ const Navbar = () => {
           <li className={customStyle.item}>
             <Link to="/2020-wir-uber-uns">Über uns</Link>
           </li>
-          <li className={customStyle.item}>
-            <HashLink smooth to="/earlfurt#fjc-grill">Hello</HashLink>
-          </li>
-          {getRegionNames().map((name, index) => (
-            <li key={index} className={customStyle.item}>
-              <Link to={`/${kebabCase(name)}/`}>{name}</Link>
+          {regionsAndCategories && regionsAndCategories.map(({ region, categories }) => (
+            <li key={region.id} className={customStyle.item}>
+              <Dropdown
+                text={region.name}
+                icon={null}
+              >
+                {categories.map(({ category }) => (
+                  <DropdownHashItem to={`/${kebabCase(region.name)}#${kebabCase(category.name)}`}>
+                    {category.name}
+                  </DropdownHashItem>
+                ))}
+              </Dropdown>
             </li>
           ))}
           {buttons}

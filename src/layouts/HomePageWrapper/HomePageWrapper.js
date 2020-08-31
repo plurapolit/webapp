@@ -18,7 +18,7 @@ const HomePageWrapper = ({
       setLoaded(true);
     };
     loadCategoryList();
-  }, []);
+  }, [id, setCategoryList]);
 
   if (loaded) {
     return (

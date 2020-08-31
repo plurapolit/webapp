@@ -21,6 +21,7 @@ const Routes = () => {
     <>
       <Switch>
         <Route exact path="/">
+          {/* TODO: Make it dynamic so it use the first id */}
           <HomePageWrapper id={1} />
         </Route>
         <Route exact path="/terms/">
@@ -44,6 +45,7 @@ const Routes = () => {
         <Route exact path="/sign_up/">
           <SignUp />
         </Route>
+        {/* // TODO: Handling external hash link calls */}
         {regions.map((region) => (
           <Route exact path={`/${kebabCase(region.name)}/`} key={region.id}>
             <HomePageWrapper id={region.id} />

@@ -1,81 +1,78 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { HashLink } from "react-router-hash-link";
+import { kebabCase } from "lodash";
 
+import styles from "./BurgerMenu.module.scss";
+import Sidebar from "../../components/Sidebar/Sidebar";
 import SignOutButton from "../../components/SignOutButton/SignOutButton";
 import Button, { ButtonStyle } from "../../components/Button/Button";
 import { useUserContext } from "../../contexts/UserContext/UserContext";
+import { useStoreContext } from "../../contexts/StoreContext/StoreContext";
 
-import styles from "./BurgerMenu.module.scss";
+const SignInButton = () => (
+  <Button buttonStyle={ButtonStyle.NONE} to="/sign_in/">
+    Anmelden
+  </Button>
+);
 
-const BurgerMenu = () => {
-  const [show, setShow] = useState(false);
+const SignUpButton = () => (
+  <Button
+    style={{ display: "inline", color: "#ee8137" }}
+    buttonStyle={ButtonStyle.NONE}
+    to="/sign_up/"
+  >
+    Registrieren
+  </Button>
+);
+
+export default function BurgerMenu() {
+  const [visible, setVisible] = useState(false);
+  const { regionsAndCategories } = useStoreContext();
   const { user } = useUserContext();
 
   const handleClick = () => {
-    setShow(!show);
+    setVisible(!visible);
   };
 
-  const sliderClass = `${styles["slider"]} ${
-    show ? styles["slider_active"] : null
-  }`;
-
-  let buttons = (
-    <>
-      <li className={styles["item"]}>
-        <Button onClick={handleClick} buttonStyle={ButtonStyle.NONE} to="/sign_in/">Anmelden</Button>
-      </li>
-      <li className={styles["item"]}>
-        <Button
-          onClick={handleClick}
-          style={{ display: "inline" }}
-          buttonStyle={ButtonStyle.CTA}
-          to="/sign_up/"
-        >
-          Registrieren
-        </Button>
-      </li>
-    </>
-  );
-
-  if (user) {
-    buttons = (
-      <div tabIndex="0" role="link" onClick={() => handleClick()} className={styles["item"]}>
-        <SignOutButton />
-      </div>
-    );
-  }
-
   return (
-    <div>
-      <div className={show ? styles["overlay"] : null} onClick={handleClick} />
-      <div className={styles["burger"]} onClick={handleClick}>
-        <span className={styles["burger_item"]} />
-        <span className={styles["burger_item"]} />
-        <span className={styles["burger_item"]} />
-      </div>
-
-      <div className={sliderClass}>
-        <div className={styles["x_wrapper"]} onClick={handleClick}>
-          <span className={styles["x_1"]} />
-          <span className={styles["x_2"]} />
-        </div>
-        <ul className={styles["list"]}>
-          <li className={styles["item"]}>
-            <Link to="/" onClick={handleClick}>
-              Home
-            </Link>
-          </li>
-          <li className={styles["item"]} onClick={handleClick}>
-            <Link to="/2020-wir-uber-uns">Über uns</Link>
-          </li>
-          <li className={styles["item"]} onClick={handleClick}>
-            <Link to="/terms/">Nutzungsbedingungen</Link>
-          </li>
-          {buttons}
-        </ul>
-      </div>
+    <div className={styles["burger-menu"]}>
+      <Sidebar.Opener onClick={() => setVisible(true)} />
+      <Sidebar
+        onClose={handleClick}
+        visible={visible}
+      >
+        { user ? (
+          <Sidebar.Item>
+            <SignOutButton />
+          </Sidebar.Item>
+        ) : (
+          <>
+            <Sidebar.Item>
+              <SignUpButton />
+            </Sidebar.Item>
+            <Sidebar.Item>
+              <SignInButton />
+            </Sidebar.Item>
+          </>
+        )}
+        <Sidebar.Divider />
+        {(
+          regionsAndCategories && regionsAndCategories.map(({ region, categories }) => (
+            <Sidebar.Expandable
+              label={region.name}
+              key={region.id}
+            >
+              {categories.map(({ category }) => (
+                <HashLink key={category.id} to={`/${kebabCase(region.name)}#${kebabCase(category.name)}`} smooth>
+                  <Sidebar.Expandable.Item>
+                    {category.name}
+                  </Sidebar.Expandable.Item>
+                </HashLink>
+              ))}
+            </Sidebar.Expandable>
+          ))
+        )}
+      </Sidebar>
     </div>
   );
-};
-
-export default BurgerMenu;
+}

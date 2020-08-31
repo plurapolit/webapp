@@ -1,0 +1,107 @@
+@import "../../assets/styles/global.scss";
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #00000055;
+}
+
+.sidebar {
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 28rem;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding-top: 8rem;
+  z-index: 500;
+  background-color: #1a1a1a;
+  overflow: scroll;
+}
+
+.item {
+  font-size: 2.2rem;
+  font-weight: 400;
+  padding: 2rem 2rem;
+  color: $color-white;
+}
+
+.close-img {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  height: 3.2rem;
+  width: auto;
+  cursor: pointer;
+  & path {
+    fill: $color-white;
+  }
+
+  &:hover path {
+    fill: darken($color-white, 40%);
+  }
+}
+
+.opener {
+  height: 3.2rem;
+  width: auto;
+  cursor: pointer;
+}
+
+.divider {
+  width: 100%;
+  height: .1rem;
+  margin-bottom: 1rem;
+  background-color: darken($color-white, 30%);
+}
+
+
+.arrow {
+  height: 1.5rem;
+  transition: all .2s;
+  & path {
+    fill: $color-white;
+  }
+
+  &--down {
+    composes: arrow;
+    transform: rotate(90deg);
+  }
+}
+
+.expandable {
+  color: $color-white;
+  font-size: 2.2rem;
+  font-weight: 400;
+
+  &_label {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+    padding: 2rem 2rem;
+    cursor: pointer;
+  }
+
+  &_item {
+    margin-bottom: 1.3rem;
+    font-size: 2rem;
+    color: darken($color-white, 25%);
+    cursor: pointer;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &_wrapper {
+    padding-left: 4rem;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    background-color: rgba($color-white, .05);
+  }
+}
