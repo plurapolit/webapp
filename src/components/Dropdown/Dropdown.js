@@ -1,10 +1,35 @@
 import React, { useState, useEffect, useRef } from "react";
-import { If } from "react-if";
 
 import Dots from "../../assets/images/dots.svg";
 import styles from "./Dropdown.module.scss";
 
-const Dropdown = ({ items, style }) => {
+const Item = ({
+  children,
+  onClick = () => {},
+
+}) => (
+  <div className={styles["item"]} onClick={onClick}>
+    {children}
+  </div>
+);
+
+const DefaultIcon = () => (
+  <div className={styles["icon"]}>
+    <img
+      src={Dots}
+      alt="3 Punkte"
+      height="100%"
+      width="100%"
+    />
+  </div>
+);
+
+const Dropdown = ({
+  children,
+  style,
+  text,
+  icon,
+}) => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdown = useRef();
 
@@ -16,36 +41,30 @@ const Dropdown = ({ items, style }) => {
 
   useEffect(() => {
     document.addEventListener("click", handleOutsideClick);
-
     return () => {
       document.removeEventListener("click", handleOutsideClick);
     };
   }, []);
 
-  const toggle = () => { setIsOpen(!isOpen); };
-
   return (
     <div ref={dropdown} style={style}>
-      <div className={`${styles["dropdown"]} ${(isOpen) ? styles["active"] : ""}`}>
-        <img
-          src={Dots}
-          alt="3 Punkte"
-          className={styles["icon"]}
-          onClick={toggle}
-        />
-        <If condition={isOpen}>
+      <div className={styles["dropdown"]}>
+        <div
+          onClick={() => setIsOpen(!isOpen)}
+          className={styles["dropdown_label"]}
+        >
+          { text }
+          { icon === undefined ? <DefaultIcon /> : icon}
+        </div>
+        { isOpen && (
           <div className={styles["item-container"]}>
-            {items.map((item) => (
-              <div key={item.text} className={styles["item"]} onClick={item.onClick}>
-                <item.icon className={styles["item-icon"]} />
-                {item.text}
-              </div>
-            ))}
+            {children}
           </div>
-        </If>
+        )}
       </div>
     </div>
   );
 };
+Dropdown.Item = Item;
 
 export default Dropdown;

@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { HashLink } from "react-router-hash-link";
 import { kebabCase } from "lodash";
 
 import { useUserContext } from "../../contexts/UserContext/UserContext";
@@ -8,10 +9,23 @@ import styles from "./Navbar.module.scss";
 import SignOutButton from "../../components/SignOutButton/SignOutButton";
 import Button, { ButtonStyle } from "../../components/Button/Button";
 import { useStoreContext } from "../../contexts/StoreContext/StoreContext";
+import Dropdown from "../../components/Dropdown/Dropdown";
+import { ReactComponent as ArrowIcon } from "../../assets/images/arrow.svg";
+
+const DropdownHashItem = ({
+  children,
+  to,
+}) => (
+  <HashLink to={to} smooth>
+    <Dropdown.Item>
+      {children}
+    </Dropdown.Item>
+  </HashLink>
+);
 
 const Navbar = () => {
   const { user } = useUserContext();
-  const { getRegionNames } = useStoreContext();
+  const { regionsAndCategories } = useStoreContext();
   const customStyle = {
     nav: styles["navbar"],
     item: styles["item"],
@@ -50,9 +64,18 @@ const Navbar = () => {
           <li className={customStyle.item}>
             <Link to="/2020-wir-uber-uns">Über uns</Link>
           </li>
-          {getRegionNames().map((name, index) => (
-            <li key={index} className={customStyle.item}>
-              <Link to={`/${kebabCase(name)}/`}>{name}</Link>
+          {regionsAndCategories && regionsAndCategories.map(({ region, categories }) => (
+            <li key={region.id} className={customStyle.item}>
+              <Dropdown
+                text={region.name}
+                icon={<ArrowIcon className={styles["dropdown_icon"]} />}
+              >
+                {categories.map(({ category }) => (
+                  <DropdownHashItem to={`/${kebabCase(region.name)}#${kebabCase(category.name)}`} key={category.id}>
+                    {category.name}
+                  </DropdownHashItem>
+                ))}
+              </Dropdown>
             </li>
           ))}
           {buttons}
