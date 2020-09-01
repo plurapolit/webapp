@@ -77,7 +77,15 @@ const StatementHeader = ({
         </div>
       </div>
       <If condition={dropdownItems.length > 0}>
-        <Dropdown items={dropdownItems} style={{ marginRight: ".5rem", marginTop: ".5rem" }} />
+        <Dropdown
+          style={{ marginRight: ".5rem", marginTop: ".5rem" }}
+        >
+          { dropdownItems.map(({ onClick, text }) => (
+            <Dropdown.Item key={text} onClick={onClick}>
+              {text}
+            </Dropdown.Item>
+          ))}
+        </Dropdown>
       </If>
     </div>
   );

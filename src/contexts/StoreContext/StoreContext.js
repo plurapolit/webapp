@@ -1,4 +1,9 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, {
+  useState,
+  useEffect,
+  useContext,
+  useCallback,
+} from "react";
 
 import SlugApi from "../../api/SlugApi";
 import RegionApi from "../../api/RegionApi";
@@ -11,17 +16,39 @@ const Store = ({ children }) => {
   const [categoryList, setCategoryList] = useState();
   const [regions, setRegions] = useState();
   const [slugList, setSlugList] = useState();
+  const [regionsAndCategories, setRegionsAndCategories] = useState();
 
   useEffect(() => {
-    const loadContent = async () => {
-      const slugListPromise = SlugApi.fetchSlugList();
-      const regionPromise = RegionApi.loadAllRegions();
-      const [loadedSlugList, loadedRegions] = await Promise.all([slugListPromise, regionPromise]);
-      setSlugList(loadedSlugList.panels);
-      setRegions(loadedRegions.regions);
+    const loadRegions = async () => {
+      const { regions: loadedRegions } = await RegionApi.loadAllRegions();
+      setRegions(loadedRegions);
     };
-    loadContent();
+    const loadSlugList = async () => {
+      const { panels } = await SlugApi.fetchSlugList();
+      setSlugList(panels);
+    };
+    loadRegions();
+    loadSlugList();
   }, []);
+
+  const getArrayFromRegion = useCallback((action) => {
+    if (!regions) return [];
+    const arrayOfRegionAttribute = regions.map(action);
+    return arrayOfRegionAttribute;
+  }, [regions]);
+
+  useEffect(() => {
+    if (regions) {
+      const loadRegionsAndCategories = async () => {
+        const arrayOfRegionIds = getArrayFromRegion(({ region }) => region.id);
+        const arrayOfPromises = arrayOfRegionIds.map((id) => RegionApi.loadRegion(id));
+        const loadedRegionsAndCategories = await Promise.all(arrayOfPromises);
+        setRegionsAndCategories(loadedRegionsAndCategories);
+      };
+      loadRegionsAndCategories();
+    }
+  }, [regions, getArrayFromRegion]);
+
 
   const getPanelIdBySlug = (slug) => {
     const slugObj = slugList.find(({ panel }) => panel.slug === slug);
@@ -29,11 +56,7 @@ const Store = ({ children }) => {
     return false;
   };
 
-  const getRegionNames = () => {
-    if (!regions) return [];
-    const arrayOfRegionNames = regions.map(({ region }) => region.name);
-    return arrayOfRegionNames;
-  };
+  const getRegionNames = () => getArrayFromRegion(({ region }) => region.name);
 
   const getRegionRoutes = () => {
     if (!regions) return [];
@@ -41,15 +64,23 @@ const Store = ({ children }) => {
     return arrayOfRegionRoutes;
   };
 
+  const getCategoriesByRegionId = (id) => {
+    if (!regions) return [];
+    const foundRegion = regionsAndCategories.find((region) => region.id === id);
+    return foundRegion.categories;
+  };
+
   return (
     <Provider
       value={{
         categoryList,
+        regionsAndCategories,
         setCategoryList,
         slugList,
         getPanelIdBySlug,
         getRegionNames,
         getRegionRoutes,
+        getCategoriesByRegionId,
       }}
     >
       {children}
