@@ -10,6 +10,7 @@ import SignOutButton from "../../components/SignOutButton/SignOutButton";
 import Button, { ButtonStyle } from "../../components/Button/Button";
 import { useStoreContext } from "../../contexts/StoreContext/StoreContext";
 import Dropdown from "../../components/Dropdown/Dropdown";
+import { ReactComponent as ArrowIcon } from "../../assets/images/arrow.svg";
 
 const DropdownHashItem = ({
   children,
@@ -67,10 +68,10 @@ const Navbar = () => {
             <li key={region.id} className={customStyle.item}>
               <Dropdown
                 text={region.name}
-                icon={null}
+                icon={<ArrowIcon className={styles["dropdown_icon"]} />}
               >
                 {categories.map(({ category }) => (
-                  <DropdownHashItem to={`/${kebabCase(region.name)}#${kebabCase(category.name)}`}>
+                  <DropdownHashItem to={`/${kebabCase(region.name)}#${kebabCase(category.name)}`} key={category.id}>
                     {category.name}
                   </DropdownHashItem>
                 ))}

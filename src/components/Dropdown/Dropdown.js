@@ -49,9 +49,12 @@ const Dropdown = ({
   return (
     <div ref={dropdown} style={style}>
       <div className={styles["dropdown"]}>
-        <div onClick={() => setIsOpen(!isOpen)} className={styles["dropdown_label"]}>
+        <div
+          onClick={() => setIsOpen(!isOpen)}
+          className={styles["dropdown_label"]}
+        >
           { text }
-          { icon === undefined && <DefaultIcon />}
+          { icon === undefined ? <DefaultIcon /> : icon}
         </div>
         { isOpen && (
           <div className={styles["item-container"]}>

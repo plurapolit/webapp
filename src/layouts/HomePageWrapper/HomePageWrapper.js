@@ -2,11 +2,11 @@ import React, { useState, useEffect } from "react";
 
 import { useStoreContext } from "../../contexts/StoreContext/StoreContext";
 import Loader from "../../components/Loader/Loader";
-import HomePage from "../../views/HomePage/HomePage";
 import RegionApi from "../../api/RegionApi";
 
 const HomePageWrapper = ({
   id,
+  children,
 }) => {
   const { setCategoryList } = useStoreContext();
   const [loaded, setLoaded] = useState(false);
@@ -21,9 +21,7 @@ const HomePageWrapper = ({
   }, [id, setCategoryList]);
 
   if (loaded) {
-    return (
-      <HomePage />
-    );
+    return children;
   }
   return (
     <Loader />
