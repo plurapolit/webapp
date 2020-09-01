@@ -54,7 +54,7 @@ const Dropdown = ({
           className={styles["dropdown_label"]}
         >
           { text }
-          { icon === undefined && <DefaultIcon />}
+          { icon === undefined ? <DefaultIcon /> : icon}
         </div>
         { isOpen && (
           <div className={styles["item-container"]}>

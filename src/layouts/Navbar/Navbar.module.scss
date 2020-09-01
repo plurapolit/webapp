@@ -61,3 +61,15 @@
 .item:last-child {
   color: $color-grey-2;
 }
+
+.dropdown_icon {
+  height: 1rem;
+  margin-left: .7rem;
+  transform: rotate(90deg);
+  & g {
+    fill: $color-grey;
+  }
+  & path {
+    fill: $color-grey;
+  }
+}
