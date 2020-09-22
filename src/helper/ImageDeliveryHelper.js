@@ -1,6 +1,6 @@
 const ImgixApiUrlParameters = (width) => {
-  if (width) return `?auto=compress&q=75&w=${width}`;
-  return "?auto=compress&q=75";
+  if (width) return `?w=${width}`;
+  return "";
 };
 
 export { ImgixApiUrlParameters };
