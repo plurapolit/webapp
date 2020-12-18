@@ -25,7 +25,8 @@ const SiteNotice = () => (
         <a href="mailto:kontakt@plurapolit.de">kontakt@plurapolit.de</a>
       </p>
       <br />
-      <p>Registergericht: Handelsregister Amtsgericht Hamburg HRB (folgt)</p>
+      <p>Handelsregister: HRB 161616</p>
+      <p>Registergericht: Amtsgericht Hamburg</p>
       <br />
       <p>Geschäftsführer: Caspar Ibel, Lucas Lamby</p>
       <h4>
