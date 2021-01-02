@@ -14,7 +14,7 @@ const SiteNotice = () => (
       <p>Angaben gemäß §5 TMG:</p>
       <br />
       <p>
-        Plura gUG (i.G.)
+        PluraPolit gUG
         <br />
         Paul-Nevermann-Platz 5
         <br />
