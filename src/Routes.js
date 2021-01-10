@@ -13,6 +13,7 @@ import PanelWrapper from "./layouts/PanelWrapper/PanelWrapper";
 import HomePageWrapper from "./layouts/HomePageWrapper/HomePageWrapper";
 import HomePage from "./views/HomePage/HomePage";
 import NRWPage from "./views/NRWPage/NRWPage";
+import HHPage from "./views/HHPage/HHPage";
 
 const Routes = () => (
   <>
@@ -52,6 +53,11 @@ const Routes = () => (
       <Route exact path="/nrw-memo-mat/">
         <HomePageWrapper id={2}>
           <NRWPage />
+        </HomePageWrapper>
+      </Route>
+      <Route exact path="/hh-memo-mat/">
+        <HomePageWrapper id={5}>
+          <HHPage />
         </HomePageWrapper>
       </Route>
       <Route path="/:slug">
