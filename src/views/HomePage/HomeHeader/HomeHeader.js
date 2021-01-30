@@ -18,22 +18,22 @@ const PodcastLinks = () => (
     <div className={styles["podcast-icon-wrapper"]}>
       <a href={SPOTIFY_LINK} target="_blank" rel="noopener noreferrer">
         <div className={[styles["podcast-icon"], styles["podcast-icon-spotify"]].join(" ")}>
-          <img src={Spotify} alt="spotify-podcast-icon" />
+          <img src={Spotify} alt="spotify-podcast-icon" className={styles["podcast-icon-size"]} />
         </div>
       </a>
       <a href={APPLE_LINK} target="_blank" rel="noopener noreferrer">
         <div className={[styles["podcast-icon"], styles["podcast-icon-apple"]].join(" ")}>
-          <img src={Apple} alt="apple-podcast-icon" />
+          <img src={Apple} alt="apple-podcast-icon" className={styles["podcast-icon-size"]} />
         </div>
       </a>
       <a href={GOOGLE_LINK} target="_blank" rel="noopener noreferrer">
         <div className={[styles["podcast-icon"], styles["podcast-icon-google"]].join(" ")}>
-          <img src={Google} alt="google-podcast-icon" />
+          <img src={Google} alt="google-podcast-icon" className={styles["podcast-icon-size"]} />
         </div>
       </a>
       <a href={OVERCAST_LINK} target="_blank" rel="noopener noreferrer">
         <div className={[styles["podcast-icon"], styles["podcast-icon-overcast"]].join(" ")}>
-          <img src={Overcast} alt="overcast-podcast-icon" />
+          <img src={Overcast} alt="overcast-podcast-icon" className={styles["podcast-icon-size"]} />
         </div>
       </a>
     </div>
