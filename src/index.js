@@ -8,17 +8,21 @@ import App from "./App";
 import "./index.scss";
 import "./assets/fonts/fonts.scss";
 
+const ACTIVATE_GOOGLE_TAG_MANAGER = false;
+
 Sentry.init({
   dsn: process.env.REACT_APP_SENTRY_DSN,
   environment: process.env.REACT_APP_ENV,
 });
 
-const tagManagerArgs = {
-  gtmId: process.env.REACT_APP_TAG_MANAGER_ID,
-  auth: process.env.REACT_APP_TAG_MANAGER_AUTH,
-  preview: process.env.REACT_APP_TAG_MANAGER_PREVIEW,
-};
-TagManager.initialize(tagManagerArgs);
+if (ACTIVATE_GOOGLE_TAG_MANAGER) {
+  const tagManagerArgs = {
+    gtmId: process.env.REACT_APP_TAG_MANAGER_ID,
+    auth: process.env.REACT_APP_TAG_MANAGER_AUTH,
+    preview: process.env.REACT_APP_TAG_MANAGER_PREVIEW,
+  };
+  TagManager.initialize(tagManagerArgs);
+}
 
 
 ReactDOM.render(<App />, document.getElementById("root"));
