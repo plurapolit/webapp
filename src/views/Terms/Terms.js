@@ -12,7 +12,7 @@ const Terms = () => (
       </Hyphen>
       <br />
       <p>
-        Der PluraPolit gUG (in Gründung), Paul-Nevermann-Platz 5, 22765 Hamburg
+        Der PluraPolit gUG, Gademannstraße 16, 22767 Hamburg
         für die Teilnahme durch sog. User*innen
       </p>
       <br />

@@ -16,9 +16,9 @@ const SiteNotice = () => (
       <p>
         PluraPolit gUG
         <br />
-        Paul-Nevermann-Platz 5
+        Gademannstraße 16
         <br />
-        22765 Hamburg
+        22767 Hamburg
       </p>
       <br />
       <p>
@@ -34,8 +34,8 @@ const SiteNotice = () => (
       </h4>
       <br />
       <p>
-        Caspar Ibel (Produkt), Lucas Lamby (Redaktion), Paul-Nevermann-Platz 5,
-        22765 Hamburg
+        Caspar Ibel (Produkt), Lucas Lamby (Redaktion), Gademannstraße 16,
+        22767 Hamburg
       </p>
       <br />
       <p>
