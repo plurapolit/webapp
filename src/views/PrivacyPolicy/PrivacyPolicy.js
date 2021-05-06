@@ -27,9 +27,9 @@ const PrivacyPolicy = () => (
         1. Diese Datenschutz-Information gilt für die Datenverarbeitung durch:
       </p>
       <br />
-      <p>PluraPolit gUG (in Gründung)</p>
-      <p>Paul-Nevermann-Platz 5</p>
-      <p>22765 Hamburg</p>
+      <p>PluraPolit gUG</p>
+      <p>Gademannstraße 16</p>
+      <p>22767 Hamburg</p>
       <p>datenschutz@plurapolit.de</p>
       <p>Geschäftsführer: Caspar Ibel, Lucas Lamby</p>
       <br />
