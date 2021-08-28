@@ -6,6 +6,7 @@ import Panel from "../../views/Panel/Panel";
 import PageNotFound from "../../views/PageNotFound/PageNotFound";
 import Loader from "../../components/Loader/Loader";
 import { useStoreContext } from "../../contexts/StoreContext/StoreContext";
+import ContactBanner from "../../components/ContactBanner/ContactBanner";
 import { PanelStore } from "../../contexts/PanelStoreContext/PanelStoreContext";
 
 const PanelWrapper = () => {
@@ -35,6 +36,7 @@ const PanelWrapper = () => {
     return (
       <PanelStore panel={currentPanel}>
         <Panel objectPositionTop={isAboutUsSlug()} panel={currentPanel} />
+        <ContactBanner panelId={currentPanel.panel.id} />
       </PanelStore>
     );
   }
