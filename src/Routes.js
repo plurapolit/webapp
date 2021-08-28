@@ -14,6 +14,7 @@ import HomePageWrapper from "./layouts/HomePageWrapper/HomePageWrapper";
 import HomePage from "./views/HomePage/HomePage";
 import NRWPage from "./views/NRWPage/NRWPage";
 import HHPage from "./views/HHPage/HHPage";
+import BerlinPage from "./views/BerlinPage/BerlinPage";
 
 const Routes = () => (
   <>
@@ -58,6 +59,11 @@ const Routes = () => (
       <Route exact path="/hh-memo-mat/">
         <HomePageWrapper id={5}>
           <HHPage />
+        </HomePageWrapper>
+      </Route>
+      <Route exact path="/berlin-memo-mat/">
+        <HomePageWrapper id={7}>
+          <BerlinPage />
         </HomePageWrapper>
       </Route>
       <Route path="/:slug">
