@@ -4,6 +4,7 @@ import "react-notifications-component/dist/theme.css";
 
 import Terms from "./views/Terms/Terms";
 import SiteNotice from "./views/SiteNotice/SiteNotice";
+import WorkInformation from "./views/WorkInformation/WorkInformation";
 import PrivacyPolicy from "./views/PrivacyPolicy/PrivacyPolicy";
 import SignIn from "./views/SignIn/SignIn";
 import SignUp from "./views/SignUp/SignUp";
@@ -33,6 +34,9 @@ const Routes = () => (
       </Route>
       <Route exact path="/privacy-policy/">
         <PrivacyPolicy />
+      </Route>
+      <Route exact path="/work-information/">
+        <WorkInformation />
       </Route>
       <Route exact path="/sign_in/">
         <SignIn />
