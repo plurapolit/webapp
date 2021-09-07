@@ -20,6 +20,9 @@ const Footer = () => (
             <Link to="/privacy-policy/">Datenschutzerklärung</Link>
           </li>
           <li className={styles["item"]}>
+            <Link to="/work-information/">Fehlinformationen & Wie wir arbeiten</Link>
+          </li>
+          <li className={styles["item"]}>
             <Link to="/site-notice/">Impressum</Link>
           </li>
         </ul>
