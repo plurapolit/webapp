@@ -37,7 +37,7 @@ const WorkInformation = () => (
       </p>
       <br />
       <p>
-        Die neun Personen, die wir nach verschiedenen Kriterien, wie z.B. Bezug zur Zielgruppe
+        Die neun Personen, die wir nach verschiedenen Kriterien, wie z. B. Bezug zur Zielgruppe
         und Thema,
         Reden im Bundestag zu der Thematik oder Mitgliedschaft in entsprechenden Ausschüssen,
         auswählen, schicken uns dann 2- bzw. 1-minütige Audiostatements.
@@ -46,12 +46,16 @@ const WorkInformation = () => (
       <p>
         Es gibt für diese Statements nur die Vorgabe, dass sie 2 bzw. 1 Minute lang sein dürfen
         und die Frage
-        zielgruppengerecht beantworte sollen. Wenn wir die Statements bekommen, überprüfen wir die
+        zielgruppengerecht beantwortet werden soll. Wenn wir die Statements bekommen,
+        überprüfen wir die
         Qualität und laden sie dann auf unserer Plattform hoch.
       </p>
       <br />
       <p>
-        Jetzt wird’s wichtig!! Wir überprüfen die Statements nicht auf Wahrheitsgehalt.
+        <strong>
+          Jetzt wird’s wichtig!!
+        </strong>
+        &nbsp; Wir überprüfen die Statements nicht auf Wahrheitsgehalt.
         Wenn ihr euch also
         Statements auf PluraPolit anhört, dann seid kritisch und vertraut nicht blind,
         dem was man euch
@@ -76,7 +80,7 @@ const WorkInformation = () => (
         dem jeweiligen
         Thema zu suchen und sich diese sorgfältig durchzulesen. Viele Faktenchecks
         gibt es bei
-        <a className={styles["link"]} href="https://correctiv.org/en/" target="_blank" rel="noopener noreferrer"> correctiv</a>
+        <a className={styles["link"]} href="https://correctiv.org/" target="_blank" rel="noopener noreferrer"> correctiv</a>
         , hier findet ihr Faktenchecks zu den verschiedensten Themen.
       </p>
       <br />
