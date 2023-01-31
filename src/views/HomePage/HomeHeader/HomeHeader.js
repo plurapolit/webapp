@@ -14,26 +14,64 @@ const OVERCAST_LINK = "https://podcast.plurapolit.de/overcast";
 
 const PodcastLinks = () => (
   <div className={styles["podcast"]}>
-    <div className={styles["podcast-subtext"]}>Jetzt auch als Podcast verfügbar.</div>
+    <div className={styles["podcast-subtext"]}>
+      Jetzt auch als Podcast verfügbar.
+    </div>
     <div className={styles["podcast-icon-wrapper"]}>
       <a href={SPOTIFY_LINK} target="_blank" rel="noopener noreferrer">
-        <div className={[styles["podcast-icon"], styles["podcast-icon-spotify"]].join(" ")}>
-          <img src={Spotify} alt="spotify-podcast-icon" className={styles["podcast-icon-size"]} />
+        <div
+          className={[
+            styles["podcast-icon"],
+            styles["podcast-icon-spotify"],
+          ].join(" ")}
+        >
+          <img
+            src={Spotify}
+            alt="spotify-podcast-icon"
+            className={styles["podcast-icon-size"]}
+          />
         </div>
       </a>
       <a href={APPLE_LINK} target="_blank" rel="noopener noreferrer">
-        <div className={[styles["podcast-icon"], styles["podcast-icon-apple"]].join(" ")}>
-          <img src={Apple} alt="apple-podcast-icon" className={styles["podcast-icon-size"]} />
+        <div
+          className={[
+            styles["podcast-icon"],
+            styles["podcast-icon-apple"],
+          ].join(" ")}
+        >
+          <img
+            src={Apple}
+            alt="apple-podcast-icon"
+            className={styles["podcast-icon-size"]}
+          />
         </div>
       </a>
       <a href={GOOGLE_LINK} target="_blank" rel="noopener noreferrer">
-        <div className={[styles["podcast-icon"], styles["podcast-icon-google"]].join(" ")}>
-          <img src={Google} alt="google-podcast-icon" className={styles["podcast-icon-size"]} />
+        <div
+          className={[
+            styles["podcast-icon"],
+            styles["podcast-icon-google"],
+          ].join(" ")}
+        >
+          <img
+            src={Google}
+            alt="google-podcast-icon"
+            className={styles["podcast-icon-size"]}
+          />
         </div>
       </a>
       <a href={OVERCAST_LINK} target="_blank" rel="noopener noreferrer">
-        <div className={[styles["podcast-icon"], styles["podcast-icon-overcast"]].join(" ")}>
-          <img src={Overcast} alt="overcast-podcast-icon" className={styles["podcast-icon-size"]} />
+        <div
+          className={[
+            styles["podcast-icon"],
+            styles["podcast-icon-overcast"],
+          ].join(" ")}
+        >
+          <img
+            src={Overcast}
+            alt="overcast-podcast-icon"
+            className={styles["podcast-icon-size"]}
+          />
         </div>
       </a>
     </div>
@@ -44,11 +82,11 @@ const HomeHeader = () => (
   <header className={styles["home-header"]}>
     <ContentWrapper>
       <div className={styles["heading"]}>
-        Ein Thema.
+        70 Panels.
         <br />
-        9 Meinungen.
+        159.000 gehörte Minuten.
         <br />
-        <span className={styles["heading-accent"]}>Was denkst du?</span>
+        <span className={styles["heading-accent"]}>PluraPolit sagt Danke!</span>
       </div>
     </ContentWrapper>
     <PodcastLinks />
