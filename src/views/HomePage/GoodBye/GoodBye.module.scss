@@ -1,0 +1,26 @@
+@import "../../../assets/styles/global.scss";
+
+.home-header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 40vh;
+  max-height: 35rem;
+  padding: $spacing-section 0;
+  background-color: yellow;
+  margin-left: -1rem;
+}
+
+.heading {
+  color: black;
+  font-size: 2.5rem;
+  font-weight: 900;
+
+  @media screen and (max-width: 450px) {
+    font-size: 1.4rem;
+  }
+
+  @media screen and (max-width: 900px) {
+    font-size: 2rem;
+  }
+}

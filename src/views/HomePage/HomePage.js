@@ -10,6 +10,7 @@ import CategoryList from "./CategoryList/CategoryList";
 import Feedback from "./Feedback/Feedback";
 import Supporters from "./Supporters/Supporters";
 import styles from "./HomePage.module.scss";
+import GoodBye from "./GoodBye/GoodBye";
 
 const HomePage = () => {
   const { categoryList } = useStoreContext();
@@ -17,6 +18,7 @@ const HomePage = () => {
     <div>
       <HomePageMetaTags />
       <HomeHeader />
+      <GoodBye />
       <If condition={!!categoryList}>
         <CategoryList />
       </If>
