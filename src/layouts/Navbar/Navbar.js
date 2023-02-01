@@ -12,14 +12,9 @@ import { useStoreContext } from "../../contexts/StoreContext/StoreContext";
 import Dropdown from "../../components/Dropdown/Dropdown";
 import { ReactComponent as ArrowIcon } from "../../assets/images/arrow.svg";
 
-const DropdownHashItem = ({
-  children,
-  to,
-}) => (
+const DropdownHashItem = ({ children, to }) => (
   <HashLink to={to} smooth>
-    <Dropdown.Item>
-      {children}
-    </Dropdown.Item>
+    <Dropdown.Item>{children}</Dropdown.Item>
   </HashLink>
 );
 
@@ -34,7 +29,11 @@ const Navbar = () => {
   let buttons = (
     <>
       <li className={customStyle.item}>
-        <Button buttonStyle={ButtonStyle.SECONDARY} to="/sign_in/" dataTest="sign_in">
+        <Button
+          buttonStyle={ButtonStyle.SECONDARY}
+          to="/sign_in/"
+          dataTest="sign_in"
+        >
           Anmelden
         </Button>
       </li>
@@ -64,7 +63,7 @@ const Navbar = () => {
           <li className={customStyle.item}>
             <Link to="/2020-wir-uber-uns">Über uns</Link>
           </li>
-          {regionsAndCategories && regionsAndCategories.map(({ region, categories }) => (
+          {/* {regionsAndCategories && regionsAndCategories.map(({ region, categories }) => (
             <li key={region.id} className={customStyle.item}>
               <Dropdown
                 text={region.name}
@@ -77,7 +76,7 @@ const Navbar = () => {
                 ))}
               </Dropdown>
             </li>
-          ))}
+          ))} */}
           {buttons}
         </div>
       </ul>

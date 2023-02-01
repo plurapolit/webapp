@@ -37,11 +37,8 @@ export default function BurgerMenu() {
   return (
     <div className={styles["burger-menu"]}>
       <Sidebar.Opener onClick={() => setVisible(true)} />
-      <Sidebar
-        onClose={handleClick}
-        visible={visible}
-      >
-        { user ? (
+      <Sidebar onClose={handleClick} visible={visible}>
+        {user ? (
           <Sidebar.Item>
             <SignOutButton />
           </Sidebar.Item>
@@ -56,7 +53,7 @@ export default function BurgerMenu() {
           </>
         )}
         <Sidebar.Divider />
-        {(
+        {/* {(
           regionsAndCategories && regionsAndCategories.map(({ region, categories }) => (
             <Sidebar.Expandable
               label={region.name}
@@ -71,7 +68,7 @@ export default function BurgerMenu() {
               ))}
             </Sidebar.Expandable>
           ))
-        )}
+        )} */}
       </Sidebar>
     </div>
   );
