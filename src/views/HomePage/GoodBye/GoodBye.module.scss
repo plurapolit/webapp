@@ -16,11 +16,23 @@
   font-size: 2.5rem;
   font-weight: 900;
 
-  @media screen and (max-width: 450px) {
-    font-size: 1.4rem;
+  @media screen and (max-width: 380px) {
+    font-size: 1.2rem;
   }
 
-  @media screen and (max-width: 900px) {
-    font-size: 2rem;
+    @media screen and (min-width: 380px) {
+    font-size: 1.3rem;
+  }
+
+  @media screen and (min-width: 550px) {
+    font-size: 1.5rem;
+  }
+
+  @media screen and (min-width: 750px) {
+    font-size: 1.8rem;
+  }
+
+    @media screen and (min-width: 1000px) {
+    font-size: 2.1rem;
   }
 }
